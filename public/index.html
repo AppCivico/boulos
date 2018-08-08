@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico?v=2">
+  <title>Boulos e Sonia, somos nós lá!</title>
+
+  <!-- Search Engine -->
+  <meta name="description" content="Vamos sem medo. Com Boulos e Sonia, somos nós lá! #DoeBoulos">
+  <!-- max of 150 characters for SEO -->
+  <meta name="image" content="https://doeboulos.com.br/thumb-psol.jpg?v=4">
+
+  <!-- Schema.org for Google -->
+  <meta itemprop="name" content="Boulos e Sonia, somos nós lá!">
+  <meta itemprop="description" content="Vamos sem medo. Com Boulos e Sonia, somos nós lá! #DoeBoulos">
+  <meta itemprop="image" content="https://doeboulos.com.br/thumb-psol.jpg?v=4">
+
+  <!-- Twitter and Open Graph general -->
+  <meta name="twitter:title" property="og:title" content="Boulos e Sonia, somos nós lá!">
+  <meta name="twitter:description" property="og:description" content="Vamos sem medo. Com Boulos e Sonia, somos nós lá! #DoeBoulos">
+  <!-- max of 200 characters for Twitter & Facebook -->
+  <meta name="twitter:url" property="og:url" content="https://doeboulos.com.br">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@GuilhermeBoulos">
+  <meta name="twitter:creator" content="@GuilhermeBoulos">
+  <meta name="twitter:image:src" content="https://doeboulos.com.br/psol-twitter.jpg?v=4">
+  <!-- Maximum dimension: 1024px x 512px; minimum dimension: 440px x 220px -->
+
+  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+  <meta property="og:image" content="https://doeboulos.com.br/thumb-psol.jpg?v=4">
+  <!-- Recommended dimension: 1200px x 630px; minimum dimension: 600px x 315px -->
+  <meta property="og:locale" content="pt_BR">
+  <meta property="fb:admins" content="131269027034740">
+  <meta property="og:type" content="website">
+
+  <script>
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script>
+    window.twttr = (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function (f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));
+  </script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-119529196-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900" rel="stylesheet">
+
+</head>
+
+<body class="home-page">
+  <noscript>
+    <strong>We're sorry but apoiadores-psol-vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+  <script type="text/javascript" src="https://js.iugu.com/v2"></script>
+  <script type="text/javascript" src="<%= BASE_URL %>vendors/votolegalfp.js"></script>
+</body>
+
+</html>

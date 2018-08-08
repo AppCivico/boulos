@@ -1,0 +1,101 @@
+.campaign-progress {
+  margin-top: $leading * 3rem;
+  margin-bottom: $leading * 3rem;
+
+  font-weight: 800;
+}
+
+.campaign-progress p,
+.campaign-progress em,
+.campaign-progress a {
+  margin: 0;
+
+  font-style: normal;
+}
+
+#campaign-progress .campaign-progress__link {
+  margin-top: $leading * 1em;
+  color: palette('purple');
+  text-transform: lowercase;
+
+  &:hover:link {
+    color: palette('white');
+  }
+}
+
+.campaign-progress-amount {
+  font-weight: 800;
+  font-size: ms(2);
+  line-height: 1;
+
+  @media screen and(min-width: breakpoint('phablet')) {
+    font-size: ms(3);
+  }
+}
+
+
+.campaign-progress .currency {
+  display: block;
+  font-weight: 800;
+  font-size: ms(2);
+  line-height: 0.5;
+
+  text-transform: none;
+
+}
+
+.campaign-progress .amount {
+  display: block;
+
+  overflow: hidden;
+
+  font-size: ms(5);
+  line-height: 1.0;
+  font-weight: 800;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media screen and(min-width: breakpoint('phablet')) {
+    font-size: ms(7);
+  }
+}
+
+.campaign-progress-porcentage {
+  font-size: ms(0);
+  text-transform: uppercase;
+}
+
+.campaign-progress progress {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  max-width: 30rem;
+}
+
+
+a.campaign-progress__link {
+  color: inherit;
+}
+
+.campaign-progress .contact-psol {
+  margin-top: $leading * 2rem;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.campaign-progress .contact-psol-email {
+  margin-bottom: 0;
+  word-spacing: normal;
+  text-transform: lowercase;
+
+  & a {
+    color: palette('white');
+    text-transform: lowercase;
+    text-decoration: none;
+  }
+
+  & a:hover {
+    text-decoration: underline;
+    color: palette('green', 'light');
+  }
+}

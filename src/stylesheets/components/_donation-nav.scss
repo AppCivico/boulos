@@ -1,0 +1,61 @@
+.donation-nav-wrap {
+  margin-top: 1.2em;
+  font-size: 1.4em;
+}
+
+.donation-nav--left {
+  float: left;
+}
+
+.donation-nav[class] {
+  color: palette('green', 'light');
+  margin: 0;
+
+  @include link-undercover{
+    color: palette('green', 'light');
+    text-decoration: underline;
+  }
+
+  text-decoration: underline;
+  font-weight: 800;
+  background: none;
+  text-transform: lowercase;
+}
+
+.donation-nav--rewind[class] {
+
+  &::before {
+    content: '< ';
+  }
+}
+
+.donation-nav--block {
+  text-align: center;
+
+  &::before {
+    content: '> ';
+  }
+}
+
+.donation-nav--forward[class] {
+  text-decoration: underline;
+  color: palette('green', 'light');
+  float: right;
+  font-size: ms(1);
+  cursor: pointer;
+
+  &::before {
+    content: '> ';
+  }
+}
+
+#final-message-payment .donation-nav--rewind {
+  float: none;
+
+  font-size: ms(0);
+
+  @media screen and (min-width: breakpoint('phablet')) {
+    margin-top: 0.5em;
+    font-size: ms(1);
+  }
+}

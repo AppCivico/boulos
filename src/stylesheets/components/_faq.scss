@@ -1,0 +1,13 @@
+.home__faq {
+  $bg: palette('orange');
+  color: text-contrast($bg, palette('white'));
+  background-color: $bg;
+
+  & h2 {
+    color: palette('white');
+  }
+}
+
+.faq-group li {
+  list-style: none;
+}

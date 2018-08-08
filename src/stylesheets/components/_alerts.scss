@@ -1,0 +1,9 @@
+.alert {
+  border: $stroke solid transparent;
+}
+
+.alert--warning {
+  background-color: palette('label', 'warning');
+  border-color: currentColor;
+  color: palette('gray', 'dark');
+}
