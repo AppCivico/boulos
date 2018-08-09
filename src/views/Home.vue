@@ -3,7 +3,7 @@
     <article class="home__intro">
       <div class="container">
     <h2>
-      É possível construir um Brasil sem desigualdades
+      É possível construir um&nbsp;Brasil sem&nbsp;desigualdades
     </h2>
 
     <p>Mas para mudar este quadro é preciso enfrentar os privilégios e o domínio
