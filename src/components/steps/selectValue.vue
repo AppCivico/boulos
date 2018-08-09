@@ -12,7 +12,7 @@
             <label for="amount_other">Outro valor</label>
           </div>
 
-          <div class="input-wrapper half has-real-value" v-else key="customValue">
+          <div class="input-wrapper has-real-value" v-else key="customValue">
             <label for="other">R$</label>
             <input
               type="tel"
