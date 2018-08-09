@@ -68,13 +68,8 @@
 </template>
 
 <script>
-import { VueTyper } from 'vue-typer';
-
 export default {
   name: 'Header',
-  components: {
-    VueTyper,
-  },
   methods: {
     toggleModal() {
       console.log('lala');
