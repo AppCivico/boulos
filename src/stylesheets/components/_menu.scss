@@ -73,7 +73,6 @@
 
   background-image: url('../assets/images/icons/logo-psol.png');
   background-position: 50% 50%;
-  background-size: 186px 54px;
   background-repeat: no-repeat;
 
   transition-duration: 0.8s;
@@ -85,7 +84,7 @@
 }
 
 .animate .logo-psol {
-  background-size: 150px 44px;
+  background-size: auto 44px;
 }
 
 .donate-nav {
