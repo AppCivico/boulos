@@ -168,7 +168,7 @@
   text-decoration: none;
   text-transform: lowercase;
 
-  color: #ffffff;
+  color: palette('white');
 
   @media screen and (min-width: breakpoint('desktop')) {
     font-size: ms(3);
