@@ -120,6 +120,11 @@ fieldset ul {
   }
 }
 
+.has-real-value input {
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
 .has-real-value [type='text'] {
   color: inherit;
   position: absolute;
