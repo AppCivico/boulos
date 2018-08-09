@@ -1,0 +1,70 @@
+.site-footer {
+  color: palette('white');
+
+  background-color: palette('blue');
+}
+
+.footer-container {
+  max-width: $max-width;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  padding-right: $gutter;
+  padding-left: $gutter;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.wrap-logo {
+  margin-bottom: $leading * 1em;
+}
+
+
+.wrap-logo a {
+  margin: 0;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  padding: 0;
+}
+
+.votolegal-logo {
+  background: url('../assets/images/icons/votolegal-white.png');
+  background-repeat: no-repeat;
+  width: 171px;
+  height: 49px;
+}
+
+.site-footer__copyright {
+  font-size: 0.98em;
+  color: rgb(255, 255, 255);
+  text-align: center;
+
+  & a {
+
+    color: rgb(255, 255, 255);
+  }
+}
+
+.site-footer .psol[class] {
+  max-width: 50rem;
+
+  margin-right: auto;
+  margin-bottom: $leading * 3rem;
+  margin-left: auto;
+
+  @media screen and (min-width: breakpoint('desktop')) {
+    float: left;
+  }
+}
+
+.site-footer .psol a {
+  @include image-replacement;
+
+  display: block;
+
+  min-width: 213px;
+  min-height: 39px;
+
+  background-image: url('../assets/images/icons/logo-psol.png');
+  background-position: 50% 50%;
+}

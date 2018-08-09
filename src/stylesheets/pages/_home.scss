@@ -1,0 +1,242 @@
+$default-articles-padding-small: 6rem;
+
+$default-articles-padding: 12.5rem;
+
+.home-page article {
+  padding-top: $default-articles-padding-small;
+  padding-bottom: $default-articles-padding-small;
+
+  @media screen and (min-width: breakpoint('tablet')) {
+    padding-top: $default-articles-padding;
+    padding-bottom: $default-articles-padding;
+  }
+
+}
+
+.home__intro {
+  color: palette('white');
+  background-color: palette('orange');
+  background-image: url('../assets/images/backgrounds/bg-textura-1200w.png');
+  background-position: center -320px;
+
+  background-size: auto;
+
+  @media screen and (min-width: breakpoint('tablet')) {
+    background-position: center -250px;
+  }
+
+  @media screen and (min-width: breakpoint('desktop')) {
+    background-position: right -250px;
+  }
+
+}
+
+.home-page .container > * {
+  max-width: 50rem;
+
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.home__intro p,
+.home__intro ul,
+.home__intro h2 {
+  max-width: 50rem;
+
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.home__intro .bigger-text {
+  display: block;
+}
+
+.home__intro p{
+  margin-bottom: $leading * 0.5rem;
+}
+
+.home__intro h2 {
+  max-width: 100%;
+
+  font-size: ms(2);
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  color: inherit;
+
+  @media screen and (min-width: breakpoint('phablet')) {
+    font-size: ms(4);
+  }
+
+  @media screen and (min-width: breakpoint('tablet')) {
+    font-size: ms(6);
+  }
+}
+
+.home__donate {
+
+  color: palette('white');
+
+  background-color: palette('blue');
+  background-image: url('../assets/images/backgrounds/bg-doacao-very-small.jpg');
+  background-position: center center;
+  background-repeat: repeat;
+  background-size: cover;
+
+  @media screen and (min-width: breakpoint('phablet')) {
+    background-image: url('../assets/images/backgrounds/bg-doacao-medium.jpg');
+  }
+
+  @media screen and (min-width: breakpoint('desktop')) {
+    background-image: url('../assets/images/backgrounds/bg-doacao.jpg');
+  }
+}
+
+.subtitle {
+  font-size: ms(-1);
+  color: palette('white');
+  padding-right: 0.9375rem;
+}
+
+.subtitle a {
+  color: palette('white');
+
+  &:hover {
+    color: palette('orange');
+  }
+}
+
+.home__donate h2 strong {
+  background-color: palette('orange');
+  border-radius: $rounded-corner;
+  padding: $gutter * 0.5;
+
+
+  @media (max-width: 490px) {
+    display: inline-block;
+    padding: $gutter * 0.4;
+    font-size: ms(4);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 320px) {
+    padding: $gutter * 0.2;
+  }
+}
+
+.home__donate .donation-form[class] {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 33.75rem;
+}
+
+.donation-nav[class] {
+  color: palette('orange');
+
+  @include link-undercover{
+    color: palette('orange');
+    text-decoration: underline;
+  }
+
+  text-decoration: underline;
+  font-weight: 800;
+  background: none;
+  margin-right: 0;
+  text-transform: lowercase;
+  display: block;
+  margin-top: $leading * 1rem;
+  margin-bottom: $leading * 1rem;
+
+  &:hover {
+    color: palette('purple', 'light');
+  }
+}
+
+.donation-nav--rewind[class] {
+
+  &::before {
+    content: '< ';
+  }
+}
+
+.donation-nav--forward[class] {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-decoration: underline;
+  color: palette('orange');
+  float: right;
+  font-size: ms(1);
+
+
+  &::before {
+    content: '> ';
+  }
+}
+
+.home__donate ul {
+  clear: both;
+  padding: 0;
+  font-size: ms(1);
+  font-weight: 800;
+  margin-bottom: $leading * 1rem;
+
+  @media screen and (min-width: breakpoint('phablet')) {
+    font-size: ms(2);
+  }
+
+}
+.head_steps{
+  margin-bottom: 0px;
+}
+
+.home__donate li {
+  display: inline;
+  position: relative;
+  margin-right: 2em;
+
+  display: none;
+
+  &::before {
+    content: none;
+  }
+}
+
+.home__donate li.active {
+  display: block;
+  font-size: ms(0);
+
+  &::before {
+    // content: '\2022';
+    position: absolute;
+    width: 1em;
+    left: 50%;
+    margin-left: -0.5em;
+    text-align: center;
+    top: -1em;
+  }
+
+}
+
+#home__knowMore img {
+  width: 100%;
+
+}
+
+#home__knowMore figcaption {
+  display: none;
+}
+
+#home__donors {
+  $bg: palette('gray', 'light');
+  background-color: $bg;
+}
+
+.italic-text {
+  font-style: italic;
+}
+
+.bigger-text {
+  font-size: ms(1);
+  font-weight: 800;
+}

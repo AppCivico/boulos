@@ -1,0 +1,103 @@
+.donations-wrapper.donations-wrapper {
+  &[class] {
+    max-width: none;
+  }
+}
+
+.donations-table {
+  font-size: 0.9em;
+
+  @include truncate;
+  table-layout: fixed;
+
+  & a {
+    text-decoration: none;
+  }
+}
+
+.donations-table thead th {
+  @include truncate;
+
+  @media (max-width: breakpoint('desktop')) {
+    font-size: ms(-1);
+  }
+
+  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+    width: auto;
+  }
+
+  &:first-child {
+    width: auto;
+  }
+
+  &:nth-child(2) {
+    width: 19%;
+  }
+
+  &:nth-child(3) {
+    width: 17%;
+  }
+
+  &:nth-child(4) {
+    width: 18%;
+  }
+
+  &:nth-child(5) {
+    width: 12%;
+  }
+
+  &:nth-child(6) {
+    width: 10%;
+  }
+}
+
+
+
+.donations-table tbody td {
+
+
+  &:first-child {
+    width: auto;
+
+    @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+      width: auto;
+    }
+  }
+
+  &:nth-child(2) {
+    width: 15%;
+
+    @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+      width: auto;
+    }
+  }
+
+  &:nth-child(3) {
+    width: 15%;
+    @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+      width: auto;
+    }
+  }
+  &:nth-child(4) {
+    width: 15%;
+
+    @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+      width: auto;
+    }
+  }
+  &:nth-child(5) {
+    width: 15%;
+
+    @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+      width: auto;
+    }
+  }
+
+  &:nth-child(6) {
+    width: 20%;
+
+    @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+      width: auto;
+    }
+  }
+}

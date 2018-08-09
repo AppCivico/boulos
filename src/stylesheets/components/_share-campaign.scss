@@ -1,0 +1,58 @@
+#wrap-share {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+#wrap-share li {
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0.3em;
+  margin-left: 0.3em;
+  border: 2px solid palette('white');
+  width: 65px;
+  height: 65px;
+  opacity: 1;
+}
+
+#wrap-share a {
+  @include image-replacement($overflow: true);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+
+}
+
+#wrap-share .twitter {
+  background: url('../assets/images/icons/ic-logo-twitter-green.png');
+  background-size: auto 19px;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  &:hover {
+    background: url('../assets/images/icons/ic-logo-twitter.png');
+    background-size: auto 19px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+#wrap-share .facebook {
+  background: url('../assets/images/icons/ic-logo-facebook-green.png');
+  background-size: auto 22px;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  &:hover {
+    background: url('../assets/images/icons/ic-logo-facebook.png');
+    background-size: auto 22px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
