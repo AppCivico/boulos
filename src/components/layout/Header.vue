@@ -47,8 +47,7 @@
           <span>Brasil</span>!
         </h1>
         <a href="#doar" class="call-to-action">
-          <span>#</span>doe
-          <span class="heavy">Boulos</span>
+          <span>#</span>doe<span class="heavy">Boulos</span>
         </a>
         <button id="open-modal" @click="toggleModal()" class="play-button">
           assista ao vídeo
