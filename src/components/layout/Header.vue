@@ -18,7 +18,7 @@
         </div>
         <ul class="menu-wrap">
           <li class="menu-icon">
-            <a href="https://twitter.com/intent/tweet?text=Boulos%20precisa%20de%20n%C3%B3s%20para%20equilibrar%20a%20disputa%21%20https%3A%2F%2Fdoeboulos.com.br" target="_blank" class="twitter"></a>
+            <a href="https://twitter.com/intent/tweet?text=Com%20Boulos%20e%20S%C3%B4nia%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com.br" target="_blank" class="twitter"></a>
           </li>
           <li class="menu-icon">
             <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com.br%2F&amp;src=sdkpreparse" target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
