@@ -37,6 +37,7 @@ export default new Vuex.Store({
     paymentWatingMessage: '',
     hasMoreDonations: false,
     lastDonationMarker: '',
+    donationPlatforms: [],
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -73,6 +74,11 @@ export default new Vuex.Store({
       }
 
       state.donations = state.donations.concat(payload.donations);
+    },
+    SET_PLATFORMS(state, platforms) {
+      if (state.donationPlatforms.length === 0) {
+        state.donationPlatforms = platforms;
+      }
     },
     SET_DONORS(state, { res }) {
       state.donors = res.names;
@@ -268,6 +274,9 @@ export default new Vuex.Store({
         axios.get(`${api}/public-api/candidate-summary/${id}`).then(
           (response) => {
             commit('SET_CANDIDATE', { res: response.data });
+            if (response.data.alternative_platforms) {
+              commit('SET_PLATFORMS', response.data.alternative_platforms);
+            }
             resolve();
           },
           (err) => {
@@ -285,6 +294,9 @@ export default new Vuex.Store({
           .then((response) => {
             resolve(response.data.donations);
             commit('SET_DONATIONS', response.data);
+            if (response.data.alternative_platforms) {
+              commit('SET_PLATFORMS', response.data.alternative_platforms);
+            }
             state.donationsLoading = false;
           });
       });
