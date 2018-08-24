@@ -2,35 +2,31 @@
   position: relative;
 
   height: 70vh;
-  min-height: 640px;
+  min-height: 480px;
 
   color: palette('white');
 
   background-image: url('../assets/images/backgrounds/capa-fundo-very-small.jpg');
   background-position: left bottom;
-  background-size: cover;
+  background-size: 100% auto;
   background-color: palette('gray', 'dark');
 
   @media screen and (min-width: breakpoint('phablet')) {
-    height: 90vh;
     min-height: 620px;
 
     background-image: url('../assets/images/backgrounds/capa-boulos_sonia-small.png'), url('../assets/images/backgrounds/capa-fundo-small.jpg');
-    background-position: 1em bottom, 0 0;
+    background-position: left bottom, 0 0;
     background-size: 550px auto, cover;
   }
 
   @media screen and (min-width: breakpoint('tablet')) {
-    height: 90vh;
-    min-height: 720px;
-
     background-image: url('../assets/images/backgrounds/capa-boulos_sonia-medium.png'), url('../assets/images/backgrounds/capa-fundo-medium.jpg');
-    background-position: 1em bottom, 0 0;
+    background-position: left bottom, 0 0;
     background-size: 680px auto, cover;
   }
 
   @media screen and (min-width: breakpoint('desktop')) {
-    min-height: 780px;
+    min-height: 680px;
 
     background-image: url('../assets/images/backgrounds/capa-boulos_sonia.png'), url('../assets/images/backgrounds/capa-fundo.jpg');
     background-position: left bottom, 0 0;
@@ -38,9 +34,6 @@
   }
 
   @media screen and (min-width: breakpoint('wide')) {
-    height: 100vh;
-    min-height: 870px;
-
     background-image: url('../assets/images/backgrounds/capa-boulos_sonia_maior.png'), url('../assets/images/backgrounds/capa-fundo.jpg');
     background-position: left bottom, 0 0;
     background-size: 750px auto, cover;
@@ -58,19 +51,11 @@
 
 #home__greetings {
   position: absolute;
-  top: 25%;
+  top: 20%;
 
   width: 100%;
 
   text-align: center;
-
-  @media screen and (min-width: breakpoint('phablet')) {
-    top: 27%;
-  }
-
-  @media screen and (min-width: breakpoint('tablet')) {
-    top: 18%;
-  }
 }
 
 .site-label {
@@ -154,13 +139,15 @@
 }
 
 .site-label h2 {
+  max-width: 90%;
+
   margin-right: auto;
   margin-left: auto;
 
   font-size: ms(1);
 
   @media screen and(min-width: breakpoint('phablet')) {
-    max-width: 60%;
+    max-width: 80%;
 
     font-size: ms(2);
   }
