@@ -24,8 +24,23 @@
             <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com.br%2F&amp;src=sdkpreparse" target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
           </li>
           <li class="menu-item">
+            <a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
+              Saiba mais
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#home__goals" v-scroll-to="'#home__goals'">
+              Metas
+            </a>
+          </li>
+          <li class="menu-item">
             <a href="#home__donors" v-scroll-to="'#home__donors'">
               Doadores
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#home__faq" v-scroll-to="'#home__faq'">
+              Perguntas frequentes
             </a>
           </li>
           <li class="menu-item donate-nav">
