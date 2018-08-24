@@ -1,5 +1,4 @@
 $default-articles-padding-small: 6rem;
-
 $default-articles-padding: 12.5rem;
 
 .home-page article {
@@ -10,16 +9,17 @@ $default-articles-padding: 12.5rem;
     padding-top: $default-articles-padding;
     padding-bottom: $default-articles-padding;
   }
-
 }
 
-.home__intro {
+.home__intro,
+.home__goals,
+.home__faq {
   color: palette('white');
-  background-color: palette('orange');
+
   background-image: url('../assets/images/backgrounds/bg-textura-1200w.png');
   background-position: center -320px;
-
   background-size: auto;
+  background-color: palette('orange');
 
   @media screen and (min-width: breakpoint('tablet')) {
     background-position: center -250px;
@@ -28,7 +28,6 @@ $default-articles-padding: 12.5rem;
   @media screen and (min-width: breakpoint('desktop')) {
     background-position: right -250px;
   }
-
 }
 
 .home-page .container > * {
@@ -51,7 +50,7 @@ $default-articles-padding: 12.5rem;
   display: block;
 }
 
-.home__intro p{
+.home__intro p {
   margin-bottom: $leading * 0.5rem;
 }
 
@@ -75,14 +74,13 @@ $default-articles-padding: 12.5rem;
 }
 
 .home__donate {
-
   color: palette('white');
 
-  background-color: palette('blue');
   background-image: url('../assets/images/backgrounds/bg-doacao-very-small.jpg');
   background-position: center center;
-  background-repeat: repeat;
   background-size: cover;
+  background-repeat: repeat;
+  background-color: palette('blue');
 
   @media screen and (min-width: breakpoint('phablet')) {
     background-image: url('../assets/images/backgrounds/bg-doacao-medium.jpg');
@@ -94,9 +92,11 @@ $default-articles-padding: 12.5rem;
 }
 
 .subtitle {
-  font-size: ms(-1);
-  color: palette('white');
   padding-right: 0.9375rem;
+
+  font-size: ms(-1);
+
+  color: palette('white');
 }
 
 .subtitle a {
@@ -108,15 +108,19 @@ $default-articles-padding: 12.5rem;
 }
 
 .home__donate h2 strong {
-  background-color: palette('orange');
-  border-radius: $rounded-corner;
   padding: $gutter * 0.5;
 
+  background-color: palette('orange');
+
+  border-radius: $rounded-corner;
 
   @media (max-width: 490px) {
     display: inline-block;
+
     padding: $gutter * 0.4;
+
     font-size: ms(4);
+
     white-space: nowrap;
   }
 
@@ -126,27 +130,33 @@ $default-articles-padding: 12.5rem;
 }
 
 .home__donate .donation-form[class] {
+  max-width: 33.75rem;
+
   margin-right: auto;
   margin-left: auto;
-  max-width: 33.75rem;
 }
 
 .donation-nav[class] {
-  color: palette('orange');
-
-  @include link-undercover{
-    color: palette('orange');
+  @include link-undercover {
     text-decoration: underline;
+
+    color: palette('orange');
   }
 
-  text-decoration: underline;
-  font-weight: 800;
-  background: none;
-  margin-right: 0;
-  text-transform: lowercase;
   display: block;
+
   margin-top: $leading * 1rem;
+  margin-right: 0;
   margin-bottom: $leading * 1rem;
+
+  font-weight: 800;
+
+  text-decoration: underline;
+  text-transform: lowercase;
+
+  color: palette('orange');
+
+  background: none;
 
   &:hover {
     color: palette('purple', 'light');
@@ -154,20 +164,22 @@ $default-articles-padding: 12.5rem;
 }
 
 .donation-nav--rewind[class] {
-
   &::before {
     content: '< ';
   }
 }
 
 .donation-nav--forward[class] {
+  float: right;
+
   margin-top: 0;
   margin-bottom: 0;
-  text-decoration: underline;
-  color: palette('orange');
-  float: right;
+
   font-size: ms(1);
 
+  text-decoration: underline;
+
+  color: palette('orange');
 
   &::before {
     content: '> ';
@@ -176,26 +188,29 @@ $default-articles-padding: 12.5rem;
 
 .home__donate ul {
   clear: both;
+
   padding: 0;
-  font-size: ms(1);
-  font-weight: 800;
   margin-bottom: $leading * 1rem;
+
+  font-weight: 800;
+  font-size: ms(1);
 
   @media screen and (min-width: breakpoint('phablet')) {
     font-size: ms(2);
   }
-
 }
-.head_steps{
-  margin-bottom: 0px;
+
+.head_steps {
+  margin-bottom: 0;
 }
 
 .home__donate li {
-  display: inline;
   position: relative;
-  margin-right: 2em;
 
+  display: inline;
   display: none;
+
+  margin-right: 2em;
 
   &::before {
     content: none;
@@ -204,23 +219,25 @@ $default-articles-padding: 12.5rem;
 
 .home__donate li.active {
   display: block;
+
   font-size: ms(0);
 
   &::before {
     // content: '\2022';
     position: absolute;
-    width: 1em;
-    left: 50%;
-    margin-left: -0.5em;
-    text-align: center;
     top: -1em;
-  }
+    left: 50%;
 
+    width: 1em;
+
+    margin-left: -0.5em;
+
+    text-align: center;
+  }
 }
 
 #home__knowMore img {
   width: 100%;
-
 }
 
 #home__knowMore figcaption {
@@ -229,6 +246,7 @@ $default-articles-padding: 12.5rem;
 
 #home__donors {
   $bg: palette('gray', 'light');
+
   background-color: $bg;
 }
 
@@ -237,6 +255,6 @@ $default-articles-padding: 12.5rem;
 }
 
 .bigger-text {
-  font-size: ms(1);
   font-weight: 800;
+  font-size: ms(1);
 }
