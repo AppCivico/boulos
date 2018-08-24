@@ -46,6 +46,9 @@
           Mudar o
           <span>Brasil</span>!
         </h1>
+        <h2>
+          e enfrentar os privilégios de quem sempre teve
+        </h2>
         <a href="#doar" class="call-to-action">
           <span>#</span>doe<span class="heavy">Boulos</span>
         </a>
