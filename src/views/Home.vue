@@ -180,7 +180,7 @@
 
       <p>
         Esta valor representa 2% do patrimônio declarado daquele democrata
-        cristão mais conhecido pelo seu “jigle” do que por suas propostas, e que
+        cristão mais conhecido pelo seu <em>jingle</em> do que por suas propostas, e que
         está disputando a presidência pela 4 vez. Para nós, esta quantia permite
         lançarmos nosso caderno de propostas resumido a partir do programa de
         governo formulado com a contribuição de centenas de pessoas.
