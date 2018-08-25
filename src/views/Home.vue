@@ -223,7 +223,7 @@
       <h2>
         Perguntas Frequentes
       </h2>
-      <details open>
+      <details>
         <summary>
           <span class="caret"></span>
           Como fazer a doação?
@@ -233,7 +233,7 @@
           ou boleto bancário.
         </p>
       </details>
-      <details open>
+      <details>
         <summary>
           <span class="caret"></span>
           É seguro?
@@ -243,7 +243,7 @@
           permite a segurança de nossos doadores.
         </p>
       </details>
-      <details open>
+      <details>
         <summary>
           <span class="caret"></span>
           Terei algum comprovante?
@@ -253,7 +253,7 @@
           Depois será enviado o recibo de doação eleitoral.
         </p>
       </details>
-      <details open>
+      <details>
         <summary>
           <span class="caret"></span>
           Quanto posso doar?
