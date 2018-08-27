@@ -147,54 +147,81 @@
         Metas
       </h2>
 
-      <h3>
-        META 1 - R$&nbsp;28.000,00
-      </h3>
+      <div class="goal-description"
+        :class="{ 'goal-description--reached': (candidate.total_donated >= 2800000) }">
+        <h3>
+          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
+          v-if="candidate.total_donated >= 2800000">
+            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
+          </svg>
+          META 1 - R$&nbsp;28.000,00
+        </h3>
 
-      <p>
-        Este valor representa 2% do patrimônio declarado do picolé de chuchu,
-        que trata professores na base da porrada apesar de ter a fama de “Santo”
-        . Para nós, esta quantia viabiliza a estrutura de comícios, como palco,
-        iluminação, som e montagem.
-      </p>
+        <p>
+          Este valor representa 2% do patrimônio declarado do picolé de chuchu,
+          que trata professores na base da porrada apesar de ter a fama de “Santo”
+          . Para nós, esta quantia viabiliza a estrutura de comícios, como palco,
+          iluminação, som e montagem.
+        </p>
+      </div>
 
-      <h3>
-        META 2 - R$&nbsp;44.000,00
-      </h3>
+      <div class="goal-description"
+        :class="{ 'goal-description--reached': (candidate.total_donated >= 4400000) }">
+        <h3>
+          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
+          v-if="candidate.total_donated >= 4400000">
+            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
+          </svg>
+          META 2 - R$&nbsp;44.000,00
+        </h3>
 
-      <p>
-        Este valor representa 2% do patrimônio declarado daquele que em 20 anos
-        como deputado só aprovou 2 projetos, mas conseguiu adquirir 5 imóveis -
-        sendo que para um deles contratou a caseira como sendo funcionária da
-        Câmara Federal. Para nós, esta quantia viabiliza a produção de novos
-        materiais de campanha como panfletos e adesivos.
-      </p>
+        <p>
+          Este valor representa 2% do patrimônio declarado daquele que em 20 anos
+          como deputado só aprovou 2 projetos, mas conseguiu adquirir 5 imóveis -
+          sendo que para um deles contratou a caseira como sendo funcionária da
+          Câmara Federal. Para nós, esta quantia viabiliza a produção de novos
+          materiais de campanha como panfletos e adesivos.
+        </p>
+      </div>
 
-      <h3>
-        META 3 - R$&nbsp;60.000,00
-      </h3>
+      <div class="goal-description"
+        :class="{ 'goal-description--reached': (candidate.total_donated >= 6000000) }">
+        <h3>
+          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
+          v-if="candidate.total_donated >= 6000000">
+            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
+          </svg>
+          META 3 - R$&nbsp;60.000,00
+        </h3>
 
-      <p>
-        Este valor representa 2% do patrimônio declarado daquele que acha que
-        pode refundar a República, mas, apoiou todas a medidas que retiraram
-        direitos do povo brasileiro e foi um dos patrocinadores do golpe. O
-        primeiro nome começa com A e o último com D. Para nós, esta quantia
-        viabiliza mais dois comícios e viagens pelo país levando nossas
-        propostas.
-      </p>
+        <p>
+          Este valor representa 2% do patrimônio declarado daquele que acha que
+          pode refundar a República, mas, apoiou todas a medidas que retiraram
+          direitos do povo brasileiro e foi um dos patrocinadores do golpe. O
+          primeiro nome começa com A e o último com D. Para nós, esta quantia
+          viabiliza mais dois comícios e viagens pelo país levando nossas
+          propostas.
+        </p>
+      </div>
 
-      <h3>
-        META 4 - R$&nbsp;120.000,00
-      </h3>
+      <div class="goal-description"
+        :class="{ 'goal-description--reached': (candidate.total_donated >= 12000000) }">
+        <h3>
+          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
+          v-if="candidate.total_donated >= 12000000">
+            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
+          </svg>
+          META 4 - R$&nbsp;120.000,00
+        </h3>
 
-      <p>
-        Esta valor representa 2% do patrimônio declarado daquele democrata
-        cristão mais conhecido pelo seu <em>jingle</em> do que por suas propostas, e que
-        está disputando a presidência pela 4 vez. Para nós, esta quantia permite
-        lançarmos nosso caderno de propostas resumido a partir do programa de
-        governo formulado com a contribuição de centenas de pessoas.
-      </p>
-
+        <p>
+          Esta valor representa 2% do patrimônio declarado daquele democrata
+          cristão mais conhecido pelo seu <em>jingle</em> do que por suas propostas, e que
+          está disputando a presidência pela 4 vez. Para nós, esta quantia permite
+          lançarmos nosso caderno de propostas resumido a partir do programa de
+          governo formulado com a contribuição de centenas de pessoas.
+        </p>
+      </div>
 
     </div>
   </article>

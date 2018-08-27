@@ -1,5 +1,6 @@
 $default-articles-padding-small: 3rem;
 $default-articles-padding: 6rem;
+$max-section-width: 50rem;
 
 .home-page article {
   padding-top: $default-articles-padding-small;
@@ -29,7 +30,7 @@ $default-articles-padding: 6rem;
 }
 
 .home-page .container > * {
-  max-width: 50rem;
+  max-width: $max-section-width;
 
   margin-right: 0;
   margin-left: auto;
@@ -38,7 +39,7 @@ $default-articles-padding: 6rem;
 .home__intro p,
 .home__intro ul,
 .home__intro h2 {
-  max-width: 50rem;
+  max-width: $max-section-width;
 
   margin-right: 0;
   margin-left: auto;
@@ -256,4 +257,29 @@ $default-articles-padding: 6rem;
 .bigger-text {
   font-weight: 800;
   font-size: ms(1);
+}
+
+.goal-description {
+  color: palette('gray');
+}
+
+.goal-description h3 {
+  position: relative;
+
+  color: inherit;
+}
+
+@media screen and (min-width: ($max-section-width + $gutter * 3)) {
+  .goal-description svg {
+    position: absolute;
+    left: -1.5em;
+  }
+}
+
+.goal-description--reached {
+  color: inherit;
+}
+
+.goal-description--reached h3 {
+  color: palette('purple');
 }
