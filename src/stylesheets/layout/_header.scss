@@ -32,12 +32,6 @@
     background-position: left bottom, 0 0;
     background-size: 750px auto, cover;
   }
-
-  @media screen and (min-width: breakpoint('wide')) {
-    background-image: url('../assets/images/backgrounds/capa-boulos_sonia_maior.png'), url('../assets/images/backgrounds/capa-fundo.jpg');
-    background-position: left bottom, 0 0;
-    background-size: 750px auto, cover;
-  }
 }
 
 .header-container {
@@ -131,10 +125,6 @@
 
   @media screen and(min-width: breakpoint('tablet')) {
     font-size: ms(6);
-  }
-
-  @media screen and(min-width: breakpoint('wide')) {
-    font-size: ms(8);
   }
 }
 
