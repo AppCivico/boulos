@@ -243,11 +243,56 @@ $max-section-width: 50rem;
   display: none;
 }
 
-#home__knowMore,
 #home__donors {
   $bg: palette('gray', 'light');
 
   background-color: $bg;
+}
+
+.home__knowMore {
+  $bg: #f1f1f1;
+
+  background-image: url('../assets/images/backgrounds/img-saibamais--320w.jpg');
+  background-position: center bottom;
+  background-size: 100% auto;
+  background-color: $bg;
+
+  &[class] {
+    padding-bottom: 60%;
+  }
+
+  @media screen and (min-width: 480px) {
+    background-image: url('../assets/images/backgrounds/img-saibamais--480w.jpg');
+  }
+
+  @media screen and (min-width: 640px) {
+    background-image: url('../assets/images/backgrounds/img-saibamais--640w.jpg');
+  }
+
+  @media screen and (min-width: 1024px) {
+    background-image: url('../assets/images/backgrounds/img-saibamais--1024w.jpg');
+    background-position: right bottom;
+    background-size: auto;
+
+    &[class] {
+      padding-bottom: 560px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url('../assets/images/backgrounds/img-saibamais--1280w-bou.jpg'), url('../assets/images/backgrounds/img-saibamais--1280w-son.jpg');
+    background-position: left bottom, right bottom;
+
+    &[class] {
+      padding-bottom: 480px;
+    }
+  }
+
+  @media screen and (min-width: 1500px) {
+    &[class] {
+      padding-bottom: 420px;
+    }
+  }
 }
 
 .italic-text {
