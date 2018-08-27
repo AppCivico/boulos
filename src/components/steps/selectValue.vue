@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { validate, formatBRLDec, formatBRL } from '../../utilities';
+import { validate, formatBRLDec, formatBRL, getQueryString } from '../../utilities';
 import {
     mask
 } from 'vue-the-mask';
@@ -102,7 +102,45 @@ export default {
       if(this.amount !== '') {
         this.validateForm();
       }
-    }
+    },
+    getDonationAmount() {
+      let amount = getQueryString(window.location.search).valor || '';
+
+      /*
+      accepted formats:
+      10
+      R$20
+      R$30,00
+      R$ 30,00
+      R$    60,00
+      R$  60,0
+      $10
+      $ 10
+      20reais
+      r$20
+      10,00
+      50 reais
+      500   reais
+      500,00 reais
+      1000,00   reais
+      */
+
+      amount = amount.replace(/(?:^r*\$\s*)|(?:(?:,\d{1,2})*(?:\s*reais)*$)/gi, '');
+      amount = parseInt(amount, 10) || 0;
+
+      if (amount) {
+        if (this.$data.pledges.indexOf(amount) === -1) {
+          this.$data.amount = 'other';
+          this.$data.other = amount;
+          this.formatOther();
+        }
+
+        this.$data.amount = amount;
+      }
+    },
+  },
+  mounted() {
+    this.getDonationAmount();
   },
 };
 </script>
