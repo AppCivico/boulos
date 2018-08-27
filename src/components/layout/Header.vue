@@ -54,7 +54,7 @@
         </h1>
         <h1>
           Mudar o
-          <span>Brasil</span>!
+          <span>Brasil</span>
         </h1>
         <h2>
           e enfrentar os privilégios de quem sempre teve
