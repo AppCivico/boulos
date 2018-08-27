@@ -7,9 +7,13 @@
       </h2>
 
       <p>
-        Vamos revogar as medidas de Michel Temer, devolver e ampliar direitos
-        que foram retirados do povo para agradar os super ricos. A economia
-        estará a serviço das pessoas, não o contrário.
+        <strong>
+          Vamos revogar as medidas de Michel Temer
+        </strong>, devolver e ampliar direitos que foram retirados do povo para
+        agradar os super ricos.
+        <strong>
+          A economia estará a serviço das pessoas, não o contrário.
+        </strong>
       </p>
 
       <p>
@@ -19,15 +23,20 @@
       </p>
 
       <p>
-        Não venderemos cargos públicos, apoio e nem alianças em troca de
-        favore$. Nossa política é feita com você, que não desistiu dos direitos
+        <strong>
+          Não venderemos cargos públicos, apoio e nem alianças em troca de
+          favore$.
+        </strong>
+        Nossa política é feita com você, que não desistiu dos direitos
         trabalhistas, da previdência social e de uma sociedade mais justa para
         todos. Ajude a financiar a campanha e faça com que as nossas propostas
         cheguem a mais pessoas.
       </p>
 
       <p>
-        Doe para Boulos e Sônia.
+        <strong>
+          Doe para Boulos e Sônia.
+        </strong>
       </p>
 
       <section id="campaign-progress" class="campaign-progress">
