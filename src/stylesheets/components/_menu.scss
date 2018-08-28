@@ -84,7 +84,7 @@
 }
 
 .donate-nav {
-  color: palette('purple', 'light');
+  color: palette('white');
 }
 
 .donate-nav a {
@@ -95,7 +95,9 @@
   margin-right: auto;
   margin-left: auto;
 
-  border: 2px solid palette('purple', 'light');
+  background-color: palette('orange');
+
+  border: 2px solid palette('white');
   border-radius: 10px;
 
   &:hover,

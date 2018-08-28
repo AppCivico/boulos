@@ -13,6 +13,7 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Menu from '@/components/layout/Menu';
+import { getQueryString } from './utilities';
 
 export default {
   name: 'App',
@@ -26,27 +27,10 @@ export default {
     this.getReferral();
   },
   methods: {
-    _getQueryString(url) {
-      const queryString = url.indexOf('?') !== -1
-        ? url.split('?')[1]
-        : [];
-      const params = {};
-      const queries = queryString.indexOf('&') !== -1
-        ? queryString.split('&')
-        : [queryString];
-
-      for (let i = 0; i < queries.length; i += 1) {
-        const element = queries[i].indexOf('=') !== -1
-          ? queries[i].split('=')
-          : [queries[i], null];
-        params[decodeURIComponent(element[0])] = decodeURIComponent(element[1] || '');
-      }
-      return params;
-    },
     getReferral() {
-      const referral = this._getQueryString(window.location.search).ref;
+      const referral = getQueryString(window.location.search).ref;
 
-      if(referral) {
+      if (referral) {
         this.$store.dispatch('ADD_REFERRAL', referral);
       }
     },

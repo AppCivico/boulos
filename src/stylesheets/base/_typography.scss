@@ -73,11 +73,13 @@ dt a {
 }
 
 h1 {
-  color: palette('white');
-  text-transform: uppercase;
-  font-size: ms(3);
   font-weight: 800;
+  font-size: ms(3);
   letter-spacing: -3px;
+
+  text-transform: uppercase;
+
+  color: palette('white');
 
   @media screen and(min-width: breakpoint('phablet')) {
     font-size: ms(5);
@@ -94,7 +96,6 @@ h1 {
   @media screen and(min-width: breakpoint('wide')) {
     font-size: ms(8);
   }
-
 }
 
 h2 {
@@ -103,6 +104,16 @@ h2 {
 
 h3 {
   font-size: ms(2);
+}
+
+details {
+  margin-bottom: $leading * 1rem;
+}
+
+details > summary {
+  margin-bottom: $leading * 1rem;
+
+  font-size: ms(1);
 }
 
 .orange-highlight {
