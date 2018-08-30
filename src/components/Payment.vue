@@ -1,6 +1,9 @@
 <template>
   <div class="donation-form" id="donation-form">
-    <template v-if="paymentStep === 'selectValue'">
+    <h2 v-if="!allowedPaymentMethods.length">
+      Doações desabilitadas
+    </h2>
+    <template v-else-if="paymentStep === 'selectValue'">
       <h2>Escolha um valor para doar</h2>
       <selectValue />
     </template>
@@ -57,6 +60,9 @@ export default {
     },
     amount() {
       return this.$store.state.amount;
+    },
+    allowedPaymentMethods() {
+      return (this.$store.state.candidate || {}).allowed_payment_methods || ['credit_card', 'boleto'];
     },
   },
   mounted() {

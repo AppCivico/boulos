@@ -293,6 +293,12 @@ $max-section-width: 50rem;
       padding-bottom: 420px;
     }
   }
+
+  @media screen and (min-width: 1680px) {
+    &[class] {
+      padding-bottom: $default-articles-padding;
+    }
+  }
 }
 
 .italic-text {

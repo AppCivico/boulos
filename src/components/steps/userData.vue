@@ -4,13 +4,13 @@
       <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
 
       <div class="instructions-donation">
-        <p class="instructions">Escolha a forma de pagamento</p>
+        <p class="instructions" v-if="allowedPaymentMethods.length > 1">Escolha a forma de pagamento</p>
         <ul class="payment-choices">
-          <li class="payment-type">
+          <li class="payment-type" v-if="isPaymentMethodAllowed('credit_card')">
             <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method" @change="focusNameField()">
             <label for="credit_card">Cartão de Crédito</label>
           </li>
-          <li class="payment-type">
+          <li class="payment-type" v-if="isPaymentMethodAllowed('boleto')">
             <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method" @change="focusNameField()">
             <label for="boleto">Boleto</label>
           </li>
@@ -133,8 +133,20 @@ export default {
         return Math.floor(newAmount).toFixed(0);
       }
     },
+    allowedPaymentMethods() {
+      const allowedMethods = (this.candidate || {}).allowed_payment_methods || ['credit_card', 'boleto'];
+
+      if (allowedMethods.length === 1) {
+        [this.payment_method] = allowedMethods;
+      }
+
+      return allowedMethods;
+    },
   },
   methods: {
+    isPaymentMethodAllowed(method = '') {
+      return this.allowedPaymentMethods.indexOf(method.toLowerCase()) !== -1;
+    },
     controlSession() {
       const dataSession = JSON.parse(sessionStorage.getItem('user-donation-data'));
       if(dataSession != null){
