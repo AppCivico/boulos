@@ -311,13 +311,10 @@ $max-section-width: 50rem;
 }
 
 .goal-description {
-  color: palette('gray');
 }
 
 .goal-description h3 {
   position: relative;
-
-  color: inherit;
 }
 
 @media screen and (min-width: ($max-section-width + $gutter * 3)) {
@@ -328,9 +325,9 @@ $max-section-width: 50rem;
 }
 
 .goal-description--reached {
-  color: inherit;
+  color: palette('gray');
 }
 
 .goal-description--reached h3 {
-  color: palette('purple');
+  color: inherit;
 }
