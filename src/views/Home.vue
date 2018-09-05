@@ -55,20 +55,64 @@
           </strong>
         </p>
         <p class="campaign-progress-amount">
-          {{ candidate.people_donated | thousandsSeparator }} doações realizadas
+            {{ totalDonors | thousandsSeparator }} doações realizadas
         </p>
 
-        <progress :value="candidate.total_donated" :max="expected">
-          <div class="progress-bar">
-          <span :style="{width: `${porcentage}%`}">
-            {{ porcentage }}
-          </span>
+        <div role="progressbar" aria-valuemin="0"
+          :aria-valuenow="totalAmount" :aria-valuemax="expected"
+          v-if="donationSources.length > 1">
+
+          <div v-for="(source, i) in donationSources" :key="i"
+            :style="progressBarStyle(source)"
+            :title="`${porcentage(source.total_donated)}% via ${source.name}`"
+            v-if="source.total_donated">
+            {{ porcentage(source.total_donated) }}
+          </div>
+        </div>
+        <progress :value="totalAmount" :max="expected" v-else>
+          <div role="progressbar" :aria-valuenow="totalAmount" :aria-valuemax="expected">
+            <div :style="{width: `${porcentage(totalAmount)}%`}">
+              {{ porcentage(totalAmount) }}
+            </div>
           </div>
         </progress>
 
         <p class="campaign-progress-porcentage">
-          {{ porcentage }}% da meta de R$&nbsp;{{ expected | formatBRL }}
+          {{ porcentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
         </p>
+
+        <div v-if="donationSources.length > 1" class="donations-sources">
+          <p>Sendo:</p>
+          <ul>
+            <li v-for="(source, i) in donationSources" :key="i">
+              <strong class="donations-sources__amount">
+                R$ {{ source.total_donated | formatBRL }}
+              </strong> /
+              <em class="donations-sources__donations">
+                {{ source.people_donated }}
+              </em>
+              doações via
+              <details v-if="source.cnpj || source.social_name">
+                <summary>{{ source.name }}</summary>
+                <p v-if="source.cnpj">
+                  <em>
+                    <abbr title="Cadastro Nacional de Pessoa Jurídica">CNPJ</abbr>:
+                  </em>
+                  {{ source.cnpj | formatCNPJ }}
+                </p>
+                <p v-if="source.social_name">
+                  <em>
+                    Razão social:
+                  </em>
+                  {{ source.social_name }}
+                </p>
+              </details>
+              <template v-else>
+                {{ source.name }}
+              </template>
+            </li>
+          </ul>
+        </div>
 
         <p>
           <a href="#home__donors" class="campaign-progress__link" v-scroll-to="'#home__donors'">
@@ -316,6 +360,7 @@
 <script>
 // @ is an alias to /src
 import Payment from '@/components/Payment.vue';
+// eslint-disable-next-line
 import AnimatedNumber from 'animated-number-vue';
 
 export default {
@@ -339,6 +384,34 @@ export default {
     candidate() {
       return this.$store.state.candidate;
     },
+    donationSources() {
+      let opacity = 0;
+      return this.$store.state.donationSources
+        .map((x) => {
+          const y = x;
+          y.opacity = opacity;
+          opacity += 0.25;
+          return y;
+        });
+    },
+    totalAmount() {
+      return this.donationSources.length
+        ? this.donationSources.reduce(
+          (accumulator, currentValue) =>
+            accumulator + currentValue.total_donated
+          , 0,
+        )
+        : (this.candidate.total_donated || 0);
+    },
+    totalDonors() {
+      return this.donationSources.length
+        ? this.donationSources.reduce(
+          (accumulator, currentValue) =>
+            accumulator + Number.parseInt(currentValue.people_donated || 0, 10)
+          , 0,
+        )
+        : Number.parseInt(this.candidate.people_donated || 0, 10);
+    },
     donors() {
       return this.$store.state.donors;
     },
@@ -352,22 +425,19 @@ export default {
       return this.$store.state.hasMoreDonations;
     },
     expected() {
-      if (this.candidate) {
-        if (this.candidate.raising_goal) {
-          return this.candidate.raising_goal;
-        }
-      }
-      return 0;
-    },
-    porcentage() {
-      if (this.candidate) {
-        const value = (this.candidate.total_donated * 100) / this.expected;
-        return Math.round(value);
-      }
-      return 0;
+      return (this.candidate || {}).raising_goal || 0;
     },
   },
   methods: {
+    porcentage(amount = this.totalAmount) {
+      return Math.round((parseFloat(amount) * 100) / Math.max(this.totalAmount, this.expected));
+    },
+    progressBarStyle(source) {
+      return {
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, ${source.opacity}), rgba(0, 0, 0, ${source.opacity}))`,
+        width: `${this.porcentage(source.total_donated)}%`,
+      };
+    },
     FormatFixedBRL(amount) {
       let formated = `${(amount / 100).toFixed(2)}`;
 

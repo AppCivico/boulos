@@ -38,6 +38,7 @@ export default new Vuex.Store({
     hasMoreDonations: false,
     lastDonationMarker: '',
     donationPlatforms: [],
+    donationSources: [],
   },
   mutations: {
     SET_PAYMENT_STEP(state, { data }) {
@@ -76,9 +77,25 @@ export default new Vuex.Store({
       state.donations = state.donations.concat(payload.donations);
     },
     SET_PLATFORMS(state, platforms) {
-      if (state.donationPlatforms.length === 0) {
-        state.donationPlatforms = platforms;
-      }
+      state.donationPlatforms = platforms.sort(a => (['voto legal', 'votolegal'].indexOf(a.name.toLowerCase()) !== -1 ? -1 : 1));
+    },
+    SET_SOURCES(state, platforms) {
+      const donationSources = platforms.reduce((allTypes, item) => {
+        const typeName = item.type.toLowerCase();
+        if (typeName in allTypes) {
+          allTypes[typeName].total_donated += item.total_donated;
+          allTypes[typeName].people_donated += item.people_donated;
+        } else {
+          allTypes[typeName] = {
+            name: item.type,
+            total_donated: item.total_donated,
+            people_donated: item.people_donated,
+          };
+        }
+        return allTypes;
+      }, {});
+
+      state.donationSources = Object.keys(donationSources).map(key => donationSources[key]);
     },
     SET_DONORS(state, { res }) {
       state.donors = res.names;
@@ -87,10 +104,11 @@ export default new Vuex.Store({
       state.recentDonation = payload;
     },
     REPLACE_DONATIONS: (state) => {
-      const donationsRecent = state.donationsRecent;
+      const { donationsRecent } = state;
 
       if (donationsRecent.length) {
-        state.lastDonationMarker = donationsRecent[donationsRecent.length - 1]._marker; // eslint-disable-line no-underscore-dangle
+        // eslint-disable-next-line
+        state.lastDonationMarker = donationsRecent[donationsRecent.length - 1]._marker;
       }
       state.donations = donationsRecent;
       state.hasMoreDonations = state.donationsRecentHasMore;
@@ -112,7 +130,7 @@ export default new Vuex.Store({
         } else {
           let i = 0;
 
-          while (newDonations[i] && newDonations[i].id !== donationToCompare.id) { // eslint-disable-line no-underscore-dangle
+          while (newDonations[i] && newDonations[i].id !== donationToCompare.id) { // eslint-disable-line
             i += 1;
           }
 
@@ -246,7 +264,7 @@ export default new Vuex.Store({
           headers: { 'Content-Type': 'application/json' },
           url: `${api}/api2/donations/${state.donation.id}?device_authorization_token_id=${
             state.token
-          }&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
+            }&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
         }).then(
           (response) => {
             const data = {
@@ -274,8 +292,8 @@ export default new Vuex.Store({
         axios.get(`${api}/public-api/candidate-summary/${id}`).then(
           (response) => {
             commit('SET_CANDIDATE', { res: response.data });
-            if (response.data.alternative_platforms) {
-              commit('SET_PLATFORMS', response.data.alternative_platforms);
+            if (response.data.platforms) {
+              commit('SET_SOURCES', response.data.platforms);
             }
             resolve();
           },
@@ -294,8 +312,8 @@ export default new Vuex.Store({
           .then((response) => {
             resolve(response.data.donations);
             commit('SET_DONATIONS', response.data);
-            if (response.data.alternative_platforms) {
-              commit('SET_PLATFORMS', response.data.alternative_platforms);
+            if (response.data.platforms) {
+              commit('SET_PLATFORMS', response.data.platforms);
             }
             state.donationsLoading = false;
           });
@@ -342,6 +360,9 @@ export default new Vuex.Store({
               commit('SET_DONATIONS_TODAY', response.data.today);
               if (response.data.recent_donation) {
                 commit('SET_RECENT_DONATION', response.data.recent_donation);
+              }
+              if (response.data.platforms) {
+                commit('SET_SOURCES', response.data.platforms);
               }
               resolve();
             },

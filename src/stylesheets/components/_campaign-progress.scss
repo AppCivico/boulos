@@ -15,8 +15,10 @@
 
 #campaign-progress .campaign-progress__link {
   margin-top: $leading * 1em;
-  color: palette('purple');
+
   text-transform: lowercase;
+
+  color: palette('purple');
 
   &:hover:link {
     color: palette('white');
@@ -33,15 +35,14 @@
   }
 }
 
-
 .campaign-progress .currency {
   display: block;
+
   font-weight: 800;
   font-size: ms(2);
   line-height: 0.5;
 
   text-transform: none;
-
 }
 
 .campaign-progress .amount {
@@ -49,9 +50,9 @@
 
   overflow: hidden;
 
+  font-weight: 800;
   font-size: ms(5);
   line-height: 1.0;
-  font-weight: 800;
 
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -63,15 +64,17 @@
 
 .campaign-progress-porcentage {
   font-size: ms(0);
+
   text-transform: uppercase;
 }
 
+.campaign-progress [role='progressbar'],
 .campaign-progress progress {
+  max-width: 30rem;
+
   margin-top: 1em;
   margin-bottom: 1em;
-  max-width: 30rem;
 }
-
 
 a.campaign-progress__link {
   color: inherit;
@@ -79,23 +82,28 @@ a.campaign-progress__link {
 
 .campaign-progress .contact-psol {
   margin-top: $leading * 2rem;
+
   font-size: 2rem;
   line-height: 1;
 }
 
 .campaign-progress .contact-psol-email {
   margin-bottom: 0;
+
   word-spacing: normal;
+
   text-transform: lowercase;
 
   & a {
-    color: palette('white');
-    text-transform: lowercase;
     text-decoration: none;
+    text-transform: lowercase;
+
+    color: palette('white');
   }
 
   & a:hover {
     text-decoration: underline;
+
     color: palette('green', 'light');
   }
 }
