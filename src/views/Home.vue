@@ -205,22 +205,25 @@
       </div>
 
       <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 12000000) }">
+        :class="{ 'goal-description--reached': (candidate.total_donated >= 9400000) }">
         <h3>
           <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 12000000">
+          v-if="candidate.total_donated >= 9400000">
             <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
           </svg>
-          META 4 - R$&nbsp;120.000,00
+          META 4 - R$&nbsp;94.000,00
         </h3>
 
         <p>
-          Esta valor representa 2% do patrimônio declarado daquele democrata
-          mais conhecido pelo seu <em>jingle</em> do que por suas propostas, e
-          que está disputando a presidência pela 4&ordf; vez. Para nós, esta
-          quantia permite lançarmos nosso caderno de propostas resumido a partir
-          do programa de governo formulado com a contribuição de centenas de
-          pessoas.
+          A nossa próxima meta é modesta, somente 0,25% do patrimônio de um
+          candidato a presidente. Mas não é qualquer patrimônio, é o do
+          Meirelles, aquele que fez fortuna no mercado financeiro e quer
+          transformar o Brasil numa agência bancária dos grandes grupos
+          internacionais. Este dinheiro é fundamental para fortalecer a nossa
+          presença em atividades pelo Brasil, especialmente os comícios de
+          Salvador e Fortaleza, e lavar a mais e mais pessoas a ideia de que não
+          é o povo que tem que servir à economia, mas sim a economia que tem que
+          servir ao povo.
         </p>
       </div>
 
