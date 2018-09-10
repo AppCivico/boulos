@@ -124,7 +124,7 @@ export default {
         SC: 'Santa Catarina',
         SE: 'Sergipe',
         SP: 'São Paulo',
-        TO : 'Tocantins',
+        TO: 'Tocantins',
       },
       errorMessage: '',
       zip_code: '',
