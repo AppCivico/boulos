@@ -3,10 +3,6 @@
     @content;
   }
 
-  .progress-bar {
-    @content;
-  }
-
   @content;
 }
 
@@ -19,14 +15,21 @@
     @content;
   }
 
-  .progress-bar > span {
+  > div {
     @include hide-text;
+
+    display: inline-block;
+
+    height: 100%;
+    max-width: 100%;
 
     @content;
   }
 }
 
-progress {
+progress,
+[role='progressbar'] {
+  @include inline-block-wrapper;
   @include progress-bar-fg {
     // sass-lint:disable-line mixins-before-declarations
     background-color: palette('progress');

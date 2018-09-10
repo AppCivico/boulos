@@ -1,0 +1,170 @@
+.donations-sources {
+  $text-color: rgba(palette('white'), 0.65);
+
+  padding-top: $leading * 0.5rem;
+  padding-bottom: $leading * 0.5rem;
+
+  font-weight: font-weight('text');
+  font-size: ms(-1);
+  line-height: $leading;
+
+  color: $text-color;
+
+  border-top: $stroke solid;
+}
+
+.donations-sources p {
+}
+
+.donations-sources ul {
+  padding-left: 0;
+}
+
+.donations-sources li {
+  $opacity: 0;
+
+  &::before {
+    display: inline-block;
+
+    width: 1em;
+    height: 1em;
+
+    background-color: palette('progress');
+
+    border: $stroke solid palette('white');
+    border-radius: 50%;
+
+    content: '';
+  }
+
+  @for $i from 2 through 10 {
+    $opacity: $opacity + 0.25;
+
+    &:nth-child(#{$i}) {
+      &::before {
+        background-image: linear-gradient(rgba(black, $opacity), rgba(black, $opacity));
+      }
+    }
+  }
+}
+
+.donations-sources strong {
+  font-weight: font-weight('text');
+}
+
+.donations-sources em {
+  font-weight: font-weight('text');
+}
+
+.donations-sources details {
+  display: inline;
+
+  &[open] {
+    display: inline;
+  }
+}
+
+.donations-sources summary {
+  display: inline;
+
+  font-weight: font-weight('text');
+
+  list-style-type: none;
+
+  cursor: help;
+
+  &::before {
+    content: none;
+  }
+
+  &::after {
+    display: inline-block;
+
+    width: $leading * 1em;
+    height: $leading * 1em;
+
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+
+    line-height: $leading * 1em;
+
+    text-align: center;
+
+    background-color: palette('black');
+
+    border-width: $stroke;
+    border-color: currentColor;
+    border-radius: 50%;
+
+    content: '?';
+
+    transition-duration: $duration;
+    transition-property: background-color;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+
+    &::after {
+      text-decoration: none;
+
+      background-color: palette('anchor', 'hover');
+    }
+  }
+}
+
+.donations-sources [open] summary {
+  &::before {
+    content: none;
+  }
+
+  ~ * {
+    overflow: hidden;
+
+    animation: here-comes-the-detail 0.5s ease-in-out;
+
+    @at-root {
+      @keyframes here-comes-the-detail {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: breakpoint('phablet')) {
+    ~ *::after {
+      content: '\a0; ';
+    }
+
+    + ::before {
+      content: '(\a0';
+    }
+
+    ~ *:last-child::after {
+      content: '\a0)';
+    }
+  }
+}
+
+.donations-sources details p {
+  // @media screen and (min-width: breakpoint('phablet')) {
+  display: inline;
+  // }
+}
+
+.donations-sources details em {
+  font-style: normal;
+}
+
+.donations-sources__amount {
+  font-size: ms(0);
+}
+
+.donations-sources__donations {
+}
