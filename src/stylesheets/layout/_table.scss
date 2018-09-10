@@ -55,6 +55,11 @@ tr {
   }
 }
 
+.irregular th,
+.irregular td {
+  text-decoration: line-through;
+}
+
 th {
   font-weight: bold;
   text-transform: capitalize;
