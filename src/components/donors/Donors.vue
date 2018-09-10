@@ -38,7 +38,7 @@
               <button class="" type="button" @click="refreshDonationsList()">Carregar?</button>
               </td>
             </tr>
-            <tr v-for="donation in donations" :key="donation.id">
+            <tr v-for="donation in donations" :key="donation.id" :class="{irregular: donation.is_irregular}">
               <th title="Nome">{{donation.name | titleCase}}</th>
               <td title="CPF">{{donation.cpf | formatCPF }}</td>
               <td title="Data">{{ donation.captured_at | date }}</td>
