@@ -259,7 +259,7 @@
         </h3>
 
         <p>
-          A nossa próxima meta é modesta, somente 0,25% do patrimônio de um
+          A nossa próxima meta é modesta, somente 0,025% do patrimônio de um
           candidato a presidente. Mas não é qualquer patrimônio, é o do
           Meirelles, aquele que fez fortuna no mercado financeiro e quer
           transformar o Brasil numa agência bancária dos grandes grupos
