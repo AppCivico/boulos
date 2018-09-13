@@ -254,7 +254,7 @@
   padding-right: $gutter * 0.5;
   padding-bottom: $leading * 0.5em;
   padding-left: $gutter;
-  margin-top: 3rem;
+  margin-top: $leading * 5em;
   margin-right: auto;
   margin-left: auto;
 
@@ -272,5 +272,17 @@
 
   &:hover {
     background-color: palette('orange');
+  }
+
+  @media screen and (min-width: breakpoint('phablet')) {
+    margin-top: $leading * 3em;
+  }
+
+  @media screen and (min-width: breakpoint('tablet')) {
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: breakpoint('desktop')) {
+    margin-top: $leading * 5em;
   }
 }

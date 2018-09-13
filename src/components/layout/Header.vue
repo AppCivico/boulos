@@ -62,15 +62,46 @@
         <a href="#doar" class="call-to-action">
           <span>#</span>doe<span class="heavy">Boulos</span>
         </a>
+        <button id="open-modal" @click="toggleModal()" class="play-button" v-if="youtubeVideoId">
+          assista ao vídeo
+        </button>
       </div>
     </div>
+    <template v-if="youtubeVideoId">
+      <div class="modal-overlay closed" @click="toggleModal()" id="modal-overlay"></div>
+
+      <div class="modal closed" id="modal">
+        <button class="close-button" id="close-button" @click="toggleModal()">&times;</button>
+          <div class="embed-container">
+            <iframe width="560" height="315" :src="`https://www.youtube-nocookie.com/embed/${youtubeVideoId}?rel=0&amp;showinfo=0&enablejsapi=1`"
+            frameborder="0" allow="autoplay; encrypted-media"
+            allowfullscreen id="iframeYoutube"></iframe>
+          </div>
+      </div>
+    </template>
   </header>
 </template>
 
 <script>
 export default {
   name: 'Header',
+  data() {
+    return {
+      youtubeVideoId: 'mOZ6qvVngCM',
+    };
+  },
   methods: {
+    toggleModal() {
+      const modal = document.querySelector('#modal');
+      const modalOverlay = document.querySelector('#modal-overlay');
+      const iframeYoutube = document.querySelector('#iframeYoutube');
+      const func = modal.className.indexOf('closed') === -1 ? 'pauseVideo' : 'playVideo';
+
+      modal.classList.toggle('closed');
+      modalOverlay.classList.toggle('closed');
+
+      iframeYoutube.contentWindow.postMessage(`{"event":"command","func":"${func}","args":""}`, '*');
+    },
     scrollMenu() {
       const element = document.querySelector('.main-menu');
       window.addEventListener('scroll', () => {
