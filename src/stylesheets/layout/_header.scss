@@ -266,12 +266,12 @@
 
   background-image: url('../assets/images/icons/play-video.png');
   background-position: 1em 45%;
-  background-color: palette('shadow');
+  background-color: palette('orange', 'dark');
 
   border: 0;
 
   &:hover {
-    background-color: palette('orange');
+    background-color: palette('black');
   }
 
   @media screen and (min-width: breakpoint('phablet')) {
