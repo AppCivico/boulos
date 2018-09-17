@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 const api =
   (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br')
-    ? 'https://api.votolegal.com.br'
+    ? 'https://api-vl.appcivico.com'
     : 'https://dapi.votolegal.com.br';
 
 export default new Vuex.Store({
