@@ -35,7 +35,7 @@ export default {
       }
     },
     handleSession() {
-      if(window.localStorage) {
+      if (window.localStorage) {
         const tokenName = (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br')
           ? 'prod_apm_token'
           : 'dev_apm_token';
@@ -49,9 +49,9 @@ export default {
             });
         }
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 
