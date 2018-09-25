@@ -278,6 +278,18 @@
         </p>
       </div>
 
+      <div class="goal-description"
+        :class="{ 'goal-description--reached': (candidate.total_donated >= 12000000) }">
+        <h3>
+          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
+          v-if="candidate.total_donated >= 12000000">
+            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
+          </svg>
+          META 5 - R$&nbsp;120.000,00
+        </h3>
+
+      </div>
+
     </div>
   </article>
 
