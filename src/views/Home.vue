@@ -288,6 +288,14 @@
           META 5 - R$&nbsp;120.000,00
         </h3>
 
+        <p>
+          Este valor viabilizará a realização do último comício do primeiro
+          turno, no dia 03/10, no Rio de Janeiro. Levar o nosso debate contra o
+          fascismo para uma cidade onde Bolsonaro tem 35% da intenção de votos é
+          urgente e necessário, especialmente nesta reta final. Para isso,
+          precisamos da sua doação mais do que nunca.
+        </p>
+
       </div>
 
     </div>
