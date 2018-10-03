@@ -308,6 +308,15 @@
           META 6 - R$&nbsp;135.000,00
         </h3>
 
+        <p>
+          Precisamos imprimir novos materiais com as nossas mensagens para que
+          elas cheguem ao máximo de pessoas pelo Brasil em uma missão didática
+          nesta reta final. Assim, nosso enfrentamento contra o machismo, as
+          medidas de Temer, os grandes privilégios e o direito à moradia sairão
+          mais fortes deste primeiro turno e podemos debatê-los com mais
+          facilidade no futuro.
+        </p>
+
       </div>
 
     </div>
