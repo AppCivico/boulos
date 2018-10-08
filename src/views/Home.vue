@@ -3,8 +3,8 @@
   <div class="fb-customerchat"
     attribution=setup_tool
     page_id="398845206932703"
-    logged_in_greeting="Faltam poucos dias pro primeiro turno! Doe, participe e vamos juntos!"
-    logged_out_greeting="Faltam poucos dias pro primeiro turno! Doe, participe e vamos juntos!"
+    logged_in_greeting="Agradecemos a todos que depositaram seus sonhos nas urnas votando 50"
+    logged_out_greeting="Agradecemos a todos que depositaram seus sonhos nas urnas votando 50"
     theme_color="#5a0197">
   </div>
   <article class="home__intro">
