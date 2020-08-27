@@ -14,36 +14,37 @@
       </h2>
 
       <p>
-        <strong>
-          Vamos revogar as medidas de Michel Temer
-        </strong>, devolver e ampliar direitos que foram retirados do povo para
-        agradar os super ricos.
-        <strong>
-          A economia estará a serviço das pessoas, não o contrário.
-        </strong>
+        É hora de mostrar que outro projeto de Brasil é possível e ele pode
+        começar em São Paulo.  Agora, temos a chance de ser a capital da
+        resistência e da esperança.  Resistência ao Bolsonarismo, ao atraso, ao
+        autoritarismo. Esperança em sermos um polo de defesa democrática no
+        Brasil através de uma chapa formada por um encontro de gerações.
       </p>
-
       <p>
-        Os privilégios também se refletem nas campanhas políticas, com
-        candidatos super ricos e mais tempo na TV e no rádio graças a leilões de
-        cargos e negociatas por baixo dos panos.
+        Nossa pré-candidatura representa o combate à desigualdade. Desigualdade
+        também refletida nas campanhas, com os candidatos da elite que têm mais
+        tempo na TV, no rádio e mais recursos graças a apertos de mão com o
+        fascismo e negociatas por baixo dos panos.
       </p>
-
       <p>
-        <strong>
-          Não venderemos cargos públicos, apoio e nem alianças em troca de
-          favore$.
-        </strong>
-        Nossa política é feita com você, que não desistiu dos direitos
-        trabalhistas, da previdência social e de uma sociedade mais justa para
-        todos. Ajude a financiar a campanha e faça com que as nossas propostas
-        cheguem a mais pessoas.
+        Vamos inverter a ordem de prioridades no orçamento municipal, colocar
+        educação, saúde e moradia em primeiro lugar. Transformar o transporte
+        num direito de todos e não mais em máquina de lucro das máfias.
       </p>
-
       <p>
-        <strong>
-          Doe para Boulos e Sônia.
-        </strong>
+        A cidade e a economia estarão, de uma vez por todas, a serviço das
+        pessoas e não o ontrário.
+      </p>
+      <p>
+        Nossa política é feita com o povo que vem da luta dos movimentos sociais
+        e com a ética de quem já governou São Paulo e combateu a ditadura.
+        Precisamos de você, que não desistiu de uma sociedade mais justa para
+        todas e todos e que acredita numa cidade de direitos e não de
+        privilégios. Ajude a financiar o nosso projeto de solidariedade.
+      </p>
+      <p>
+        Começar uma virada no Brasil é possível e ela pode partir aqui de São
+        Paulo. <strong>Doe para Boulos e Erundina.</strong>
       </p>
 
       <section id="campaign-progress" class="campaign-progress">
@@ -144,51 +145,67 @@
       </h2>
 
       <p>
-        <strong>Guilherme Boulos</strong> é professor, escritor, ativista
-        político, psicanalista e coordenador nacional do Movimento dos
-        Trabalhadores Sem Teto (MTST). É o candidato mais jovem da história a
-        disputar a presidência. Sua atuação é marcada na luta contra as
-        desigualdades esteve papel central na resistência democrática ao golpe
-        de 2016.
+        <strong>Guilherme Boulos</strong> é professor, ativista social do
+        Movimento dos Trabalhadores Sem Teto (MTST) e da Frente Povo Sem Medo.
+        Foi candidato a Presidência da República pelo PSOL em 2018, sendo o mais
+        jovem a postulante ao cargo na história do Brasil. Sua atuação é marcada
+        na luta contra as desigualdades e por um novo modelo de sociedade.
       </p>
-
-      <blockquote>
-        “Guilherme Boulos é uma das mais jovens e promissoras lideranças de
-        movimentos sociais brasileiros. Dotado de boa formação ética e
-        intelectual, fez uma opção radical, evangélica, pelos mais pobres,
-        concentrando sua atividade no segmento da população sem acesso ao
-        direito de moradia. Modesto, despojado, inteligente, Boulos pôs a sua
-        vida a serviço dos direitos humanos fundamentais” (Frei Betto).
-      </blockquote>
-
       <p>
-        Boulos foi um dos fundadores da Frente Povo Sem Medo e da Plataforma
-        “Vamos! Sem medo de mudar o Brasil”, iniciativa inovadora de construção
-        de programa que realizou centenas de reuniões pelo país e envolveu
-        militantes e lideranças de movimentos sociais, partidos, artistas,
-        intelectuais, religiosos e pessoas comuns na discussão sobre o novo
-        Brasil que queremos.
+        Aos 20 anos, deixou sua casa para morar e atuar em uma ocupação sem
+        teto. Liderança social consolidada, é formado em Filosofia pela USP,
+        especializado em Psicanálise pelo Cogeae/PUC e Mestre em Psiquiatria
+        pela USP. Já deu aulas na rede pública de ensino do Estado de São Paulo
+        e em várias Instituições. Atualmente, ministra Cursos de Extensão na
+        Escola de Sociologia e Política (ESP) e Cursos Livres pelo Instituto
+        Democratize, iniciativa que coordena.
       </p>
-
       <p>
-        <strong>Sonia Guajajara</strong> é hoje uma das maiores lideranças
-        indígenas e ambientais do mundo. Nascida no Maranhão, é professora.
-        Sônia coordena a Articulação dos Povos Indígenas do Brasil (APIB) e
-        esteve à frente das principais lutas travadas unificando mais de 305
-        povos em torno de pautas que combatem os interesses dos setores mais
-        poderosos da sociedade brasileira.
+        Sua atuação rendeu o prêmio Santos Dias de Direitos Humanos, concedido
+        pela Assembléia Legislativa de São Paulo em 2017, além da Medalha do
+        Mérito Legislativo em 2016, concedida pela Câmara dos Deputados em
+        Brasília, dentre outros.
+      </p>
+      <p>
+        Após as eleições, retomou sua atividade como professor e sua atuação no
+        MTST e na Povo Sem Medo e segue como uma das lideranças sociais de
+        oposição ao Governo Bolsonaro.
+      </p>
+       <p>
+        É pai da Sofia e da Laura e marido da Natalia.
       </p>
 
       <p>
-        Esteve à frente da luta contra as propostas que visam retirar direitos
-        duramente conquistados pelas nações indígenas e que afetam as nossas
-        florestas. Liderança indígena de fala contundente e reconhecida
-        internacionalmente, fez discurso contra o governo Temer e pela
-        demarcação de terras indígenas durante o Rock in Rio convidada por
-        Alicia Keys. Tem voz no Conselho de Direitos Humanos da ONU e já levou
-        denúncias às Conferências Mundiais do Clima (COP) de 2009 à 2017, ao
-        Parlamento Europeu e outras instâncias internacionais.
+        <strong>Luiza Erundina</strong> já governou a maior cidade da América
+        Latina, sendo Prefeita de São Paulo entre os anos de 1989 e 1992. Hoje,
+        está em seu 6º mandato de deputada federal. Tem atuado em defesa da
+        classe trabalhadora, das minorias e dos excluídos.
       </p>
+      <p>
+        Nos mandatos que exerceu, foram apresentados mais de 80 projetos em
+        defesa da Mulher, das Gestantes, das Crianças e Adolescentes, da Cultura
+        e dos Direitos Humanos. Dentre as proposições, nove já viraram leis,
+        além de uma emenda à Constituição.
+      </p>
+      <p>
+        Na atual legislatura, atua na coordenação da Frente Parlamentar pela
+        Liberdade de Expressão e o Direito à Comunicação com participação
+        popular, que reúne parlamentares e representantes da sociedade civil
+        para assegurar o exercício da liberdade de expressão e o direito à
+        comunicação.
+      </p>
+      <p>
+        Faz parte da Comissão de Ciência e Tecnologia, Comunicação e Informática
+        (CCTCI), da Comissão de Legislação Participativa, (CLP) da qual foi sua
+        primeira presidente, e integra a Comissão de Direitos Humanos e Minorias
+        (CDHM).
+      </p>
+      <p>
+        Luiza Erundina representa  ética e luta por dignidade do povo de São
+        Paulo.
+      </p>
+
+
     </div>
   </article>
 

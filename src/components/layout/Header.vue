@@ -50,17 +50,20 @@
     <div id="home__greetings">
       <div class="site-label">
         <h1>
-          <span>Sem</span> medo de
+          Outro projeto de <span>Brasil</span> é possível
         </h1>
         <h1>
-          Mudar o
-          <span>Brasil</span>
+          e ele pode começar em
+          <span>São Paulo</span>
         </h1>
         <h2>
-          e enfrentar os privilégios de quem sempre teve
+          Vamos juntos nos tornar a capital dos direitos e da esperança
         </h2>
         <a href="#doar" class="call-to-action">
           <span>#</span>doe<span class="heavy">Boulos</span>
+        </a>
+        <a href="#doar" class="call-to-action">
+          <span>#</span>doe<span class="heavy">Erundina</span>
         </a>
         <button id="open-modal" @click="toggleModal()" class="play-button" v-if="youtubeVideoId">
           assista ao vídeo
@@ -130,4 +133,3 @@ export default {
   },
 };
 </script>
-

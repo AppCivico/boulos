@@ -148,10 +148,12 @@
 .site-label .call-to-action {
   position: relative;
 
+  display: block;
   z-index: 2;
 
   font-weight: bold;
   font-size: ms(3);
+  line-height: 1;
   font-family: 'Montserrat', sans-serif;
 
   text-align: right;
