@@ -6,7 +6,7 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 const api =
-  (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br')
+  (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com')
     ? 'https://api-vl.appcivico.com'
     : 'https://dapi.votolegal.com.br';
 
@@ -390,7 +390,7 @@ export default new Vuex.Store({
     START_DONATION_BOLETO({ commit }, payload) {
       let token = '';
       if (window.localStorage) {
-        const tokenName = (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br')
+        const tokenName = (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com')
           ? 'prod_apm_token'
           : 'dev_apm_token';
         token = localStorage.getItem(tokenName);

@@ -443,7 +443,7 @@ export default {
     AnimatedNumber,
   },
   mounted() {
-    const candidateId = (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br') ? 230 : 200;
+    const candidateId = (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com') ? 230 : 200;
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
     this.$store.dispatch('GetDonorsNames', candidateId);
     this.$store.dispatch('UPDATE_DONATIONS_SUMMARY', candidateId);
