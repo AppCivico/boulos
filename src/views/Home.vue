@@ -209,7 +209,7 @@
     </div>
   </article>
 
-  <article id="home__goals" class="home__goals">
+  <!-- <article id="home__goals" class="home__goals">
     <div class="container" id="donation-wrap">
       <h2>
         Metas
@@ -337,7 +337,7 @@
       </div>
 
     </div>
-  </article>
+  </article> -->
 
   <article id="home__donors" class="home__donors">
     <div class="container" id="donation-wrap">
