@@ -50,7 +50,7 @@
     <div id="home__greetings">
       <div class="site-label">
         <h1>
-          Outro projeto de <span>Brasil</span> é possível
+          Outro <span>Brasil</span> é possível
         </h1>
         <h1>
           e ele pode começar em

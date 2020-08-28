@@ -346,9 +346,10 @@
       </h2>
 
       <p>
-        Veja aqueles sem medo de transformar o Brasil que já contribuíram para
+        Veja aqueles sem medo de transformar São Paulo que já contribuíram para
         que nossas propostas alcancem cada vez mais pessoas, nesta batalha
-        encabeçada por <strong>Guilherme Boulos</strong> e <strong>Luiza Erundina</strong>, na esperança de acabar com os privilégios e as
+        encabeçada por <strong>Guilherme Boulos</strong> e <strong>Luiza
+        Erundina</strong>, na esperança de acabar com os privilégios e as
         desigualdades.
       </p>
 
