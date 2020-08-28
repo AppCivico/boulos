@@ -57,7 +57,7 @@
 }
 
 .site-label {
-  padding: 0;
+  padding: #{$leading * 0.5em} 0;
   margin: 0;
   margin-right: auto;
   margin-left: auto;
@@ -65,13 +65,9 @@
   text-align: center;
 
   @media screen and (min-width: breakpoint('desktop')) {
-    max-width: 760px;
+    max-width: 836px;
 
     text-align: right;
-  }
-
-  @media screen and (min-width: breakpoint('wide')) {
-    max-width: 1000px;
   }
 }
 
@@ -113,6 +109,8 @@
   }
 
   &:nth-child(2) span {
+    display: block;
+
     font-weight: 900;
     font-size: 1.2em;
 
@@ -129,9 +127,11 @@
 }
 
 .site-label h2 {
-  max-width: 90%;
+  max-width: 13.5em;
 
+  margin-top: $leading * 0.5em;
   margin-right: auto;
+  margin-bottom: $leading * 0.5em;
   margin-left: auto;
 
   font-size: ms(1);
