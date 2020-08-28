@@ -33,7 +33,7 @@
       </p>
       <p>
         A cidade e a economia estarão, de uma vez por todas, a serviço das
-        pessoas e não o ontrário.
+        pessoas e não o contrário.
       </p>
       <p>
         Nossa política é feita com o povo que vem da luta dos movimentos sociais
