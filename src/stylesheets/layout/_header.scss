@@ -151,12 +151,15 @@
   display: block;
   z-index: 2;
 
+  padding-right: $gutter;
+  padding-left: $gutter;
+
   font-weight: bold;
   font-size: ms(3);
   line-height: 1;
   font-family: 'Montserrat', sans-serif;
 
-  text-align: right;
+  text-align: left;
   text-decoration: none;
   text-transform: lowercase;
 
