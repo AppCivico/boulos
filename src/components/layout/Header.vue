@@ -14,7 +14,7 @@
           <span></span>
         </button>
         <div class="brand-wrap">
-          <a href="#home__header" v-scroll-to="'#home__header'" class="logo-psol">Doe Boulos</a>
+          <a href="#home__header" v-scroll-to="'#home__header'" class="logo-campaign">Doe Boulos</a>
         </div>
         <ul class="menu-wrap">
           <li class="menu-icon">

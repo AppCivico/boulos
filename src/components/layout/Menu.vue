@@ -14,7 +14,7 @@
           <span></span>
         </button>
         <div class="brand-wrap">
-          <a href="/" class="logo-psol">Doe</a>
+          <a href="/" class="logo-campaign">Doe</a>
         </div>
       </div>
     </nav>
@@ -27,4 +27,3 @@ export default {
   name: 'Menu',
 };
 </script>
-
