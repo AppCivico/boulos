@@ -81,12 +81,10 @@
 </template>
 
 <script>
-import {
-  mask
-} from 'vue-the-mask';
+import { mask } from 'vue-the-mask';
 import {
   validate,
-  removeAccented
+  removeAccented,
 } from '../../utilities';
 
 export default {
@@ -153,7 +151,7 @@ export default {
     },
     paymentData() {
       return this.$store.state.paymentData;
-    }
+    },
   },
   methods: {
 
@@ -206,19 +204,23 @@ export default {
 
       if (validation.valid) {
         this.saveAddress();
+        let donerData = {
+          zip_code: this.zip_code,
+          state: this.state,
+          city: this.city,
+          street: this.street,
+          district: this.district,
+          number: this.number,
+          birthdate,
+        };
+        let currentDonerData = sessionStorage.getItem('doner-data');
 
-        sessionStorage.setItem(
-          'user-donation-data',
-          JSON.stringify({
-            zip_code: this.zip_code,
-            state: this.state,
-            city: this.city,
-            street: this.street,
-            district: this.district,
-            number: this.number,
-            birthdate,
-          })
-        );
+        if (currentDonerData) {
+          currentDonerData = JSON.parse(currentDonerData);
+          donerData = Object.assign(donerData, currentDonerData);
+        }
+
+        sessionStorage.setItem('user-donation-data', JSON.stringify(donerData));
       } else {
         this.validation = validation;
         this.toggleLoading();
