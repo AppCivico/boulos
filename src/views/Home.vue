@@ -15,36 +15,35 @@
 
       <p>
         É hora de mostrar que outro projeto de Brasil é possível e ele pode
-        começar em São Paulo.  Agora, temos a chance de ser a capital da
-        resistência e da esperança.  Resistência ao Bolsonarismo, ao atraso, ao
-        autoritarismo. Esperança em sermos um polo de defesa democrática no
-        Brasil através de uma chapa formada por um encontro de gerações.
+        começar em São Paulo. Agora, temos a chance de ser a capital da
+        resistência e da esperança. Resistência ao atraso, ao autoritarismo.
+        Esperança em sermos um polo de defesa democrática no Brasil através de
+        uma chapa dos sonhos, formada por um encontro de gerações. A esperança
+        em construir um outro Brasil, democrático, diverso e mais igual, sem
+        tantos muros que nos separam.
       </p>
       <p>
-        Nossa pré-candidatura representa o combate à desigualdade. Desigualdade
-        também refletida nas campanhas, com os candidatos da elite que têm mais
-        tempo na TV, no rádio e mais recursos graças a apertos de mão com o
-        fascismo e negociatas por baixo dos panos.
+        Nossa pré-candidatura representa o combate à desigualdade. Queremos uma
+        cidade a serviço das pessoas e não o contrário.
       </p>
       <p>
-        Vamos inverter a ordem de prioridades no orçamento municipal, colocar
-        educação, saúde e moradia em primeiro lugar. Transformar o transporte
-        num direito de todos e não mais em máquina de lucro das máfias.
+        E para isso, precisamos recuperar o que foi bom e aprender com os erros
+        do passado. Vamos inverter a ordem de prioridades no orçamento
+        municipal, colocar educação, saúde e moradia em primeiro lugar.
+        Transformar o transporte num direito de todos e não mais em máquina de
+        lucro das máfias.
       </p>
       <p>
-        A cidade e a economia estarão, de uma vez por todas, a serviço das
-        pessoas e não o contrário.
+        Para que a transformação aconteça, precisamos de você! Que não desistiu
+        de uma sociedade mais justa e que acredita numa cidade de direitos.
+        Ajude a financiar o nosso projeto de solidariedade e vamos juntos nos
+        tornar a capital da esperança!
       </p>
       <p>
-        Nossa política é feita com o povo que vem da luta dos movimentos sociais
-        e com a ética de quem já governou São Paulo e combateu a ditadura.
-        Precisamos de você, que não desistiu de uma sociedade mais justa para
-        todas e todos e que acredita numa cidade de direitos e não de
-        privilégios. Ajude a financiar o nosso projeto de solidariedade.
+        Começar uma virada no Brasil é possível e pode partir aqui de São Paulo.
       </p>
       <p>
-        Começar uma virada no Brasil é possível e ela pode partir aqui de São
-        Paulo. <strong>Doe para Boulos e Erundina.</strong>
+        Doe para Boulos e Erundina.
       </p>
 
       <section id="campaign-progress" class="campaign-progress">
@@ -129,6 +128,100 @@
         </p>
 
       </section>
+
+      <h2>
+        Projetos prioritários
+      </h2>
+      <h3>
+        Políticas públicas para a população em situação de rua
+      </h3>
+      <p>
+        A população de rua tem o direito de viver sem violência! É preciso, em
+        primeiro lugar, estancar e coibir as várias formas de violência contra a
+        população em situação de rua - seja a violência policial, por parte das
+        seguranças privadas, ou ainda o descaso e péssima qualidade dos serviços
+        e atendimentos nos equipamentos estatais e/ou geridos pelas OS´s. As
+        políticas de atendimento devem garantir o acolhimento e atendimento
+        integral previsto no SUAS e avançar na garantia de acesso à moradia,
+        educação, saúde, alimentação, trabalho, cultura e lazer, tendo a
+        perspectiva de sair das ruas. Políticas de moradia que integrem os
+        vários níveis de atenção e assistência social, trabalho e renda devem
+        ser prioridade. Essas políticas devem ser discutidas, elaboradas e
+        implementadas através da participação dos movimentos e entidades
+        parceiras, garantindo as especificidades dos modos de viver dos diversos
+        perfis que estão nas ruas.
+      </p>
+
+      <h3>
+        Economia, trabalho e renda a serviço do povo
+      </h3>
+      <p>
+        A construção de um projeto econômico que permita a recuperação da
+        esperança em condições melhores de vida para a população de São Paulo é
+        o primeiro passo para a renovação das forças progressistas em todo
+        Brasil. Em um cenário de crise profunda, com a expansão da
+        informalidade, dos trabalhadores por conta própria e de diversas formas
+        de sub-ocupação e desalento, a atuação direta do poder público na
+        reconstrução das atividades econômicas se faz necessária, assim como na
+        geração de empregos e na criação de renda. Assim, surge a obrigação de
+        se construir um projeto de economia voltado às pessoas, ao atendimento
+        das necessidades sociais e à geração de oportunidades de trabalho para
+        aqueles e aquelas que mais precisam.
+      </p>
+
+      <h3>
+        Educação por quem teve Paulo freire como secretário
+      </h3>
+      <p>
+        A educação será pautada pela melhor gestão pública educacional da
+        história da cidade: a de Paulo Freire quando esteve à frente da
+        Secretaria Municipal de Educação, no mandato de Luiza Erundina.
+        Prioridades: Educação pública de qualidade para todas e todos, em todas
+        as regiões da cidade; Democratização das creches e a universalização de
+        vagas na educação infantil, especialmente na periferia; Matrículas de
+        qualidade em todas as etapas e modalidades da educação básica, fazendo o
+        melhor e mais correto uso do recurso público; Valorização dos
+        profissionais da rede municipal de educação, pois todas e todos são
+        especialistas capazes de transformar São Paulo em uma capital
+        pedagógica, capaz de garantir qualidade de vida ao seu povo. A Revolução
+        Solidária também tomará como referência o projeto de educação integral
+        de Anísio Teixeira, transformando toda unidade escolar e todo território
+        paulistano em uma cidade educadora: justa, feminista, ecossocialista,
+        antirracista, anti-lgbtfobica e emancipadora.
+      </p>
+
+      <h3>
+        Transporte é direito social
+      </h3>
+      <p>
+        O transporte é um direito social constitucional desde setembro de 2015,
+        tal como a saúde e educação, o que só se concretiza com políticas
+        públicas orientadas pela ótica do combate às desigualdades sociais. Por
+        isso, nosso programa se coloca na perspectiva de que transporte não é
+        mercadoria e propõe uma reorganização do serviço ao mesmo tempo que
+        lutará com força para que o princípio constitucional se concretize tal
+        como o SUS, que é gratuito. Nosso Programa estará pautado na priorização
+        do transporte público, coletivo e ativo (pedestres e ciclistas),
+        impulsionados nas formas de locomoção não centradas no automóvel
+        individual e particular, dando às pessoas condições de definirem e
+        controlarem as políticas públicas em torno da mobilidade urbana de forma
+        democrática.
+      </p>
+
+      <h3>
+        Fortalecimento do SUS
+      </h3>
+      <p>
+        Abordar as desigualdades sociais é abordar a saúde. A comparação dos
+        índices de condições de vida e serviços de saúde entre os bairros de São
+        Paulo é um exemplo concreto disso. A mortalidade e a letalidade são
+        muito maiores na periferia quando comparada ao centro. A reestruturação
+        desastrada e enxugamento da gestão Bruno Covas contraria o
+        fortalecimento do SUS e o planejamento público, realizando uma
+        privatização da gestão de todos os espaços assistenciais ao
+        desconsiderar as necessidades em saúde. Vamos reverter essa lógica.
+      </p>
+
     </div>
   </article>
 
@@ -209,7 +302,7 @@
     </div>
   </article>
 
-  <!-- <article id="home__goals" class="home__goals">
+  <article id="home__goals" class="home__goals">
     <div class="container" id="donation-wrap">
       <h2>
         Metas
@@ -222,18 +315,21 @@
           v-if="candidate.total_donated >= 2800000">
             <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
           </svg>
-          META 1 - R$&nbsp;28.000,00
+          META 1 - R$&nbsp;200.000,00
         </h3>
 
         <p>
-          Este valor representa 2% do patrimônio declarado do picolé de chuchu,
-          que trata professores na base da porrada apesar de ter a fama de “Santo”
-          . Para nós, esta quantia viabiliza a estrutura de comícios, como palco,
-          iluminação, som e montagem.
+          Este valor representa menos de 1% do fundo partidário do partido que
+          elegeu Jair Bolsonaro e toda sua máquina de ódio. Para nós, esta
+          quantia viabiliza a estrutura de comunicação durante um mês quando a
+          campanha começar - aluguel de equipamentos, equipe de filmagem, edição
+          de vídeos e equipe para as redes sociais. Com essa comunicação
+          profissionalizada, conseguiremos alcançar mais pessoas e combater as
+          fake news, aumentando a nossa chance de ser a capital da esperança.
         </p>
       </div>
 
-      <div class="goal-description"
+      <!-- <div class="goal-description"
         :class="{ 'goal-description--reached': (candidate.total_donated >= 4400000) }">
         <h3>
           <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
@@ -334,10 +430,10 @@
           facilidade no futuro.
         </p>
 
-      </div>
+      </div> -->
 
     </div>
-  </article> -->
+  </article>
 
   <article id="home__donors" class="home__donors">
     <div class="container" id="donation-wrap">
