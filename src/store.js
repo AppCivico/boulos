@@ -7,8 +7,8 @@ Vue.use(Vuex);
 
 const api =
   (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com')
-    ? 'https://api-vl.appcivico.com'
-    : 'https://dapi.votolegal.com.br';
+    ? 'https://api2020vl.appcivico.com'
+    : 'https://votolegal-test-api.appcivico.com';
 
 export default new Vuex.Store({
   state: {
@@ -376,7 +376,7 @@ export default new Vuex.Store({
     GET_ADDRESS: ({ commit }, cep) => {
       return new Promise((resolve, reject) => {
         axios
-          .get(`${api}/api/cep?cep=${cep}`)
+          .get(`//api2020vl.appcivico.com/api/cep?cep=${cep}`)
           .then((response) => {
             // commit('SET_ADDRESS', response.data);
             resolve(response.data);
