@@ -61,7 +61,10 @@ export default {
       this.loading = !this.loading;
     },
     handleErrorMessage(err) {
-      this.errorMessage = err.data[0].message;
+      if (err) {
+        this.errorMessage =
+          err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
+      }
     },
     goBack() {
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
