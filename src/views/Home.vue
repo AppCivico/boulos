@@ -85,7 +85,11 @@
         </progress>
 
         <p class="campaign-progress-porcentage">
-          {{ porcentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
+          {{ porcentage() }}% da meta de R$&nbsp;{{ expectedGoal | formatBRL }},
+          <a
+            :href="`#goal-description__${expectedGoal}`"
+          >que garantirá a estrutura de comunicação e TV por um mês quando a
+          campanha for lançada</a>.
         </p>
 
         <div v-if="donationSources.length > 1" class="donations-sources">
@@ -308,129 +312,22 @@
         Metas
       </h2>
 
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 2800000) }">
+      <div
+        v-for="(item, index) in goals" :key="index"
+        :id="`goal-description__${item.goal}`"
+        class="goal-description"
+        :class="{ 'goal-description--reached': (candidate.total_donated >= item.goal) }"
+      >
         <h3>
           <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 2800000">
+          v-if="candidate.total_donated >= item.goal">
             <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
           </svg>
-          META 1 - R$&nbsp;200.000,00
+          META 1 - R$&nbsp;{{ FormatFixedBRL(item.goal) }}
         </h3>
 
-        <p>
-          Este valor representa menos de 1% do fundo partidário do partido que
-          elegeu Jair Bolsonaro e toda sua máquina de ódio. Para nós, esta
-          quantia viabiliza a estrutura de comunicação durante um mês quando a
-          campanha começar - aluguel de equipamentos, equipe de filmagem, edição
-          de vídeos e equipe para as redes sociais. Com essa comunicação
-          profissionalizada, conseguiremos alcançar mais pessoas e combater as
-          fake news, aumentando a nossa chance de ser a capital da esperança.
-        </p>
+        <p>{{ item.description }}</p>
       </div>
-
-      <!-- <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 4400000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 4400000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 2 - R$&nbsp;44.000,00
-        </h3>
-
-        <p>
-          Este valor representa 2% do patrimônio declarado daquele que em 20 anos
-          como deputado só aprovou 2 projetos, mas conseguiu adquirir 5 imóveis -
-          sendo que para um deles contratou a caseira como sendo funcionária da
-          Câmara Federal. Para nós, esta quantia viabiliza a produção de novos
-          materiais de campanha como panfletos e adesivos.
-        </p>
-      </div>
-
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 6000000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 6000000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 3 - R$&nbsp;60.000,00
-        </h3>
-
-        <p>
-          Este valor representa 2% do patrimônio declarado daquele que acha que
-          pode refundar a República, mas, apoiou todas a medidas que retiraram
-          direitos do povo brasileiro e foi um dos patrocinadores do golpe. O
-          primeiro nome começa com A e o último com D. Para nós, esta quantia
-          viabiliza mais dois comícios e viagens pelo país levando nossas
-          propostas.
-        </p>
-      </div>
-
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 9400000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 9400000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 4 - R$&nbsp;94.000,00
-        </h3>
-
-        <p>
-          A nossa próxima meta é modesta, somente 0,025% do patrimônio de um
-          candidato a presidente. Mas não é qualquer patrimônio, é o do
-          Meirelles, aquele que fez fortuna no mercado financeiro e quer
-          transformar o Brasil numa agência bancária dos grandes grupos
-          internacionais. Este dinheiro é fundamental para fortalecer a nossa
-          presença em atividades pelo Brasil, especialmente os comícios de
-          Salvador e Fortaleza, e lavar a mais e mais pessoas a ideia de que não
-          é o povo que tem que servir à economia, mas sim a economia que tem que
-          servir ao povo.
-        </p>
-      </div>
-
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 12000000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 12000000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 5 - R$&nbsp;120.000,00
-        </h3>
-
-        <p>
-          Este valor viabilizará a realização do último comício do primeiro
-          turno, no dia 03/10, no Rio de Janeiro. Levar o nosso debate contra o
-          fascismo para uma cidade onde Bolsonaro tem 35% da intenção de votos é
-          urgente e necessário, especialmente nesta reta final. Para isso,
-          precisamos da sua doação mais do que nunca.
-        </p>
-
-      </div>
-
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 13500000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 13500000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 6 - R$&nbsp;135.000,00
-        </h3>
-
-        <p>
-          Precisamos imprimir novos materiais com as nossas mensagens para que
-          elas cheguem ao máximo de pessoas pelo Brasil em uma missão didática
-          nesta reta final. Assim, nosso enfrentamento contra o machismo, as
-          medidas de Temer, os grandes privilégios e o direito à moradia sairão
-          mais fortes deste primeiro turno e podemos debatê-los com mais
-          facilidade no futuro.
-        </p>
-
-      </div> -->
 
     </div>
   </article>
@@ -517,7 +414,6 @@
     </div>
   </article>
 
-
 </main>
 </template>
 
@@ -527,10 +423,13 @@ import Payment from '@/components/Payment.vue';
 // eslint-disable-next-line
 import AnimatedNumber from 'animated-number-vue';
 
+import { root } from '@/data/goals.json';
+
 export default {
   data() {
     return {
       amountInView: false,
+      goals: root,
     };
   },
   name: 'home',
@@ -545,6 +444,11 @@ export default {
     this.$store.dispatch('UPDATE_DONATIONS_SUMMARY', candidateId);
   },
   computed: {
+    expectedGoal() {
+      const { expected, totalAmount, goals } = this;
+
+      return (goals.find(x => x.goal > totalAmount) || goals[goals.length - 1]).goal || expected;
+    },
     candidate() {
       return this.$store.state.candidate;
     },
@@ -594,7 +498,7 @@ export default {
   },
   methods: {
     porcentage(amount = this.totalAmount) {
-      return Math.round((parseFloat(amount) * 100) / Math.max(this.totalAmount, this.expected));
+      return Math.round((parseFloat(amount) * 100) / Math.max(this.totalAmount, this.expected)) || 0;
     },
     progressBarStyle(source) {
       return {

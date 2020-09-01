@@ -68,6 +68,20 @@
   text-transform: uppercase;
 }
 
+.campaign-progress-porcentage a {
+  text-decoration: inherit;
+  text-transform: lowercase;
+
+  color: inherit;
+
+  &:link
+  &:visited {
+    text-decoration: inherit;
+
+    color: inherit;
+  }
+}
+
 .campaign-progress [role='progressbar'],
 .campaign-progress progress {
   max-width: 30rem;
