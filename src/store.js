@@ -264,7 +264,7 @@ export default new Vuex.Store({
           headers: { 'Content-Type': 'application/json' },
           url: `${api}/api2/donations/${state.donation.id}?device_authorization_token_id=${
             state.token
-            }&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
+          }&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
         }).then(
           (response) => {
             const data = {

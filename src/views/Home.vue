@@ -69,12 +69,16 @@
           :aria-valuenow="totalAmount" :aria-valuemax="expected"
           v-if="donationSources.length > 1">
 
-          <div v-for="(source, i) in donationSources" :key="i"
-            :style="progressBarStyle(source)"
-            :title="`${porcentage(source.total_donated)}% via ${source.name}`"
-            v-if="source.total_donated">
-            {{ porcentage(source.total_donated) }}
-          </div>
+          <template
+            v-if="source.total_donated"
+          >
+            <div v-for="(source, i) in donationSources" :key="i"
+              :style="progressBarStyle(source)"
+              :title="`${porcentage(source.total_donated)}% via ${source.name}`"
+            >
+              {{ porcentage(source.total_donated) }}
+            </div>
+          </template>
         </div>
         <progress :value="totalAmount" :max="expected" v-else>
           <div role="progressbar" :aria-valuenow="totalAmount" :aria-valuemax="expected">
