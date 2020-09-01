@@ -23,6 +23,11 @@
           <li class="menu-icon">
             <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com%2F&amp;src=sdkpreparse" target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
           </li>
+          <li class="menu-item donate-nav">
+            <a href="#doar" v-scroll-to="'#doar'">
+              Doar
+            </a>
+          </li>
           <li class="menu-item">
             <a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
               Saiba mais
@@ -36,11 +41,6 @@
           <li class="menu-item">
             <a href="#home__faq" v-scroll-to="'#home__faq'">
               Perguntas frequentes
-            </a>
-          </li>
-          <li class="menu-item donate-nav">
-            <a href="#doar" v-scroll-to="'#doar'">
-              Doar
             </a>
           </li>
         </ul>
