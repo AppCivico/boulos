@@ -2,7 +2,6 @@
 ---------------------------------------------------------------------------- */
 
 /**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
  * 2. add some space before text
  */
 %text-field-reset {
@@ -16,11 +15,12 @@
   text-indent: 0.5ex; /* 2 */
 
   cursor: text;
+
   color: palette('text', 'dark');
 
   box-sizing: inherit;
 
-  appearance: textfield; /* 1 */
+  appearance: none;
 
   &:invalid {
     border-radius: $rounded-corner;
