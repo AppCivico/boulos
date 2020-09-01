@@ -142,9 +142,9 @@ export default new Vuex.Store({
         }
       }
     },
-    SET_ADDRESS: (state, payload) => {
-      state.address = payload;
-    },
+    // SET_ADDRESS: (state, payload) => {
+    //   state.address = payload;
+    // },
     SET_PAYMENT_DATA(state, { paymentData }) {
       state.paymentData = paymentData;
     },
@@ -379,8 +379,8 @@ export default new Vuex.Store({
         axios
           .get(`${api}/api/cep?cep=${cep}`)
           .then((response) => {
+            // commit('SET_ADDRESS', response.data);
             resolve(response.data);
-            commit('SET_ADDRESS', response.data);
           })
           .catch((erro) => {
             reject(erro);
