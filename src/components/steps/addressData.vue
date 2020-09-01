@@ -316,7 +316,7 @@ export default {
         }).catch((error) => {
           this.toggleLoading();
 
-          if (error.response.status === 404) {
+          if (error.response && error.response.status === 404) {
             this.$refs.state.disabled = true;
             this.$refs.city.disabled = true;
             this.$refs.street.disabled = true;
