@@ -1,0 +1,5 @@
+# redirect http to https for your custom domain.
+http://doeboulos.com/* https://doeboulos.com/:splat 301!
+http://www.doeboulos.com/* https://doeboulos.com/:splat 301!
+
+/*  /index.html 200

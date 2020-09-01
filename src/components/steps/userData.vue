@@ -121,13 +121,12 @@ export default {
       return this.$store.state.candidate;
     },
     candidateAmount() {
-    let newAmount = null;
+      let newAmount = null;
       if (this.payment_method === 'credit_card') {
-        newAmount = this.amount - (this.amount *0.074);
-      }
-      else if (this.payment_method === 'boleto') {
-        newAmount = this.amount - this.amount *0.04;
-        newAmount = newAmount - 400;
+        newAmount = this.amount - (this.amount * 0.074);
+      } else if (this.payment_method === 'boleto') {
+        newAmount = this.amount - this.amount * 0.04;
+        newAmount -= 400;
       }
       if (newAmount) {
         return Math.floor(newAmount).toFixed(0);
@@ -149,11 +148,11 @@ export default {
     },
     controlSession() {
       const dataSession = JSON.parse(sessionStorage.getItem('user-donation-data'));
-      if(dataSession != null){
+      if (dataSession != null) {
         const data = {
-            amount: (this.amount != undefined) ? this.amount : dataSession.amount,
-            step: 'userData',
-          };
+          amount: (this.amount != undefined) ? this.amount : dataSession.amount,
+          step: 'userData',
+        };
         this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
         this.name = dataSession.firstName;
         this.surname = dataSession.surname;
@@ -161,7 +160,7 @@ export default {
         this.email = dataSession.email;
       }
     },
-    focusNameField(){
+    focusNameField() {
       return this.$refs.nameField.focus();
     },
     goBack() {
@@ -198,20 +197,25 @@ export default {
       if (validation.valid) {
         this.formData = fields;
         this.registerUser(fields);
+        let donerData = {
+          name,
+          cpf,
+          email: this.email,
+          firstName: this.name,
+          surname: this.surname,
+          cpfDirty: this.cpf,
+          amount: this.amount,
+          payment_method: this.payment_method,
+        };
 
-        sessionStorage.setItem(
-          "user-donation-data",
-          JSON.stringify({
-            name,
-            cpf,
-            email: this.email,
-            firstName: this.name,
-            surname: this.surname,
-            cpfDirty: this.cpf,
-            amount: this.amount,
-            payment_method: this.payment_method,
-          })
-        );
+        let currentDonerData = sessionStorage.getItem('doner-data');
+
+        if (currentDonerData) {
+          currentDonerData = JSON.parse(currentDonerData);
+          donerData = Object.assign(donerData, currentDonerData);
+        }
+
+        sessionStorage.setItem('user-donation-data', JSON.stringify(donerData));
       } else {
         this.validation = validation;
         this.toggleLoading();
@@ -230,11 +234,11 @@ export default {
             candidate_id: this.candidate.id,
             donation_fp: this.donationFp,
             referral_code: this.$store.state.referral,
-          }
+          };
           const user = {
             name: data.name,
             surname: data.surname,
-          }
+          };
           this.$store.dispatch('SAVE_PAYMENT_DATA', payload);
           this.$store.dispatch('SAVE_USERNAME', user);
           this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
@@ -244,26 +248,28 @@ export default {
         });
     },
     handleErrorMessage(err) {
-      this.errorMessage = err.data[0].message;
+      if (err) {
+        this.errorMessage =
+          err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
+      }
     },
     getDonationFP() {
       return new Promise((resolve, reject) => {
         const d1 = new Date();
         const fp = new VotolegalFP({
           excludeUserAgent: true,
-          dontUseFakeFontInCanvas: true
+          dontUseFakeFontInCanvas: true,
         });
 
         fp.get((result, components) => {
-
           const d2 = new Date();
 
           const info = {
             ms: d2 - d1,
-            id: result
-          }
+            id: result,
+          };
 
-          for (let index in components) {
+          for (const index in components) {
             const obj = components[index];
 
             if (obj.key == 'canvas' || obj.key == 'webgl') {
@@ -274,10 +280,16 @@ export default {
           }
 
           const Base64 = {
-            _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
-            encode: function (e) {
-              let t = "";
-              let n, r, i, s, o, u, a;
+            _keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
+            encode(e) {
+              let t = '';
+              let n,
+                r,
+                i,
+                s,
+                o,
+                u,
+                a;
               let f = 0;
               e = Base64._utf8_encode(e);
               while (f < e.length) {
@@ -289,37 +301,37 @@ export default {
                 u = (r & 15) << 2 | i >> 6;
                 a = i & 63;
                 if (isNaN(r)) {
-                    u = a = 64
+                  u = a = 64;
                 } else if (isNaN(i)) {
-                    a = 64
+                  a = 64;
                 }
-                t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a)
+                t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a);
               }
-              return t
+              return t;
             },
-            _utf8_encode: function (e) {
-              e = e.replace(/rn/g, "n");
-              let t = "";
+            _utf8_encode(e) {
+              e = e.replace(/rn/g, 'n');
+              let t = '';
               for (let n = 0; n < e.length; n++) {
                 const r = e.charCodeAt(n);
                 if (r < 128) {
-                  t += String.fromCharCode(r)
+                  t += String.fromCharCode(r);
                 } else if (r > 127 && r < 2048) {
                   t += String.fromCharCode(r >> 6 | 192);
-                  t += String.fromCharCode(r & 63 | 128)
+                  t += String.fromCharCode(r & 63 | 128);
                 } else {
                   t += String.fromCharCode(r >> 12 | 224);
                   t += String.fromCharCode(r >> 6 & 63 | 128);
-                  t += String.fromCharCode(r & 63 | 128)
+                  t += String.fromCharCode(r & 63 | 128);
                 }
               }
-              return t
-            }
-          }
+              return t;
+            },
+          };
 
           const donation_fp = Base64.encode(JSON.stringify(info));
 
-          if(donation_fp) {
+          if (donation_fp) {
             this.donationFp = donation_fp;
             resolve();
           } else {

@@ -78,14 +78,14 @@
 export default {
   name: 'donors',
   mounted() {
-    const candidateId = (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br') ? 230 : 200;
+    const candidateId = (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com') ? 10129 : 200;
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
     this.$store.dispatch('GET_DONATIONS', candidateId);
     this.$store.dispatch('UPDATE_DONATIONS', candidateId);
   },
   computed: {
     generalSiteDomain() {
-      return (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br')
+      return (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com')
         ? 'https://votolegal.com.br'
         : 'https://dev.votolegal.com.br';
     },

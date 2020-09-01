@@ -14,36 +14,36 @@
       </h2>
 
       <p>
-        <strong>
-          Vamos revogar as medidas de Michel Temer
-        </strong>, devolver e ampliar direitos que foram retirados do povo para
-        agradar os super ricos.
-        <strong>
-          A economia estará a serviço das pessoas, não o contrário.
-        </strong>
+        É hora de mostrar que outro projeto de Brasil é possível e ele pode
+        começar em São Paulo. Agora, temos a chance de ser a capital da
+        resistência e da esperança. Resistência ao atraso, ao autoritarismo.
+        Esperança em sermos um polo de defesa democrática no Brasil através de
+        uma chapa dos sonhos, formada por um encontro de gerações. A esperança
+        em construir um outro Brasil, democrático, diverso e mais igual, sem
+        tantos muros que nos separam.
       </p>
-
       <p>
-        Os privilégios também se refletem nas campanhas políticas, com
-        candidatos super ricos e mais tempo na TV e no rádio graças a leilões de
-        cargos e negociatas por baixo dos panos.
+        Nossa pré-candidatura representa o combate à desigualdade. Queremos uma
+        cidade a serviço das pessoas e não o contrário.
       </p>
-
       <p>
-        <strong>
-          Não venderemos cargos públicos, apoio e nem alianças em troca de
-          favore$.
-        </strong>
-        Nossa política é feita com você, que não desistiu dos direitos
-        trabalhistas, da previdência social e de uma sociedade mais justa para
-        todos. Ajude a financiar a campanha e faça com que as nossas propostas
-        cheguem a mais pessoas.
+        E para isso, precisamos recuperar o que foi bom e aprender com os erros
+        do passado. Vamos inverter a ordem de prioridades no orçamento
+        municipal, colocar educação, saúde e moradia em primeiro lugar.
+        Transformar o transporte num direito de todos e não mais em máquina de
+        lucro das máfias.
       </p>
-
       <p>
-        <strong>
-          Doe para Boulos e Sônia.
-        </strong>
+        Para que a transformação aconteça, precisamos de você! Que não desistiu
+        de uma sociedade mais justa e que acredita numa cidade de direitos.
+        Ajude a financiar o nosso projeto de solidariedade e vamos juntos nos
+        tornar a capital da esperança!
+      </p>
+      <p>
+        Começar uma virada no Brasil é possível e pode partir aqui de São Paulo.
+      </p>
+      <p>
+        Doe para Boulos e Erundina.
       </p>
 
       <section id="campaign-progress" class="campaign-progress">
@@ -69,12 +69,16 @@
           :aria-valuenow="totalAmount" :aria-valuemax="expected"
           v-if="donationSources.length > 1">
 
-          <div v-for="(source, i) in donationSources" :key="i"
-            :style="progressBarStyle(source)"
-            :title="`${porcentage(source.total_donated)}% via ${source.name}`"
-            v-if="source.total_donated">
-            {{ porcentage(source.total_donated) }}
-          </div>
+          <template
+            v-if="source.total_donated"
+          >
+            <div v-for="(source, i) in donationSources" :key="i"
+              :style="progressBarStyle(source)"
+              :title="`${porcentage(source.total_donated)}% via ${source.name}`"
+            >
+              {{ porcentage(source.total_donated) }}
+            </div>
+          </template>
         </div>
         <progress :value="totalAmount" :max="expected" v-else>
           <div role="progressbar" :aria-valuenow="totalAmount" :aria-valuemax="expected">
@@ -85,7 +89,11 @@
         </progress>
 
         <p class="campaign-progress-porcentage">
-          {{ porcentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
+          {{ porcentage() }}% da meta de R$&nbsp;{{ expectedGoal | formatBRL }},
+          <a
+            :href="`#goal-description__${expectedGoal}`"
+          >que garantirá a estrutura de comunicação e TV por um mês quando a
+          campanha for lançada</a>.
         </p>
 
         <div v-if="donationSources.length > 1" class="donations-sources">
@@ -128,6 +136,100 @@
         </p>
 
       </section>
+
+      <h2>
+        Projetos prioritários
+      </h2>
+      <h3>
+        Políticas públicas para a população em situação de rua
+      </h3>
+      <p>
+        A população de rua tem o direito de viver sem violência! É preciso, em
+        primeiro lugar, estancar e coibir as várias formas de violência contra a
+        população em situação de rua - seja a violência policial, por parte das
+        seguranças privadas, ou ainda o descaso e péssima qualidade dos serviços
+        e atendimentos nos equipamentos estatais e/ou geridos pelas OS´s. As
+        políticas de atendimento devem garantir o acolhimento e atendimento
+        integral previsto no SUAS e avançar na garantia de acesso à moradia,
+        educação, saúde, alimentação, trabalho, cultura e lazer, tendo a
+        perspectiva de sair das ruas. Políticas de moradia que integrem os
+        vários níveis de atenção e assistência social, trabalho e renda devem
+        ser prioridade. Essas políticas devem ser discutidas, elaboradas e
+        implementadas através da participação dos movimentos e entidades
+        parceiras, garantindo as especificidades dos modos de viver dos diversos
+        perfis que estão nas ruas.
+      </p>
+
+      <h3>
+        Economia, trabalho e renda a serviço do povo
+      </h3>
+      <p>
+        A construção de um projeto econômico que permita a recuperação da
+        esperança em condições melhores de vida para a população de São Paulo é
+        o primeiro passo para a renovação das forças progressistas em todo
+        Brasil. Em um cenário de crise profunda, com a expansão da
+        informalidade, dos trabalhadores por conta própria e de diversas formas
+        de sub-ocupação e desalento, a atuação direta do poder público na
+        reconstrução das atividades econômicas se faz necessária, assim como na
+        geração de empregos e na criação de renda. Assim, surge a obrigação de
+        se construir um projeto de economia voltado às pessoas, ao atendimento
+        das necessidades sociais e à geração de oportunidades de trabalho para
+        aqueles e aquelas que mais precisam.
+      </p>
+
+      <h3>
+        Educação por quem teve Paulo freire como secretário
+      </h3>
+      <p>
+        A educação será pautada pela melhor gestão pública educacional da
+        história da cidade: a de Paulo Freire quando esteve à frente da
+        Secretaria Municipal de Educação, no mandato de Luiza Erundina.
+        Prioridades: Educação pública de qualidade para todas e todos, em todas
+        as regiões da cidade; Democratização das creches e a universalização de
+        vagas na educação infantil, especialmente na periferia; Matrículas de
+        qualidade em todas as etapas e modalidades da educação básica, fazendo o
+        melhor e mais correto uso do recurso público; Valorização dos
+        profissionais da rede municipal de educação, pois todas e todos são
+        especialistas capazes de transformar São Paulo em uma capital
+        pedagógica, capaz de garantir qualidade de vida ao seu povo. A Revolução
+        Solidária também tomará como referência o projeto de educação integral
+        de Anísio Teixeira, transformando toda unidade escolar e todo território
+        paulistano em uma cidade educadora: justa, feminista, ecossocialista,
+        antirracista, anti-lgbtfobica e emancipadora.
+      </p>
+
+      <h3>
+        Transporte é direito social
+      </h3>
+      <p>
+        O transporte é um direito social constitucional desde setembro de 2015,
+        tal como a saúde e educação, o que só se concretiza com políticas
+        públicas orientadas pela ótica do combate às desigualdades sociais. Por
+        isso, nosso programa se coloca na perspectiva de que transporte não é
+        mercadoria e propõe uma reorganização do serviço ao mesmo tempo que
+        lutará com força para que o princípio constitucional se concretize tal
+        como o SUS, que é gratuito. Nosso Programa estará pautado na priorização
+        do transporte público, coletivo e ativo (pedestres e ciclistas),
+        impulsionados nas formas de locomoção não centradas no automóvel
+        individual e particular, dando às pessoas condições de definirem e
+        controlarem as políticas públicas em torno da mobilidade urbana de forma
+        democrática.
+      </p>
+
+      <h3>
+        Fortalecimento do SUS
+      </h3>
+      <p>
+        Abordar as desigualdades sociais é abordar a saúde. A comparação dos
+        índices de condições de vida e serviços de saúde entre os bairros de São
+        Paulo é um exemplo concreto disso. A mortalidade e a letalidade são
+        muito maiores na periferia quando comparada ao centro. A reestruturação
+        desastrada e enxugamento da gestão Bruno Covas contraria o
+        fortalecimento do SUS e o planejamento público, realizando uma
+        privatização da gestão de todos os espaços assistenciais ao
+        desconsiderar as necessidades em saúde. Vamos reverter essa lógica.
+      </p>
+
     </div>
   </article>
 
@@ -140,55 +242,71 @@
   <article id="home__knowMore" class="home__knowMore">
     <div class="container" id="donation-wrap">
       <h2>
-        Saiba mais
+        Conheça os pré- candidatos
       </h2>
 
       <p>
-        <strong>Guilherme Boulos</strong> é professor, escritor, ativista
-        político, psicanalista e coordenador nacional do Movimento dos
-        Trabalhadores Sem Teto (MTST). É o candidato mais jovem da história a
-        disputar a presidência. Sua atuação é marcada na luta contra as
-        desigualdades esteve papel central na resistência democrática ao golpe
-        de 2016.
+        <strong>Guilherme Boulos</strong> é professor, ativista social do
+        Movimento dos Trabalhadores Sem Teto (MTST) e da Frente Povo Sem Medo.
+        Foi candidato a Presidência da República pelo PSOL em 2018, sendo o mais
+        jovem a postulante ao cargo na história do Brasil. Sua atuação é marcada
+        na luta contra as desigualdades e por um novo modelo de sociedade.
       </p>
-
-      <blockquote>
-        “Guilherme Boulos é uma das mais jovens e promissoras lideranças de
-        movimentos sociais brasileiros. Dotado de boa formação ética e
-        intelectual, fez uma opção radical, evangélica, pelos mais pobres,
-        concentrando sua atividade no segmento da população sem acesso ao
-        direito de moradia. Modesto, despojado, inteligente, Boulos pôs a sua
-        vida a serviço dos direitos humanos fundamentais” (Frei Betto).
-      </blockquote>
-
       <p>
-        Boulos foi um dos fundadores da Frente Povo Sem Medo e da Plataforma
-        “Vamos! Sem medo de mudar o Brasil”, iniciativa inovadora de construção
-        de programa que realizou centenas de reuniões pelo país e envolveu
-        militantes e lideranças de movimentos sociais, partidos, artistas,
-        intelectuais, religiosos e pessoas comuns na discussão sobre o novo
-        Brasil que queremos.
+        Aos 20 anos, deixou sua casa para morar e atuar em uma ocupação sem
+        teto. Liderança social consolidada, é formado em Filosofia pela USP,
+        especializado em Psicanálise pelo Cogeae/PUC e Mestre em Psiquiatria
+        pela USP. Já deu aulas na rede pública de ensino do Estado de São Paulo
+        e em várias Instituições. Atualmente, ministra Cursos de Extensão na
+        Escola de Sociologia e Política (ESP) e Cursos Livres pelo Instituto
+        Democratize, iniciativa que coordena.
       </p>
-
       <p>
-        <strong>Sonia Guajajara</strong> é hoje uma das maiores lideranças
-        indígenas e ambientais do mundo. Nascida no Maranhão, é professora.
-        Sônia coordena a Articulação dos Povos Indígenas do Brasil (APIB) e
-        esteve à frente das principais lutas travadas unificando mais de 305
-        povos em torno de pautas que combatem os interesses dos setores mais
-        poderosos da sociedade brasileira.
+        Sua atuação rendeu o prêmio Santos Dias de Direitos Humanos, concedido
+        pela Assembléia Legislativa de São Paulo em 2017, além da Medalha do
+        Mérito Legislativo em 2016, concedida pela Câmara dos Deputados em
+        Brasília, dentre outros.
+      </p>
+      <p>
+        Após as eleições, retomou sua atividade como professor e sua atuação no
+        MTST e na Povo Sem Medo e segue como uma das lideranças sociais de
+        oposição ao Governo Bolsonaro.
+      </p>
+       <p>
+        É pai da Sofia e da Laura e marido da Natalia.
       </p>
 
       <p>
-        Esteve à frente da luta contra as propostas que visam retirar direitos
-        duramente conquistados pelas nações indígenas e que afetam as nossas
-        florestas. Liderança indígena de fala contundente e reconhecida
-        internacionalmente, fez discurso contra o governo Temer e pela
-        demarcação de terras indígenas durante o Rock in Rio convidada por
-        Alicia Keys. Tem voz no Conselho de Direitos Humanos da ONU e já levou
-        denúncias às Conferências Mundiais do Clima (COP) de 2009 à 2017, ao
-        Parlamento Europeu e outras instâncias internacionais.
+        <strong>Luiza Erundina</strong> já governou a maior cidade da América
+        Latina, sendo Prefeita de São Paulo entre os anos de 1989 e 1992. Hoje,
+        está em seu 6º mandato de deputada federal. Tem atuado em defesa da
+        classe trabalhadora, das minorias e dos excluídos.
       </p>
+      <p>
+        Nos mandatos que exerceu, foram apresentados mais de 80 projetos em
+        defesa da Mulher, das Gestantes, das Crianças e Adolescentes, da Cultura
+        e dos Direitos Humanos. Dentre as proposições, nove já viraram leis,
+        além de uma emenda à Constituição.
+      </p>
+      <p>
+        Na atual legislatura, atua na coordenação da Frente Parlamentar pela
+        Liberdade de Expressão e o Direito à Comunicação com participação
+        popular, que reúne parlamentares e representantes da sociedade civil
+        para assegurar o exercício da liberdade de expressão e o direito à
+        comunicação.
+      </p>
+      <p>
+        Faz parte da Comissão de Ciência e Tecnologia, Comunicação e Informática
+        (CCTCI), da Comissão de Legislação Participativa, (CLP) da qual foi sua
+        primeira presidente, e integra a Comissão de Direitos Humanos e Minorias
+        (CDHM).
+      </p>
+      <p>
+        Luiza Erundina representa  ética e luta por dignidade do povo de São
+        Paulo.
+      </p>
+
+
     </div>
   </article>
 
@@ -198,125 +316,21 @@
         Metas
       </h2>
 
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 2800000) }">
+      <div
+        v-for="(item, index) in goals" :key="index"
+        :id="`goal-description__${item.goal}`"
+        class="goal-description"
+        :class="{ 'goal-description--reached': (candidate.total_donated >= item.goal) }"
+      >
         <h3>
           <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 2800000">
+          v-if="candidate.total_donated >= item.goal">
             <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
           </svg>
-          META 1 - R$&nbsp;28.000,00
+          META 1 - R$&nbsp;{{ FormatFixedBRL(item.goal) }}
         </h3>
 
-        <p>
-          Este valor representa 2% do patrimônio declarado do picolé de chuchu,
-          que trata professores na base da porrada apesar de ter a fama de “Santo”
-          . Para nós, esta quantia viabiliza a estrutura de comícios, como palco,
-          iluminação, som e montagem.
-        </p>
-      </div>
-
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 4400000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 4400000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 2 - R$&nbsp;44.000,00
-        </h3>
-
-        <p>
-          Este valor representa 2% do patrimônio declarado daquele que em 20 anos
-          como deputado só aprovou 2 projetos, mas conseguiu adquirir 5 imóveis -
-          sendo que para um deles contratou a caseira como sendo funcionária da
-          Câmara Federal. Para nós, esta quantia viabiliza a produção de novos
-          materiais de campanha como panfletos e adesivos.
-        </p>
-      </div>
-
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 6000000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 6000000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 3 - R$&nbsp;60.000,00
-        </h3>
-
-        <p>
-          Este valor representa 2% do patrimônio declarado daquele que acha que
-          pode refundar a República, mas, apoiou todas a medidas que retiraram
-          direitos do povo brasileiro e foi um dos patrocinadores do golpe. O
-          primeiro nome começa com A e o último com D. Para nós, esta quantia
-          viabiliza mais dois comícios e viagens pelo país levando nossas
-          propostas.
-        </p>
-      </div>
-
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 9400000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 9400000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 4 - R$&nbsp;94.000,00
-        </h3>
-
-        <p>
-          A nossa próxima meta é modesta, somente 0,025% do patrimônio de um
-          candidato a presidente. Mas não é qualquer patrimônio, é o do
-          Meirelles, aquele que fez fortuna no mercado financeiro e quer
-          transformar o Brasil numa agência bancária dos grandes grupos
-          internacionais. Este dinheiro é fundamental para fortalecer a nossa
-          presença em atividades pelo Brasil, especialmente os comícios de
-          Salvador e Fortaleza, e lavar a mais e mais pessoas a ideia de que não
-          é o povo que tem que servir à economia, mas sim a economia que tem que
-          servir ao povo.
-        </p>
-      </div>
-
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 12000000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 12000000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 5 - R$&nbsp;120.000,00
-        </h3>
-
-        <p>
-          Este valor viabilizará a realização do último comício do primeiro
-          turno, no dia 03/10, no Rio de Janeiro. Levar o nosso debate contra o
-          fascismo para uma cidade onde Bolsonaro tem 35% da intenção de votos é
-          urgente e necessário, especialmente nesta reta final. Para isso,
-          precisamos da sua doação mais do que nunca.
-        </p>
-
-      </div>
-
-      <div class="goal-description"
-        :class="{ 'goal-description--reached': (candidate.total_donated >= 13500000) }">
-        <h3>
-          <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
-          v-if="candidate.total_donated >= 13500000">
-            <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
-          </svg>
-          META 6 - R$&nbsp;135.000,00
-        </h3>
-
-        <p>
-          Precisamos imprimir novos materiais com as nossas mensagens para que
-          elas cheguem ao máximo de pessoas pelo Brasil em uma missão didática
-          nesta reta final. Assim, nosso enfrentamento contra o machismo, as
-          medidas de Temer, os grandes privilégios e o direito à moradia sairão
-          mais fortes deste primeiro turno e podemos debatê-los com mais
-          facilidade no futuro.
-        </p>
-
+        <p>{{ item.description }}</p>
       </div>
 
     </div>
@@ -329,10 +343,10 @@
       </h2>
 
       <p>
-        Veja aqueles sem medo de transformar o Brasil que já contribuíram para
+        Veja aqueles sem medo de transformar São Paulo que já contribuíram para
         que nossas propostas alcancem cada vez mais pessoas, nesta batalha
-        encabeçada por <strong>Guilherme Boulos</strong> e <strong>Sônia
-        Guajajara</strong>, na esperança de acabar com os privilégios e as
+        encabeçada por <strong>Guilherme Boulos</strong> e <strong>Luiza
+        Erundina</strong>, na esperança de acabar com os privilégios e as
         desigualdades.
       </p>
 
@@ -404,7 +418,6 @@
     </div>
   </article>
 
-
 </main>
 </template>
 
@@ -414,10 +427,13 @@ import Payment from '@/components/Payment.vue';
 // eslint-disable-next-line
 import AnimatedNumber from 'animated-number-vue';
 
+import { root } from '@/data/goals.json';
+
 export default {
   data() {
     return {
       amountInView: false,
+      goals: root,
     };
   },
   name: 'home',
@@ -426,12 +442,17 @@ export default {
     AnimatedNumber,
   },
   mounted() {
-    const candidateId = (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br') ? 230 : 200;
+    const candidateId = (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com') ? 230 : 200;
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
     this.$store.dispatch('GetDonorsNames', candidateId);
     this.$store.dispatch('UPDATE_DONATIONS_SUMMARY', candidateId);
   },
   computed: {
+    expectedGoal() {
+      const { expected, totalAmount, goals } = this;
+
+      return (goals.find(x => x.goal > totalAmount) || goals[goals.length - 1]).goal || expected;
+    },
     candidate() {
       return this.$store.state.candidate;
     },
@@ -481,7 +502,7 @@ export default {
   },
   methods: {
     porcentage(amount = this.totalAmount) {
-      return Math.round((parseFloat(amount) * 100) / Math.max(this.totalAmount, this.expected));
+      return Math.round((parseFloat(amount) * 100) / Math.max(this.totalAmount, this.expected)) || 0;
     },
     progressBarStyle(source) {
       return {

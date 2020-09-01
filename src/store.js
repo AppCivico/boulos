@@ -6,9 +6,9 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 const api =
-  (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br')
-    ? 'https://api-vl.appcivico.com'
-    : 'https://dapi.votolegal.com.br';
+  (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com')
+    ? 'https://api2020vl.appcivico.com'
+    : 'https://votolegal-test-api.appcivico.com';
 
 export default new Vuex.Store({
   state: {
@@ -142,9 +142,9 @@ export default new Vuex.Store({
         }
       }
     },
-    SET_ADDRESS: (state, payload) => {
-      state.address = payload;
-    },
+    // SET_ADDRESS: (state, payload) => {
+    //   state.address = payload;
+    // },
     SET_PAYMENT_DATA(state, { paymentData }) {
       state.paymentData = paymentData;
     },
@@ -202,9 +202,8 @@ export default new Vuex.Store({
             resolve(response);
           })
           .catch((err) => {
-            console.log('eroooooo', error.response.data);
-            console.error(err.response);
-            reject(err.response);
+            console.error(err.message);
+            reject(err.message);
           });
       });
     },
@@ -231,8 +230,8 @@ export default new Vuex.Store({
             resolve();
           },
           (err) => {
-            console.error(err.response);
-            reject(err.response);
+            console.error(err.message);
+            reject(err.message);
           },
         );
       });
@@ -264,7 +263,7 @@ export default new Vuex.Store({
           headers: { 'Content-Type': 'application/json' },
           url: `${api}/api2/donations/${state.donation.id}?device_authorization_token_id=${
             state.token
-            }&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
+          }&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
         }).then(
           (response) => {
             const data = {
@@ -277,8 +276,8 @@ export default new Vuex.Store({
             resolve();
           },
           (err) => {
-            console.error(err.response);
-            reject(err.response);
+            console.error(err.message);
+            reject(err.message);
           },
         ).then(() => {
           clearTimeout(showMessage);
@@ -298,7 +297,7 @@ export default new Vuex.Store({
             resolve();
           },
           (err) => {
-            reject(err.response);
+            reject(err.message);
             console.error(err);
           },
         );
@@ -327,7 +326,7 @@ export default new Vuex.Store({
             resolve();
           },
           (err) => {
-            reject(err.response);
+            reject(err.message);
             console.error(err);
           },
         );
@@ -367,7 +366,7 @@ export default new Vuex.Store({
               resolve();
             },
             (err) => {
-              reject(err.response);
+              reject(err.message);
               console.error(err);
             },
           );
@@ -377,10 +376,10 @@ export default new Vuex.Store({
     GET_ADDRESS: ({ commit }, cep) => {
       return new Promise((resolve, reject) => {
         axios
-          .get(`${api}/api/cep?cep=${cep}`)
+          .get(`//api2020vl.appcivico.com/api/cep?cep=${cep}`)
           .then((response) => {
+            // commit('SET_ADDRESS', response.data);
             resolve(response.data);
-            commit('SET_ADDRESS', response.data);
           })
           .catch((erro) => {
             reject(erro);
@@ -390,7 +389,7 @@ export default new Vuex.Store({
     START_DONATION_BOLETO({ commit }, payload) {
       let token = '';
       if (window.localStorage) {
-        const tokenName = (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br')
+        const tokenName = (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com')
           ? 'prod_apm_token'
           : 'dev_apm_token';
         token = localStorage.getItem(tokenName);

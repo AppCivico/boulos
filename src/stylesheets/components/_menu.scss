@@ -62,7 +62,7 @@
   }
 }
 
-.logo-psol {
+.logo-campaign {
   @include image-replacement;
 
   display: block;
@@ -71,7 +71,7 @@
   min-width: 213px;
   min-height: 39px;
 
-  background-image: url('../assets/images/icons/logo-psol.png');
+  background-image: url('../assets/images/icons/logo-campaign.png');
   background-position: 50% 50%;
   background-repeat: no-repeat;
 
@@ -79,7 +79,7 @@
   transition-property: background-size;
 }
 
-.animate .logo-psol {
+.animate .logo-campaign {
   background-size: auto 44px;
 }
 
@@ -194,7 +194,7 @@
   margin: auto;
 
   @media (min-width: breakpoint('tablet')) {
-    @include inline-block-item($align: 'top', $font-size:  1rem);
+    @include inline-block-item($align: 'top', $font-size: 1rem);
 
     padding-right: 1em;
     padding-left: 1em;

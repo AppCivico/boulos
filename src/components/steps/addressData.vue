@@ -24,7 +24,7 @@
         <div :class="`input-wrapper
           ${validation.errors.city ? 'has-error' : ''}`">
           <label for="city">Cidade</label>
-          <input type="text" v-model="city" name="city" :disabled="true" required ref="city">
+          <input type="text" v-model="city" name="city" disabled="true" required ref="city">
           <div class="error" v-if="validation.errors.city">
             {{ validation.errors.city }}
           </div>
@@ -32,7 +32,7 @@
         <div :class="`input-wrapper
           ${validation.errors.state ? 'has-error' : ''}`">
           <label for="state">Estado</label>
-          <select type="text" v-model="state" name="state" :disabled="true" required ref="state">
+          <select type="text" v-model="state" name="state" disabled="true" required ref="state">
             <option></option>
             <option :value="key" v-for="(state, key) in states" :key="key">{{ state }}</option>
           </select>
@@ -43,7 +43,7 @@
         <div :class="`input-wrapper
           ${validation.errors.street ? 'has-error' : ''}`">
           <label for="street">Rua</label>
-          <input type="text" v-model="street" name="street" :disabled="true" required ref="street">
+          <input type="text" v-model="street" name="street" disabled="true" required ref="street">
           <div class="error" v-if="validation.errors.street">
             {{ validation.errors.street }}
           </div>
@@ -51,7 +51,7 @@
         <div :class="`input-wrapper
           ${validation.errors.district ? 'has-error' : ''}`">
           <label for="district">Bairro</label>
-          <input type="text" v-model="district" name="district" :disabled="true" required ref="district">
+          <input type="text" v-model="district" name="district" disabled="true" required ref="district">
           <div class="error" v-if="validation.errors.district">
             {{ validation.errors.district }}
           </div>
@@ -81,12 +81,10 @@
 </template>
 
 <script>
-import {
-  mask
-} from 'vue-the-mask';
+import { mask } from 'vue-the-mask';
 import {
   validate,
-  removeAccented
+  removeAccented,
 } from '../../utilities';
 
 export default {
@@ -153,10 +151,9 @@ export default {
     },
     paymentData() {
       return this.$store.state.paymentData;
-    }
+    },
   },
   methods: {
-
     controlSession() {
       const dataSession = JSON.parse(sessionStorage.getItem('user-donation-data'));
       if (dataSession != null) {
@@ -200,25 +197,27 @@ export default {
         address.birthdate = birthdate;
       }
 
-      console.log('validar', address);
-
       const validation = validate(address);
 
       if (validation.valid) {
         this.saveAddress();
+        let donerData = {
+          zip_code: this.zip_code,
+          state: this.state,
+          city: this.city,
+          street: this.street,
+          district: this.district,
+          number: this.number,
+          birthdate,
+        };
+        let currentDonerData = sessionStorage.getItem('doner-data');
 
-        sessionStorage.setItem(
-          'user-donation-data',
-          JSON.stringify({
-            zip_code: this.zip_code,
-            state: this.state,
-            city: this.city,
-            street: this.street,
-            district: this.district,
-            number: this.number,
-            birthdate,
-          })
-        );
+        if (currentDonerData) {
+          currentDonerData = JSON.parse(currentDonerData);
+          donerData = Object.assign(donerData, currentDonerData);
+        }
+
+        sessionStorage.setItem('user-donation-data', JSON.stringify(donerData));
       } else {
         this.validation = validation;
         this.toggleLoading();
@@ -283,72 +282,76 @@ export default {
 
       this.toggleLoading();
 
-      this.$store.dispatch('GET_ADDRESS', event.target.value).then((response) => {
-        if (!response.state) {
-          this.$refs.state.disabled = false;
-        } else {
-          this.$refs.state.disabled = true;
-          this.state = response.state;
-        }
-
-        if (!response.city) {
-          this.$refs.city.disabled = false;
-        } else {
-          this.$refs.city.disabled = true;
-          this.city = response.city;
-        }
-
-        if (!response.street) {
-          this.$refs.street.disabled = false;
-        } else {
-          this.$refs.street.disabled = true;
-          this.street = response.street;
-        }
-
-        if (!response.district) {
-          this.$refs.district.disabled = false;
-        } else {
-          this.$refs.district.disabled = true;
-          this.district = response.district;
-        }
-
-        return this.toggleLoading();
-      }).catch((error) => {
-        this.toggleLoading();
-
-        if (error.response.status === 404) {
-          this.$refs.state.disabled = true;
-          this.$refs.city.disabled = true;
-          this.$refs.street.disabled = true;
-          this.$refs.district.disabled = true;
-
-          this.$refs.zipCode.select() || this.$refs.zipCode.focus();
-
-          this.$data.validation.errors.zip_code = 'Cep não encontrado';
-        } else if (error.response.status === 400) {
-          this.$refs.state.disabled = false;
-          this.$refs.city.disabled = false;
-          this.$refs.street.disabled = false;
-          this.$refs.district.disabled = false;
-
-          this.$refs.zipCode.focus();
-
-          if (error.response.data.form_error && error.response.data.form_error.CEP) {
-            this.$data.validation.errors.zip_code = error.response.data.form_error.CEP.indexOf('dismembered') !== -1
-              ? 'Não foi possível identificar seu CEP. Por favor, digite o endereço completo.'
-              : error.response.data.form_error.CEP;
+      this.$store.dispatch('GET_ADDRESS', event.target.value)
+        .then((response) => {
+          if (!response.state) {
+            this.$refs.state.disabled = false;
           } else {
-            this.$data.validation.errors.zip_code = error.response.data.form_error;
+            this.$refs.state.disabled = true;
+            this.state = response.state;
           }
-        }
 
-        return this.$data.validation.errors.zip_code;
-      });
+          if (!response.city) {
+            this.$refs.city.disabled = false;
+          } else {
+            this.$refs.city.disabled = true;
+            this.city = response.city;
+          }
+
+          if (!response.street) {
+            this.$refs.street.disabled = false;
+          } else {
+            this.$refs.street.disabled = true;
+            this.street = response.street;
+          }
+
+          if (!response.district) {
+            this.$refs.district.disabled = false;
+          } else {
+            this.$refs.district.disabled = true;
+            this.district = response.district;
+          }
+
+          return this.toggleLoading();
+        }).catch((error) => {
+          this.toggleLoading();
+
+          if (error.response && error.response.status === 404) {
+            this.$refs.state.disabled = true;
+            this.$refs.city.disabled = true;
+            this.$refs.street.disabled = true;
+            this.$refs.district.disabled = true;
+
+            this.$refs.zipCode.select() || this.$refs.zipCode.focus();
+
+            this.$data.validation.errors.zip_code = 'Cep não encontrado';
+          } else {
+            this.$refs.state.disabled = false;
+            this.$refs.city.disabled = false;
+            this.$refs.street.disabled = false;
+            this.$refs.district.disabled = false;
+
+            this.$refs.zipCode.focus();
+
+            if (error.response.data.form_error && error.response.data.form_error.CEP) {
+              this.$data.validation.errors.zip_code = error.response.data.form_error.CEP.indexOf('dismembered') !== -1
+                ? 'Não foi possível identificar seu CEP. Por favor, digite o endereço completo.'
+                : error.response.data.form_error.CEP;
+            } else {
+              this.$data.validation.errors.zip_code = error.response.data.form_error;
+            }
+          }
+
+          return this.$data.validation.errors.zip_code;
+        });
 
       return true;
     },
     handleErrorMessage(err) {
-      this.errorMessage = err.message || err.name || err.data[0].message;
+      if (err) {
+        this.errorMessage =
+          err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
+      }
     },
     handleIugu() {
       Iugu.setAccountID(this.iugu.account_id);

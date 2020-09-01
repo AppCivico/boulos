@@ -36,7 +36,7 @@ export default {
     },
     handleSession() {
       if (window.localStorage) {
-        const tokenName = (window.location.host === 'doeboulos.com.br' || window.location.host === 'test.doeboulos.com.br')
+        const tokenName = (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com')
           ? 'prod_apm_token'
           : 'dev_apm_token';
         const token = localStorage.getItem(tokenName);

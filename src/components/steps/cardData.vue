@@ -204,7 +204,7 @@ export default {
           const payload = {
             cc_hash,
             id: response.id,
-          }
+          };
           this.$store.dispatch('START_DONATION', payload)
             .catch((err) => {
               this.toggleLoading();
@@ -214,17 +214,20 @@ export default {
       });
     },
     handleErrorMessage(err) {
-      this.errorMessage = err.data[0].message;
+      if (err) {
+        this.errorMessage =
+          err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
+      }
     },
     getCardHash(number) {
       const fp = new VotolegalFP({
         excludeUserAgent: true,
-        dontUseFakeFontInCanvas: true
+        dontUseFakeFontInCanvas: true,
       });
 
       const hash = fp.x64hash128(number, 31);
       return hash;
-    }
+    },
   },
   mounted() {
     this.scrollToDonate();

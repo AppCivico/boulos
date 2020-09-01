@@ -14,14 +14,19 @@
           <span></span>
         </button>
         <div class="brand-wrap">
-          <a href="#home__header" v-scroll-to="'#home__header'" class="logo-psol">Doe Boulos</a>
+          <a href="#home__header" v-scroll-to="'#home__header'" class="logo-campaign">Doe Boulos</a>
         </div>
         <ul class="menu-wrap">
           <li class="menu-icon">
-            <a href="https://twitter.com/intent/tweet?text=Com%20Boulos%20e%20S%C3%B4nia%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com.br" target="_blank" class="twitter"></a>
+            <a href="https://twitter.com/intent/tweet?text=Com%20Boulos%20e%20S%C3%B4nia%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com" target="_blank" class="twitter"></a>
           </li>
           <li class="menu-icon">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com.br%2F&amp;src=sdkpreparse" target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com%2F&amp;src=sdkpreparse" target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
+          </li>
+          <li class="menu-item donate-nav">
+            <a href="#doar" v-scroll-to="'#doar'">
+              Doar
+            </a>
           </li>
           <li class="menu-item">
             <a href="#home__knowMore" v-scroll-to="'#home__knowMore'">
@@ -38,11 +43,6 @@
               Perguntas frequentes
             </a>
           </li>
-          <li class="menu-item donate-nav">
-            <a href="#doar" v-scroll-to="'#doar'">
-              Doar
-            </a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -50,35 +50,23 @@
     <div id="home__greetings">
       <div class="site-label">
         <h1>
-          <span>Sem</span> medo de
+          Outro <span>Brasil</span> é possível
         </h1>
         <h1>
-          Mudar o
-          <span>Brasil</span>
+          e ele pode começar em
+          <span>São Paulo</span>
         </h1>
         <h2>
-          e enfrentar os privilégios de quem sempre teve
+          Vamos juntos nos tornar a capital dos direitos e da esperança
         </h2>
         <a href="#doar" class="call-to-action">
           <span>#</span>doe<span class="heavy">Boulos</span>
         </a>
-        <button id="open-modal" @click="toggleModal()" class="play-button" v-if="youtubeVideoId">
-          assista ao vídeo
-        </button>
+        <a href="#doar" class="call-to-action">
+          <span>#</span>doe<span class="heavy">Erundina</span>
+        </a>
       </div>
     </div>
-    <template v-if="youtubeVideoId">
-      <div class="modal-overlay closed" @click="toggleModal()" id="modal-overlay"></div>
-
-      <div class="modal closed" id="modal">
-        <button class="close-button" id="close-button" @click="toggleModal()">&times;</button>
-          <div class="embed-container">
-            <iframe width="560" height="315" :src="`https://www.youtube-nocookie.com/embed/${youtubeVideoId}?rel=0&amp;showinfo=0&enablejsapi=1`"
-            frameborder="0" allow="autoplay; encrypted-media"
-            allowfullscreen id="iframeYoutube"></iframe>
-          </div>
-      </div>
-    </template>
   </header>
 </template>
 
@@ -91,17 +79,6 @@ export default {
     };
   },
   methods: {
-    toggleModal() {
-      const modal = document.querySelector('#modal');
-      const modalOverlay = document.querySelector('#modal-overlay');
-      const iframeYoutube = document.querySelector('#iframeYoutube');
-      const func = modal.className.indexOf('closed') === -1 ? 'pauseVideo' : 'playVideo';
-
-      modal.classList.toggle('closed');
-      modalOverlay.classList.toggle('closed');
-
-      iframeYoutube.contentWindow.postMessage(`{"event":"command","func":"${func}","args":""}`, '*');
-    },
     scrollMenu() {
       const element = document.querySelector('.main-menu');
       window.addEventListener('scroll', () => {
@@ -130,4 +107,3 @@ export default {
   },
 };
 </script>
-

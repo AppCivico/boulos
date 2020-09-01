@@ -7,29 +7,29 @@
   color: palette('white');
 
   background-image: url('../assets/images/backgrounds/capa-fundo-very-small.jpg');
-  background-position: left bottom;
+  background-position: right bottom;
   background-size: 100% auto;
   background-color: palette('gray', 'dark');
 
   @media screen and (min-width: breakpoint('phablet')) {
     min-height: 620px;
 
-    background-image: url('../assets/images/backgrounds/capa-boulos_sonia-small.png'), url('../assets/images/backgrounds/capa-fundo-small.jpg');
-    background-position: left bottom, 0 0;
+    background-image: url('../assets/images/backgrounds/capa-boulos-small.png'), url('../assets/images/backgrounds/capa-fundo-small.jpg');
+    background-position: right bottom, 0 0;
     background-size: 550px auto, cover;
   }
 
   @media screen and (min-width: breakpoint('tablet')) {
-    background-image: url('../assets/images/backgrounds/capa-boulos_sonia-medium.png'), url('../assets/images/backgrounds/capa-fundo-medium.jpg');
-    background-position: left bottom, 0 0;
+    background-image: url('../assets/images/backgrounds/capa-boulos-medium.png'), url('../assets/images/backgrounds/capa-fundo-medium.jpg');
+    background-position: right bottom, 0 0;
     background-size: 680px auto, cover;
   }
 
   @media screen and (min-width: breakpoint('desktop')) {
     min-height: 680px;
 
-    background-image: url('../assets/images/backgrounds/capa-boulos_sonia.png'), url('../assets/images/backgrounds/capa-fundo.jpg');
-    background-position: left bottom, 0 0;
+    background-image: url('../assets/images/backgrounds/capa-boulos.png'), url('../assets/images/backgrounds/capa-fundo.jpg');
+    background-position: right bottom, 0 0;
     background-size: 750px auto, cover;
   }
 }
@@ -57,7 +57,7 @@
 }
 
 .site-label {
-  padding: 0;
+  padding: #{$leading * 0.5em} 0;
   margin: 0;
   margin-right: auto;
   margin-left: auto;
@@ -65,13 +65,9 @@
   text-align: center;
 
   @media screen and (min-width: breakpoint('desktop')) {
-    max-width: 760px;
+    max-width: 836px;
 
     text-align: right;
-  }
-
-  @media screen and (min-width: breakpoint('wide')) {
-    max-width: 1000px;
   }
 }
 
@@ -113,6 +109,8 @@
   }
 
   &:nth-child(2) span {
+    display: block;
+
     font-weight: 900;
     font-size: 1.2em;
 
@@ -129,9 +127,11 @@
 }
 
 .site-label h2 {
-  max-width: 90%;
+  max-width: 13.5em;
 
+  margin-top: $leading * 0.5em;
   margin-right: auto;
+  margin-bottom: $leading * 0.5em;
   margin-left: auto;
 
   font-size: ms(1);
@@ -148,13 +148,18 @@
 .site-label .call-to-action {
   position: relative;
 
+  display: block;
   z-index: 2;
+
+  padding-right: $gutter;
+  padding-left: $gutter;
 
   font-weight: bold;
   font-size: ms(3);
+  line-height: 1;
   font-family: 'Montserrat', sans-serif;
 
-  text-align: right;
+  text-align: left;
   text-decoration: none;
   text-transform: lowercase;
 

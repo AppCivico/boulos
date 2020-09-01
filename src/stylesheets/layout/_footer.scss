@@ -6,9 +6,10 @@
 
 .footer-container {
   max-width: $max-width;
+
   padding-top: 6rem;
-  padding-bottom: 6rem;
   padding-right: $gutter;
+  padding-bottom: 6rem;
   padding-left: $gutter;
   margin-right: auto;
   margin-left: auto;
@@ -20,27 +21,30 @@
 
 
 .wrap-logo a {
+  display: block;
+
+  padding: 0;
   margin: 0;
   margin-right: auto;
   margin-left: auto;
-  display: block;
-  padding: 0;
 }
 
 .votolegal-logo {
-  background: url('../assets/images/icons/votolegal-white.png');
-  background-repeat: no-repeat;
   width: 171px;
   height: 49px;
+
+  background: url('../assets/images/icons/votolegal-white.png');
+  background-repeat: no-repeat;
 }
 
 .site-footer__copyright {
   font-size: 0.98em;
-  color: rgb(255, 255, 255);
+
   text-align: center;
 
-  & a {
+  color: rgb(255, 255, 255);
 
+  & a {
     color: rgb(255, 255, 255);
   }
 }
@@ -65,6 +69,6 @@
   min-width: 213px;
   min-height: 39px;
 
-  background-image: url('../assets/images/icons/logo-psol.png');
+  background-image: url('../assets/images/icons/logo-campaign.png');
   background-position: 50% 50%;
 }

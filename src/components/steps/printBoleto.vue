@@ -22,10 +22,10 @@
 
       <ul id="wrap-share">
         <li>
-        <a class="twitter" href="https://twitter.com/intent/tweet?text=Com%20Boulos%20e%20S%C3%B4nia%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com.br%3Fref%3Dagradecimento">Compartilhar</a>
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=Com%20Boulos%20e%20S%C3%B4nia%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com%3Fref%3Dagradecimento">Compartilhar</a>
         </li>
         <li>
-        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com.br%3Fref%3Dagradecimento&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com%3Fref%3Dagradecimento&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
         </li>
       </ul>
     </section>
@@ -61,7 +61,10 @@ export default {
       this.loading = !this.loading;
     },
     handleErrorMessage(err) {
-      this.errorMessage = err.data[0].message;
+      if (err) {
+        this.errorMessage =
+          err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
+      }
     },
     goBack() {
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
