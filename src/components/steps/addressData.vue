@@ -13,10 +13,32 @@
             {{ validation.errors.birthdate }}
           </div>
         </div>
+        <div
+          class="input-wrapper"
+          :class=" { 'has-error' : validation.errors.phone }"
+        >
+          <label for="phone">Telefone</label>
+          <input
+            v-model="phone"
+            v-mask="['(##) ####-####', '(##) #####-####']"
+            v-focus="(paymentData.payment_method !== 'boleto')"
+            type="tel"
+            name="phone"
+            placeholder="(00) 00000-0000"
+            minlength="14"
+            required
+          >
+          <div
+            v-if="validation.errors.phone"
+            class="error"
+          >
+            {{ validation.errors.phone }}
+          </div>
+        </div>
         <div :class="`input-wrapper
           ${validation.errors.zip_code ? 'has-error' : ''}`">
           <label for="zip_code">CEP</label>
-          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @change="searchAddress($event)" required minlength="9" ref="zipCode" v-focus="(paymentData.payment_method !== 'boleto')">
+          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @change="searchAddress($event)" required minlength="9" ref="zipCode">
           <div class="error" v-if="validation.errors.zip_code">
             {{ validation.errors.zip_code }}
           </div>
@@ -132,6 +154,7 @@ export default {
       district: '',
       number: '',
       complement: '',
+      phone: '',
       birthdate: '',
       formData: {},
       validation: {
@@ -157,14 +180,17 @@ export default {
     controlSession() {
       const dataSession = JSON.parse(sessionStorage.getItem('user-donation-data'));
       if (dataSession != null) {
-        this.zip_code = dataSession.zip_code;
-        this.state = dataSession.state;
-        this.city = dataSession.city;
-        this.street = dataSession.street;
-        this.district = dataSession.district;
-        this.number = dataSession.number;
-        this.complement = dataSession.complement;
-        this.birthdate = dataSession.birthdate;
+        this.zip_code = dataSession.zip_code || this.zip_code;
+        this.state = dataSession.state || this.state;
+        this.city = dataSession.city || this.city;
+        this.street = dataSession.street || this.street;
+        this.district = dataSession.district || this.district;
+        this.number = dataSession.number || this.number;
+        this.complement = dataSession.complement || this.complement;
+        this.birthdate = dataSession.birthdate
+          ? dataSession.birthdate.split('-').reverse().join('/')
+          : this.birthdate;
+        this.phone = dataSession.phone || this.phone;
       }
     },
     goBack() {
@@ -179,11 +205,11 @@ export default {
     },
     validateForm() {
       this.toggleLoading();
+      const birthdate = this.birthdate.split('/').reverse().join('-');
 
-      const birthdate = this.paymentData.payment_method === 'boleto'
-        ? this.birthdate.split('/').reverse().join('-')
+      const phone = this.phone
+        ? this.phone.replace(/[^\d]+/g, '')
         : '';
-
       const address = {
         zip_code: this.zip_code,
         state: this.state,
@@ -191,6 +217,7 @@ export default {
         street: this.street,
         district: this.district,
         number: this.number,
+        phone,
       };
 
       if (this.paymentData.payment_method === 'boleto') {
@@ -201,6 +228,7 @@ export default {
 
       if (validation.valid) {
         this.saveAddress();
+
         let donerData = {
           zip_code: this.zip_code,
           state: this.state,
@@ -208,6 +236,7 @@ export default {
           street: this.street,
           district: this.district,
           number: this.number,
+          phone,
           birthdate,
         };
         let currentDonerData = sessionStorage.getItem('doner-data');
@@ -225,6 +254,9 @@ export default {
     },
     saveAddress() {
       const payload = this.$store.state.paymentData;
+      const phone = this.phone
+        ? this.phone.replace(/[^\d]+/g, '')
+        : '';
 
       payload.address_zipcode = this.zip_code;
       payload.address_state = this.state;
@@ -233,6 +265,7 @@ export default {
       payload.address_district = this.district;
       payload.address_house_number = this.number;
       payload.address_complement = this.complement;
+      payload.phone = phone;
 
       if (this.paymentData.payment_method === 'boleto') {
         let birthdate = this.birthdate.split('/');
