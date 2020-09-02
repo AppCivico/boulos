@@ -146,9 +146,11 @@ $palette: (
     'base': rgb(43, 37, 75),
   ),
   'purple': (
-    'base': rgb(102, 51, 204),
-    'medium': rgb(121, 77, 209),
     'light': rgb(197, 174, 255),
+    'medium': rgb(121, 77, 209),
+    'base': rgb(102, 51, 204),
+    'dark': rgb(55, 0, 94),
+    'x-dark': rgb(37, 0, 64),
   ),
   'green': (
     'x-light': rgb(0, 255, 153),
