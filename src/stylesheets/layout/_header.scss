@@ -252,14 +252,18 @@
 }
 
 .play-button {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+
   display: inline-block;
   display: block;
+  z-index: 1;
 
   padding-top: $leading * 0.5em;
   padding-right: $gutter * 0.5;
   padding-bottom: $leading * 0.5em;
   padding-left: $gutter;
-  margin-top: $leading * 5em;
   margin-right: auto;
   margin-left: auto;
 
@@ -271,23 +275,19 @@
 
   background-image: url('../assets/images/icons/play-video.png');
   background-position: 1em 45%;
-  background-color: palette('orange', 'dark');
+  background-color: palette('purple', 'dark');
 
   border: 0;
 
-  &:hover {
-    background-color: palette('black');
+  transform: translate(-50%, -50%);
+
+  &:hover,
+  &:focus {
+    background-color: palette('orange', 'dark');
   }
 
-  @media screen and (min-width: breakpoint('phablet')) {
-    margin-top: $leading * 3em;
+  &:active {
+    background-color: palette('purple', 'x-dark');
   }
 
-  @media screen and (min-width: breakpoint('tablet')) {
-    margin-top: 0;
-  }
-
-  @media screen and (min-width: breakpoint('desktop')) {
-    margin-top: $leading * 5em;
-  }
 }

@@ -65,11 +65,11 @@
         <a href="#doar" class="call-to-action">
           <span>#</span>doe<span class="heavy">Erundina</span>
         </a>
-        <button id="open-modal" @click="toggleModal()" class="play-button" v-if="youtubeVideoId">
-          assista ao vídeo
-        </button>
       </div>
     </div>
+    <button id="open-modal" @click="toggleModal()" class="play-button" v-if="youtubeVideoId">
+      assista ao vídeo
+    </button>
     <template v-if="youtubeVideoId">
       <div class="modal-overlay closed" @click="toggleModal()" id="modal-overlay"></div>
 
@@ -90,7 +90,7 @@ export default {
   name: 'Header',
   data() {
     return {
-      youtubeVideoId: 'mOZ6qvVngCM',
+      youtubeVideoId: 'chCJAbGU_UY',
     };
   },
   methods: {

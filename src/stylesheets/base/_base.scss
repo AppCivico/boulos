@@ -86,19 +86,22 @@ textarea,
  * www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
  */
 html {
+  position: relative;
   /* 2 */
+
   height: 100%;
 
   padding: 0;
   margin: 0;
 
+  overflow-x: hidden;
   /* 3 */
   overflow-y: scroll;
-
   /* 1 */
-  font-size: 100.01%;
 
+  font-size: 100.01%;
   /* 4 */
+
   text-size-adjust: 100%;
 
   background: palette('white');
@@ -106,7 +109,6 @@ html {
   box-sizing: border-box;
 
   tab-size: 4;
-  position: relative;
 }
 
 body {
@@ -157,6 +159,7 @@ summary {
 
   &::before {
     padding-right: 0.5em;
+
     content: '\25B6';
   }
 
@@ -210,21 +213,21 @@ hr {
   clear: both;
 
   display: block;
-
   /* 1 */
+
   height: 0;
 
   padding: 0;
-
   /* 2 */
+
   overflow: visible;
 
   color: palette('black');
 
   border: 0;
   border-top: 1px solid palette('gray');
-
   /* 1 */
+
   box-sizing: content-box;
 }
 
@@ -261,8 +264,8 @@ svg,
 video {
   /* 1 */
   display: inline-block;
-
   /* 2 */
+
   vertical-align: middle;
 }
 
@@ -369,6 +372,7 @@ a {
   font-size: 100%;
 
   vertical-align: baseline;
+
   color: palette('anchor');
 
   @include on-event {
@@ -376,15 +380,17 @@ a {
   }
 
   &:link {
-    color: palette('anchor', 'link');
     text-decoration: underline;
 
     cursor: pointer;
     -webkit-tap-highlight-color: palette('tap-highlight'); // sass-lint:disable-line no-vendor-prefixes
+
+    color: palette('anchor', 'link');
   }
 
   &:visited {
     color: palette('anchor', 'visited');
+
     @include on-event {
       text-decoration: underline;
     }
@@ -396,8 +402,9 @@ a {
   }
 
   &:focus {
-    color: palette('anchor', 'focus');
     overflow: hidden;
+
+    color: palette('anchor', 'focus');
 
     outline: none;
     outline-offset: 2px;
