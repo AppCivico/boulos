@@ -18,7 +18,11 @@
             anti-fraude, impostos e infraestrutura.
           </p>
           <p>
-            <strong>© 2016-2020 <a href="https://votolegal.com.br" target="_blank">Voto Legal</a> • Uma iniciativa <a href="http://appcivico.com" target="_blank">AppCívico</a> - Tecnologias Cívicas • <a href="/termos.pdf" target="_blank">Contrato</a></strong>
+            <strong>© 2016-2020 <a href="https://votolegal.com.br"
+            target="_blank">Voto Legal</a> • Uma iniciativa <a
+            href="http://appcivico.com" target="_blank">AppCívico</a> -
+            Tecnologias Cívicas • <a href="/termos.pdf"
+            target="_blank">Contrato</a></strong>
           </p>
         </div>
       </div>
