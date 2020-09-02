@@ -202,8 +202,8 @@ export default new Vuex.Store({
             resolve(response);
           })
           .catch((err) => {
-            console.error(err.message);
-            reject(err.message);
+            console.error(err.response || err.message || err);
+            reject(err.response || err.message || err);
           });
       });
     },
@@ -230,8 +230,8 @@ export default new Vuex.Store({
             resolve();
           },
           (err) => {
-            console.error(err.message);
-            reject(err.message);
+            console.error(err.response || err.message || err);
+            reject(err.response || err.message || err);
           },
         );
       });
@@ -276,8 +276,8 @@ export default new Vuex.Store({
             resolve();
           },
           (err) => {
-            console.error(err.message);
-            reject(err.message);
+            console.error(err.response || err.message || err);
+            reject(err.response || err.message || err);
           },
         ).then(() => {
           clearTimeout(showMessage);
@@ -297,7 +297,7 @@ export default new Vuex.Store({
             resolve();
           },
           (err) => {
-            reject(err.message);
+            reject(err.response || err.message || err);
             console.error(err);
           },
         );
@@ -326,7 +326,7 @@ export default new Vuex.Store({
             resolve();
           },
           (err) => {
-            reject(err.message);
+            reject(err.response || err.message || err);
             console.error(err);
           },
         );
@@ -366,7 +366,7 @@ export default new Vuex.Store({
               resolve();
             },
             (err) => {
-              reject(err.message);
+              reject(err.response || err.message || err);
               console.error(err);
             },
           );
