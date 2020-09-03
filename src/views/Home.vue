@@ -178,7 +178,7 @@
       </p>
 
       <h3>
-        Educação por quem teve Paulo freire como secretário
+        Educação por quem teve Paulo Freire como secretário
       </h3>
       <p>
         A educação será pautada pela melhor gestão pública educacional da
