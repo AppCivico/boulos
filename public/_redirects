@@ -2,6 +2,4 @@
 http://doeboulos.com/* https://doeboulos.com/:splat 301!
 http://www.doeboulos.com/* https://doeboulos.com/:splat 301!
 
-# redirect to current TOS version
-/termos.pdf       https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20-%20Voto%20Legal%20-%202020@2020-05-25.pdf 200
 /*                /index.html 200

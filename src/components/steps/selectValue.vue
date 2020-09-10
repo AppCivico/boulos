@@ -32,7 +32,7 @@
         Ao doar, declaro que minhas doações não ultrapassam 10% dos meus
         rendimentos brutos do ano anterior, a origem do dinheiro não é
         estrangeira, não sou concessionário ou permissionário de serviço público
-        e concordo com os <a href="./termos.pdf" target="_blank">termos de
+        e concordo com os <a href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Pol%C3%ADtica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020@2020-09-09.pdf" target="_blank">termos de
         doação</a>
       </p>
       <p class="error" v-if="errorMessage != ''">
