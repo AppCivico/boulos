@@ -86,8 +86,7 @@
         Declaro estar ciente, que ao realizar uma doação, por conta da
         legislação eleitoral, os seus dados (nome completo, CPF, valor
         individual de cada doação, forma de pagamento, data das doações) serão
-        publicados de forma pública no site do candidato, na aba transparência,
-        e concordo com os <a
+        publicados de forma pública no site do candidato, e concordo com os <a
         href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Pol%C3%ADtica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020@2020-09-09.pdf"
         target="_blank">termos de doação</a>.
       </p>
