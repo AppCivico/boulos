@@ -327,7 +327,7 @@
           v-if="candidate.total_donated >= item.goal">
             <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"/>
           </svg>
-          META 1 - R$&nbsp;{{ FormatFixedBRL(item.goal) }}
+          META {{ index + 1 }} - R$&nbsp;{{ FormatFixedBRL(item.goal) }}
         </h3>
 
         <p>{{ item.description }}</p>
