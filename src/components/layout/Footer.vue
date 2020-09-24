@@ -21,7 +21,7 @@
             <strong>© 2016-2020 <a href="https://votolegal.com.br"
             target="_blank">Voto Legal</a> • Uma iniciativa <a
             href="http://appcivico.com" target="_blank">AppCívico</a> -
-            Tecnologias Cívicas • <a href="/termos.pdf"
+            Tecnologias Cívicas • <a href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf"
             target="_blank">Contrato</a></strong>
           </p>
         </div>
