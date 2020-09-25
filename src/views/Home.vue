@@ -89,9 +89,9 @@
         </progress>
 
         <p class="campaign-progress-porcentage">
-          {{ porcentage() }}% da meta de R$&nbsp;{{ expectedGoal | formatBRL }},
+          {{ porcentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }},
           <a
-            :href="`#goal-description__${expectedGoal}`"
+            :href="`#goal-description__${expected}`"
           >que garantirá a estrutura de comunicação e TV por um mês quando a
           campanha for lançada</a>.
         </p>
@@ -246,24 +246,24 @@
       </h2>
 
       <p>
-        <strong>Guilherme Boulos</strong> é professor, ativista social do
+        <strong>Guilherme Boulos</strong> é professor, ativista social do
         Movimento dos Trabalhadores Sem Teto (MTST) e da Frente Povo Sem Medo.
-        Foi candidato a Presidência da República pelo PSOL em 2018, sendo o mais
+        Foi candidato a Presidência da República pelo PSOL em 2018, sendo o mais
         jovem a postulante ao cargo na história do Brasil. Sua atuação é marcada
         na luta contra as desigualdades e por um novo modelo de sociedade.
       </p>
       <p>
         Aos 20 anos, deixou sua casa para morar e atuar em uma ocupação sem
-        teto. Liderança social consolidada, é formado em Filosofia pela USP,
-        especializado em Psicanálise pelo Cogeae/PUC e Mestre em Psiquiatria
+        teto. Liderança social consolidada, é formado em Filosofia pela USP,
+        especializado em Psicanálise pelo Cogeae/PUC e Mestre em Psiquiatria
         pela USP. Já deu aulas na rede pública de ensino do Estado de São Paulo
-        e em várias Instituições. Atualmente, ministra Cursos de Extensão na
+        e em várias Instituições. Atualmente, ministra Cursos de Extensão na
         Escola de Sociologia e Política (ESP) e Cursos Livres pelo Instituto
         Democratize, iniciativa que coordena.
       </p>
       <p>
-        Sua atuação rendeu o prêmio Santos Dias de Direitos Humanos, concedido
-        pela Assembléia Legislativa de São Paulo em 2017, além da Medalha do
+        Sua atuação rendeu o prêmio Santos Dias de Direitos Humanos, concedido
+        pela Assembléia Legislativa de São Paulo em 2017, além da Medalha do
         Mérito Legislativo em 2016, concedida pela Câmara dos Deputados em
         Brasília, dentre outros.
       </p>
@@ -272,7 +272,8 @@
         MTST e na Povo Sem Medo e segue como uma das lideranças sociais de
         oposição ao Governo Bolsonaro.
       </p>
-       <p>
+
+      <p>
         É pai da Sofia e da Laura e marido da Natalia.
       </p>
 
@@ -448,11 +449,6 @@ export default {
     this.$store.dispatch('UPDATE_DONATIONS_SUMMARY', candidateId);
   },
   computed: {
-    expectedGoal() {
-      const { expected, totalAmount, goals } = this;
-
-      return (goals.find(x => x.goal > totalAmount) || goals[goals.length - 1]).goal || expected;
-    },
     candidate() {
       return this.$store.state.candidate;
     },
@@ -497,12 +493,18 @@ export default {
       return this.$store.state.hasMoreDonations;
     },
     expected() {
-      return (this.candidate || {}).raising_goal || 0;
+      const { totalAmount, goals } = this;
+
+      return (goals.find(x => x.goal > totalAmount)
+        || goals[goals.length - 1]).goal
+        || (this.candidate || {}).raising_goal
+        || 0;
     },
   },
   methods: {
     porcentage(amount = this.totalAmount) {
-      return Math.round((parseFloat(amount) * 100) / Math.max(this.totalAmount, this.expected)) || 0;
+      return Math.round((parseFloat(amount) * 100) / Math.max(this.totalAmount, this.expected))
+        || 0;
     },
     progressBarStyle(source) {
       return {

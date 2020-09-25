@@ -68,8 +68,6 @@
       </div>
     </div>
   </article>
-
-
 </main>
 </template>
 
