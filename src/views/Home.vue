@@ -92,8 +92,8 @@
           {{ porcentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }},
           <a
             :href="`#goal-description__${expected}`"
-          >que garantirá a estrutura de comunicação e TV por um mês quando a
-          campanha for lançada</a>.
+          >que garantirá mais um mês de ação, impressão de material gráfico e
+          logística de entrega.</a>.
         </p>
 
         <div v-if="donationSources.length > 1" class="donations-sources">

@@ -69,14 +69,14 @@
 }
 
 .campaign-progress-porcentage a {
-  text-decoration: inherit;
+  text-decoration: underline;
   text-transform: lowercase;
 
   color: inherit;
 
   &:link
   &:visited {
-    text-decoration: inherit;
+    text-decoration: underline;
 
     color: inherit;
   }
