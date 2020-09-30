@@ -5,10 +5,23 @@
         <div class="instructions-donation">
           <p class="instructions">Informe seu endereço</p>
         </div>
-        <div :class="`input-wrapper
-          ${validation.errors.birthdate ? 'has-error' : ''}`" v-if="paymentData.payment_method === 'boleto'">
-          <label for="birthdate">Data de nascimento</label>
-          <input type="text" v-model="birthdate" name="birthdate" v-mask="'##/##/####'" required v-focus="(paymentData.payment_method === 'boleto')">
+        <div
+          class="input-wrapper"
+          :class="`${validation.errors.birthdate ? 'has-error' : ''}`"
+        >
+          <label
+            for="birthdate"
+          >
+            Data de nascimento
+          </label>
+          <input
+            type="text"
+            v-model="birthdate"
+            name="birthdate"
+            v-mask="'##/##/####'"
+            required
+            v-focus
+          >
           <div class="error" v-if="validation.errors.birthdate">
             {{ validation.errors.birthdate }}
           </div>
@@ -21,7 +34,6 @@
           <input
             v-model="phone"
             v-mask="['(##) ####-####', '(##) #####-####']"
-            v-focus="(paymentData.payment_method !== 'boleto')"
             type="tel"
             name="phone"
             placeholder="(00) 00000-0000"
@@ -218,11 +230,8 @@ export default {
         district: this.district,
         number: this.number,
         phone,
+        birthdate,
       };
-
-      if (this.paymentData.payment_method === 'boleto') {
-        address.birthdate = birthdate;
-      }
 
       const validation = validate(address);
 
