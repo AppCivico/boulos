@@ -276,17 +276,18 @@ export default {
       payload.address_complement = this.complement;
       payload.phone = phone;
 
+      let birthdate = this.birthdate.split('/');
+      birthdate.reverse();
+      birthdate = birthdate.join('-');
+      payload.birthdate = birthdate;
+
       if (this.paymentData.payment_method === 'boleto') {
-        let birthdate = this.birthdate.split('/');
-        birthdate.reverse();
-        birthdate = birthdate.join('-');
         payload.billing_address_zipcode = this.zip_code;
         payload.billing_address_state = this.state;
         payload.billing_address_city = this.city;
         payload.billing_address_street = this.street;
         payload.billing_address_district = this.district;
         payload.billing_address_house_number = this.number;
-        payload.birthdate = birthdate;
         payload.billing_address_complement = this.complement;
       }
 
