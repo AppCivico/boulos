@@ -15,6 +15,12 @@
         </a>
       </div>
     </div>
+
+    <p>Contamos com você para batermos juntos essa meta e agora temos um desafio:
+    <strong>TRAZ MAIS 1</strong>! Se cada pessoa que contribuiu trouxer mais um amigo para doar,
+    conseguiremos bater a meta! Topa dar mais essa força pra gente? Compartilhe seu
+    apoio nas redes sociais.</p>
+
     <ul id="wrap-share">
       <li>
         <a class="twitter" href="https://twitter.com/intent/tweet?text=Com%20Boulos%20e%20Erundina%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com%3Fref%3Dagradecimento">Compartilhar</a>
