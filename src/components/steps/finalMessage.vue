@@ -17,7 +17,7 @@
     </div>
     <ul id="wrap-share">
       <li>
-        <a class="twitter" href="https://twitter.com/intent/tweet?text=Com%20Boulos%20e%20S%C3%B4nia%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com%3Fref%3Dagradecimento">Compartilhar</a>
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=Com%20Boulos%20e%20Erundina%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com%3Fref%3Dagradecimento">Compartilhar</a>
       </li>
       <li>
         <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com%3Fref%3Dagradecimento&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
