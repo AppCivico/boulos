@@ -23,7 +23,7 @@
         tantos muros que nos separam.
       </p>
       <p>
-        Nossa pré-candidatura representa o combate à desigualdade. Queremos uma
+        Nossa candidatura representa o combate à desigualdade. Queremos uma
         cidade a serviço das pessoas e não o contrário.
       </p>
       <p>
@@ -242,7 +242,7 @@
   <article id="home__knowMore" class="home__knowMore">
     <div class="container" id="donation-wrap">
       <h2>
-        Conheça os pré- candidatos
+        Conheça os candidatos
       </h2>
 
       <p>
