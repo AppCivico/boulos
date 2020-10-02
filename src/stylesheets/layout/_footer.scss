@@ -1,3 +1,43 @@
+.candidate-footer {
+  padding: 24px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #8500b4;
+}
+
+.candidate-footer p {
+  margin-bottom: 0;
+
+  &:first-of-type {
+    padding-top: 12px;
+
+    border-top: 2px solid currentColor;
+  }
+}
+
+.candidate-footer abbr {
+  letter-spacing: normal;
+
+  text-decoration: none;
+}
+
+.candidate-footer__logo {
+  display: block;
+
+  width: auto;
+  max-width: 200px;
+
+  margin: 0 auto 24px auto;
+}
+
+.candidate-footer__cnpj {
+  font-size: smaller;
+
+  color: black;
+}
+
 .site-footer {
   color: palette('white');
 

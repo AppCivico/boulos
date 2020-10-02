@@ -419,6 +419,22 @@
     </div>
   </article>
 
+  <div class="candidate-footer">
+      <img
+        src="../assets/images/icons/Boulos_Erundina_Logo_Coligacao_21.png"
+        alt="Logotipo campanha"
+        class="candidate-footer__logo">
+      <p>
+        Eleição 2020 Guilherme Castro Boulos Prefeito
+      </p>
+      <p
+        class="candidate-footer__cnpj"
+      >
+        <abbr title="Cadastro Nacional Pessoa Jurídica">CNPJ</abbr>
+        38.642.015/0001-26
+      </p>
+  </div>
+
 </main>
 </template>
 
