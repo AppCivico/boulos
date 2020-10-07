@@ -57,7 +57,7 @@
           <span>São Paulo</span>
         </h1>
         <h2>
-          Vamos tornar a capital dos direitos e da esperança
+          Vamos nos tornar a capital dos direitos e da esperança
         </h2>
         <a href="#doar" class="call-to-action">
           <span>#</span>Vira<span class="heavy">SP</span>
