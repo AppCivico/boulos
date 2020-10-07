@@ -92,8 +92,8 @@
           {{ porcentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }},
           <a
             :href="`#goal-description__${expected}`"
-          >que garantirá mais um mês de ação, impressão de material gráfico e
-          logística de entrega.</a>.
+            v-if="summary"
+          >{{ summary }}</a>.
         </p>
 
         <div v-if="donationSources.length > 1" class="donations-sources">
@@ -515,6 +515,13 @@ export default {
         || goals[goals.length - 1]).goal
         || (this.candidate || {}).raising_goal
         || 0;
+    },
+    summary() {
+      const { totalAmount, goals } = this;
+
+      return (goals.find(x => x.goal > totalAmount)
+        || goals[goals.length - 1]).summary
+        || '';
     },
   },
   methods: {
