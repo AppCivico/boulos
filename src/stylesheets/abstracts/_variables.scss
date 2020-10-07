@@ -138,19 +138,19 @@ $palette: (
   'tap-highlight': transparent,
   'target-highlight': transparent,
   'orange': (
-    'base': rgb(255, 153, 51),
-    'dark': rgb(255, 153, 0),
-    'light': rgb(255, 177, 99),
+    'light': hsl(19, 76%, 65%),
+    'base': hsl(19, 76%, 51%),
+    'dark': hsl(19, 76%, 35%),
   ),
   'blue': (
-    'base': rgb(43, 37, 75),
+    'base': hsl(198, 100%, 44%),
   ),
   'purple': (
-    'light': rgb(197, 174, 255),
-    'medium': rgb(121, 77, 209),
-    'base': rgb(102, 51, 204),
-    'dark': rgb(55, 0, 94),
-    'x-dark': rgb(37, 0, 64),
+    'light': hsl(301, 59%, 65%),
+    'medium': hsl(301, 59%, 50%),
+    'base': hsl(301, 59%, 35%),
+    'dark': hsl(301, 59%, 25%),
+    'x-dark': hsl(301, 59%, 15%),
   ),
   'green': (
     'x-light': rgb(0, 255, 153),
