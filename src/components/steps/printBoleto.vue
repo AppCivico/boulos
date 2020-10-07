@@ -21,12 +21,15 @@
       </div>
 
       <ul id="wrap-share">
-        <li>
-        <a class="twitter" href="https://twitter.com/intent/tweet?text=Com%20Boulos%20e%20Erundina%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com%3Fref%3Dagradecimento">Compartilhar</a>
-        </li>
-        <li>
-        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com%3Fref%3Dagradecimento&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
-        </li>
+      <li>
+        <a class="twitter"
+          href="https://twitter.com/intent/tweet?text=Eu%20apoio%20Boulos%20e%20Erundina%2C%20com%20honestidade%20e%20coragem%20para%20virar%20o%20jogo%20em%20SP.%20Fa%C3%A7a%20parte%20voc%C3%AA%20tamb%C3%A9m!%20https%3A%2F%2Fdoeboulos.com%2F%3Fref%3Dcompartilhamento">Compartilhar</a>
+      </li>
+      <li>
+        <a target="_blank"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com%2F%3Fref%3Dcompartilhamento&amp;src=sdkpreparse"
+          class="fb-xfbml-parse-ignore facebook">Compartilhar</a>
+      </li>
       </ul>
     </section>
 </template>
