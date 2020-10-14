@@ -61,8 +61,13 @@
         </table>
         <h3 v-else-if="!donationsLoading" v-cloak>Ainda não há doações</h3>
 
-        <button class="button--load-more" type="button" @click.prevent="getDonationsList()"
-          v-if="hasMoreDonations">
+        <button
+          class="button--load-more"
+          type="button"
+          @click.prevent="getDonationsList()"
+          v-if="hasMoreDonations"
+          :disabled="loading"
+        >
           Carregar mais
         </button>
       </div>
@@ -75,6 +80,11 @@
 
 export default {
   name: 'donors',
+  data(){
+    return {
+      loading: false,
+    };
+  },
   mounted() {
     const candidateId = (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com') ? 10129 : 200;
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
@@ -132,7 +142,11 @@ export default {
       return formated;
     },
     getDonationsList() {
-      this.$store.dispatch('GET_DONATIONS', this.candidate.id);
+      this.loading = true;
+      this.$store.dispatch('GET_DONATIONS', this.candidate.id)
+        .then(()=>{
+            this.loading = false;
+        });
     },
     refreshDonationsList() {
       this.$store.dispatch('REFRESH_DONATIONS');
