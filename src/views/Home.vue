@@ -93,7 +93,7 @@
           <a
             :href="`#goal-description__${expected}`"
             v-if="summary"
-          >{{ summary }}</a>.
+          >{{ summary }}</a>
         </p>
 
         <div v-if="donationSources.length > 1" class="donations-sources">
