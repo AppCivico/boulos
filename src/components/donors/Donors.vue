@@ -80,7 +80,7 @@
 
 export default {
   name: 'donors',
-  data(){
+  data() {
     return {
       loading: false,
     };
@@ -142,8 +142,8 @@ export default {
     getDonationsList() {
       this.loading = true;
       this.$store.dispatch('GET_DONATIONS', this.candidate.id)
-        .then(()=>{
-            this.loading = false;
+        .then(() => {
+          this.loading = false;
         });
     },
     refreshDonationsList() {
@@ -151,8 +151,8 @@ export default {
     },
     getPlatformName(platformCNPJ) {
       return this.$store.state.donationPlatforms
-        .filter(x => x.cnpj === platformCNPJ)
-        .map(x => x.name)[0] || platformCNPJ;
+        .filter((x) => x.cnpj === platformCNPJ)
+        .map((x) => x.name)[0] || platformCNPJ;
     },
   },
 };

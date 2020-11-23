@@ -40,11 +40,10 @@ export default {
     },
     message() {
       this.$data.show = !this.$data.show;
-      this.$data.showingNotification = setTimeout(function () {
+      this.$data.showingNotification = setTimeout(function _() {
         this.$data.show = !this.$data.show;
       }, this.$props.duration);
     },
   },
 };
 </script>
-

@@ -267,8 +267,7 @@ export default {
     },
     handleErrorMessage(err) {
       if (err) {
-        this.errorMessage =
-          err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
+        this.errorMessage = err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
       }
     },
     getDonationFP() {
@@ -301,13 +300,13 @@ export default {
             _keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
             encode(e) {
               let t = '';
-              let n,
-                r,
-                i,
-                s,
-                o,
-                u,
-                a;
+              let n;
+              let r;
+              let i;
+              let s;
+              let o;
+              let u;
+              let a;
               let f = 0;
               e = Base64._utf8_encode(e);
               while (f < e.length) {

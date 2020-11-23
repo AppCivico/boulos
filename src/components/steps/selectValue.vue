@@ -76,7 +76,7 @@ export default {
       if (amount === 'other' && values.other < minvalue) {
         this.errorMessage = `O valor mínimo da doação é de R$ ${formatBRL(minvalue)}`;
         return;
-      } else if (amount === 'other' && values.other > maxvalue) {
+      } if (amount === 'other' && values.other > maxvalue) {
         this.errorMessage = `O valor máximo da doação é de R$ ${formatBRL(maxvalue)}`;
         return;
       }

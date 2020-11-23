@@ -74,7 +74,7 @@ export default new Vuex.Store({
       state.donations = state.donations.concat(payload.donations);
     },
     SET_PLATFORMS(state, platforms) {
-      state.donationPlatforms = platforms.sort(a => (['voto legal', 'votolegal'].indexOf(a.name.toLowerCase()) !== -1 ? -1 : 1));
+      state.donationPlatforms = platforms.sort((a) => (['voto legal', 'votolegal'].indexOf(a.name.toLowerCase()) !== -1 ? -1 : 1));
     },
     SET_SOURCES(state, platforms) {
       const donationSources = platforms.reduce((allTypes, item) => {
@@ -92,7 +92,7 @@ export default new Vuex.Store({
         return allTypes;
       }, {});
 
-      state.donationSources = Object.keys(donationSources).map(key => donationSources[key]);
+      state.donationSources = Object.keys(donationSources).map((key) => donationSources[key]);
     },
     SET_DONORS(state, { res }) {
       state.donors = res.names;
@@ -114,9 +114,9 @@ export default new Vuex.Store({
       state.donationsRecentHasMore = false;
     },
     SET_RECENT_DONATIONS: (state, payload) => {
-      const donationToCompare = state.donationsRecent.length === 0 ?
-        state.donations[0] :
-        state.donationsRecent[0];
+      const donationToCompare = state.donationsRecent.length === 0
+        ? state.donations[0]
+        : state.donationsRecent[0];
       if (donationToCompare) {
         const newDonations = payload.donations;
 

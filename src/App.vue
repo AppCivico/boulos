@@ -52,5 +52,4 @@ export default {
 };
 </script>
 
-
 <style src="./stylesheets/index.scss" lang="scss"></style>

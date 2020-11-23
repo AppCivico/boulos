@@ -307,7 +307,6 @@
         Paulo.
       </p>
 
-
     </div>
   </article>
 
@@ -485,18 +484,16 @@ export default {
     totalAmount() {
       return this.donationSources.length
         ? this.donationSources.reduce(
-          (accumulator, currentValue) =>
-            accumulator + currentValue.total_donated
-          , 0,
+          (accumulator, currentValue) => accumulator + currentValue.total_donated,
+          0,
         )
         : (this.candidate.total_donated || 0);
     },
     totalDonors() {
       return this.donationSources.length
         ? this.donationSources.reduce(
-          (accumulator, currentValue) =>
-            accumulator + Number.parseInt(currentValue.people_donated || 0, 10)
-          , 0,
+          (accumulator, currentValue) => accumulator + Number.parseInt(currentValue.people_donated || 0, 10),
+          0,
         )
         : Number.parseInt(this.candidate.people_donated || 0, 10);
     },
@@ -515,7 +512,7 @@ export default {
     expected() {
       const { totalAmount, goals } = this;
 
-      return (goals.find(x => x.goal > totalAmount)
+      return (goals.find((x) => x.goal > totalAmount)
         || goals[goals.length - 1]).goal
         || (this.candidate || {}).raising_goal
         || 0;
@@ -523,7 +520,7 @@ export default {
     summary() {
       const { totalAmount, goals } = this;
 
-      return (goals.find(x => x.goal > totalAmount)
+      return (goals.find((x) => x.goal > totalAmount)
         || goals[goals.length - 1]).summary
         || '';
     },
@@ -551,10 +548,10 @@ export default {
     isAmountOnViewport(evt, el) {
       const rect = el.getBoundingClientRect();
       const inView = (
-        rect.width > 0 &&
-        rect.height > 0 &&
-        rect.top >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        rect.width > 0
+        && rect.height > 0
+        && rect.top >= 0
+        && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
       );
 
       this.$data.amountInView = inView;

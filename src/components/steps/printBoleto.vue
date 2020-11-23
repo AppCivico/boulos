@@ -65,8 +65,7 @@ export default {
     },
     handleErrorMessage(err) {
       if (err) {
-        this.errorMessage =
-          err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
+        this.errorMessage = err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
       }
     },
     goBack() {
