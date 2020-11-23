@@ -52,7 +52,7 @@ export default {
 
   data() {
     return {
-      isDev: (window.location.host === 'boulos.appcivico.com'),
+      isDev: (process.env.VUE_APP_MODE === 'development'),
     };
   },
   computed: {

@@ -36,9 +36,7 @@ export default {
     },
     handleSession() {
       if (window.localStorage) {
-        const tokenName = (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com')
-          ? 'prod_apm_token'
-          : 'dev_apm_token';
+        const tokenName = process.env.VUE_APP_TOKEN_NAME;
         const token = localStorage.getItem(tokenName);
         if (token !== null) {
           this.$store.dispatch('ADD_TOKEN', token);

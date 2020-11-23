@@ -86,16 +86,14 @@ export default {
     };
   },
   mounted() {
-    const candidateId = (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com') ? 10129 : 200;
+    const candidateId = process.env.VUE_APP_CANDIDATE_ID;
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
     this.$store.dispatch('GET_DONATIONS', candidateId);
     this.$store.dispatch('UPDATE_DONATIONS', candidateId);
   },
   computed: {
     generalSiteDomain() {
-      return (window.location.host === 'doeboulos.com' || window.location.host === 'test.doeboulos.com')
-        ? 'https://votolegal.com.br'
-        : 'https://dev.votolegal.com.br';
+      return process.env.VUE_APP_SITE_ORIGIN;
     },
     candidate() {
       return this.$store.state.candidate;
