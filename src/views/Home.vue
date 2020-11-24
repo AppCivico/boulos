@@ -488,7 +488,8 @@ export default {
     totalDonors() {
       return this.donationSources.length
         ? this.donationSources.reduce(
-          (accumulator, currentValue) => accumulator + Number.parseInt(currentValue.people_donated || 0, 10),
+          (accumulator, currentValue) => accumulator
+            + Number.parseInt(currentValue.people_donated || 0, 10),
           0,
         )
         : Number.parseInt(this.candidate.people_donated || 0, 10);
@@ -520,9 +521,9 @@ export default {
         || goals[goals.length - 1]).summary
         || '';
     },
-    goalsWithDescription(){
-      return (this.goals || []).filter(x=>!!x.description);
-    }
+    goalsWithDescription() {
+      return (this.goals || []).filter((x) => !!x.description);
+    },
   },
   methods: {
     porcentage(amount = this.totalAmount) {

@@ -7,7 +7,9 @@
       Doadores
       </h2>
 
-      <p><strong>Essas são as pessoas que entenderam o valor de seu apoio e decidiram dar um passo na direção de uma política mais transparente, mais representativa e mais colaborativa:</strong></p>
+      <p><strong>Essas são as pessoas que entenderam o valor de seu apoio e
+      decidiram dar um passo na direção de uma política mais transparente, mais
+      representativa e mais colaborativa:</strong></p>
 
       <div v-if="donations" class="donations-wrapper" v-cloak>
         <table class="donations-table" v-if="donations.length > 0">
@@ -34,11 +36,16 @@
           <tbody>
             <tr v-show="donationsRecentCount > 0">
               <td colspan="6" class="alert alert--warning" role="alert">
-              Há pelo menos <b>{{ donationsRecentCount }}</b> novas transações segundo os critérios escolhidos.
-              <button class="" type="button" @click="refreshDonationsList()">Carregar?</button>
+                Há pelo menos <b>{{ donationsRecentCount }}</b>
+                novas transações segundo os critérios escolhidos.
+                <button class="" type="button" @click="refreshDonationsList()">Carregar?</button>
               </td>
             </tr>
-            <tr v-for="donation in donations" :key="donation.id" :class="{irregular: donation.is_irregular}">
+            <tr
+              v-for="donation in donations"
+              :key="donation.id"
+              :class="{irregular: donation.is_irregular}"
+            >
               <th title="Nome">{{donation.name | titleCase}}</th>
               <td title="CPF">
                   <div v-html="$options.filters.formatCPF(donation.cpf)"></div>
@@ -47,13 +54,20 @@
               <td title="Método">{{ donation.payment_method_human }}</td>
               <td title="Valor">R$ {{donation.amount | formatBRL}} </td>
               <td v-if="donation.digest" title="Recibo" class="decred-link">
+                <!-- eslint-disable-next-line -->
                 <a :href="`${generalSiteDomain}/em/${candidate.username}/recibo/${donation.digest}`"
                   target="_blank"
                   title="Registro na blockchain">
                   <img src="../../assets/images/icons/website-dark.png" alt="Recibo"/>
                 </a>
               </td>
-              <td title="Recibo" v-else-if="!donation.platform || donation.platform === 'votolegal' || donation.platform === '30217474000150'">Processando</td>
+              <td
+                title="Recibo"
+                v-else-if="!donation.platform || donation.platform === 'votolegal'
+                  || donation.platform === '30217474000150'"
+              >
+                  Processando
+              </td>
               <td title="Recibo" v-else-if="donation.platform">
                 {{ getPlatformName(donation.platform) }}
               </td>
