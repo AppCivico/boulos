@@ -40,7 +40,9 @@
             </tr>
             <tr v-for="donation in donations" :key="donation.id" :class="{irregular: donation.is_irregular}">
               <th title="Nome">{{donation.name | titleCase}}</th>
-              <td title="CPF">{{donation.cpf | formatCPF }}</td>
+              <td title="CPF">
+                  <div v-html="$options.filters.formatCPF(donation.cpf)"></div>
+              </td>
               <td title="Data">{{ donation.captured_at | date }}</td>
               <td title="Método">{{ donation.payment_method_human }}</td>
               <td title="Valor">R$ {{donation.amount | formatBRL}} </td>
