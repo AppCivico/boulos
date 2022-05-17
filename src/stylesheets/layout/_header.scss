@@ -59,7 +59,7 @@
 }
 
 .site-label {
-  padding: #{$leading * 0.5em} 0;
+  padding: ($leading * 0.5em) 0;
   margin: 0;
   margin-right: auto;
   margin-left: auto;
@@ -144,6 +144,10 @@
 
   @media screen and(min-width: breakpoint('desktop')) {
     font-size: ms(3);
+  }
+
+  span {
+    color: palette('header', 'yellow');
   }
 }
 

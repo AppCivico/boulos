@@ -13,38 +13,24 @@
         Por que doar?
       </h2>
 
-      <p>
-        É hora de mostrar que outro projeto de Brasil é possível e ele pode
-        começar em São Paulo. Agora, temos a chance de ser a capital da
-        resistência e da esperança. Resistência ao atraso, ao autoritarismo.
-        Esperança em sermos um polo de defesa democrática no Brasil através de
-        uma chapa dos sonhos, formada por um encontro de gerações. A esperança
-        em construir um outro Brasil, democrático, diverso e mais igual, sem
-        tantos muros que nos separam.
+      <p>É hora de reconstruir o país e de acabar com o poder do Centrão, que
+      hoje faz o que quer no Congresso Nacional: controla o Orçamento da União e
+      decide quem governa e quem cai.</p>
+
+      <p>Por isso, temos a missão de eleger Guilherme Boulos como o Deputado
+      Federal mais bem votado de São Paulo e formar a maior bancada de esquerda
+      da Câmara dos Deputados. Só assim conseguiremos revogar a reforma
+      trabalhista e o teto de gastos, criar condições para combater a fome, o
+      desemprego e a recessão econômica. Vamos fazer uma profunda reforma
+      tributária e retomar investimentos públicos.</p>
+
+      <p>Precisamos provar que o Brasil é mais forte do que Bolsonaro e seus
+      filhos. E para isso, precisamos de você, que não desistiu de uma sociedade
+      mais justa e que acredita num país que não está à venda. Ajude a financiar
+      o nosso projeto de retomada da democracia.
       </p>
-      <p>
-        Nossa candidatura representa o combate à desigualdade. Queremos uma
-        cidade a serviço das pessoas e não o contrário.
-      </p>
-      <p>
-        E para isso, precisamos recuperar o que foi bom e aprender com os erros
-        do passado. Vamos inverter a ordem de prioridades no orçamento
-        municipal, colocar educação, saúde e moradia em primeiro lugar.
-        Transformar o transporte num direito de todos e não mais em máquina de
-        lucro das máfias.
-      </p>
-      <p>
-        Para que a transformação aconteça, precisamos de você! Que não desistiu
-        de uma sociedade mais justa e que acredita numa cidade de direitos.
-        Ajude a financiar o nosso projeto de solidariedade e vamos juntos nos
-        tornar a capital da esperança!
-      </p>
-      <p>
-        Começar uma virada no Brasil é possível e pode partir aqui de São Paulo.
-      </p>
-      <p>
-        Doe para Boulos e Erundina.
-      </p>
+
+      <p>Vamos sem medo. O futuro é a gente que faz. Doe para Boulos Federal.</p>
 
       <section id="campaign-progress" class="campaign-progress">
         <p>
@@ -141,93 +127,24 @@
         Projetos prioritários
       </h2>
       <h3>
-        Políticas públicas para a população em situação de rua
+        Revogação da Reforma Trabalhista
       </h3>
       <p>
-        A população de rua tem o direito de viver sem violência! É preciso, em
-        primeiro lugar, estancar e coibir as várias formas de violência contra a
-        população em situação de rua - seja a violência policial, por parte das
-        seguranças privadas, ou ainda o descaso e péssima qualidade dos serviços
-        e atendimentos nos equipamentos estatais e/ou geridos pelas OS´s. As
-        políticas de atendimento devem garantir o acolhimento e atendimento
-        integral previsto no SUAS e avançar na garantia de acesso à moradia,
-        educação, saúde, alimentação, trabalho, cultura e lazer, tendo a
-        perspectiva de sair das ruas. Políticas de moradia que integrem os
-        vários níveis de atenção e assistência social, trabalho e renda devem
-        ser prioridade. Essas políticas devem ser discutidas, elaboradas e
-        implementadas através da participação dos movimentos e entidades
-        parceiras, garantindo as especificidades dos modos de viver dos diversos
-        perfis que estão nas ruas.
+        A reforma foi vendida com a promessa da criação de cinco milhões de empregos. Como resultado, tivemos as maiores taxas de desemprego dos últimos anos. Precisamos de propostas para a parcela precarizada das trabalhadoras e trabalhadores, como um novo marco regulatório das relações trabalhistas que garantam bem-estar e segurança para os trabalhadores sem direitos, além do fortalecimento dos sindicatos, impactados negativamente pelas medidas pós-golpe.
       </p>
 
       <h3>
-        Economia, trabalho e renda a serviço do povo
+        Fim do teto de gastos
       </h3>
       <p>
-        A construção de um projeto econômico que permita a recuperação da
-        esperança em condições melhores de vida para a população de São Paulo é
-        o primeiro passo para a renovação das forças progressistas em todo
-        Brasil. Em um cenário de crise profunda, com a expansão da
-        informalidade, dos trabalhadores por conta própria e de diversas formas
-        de sub-ocupação e desalento, a atuação direta do poder público na
-        reconstrução das atividades econômicas se faz necessária, assim como na
-        geração de empregos e na criação de renda. Assim, surge a obrigação de
-        se construir um projeto de economia voltado às pessoas, ao atendimento
-        das necessidades sociais e à geração de oportunidades de trabalho para
-        aqueles e aquelas que mais precisam.
+        O Teto de Gastos impede a economia de voltar a crescer e impossibilita a distribuição de renda e a inclusão social. E este não é só um caso brasileiro: países que implementaram o ajuste fiscal tiveram baixo crescimento. A regra do Teto de Gastos levou o país à crise econômica e social que estamos hoje. Precisamos de uma regra fiscal com responsabilidade social para que haja uma agenda de mudanças do país: acabar com a fome, desemprego e ter direito ao futuro.
       </p>
 
       <h3>
-        Educação por quem teve Paulo Freire como secretário
+        Defesa dos serviços públicos e do patrimônio nacional
       </h3>
       <p>
-        A educação será pautada pela melhor gestão pública educacional da
-        história da cidade: a de Paulo Freire quando esteve à frente da
-        Secretaria Municipal de Educação, no mandato de Luiza Erundina.
-        Prioridades: Educação pública de qualidade para todas e todos, em todas
-        as regiões da cidade; Democratização das creches e a universalização de
-        vagas na educação infantil, especialmente na periferia; Matrículas de
-        qualidade em todas as etapas e modalidades da educação básica, fazendo o
-        melhor e mais correto uso do recurso público; Valorização dos
-        profissionais da rede municipal de educação, pois todas e todos são
-        especialistas capazes de transformar São Paulo em uma capital
-        pedagógica, capaz de garantir qualidade de vida ao seu povo. A Revolução
-        Solidária também tomará como referência o projeto de educação integral
-        de Anísio Teixeira, transformando toda unidade escolar e todo território
-        paulistano em uma cidade educadora: justa, feminista, ecossocialista,
-        antirracista, anti-lgbtfobica e emancipadora.
-      </p>
-
-      <h3>
-        Transporte é direito social
-      </h3>
-      <p>
-        O transporte é um direito social constitucional desde setembro de 2015,
-        tal como a saúde e educação, o que só se concretiza com políticas
-        públicas orientadas pela ótica do combate às desigualdades sociais. Por
-        isso, nosso programa se coloca na perspectiva de que transporte não é
-        mercadoria e propõe uma reorganização do serviço ao mesmo tempo que
-        lutará com força para que o princípio constitucional se concretize tal
-        como o SUS, que é gratuito. Nosso Programa estará pautado na priorização
-        do transporte público, coletivo e ativo (pedestres e ciclistas),
-        impulsionados nas formas de locomoção não centradas no automóvel
-        individual e particular, dando às pessoas condições de definirem e
-        controlarem as políticas públicas em torno da mobilidade urbana de forma
-        democrática.
-      </p>
-
-      <h3>
-        Fortalecimento do SUS
-      </h3>
-      <p>
-        Abordar as desigualdades sociais é abordar a saúde. A comparação dos
-        índices de condições de vida e serviços de saúde entre os bairros de São
-        Paulo é um exemplo concreto disso. A mortalidade e a letalidade são
-        muito maiores na periferia quando comparada ao centro. A reestruturação
-        desastrada e enxugamento da gestão Bruno Covas contraria o
-        fortalecimento do SUS e o planejamento público, realizando uma
-        privatização da gestão de todos os espaços assistenciais ao
-        desconsiderar as necessidades em saúde. Vamos reverter essa lógica.
+        Depois de 2008, os países redescobriram a importância do papel do Estado para que a economia cresça, principalmente em momento de crise. Hoje, as nossas empresas nacionais servem ao interesse de poucos acionistas, para fins de acumulação privada, inclusive estrangeira. Um exemplo é a Política de Preços da Petrobrás que distribui renda dos mais pobres, que compram gasolina cara na bomba, enquanto os mais ricos acumulam ações da estatal. Retomar nossas empresas e torná-las públicas significa recuperar a responsabilidade do Estado na garantia de empregos e direitos para o povo brasileiro.
       </p>
 
     </div>
@@ -242,70 +159,34 @@
   <article id="home__knowMore" class="home__knowMore">
     <div class="container" id="donation-wrap">
       <h2>
-        Conheça os candidatos
+        Conheça o candidato
       </h2>
 
-      <p>
-        <strong>Guilherme Boulos</strong> é professor, ativista social do
-        Movimento dos Trabalhadores Sem Teto (MTST) e da Frente Povo Sem Medo.
-        Foi candidato a Presidência da República pelo PSOL em 2018, sendo o mais
-        jovem a postulante ao cargo na história do Brasil. Sua atuação é marcada
-        na luta contra as desigualdades e por um novo modelo de sociedade.
-      </p>
-      <p>
-        Aos 20 anos, deixou sua casa para morar e atuar em uma ocupação sem
-        teto. Liderança social consolidada, é formado em Filosofia pela USP,
-        especializado em Psicanálise pelo Cogeae/PUC e Mestre em Psiquiatria
-        pela USP. Já deu aulas na rede pública de ensino do Estado de São Paulo
-        e em várias Instituições. Atualmente, ministra Cursos de Extensão na
-        Escola de Sociologia e Política (ESP) e Cursos Livres pelo Instituto
-        Democratize, iniciativa que coordena.
-      </p>
-      <p>
-        Sua atuação rendeu o prêmio Santos Dias de Direitos Humanos, concedido
-        pela Assembléia Legislativa de São Paulo em 2017, além da Medalha do
-        Mérito Legislativo em 2016, concedida pela Câmara dos Deputados em
-        Brasília, dentre outros.
-      </p>
-      <p>
-        Após as eleições, retomou sua atividade como professor e sua atuação no
-        MTST e na Povo Sem Medo e segue como uma das lideranças sociais de
-        oposição ao Governo Bolsonaro.
-      </p>
+      <p>Guilherme Boulos é professor, ativista social do Movimento dos
+      Trabalhadores Sem Teto (MTST) e da Frente Povo Sem Medo. Concorreu no
+      primeiro e segundo turno à Prefeitura de São Paulo em 2020 e à Presidência
+      da República pelo PSOL em 2018, sendo o mais jovem a postulante ao cargo
+      na história do Brasil.</p>
 
-      <p>
-        É pai da Sofia e da Laura e marido da Natalia.
-      </p>
+      <p>Sua atuação é marcada na luta contra as desigualdades e por um novo
+      modelo de sociedade. Aos 20 anos, deixou sua casa para morar e atuar em
+      uma ocupação sem teto. Liderança social consolidada, é formado em
+      Filosofia pela USP, especializado em Psicanálise pelo Cogeae/PUC e Mestre
+      em Psiquiatria pela USP. Já deu aulas na rede pública de ensino do Estado
+      de São Paulo e em várias Instituições.</p>
 
-      <p>
-        <strong>Luiza Erundina</strong> já governou a maior cidade da América
-        Latina, sendo Prefeita de São Paulo entre os anos de 1989 e 1992. Hoje,
-        está em seu 6º mandato de deputada federal. Tem atuado em defesa da
-        classe trabalhadora, das minorias e dos excluídos.
-      </p>
-      <p>
-        Nos mandatos que exerceu, foram apresentados mais de 80 projetos em
-        defesa da Mulher, das Gestantes, das Crianças e Adolescentes, da Cultura
-        e dos Direitos Humanos. Dentre as proposições, nove já viraram leis,
-        além de uma emenda à Constituição.
-      </p>
-      <p>
-        Na atual legislatura, atua na coordenação da Frente Parlamentar pela
-        Liberdade de Expressão e o Direito à Comunicação com participação
-        popular, que reúne parlamentares e representantes da sociedade civil
-        para assegurar o exercício da liberdade de expressão e o direito à
-        comunicação.
-      </p>
-      <p>
-        Faz parte da Comissão de Ciência e Tecnologia, Comunicação e Informática
-        (CCTCI), da Comissão de Legislação Participativa, (CLP) da qual foi sua
-        primeira presidente, e integra a Comissão de Direitos Humanos e Minorias
-        (CDHM).
-      </p>
-      <p>
-        Luiza Erundina representa  ética e luta por dignidade do povo de São
-        Paulo.
-      </p>
+      <p>Atualmente, ministra Cursos de Extensão na Escola de Sociologia e
+      Política (ESP) e Cursos Livres pelo Instituto Democratize, iniciativa que
+      coordena. Sua atuação rendeu o prêmio Santos Dias de Direitos Humanos,
+      concedido pela Assembléia Legislativa de São Paulo em 2017, além da
+      Medalha do Mérito Legislativo em 2016, concedida pela Câmara dos Deputados
+      em Brasília, dentre outros.</p>
+
+      <p>Após as eleições, retomou sua atividade como professor e sua atuação no
+      MTST e na Povo Sem Medo e segue como uma das lideranças sociais de
+      oposição ao Governo Bolsonaro.</p>
+
+      <p>É pai da Sofia e da Laura e marido da Natalia.</p>
 
     </div>
   </article>
@@ -440,10 +321,9 @@
 <script>
 // @ is an alias to /src
 import Payment from '@/components/Payment.vue';
+import { root } from '@/data/goals.json';
 // eslint-disable-next-line
 import AnimatedNumber from 'animated-number-vue';
-
-import { root } from '@/data/goals.json';
 
 export default {
   data() {

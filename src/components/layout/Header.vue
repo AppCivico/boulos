@@ -50,23 +50,19 @@
     <div id="home__greetings">
       <div class="site-label">
         <h1>
-          Outro <span>Brasil</span> é possível
+          Um novo <span>Congresso Nacional</span> é possível
         </h1>
-        <h1>
-          e ele pode começar em
-          <span>São Paulo</span>
-        </h1>
+
         <h2>
-          Vamos nos tornar a capital dos direitos e da esperança
+          Vamos eleger <span>Guilherme Boulos</span> como o deputado federal
+          mais votado de SP e garantir a retomada de direitos do povo.
         </h2>
-        <a href="#doar" class="call-to-action">
-          <span>#</span>Vira<span class="heavy">SP</span>
-        </a>
+
         <a href="#doar" class="call-to-action">
           <span>#</span>doe<span class="heavy">Boulos</span>
         </a>
         <a href="#doar" class="call-to-action">
-          <span>#</span>doe<span class="heavy">Erundina</span>
+          <span>#</span>pra<span class="heavy">cima</span>deles
         </a>
       </div>
     </div>
