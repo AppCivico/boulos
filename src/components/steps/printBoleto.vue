@@ -23,7 +23,7 @@
       <ul id="wrap-share">
       <li>
         <a class="twitter"
-          href="https://twitter.com/intent/tweet?text=Eu%20apoio%20Boulos%20e%20Erundina%2C%20com%20honestidade%20e%20coragem%20para%20virar%20o%20jogo%20em%20SP.%20Fa%C3%A7a%20parte%20voc%C3%AA%20tamb%C3%A9m!%20https%3A%2F%2Fdoeboulos.com%2F%3Fref%3Dcompartilhamento">Compartilhar</a>
+          href="https://twitter.com/intent/tweet?text=Eu%20apoio%20Boulos%20%2C%20com%20honestidade%20e%20coragem%20para%20virar%20o%20jogo%20em%20SP.%20Fa%C3%A7a%20parte%20voc%C3%AA%20tamb%C3%A9m!%20https%3A%2F%2Fdoeboulos.com%2F%3Fref%3Dcompartilhamento">Compartilhar</a>
       </li>
       <li>
         <a target="_blank"
