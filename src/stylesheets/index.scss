@@ -1,8 +1,7 @@
 @charset 'UTF-8';
 
 // 2. Vendors
-@import
-'../../node_modules/modularscale-sass/stylesheets/modularscale';
+@import 'vendor/modularscale';
 
 // 1. Configuration and helpers
 @import

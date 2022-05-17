@@ -9,19 +9,18 @@
 *,
 ::before,
 ::after {
-  background-repeat: no-repeat;
-
   box-sizing: inherit;
 
   tab-size: inherit;
+
+  background-repeat: no-repeat;
 }
 
 /* User interaction (https://www.w3.org/TR/html5/editing.html)
 ========================================================================== */
 ::selection {
-  text-shadow: none;
-
   color: palette('selection', 'foreground');
+  text-shadow: none;
 
   background-color: palette('selection', 'background');
 }
@@ -318,7 +317,6 @@ video > source {
 .ie:not(.ie6-8),
 object > img {
   position: relative;
-
   z-index: layer('below');
 
   font-size: 1em;
@@ -371,9 +369,8 @@ a {
 
   font-size: 100%;
 
-  vertical-align: baseline;
-
   color: palette('anchor');
+  vertical-align: baseline;
 
   @include on-event {
     text-decoration: underline;

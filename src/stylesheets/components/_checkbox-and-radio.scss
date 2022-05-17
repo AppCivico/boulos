@@ -1,3 +1,4 @@
+@use 'sass:math';
 /* checkboxes and radio buttons
 ---------------------------------------------------------------------------- */
 /**
@@ -205,8 +206,8 @@ fieldset ul {
 
   @media screen and (min-width: breakpoint('tablet')) {
     @include inline-block-wrapper;
-    margin-right: $gutter / -4;
-    margin-left: $gutter / -4;
+    margin-right: math.div($gutter, -4);
+    margin-left: math.div($gutter, -4);
   }
 }
 
@@ -216,14 +217,14 @@ fieldset ul {
   font-size: ms(0);
   display: block;
   margin: 0;
-  padding-top: $gutter / 4;
-  padding-bottom: $gutter / 4;
+  padding-top: math.div($gutter, 4);
+  padding-bottom: math.div($gutter, 4);
 
   @media screen and (min-width: breakpoint('tablet')) {
     @include inline-block-item;
     width: 50%;
-    padding-right: $gutter / 4;
-    padding-left: $gutter / 4;
+    padding-right: math.div($gutter, 4);
+    padding-left: math.div($gutter, 4);
   }
 
   &::before {

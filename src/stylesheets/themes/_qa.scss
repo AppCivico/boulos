@@ -19,12 +19,16 @@
     top: 0;
     right: 0;
     left: 0;
-    display: block;
     z-index: layer('modal');
+
+    display: block;
+
     padding: 1em;
+
     font-weight: font-weight('heavy');
-    text-align: center;
     color: palette('white');
+    text-align: center;
+
     background-color: palette('debug');
 
     @content;
@@ -90,16 +94,16 @@ a {
 table table {
   @extend %error;
 
+  display: block !important;
+
   @include alert {
     content: 'Tables shouldn\'t be nested.' !important;
   }
-
-  display: block !important;
 }
 
 /* Unaccessible Images */
 /*
-*  @see  http://www.userfocus.co.uk/articles/alt_text.html
+*	@see	http://www.userfocus.co.uk/articles/alt_text.html
 */
 img:not([alt]) {
   @extend %error;
@@ -258,7 +262,7 @@ button:not([type]) {
 [start],
 [vlink],
 [vspace],
-[width]  {
+[width] {
   @include alert {
     content: 'Deprecated Attribute. Use CSS instead.' !important;
   }
@@ -291,13 +295,14 @@ link[rel='stylesheet'][type='text/css'] {
     // @see https://mathiasbynens.be/notes/css-hidden-elements
     head {
       display: block !important;
+
       overflow: visible !important;
     }
 
     head * {
       display: none;
+    }
   }
-}
 }
 
 
@@ -365,8 +370,6 @@ aside {
 }
 
 
-
-
 /**
 * Helpers
 ----------------------------------------------------------------------
@@ -412,7 +415,6 @@ textarea {
     }
   }
 }
-
 
 
 /**
@@ -466,7 +468,6 @@ span {
     }
   }
 }
-
 
 
 li {
