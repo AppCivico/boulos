@@ -1,3 +1,4 @@
+@use 'sass:math';
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass functions.
 // -----------------------------------------------------------------------------
@@ -39,7 +40,7 @@
 /// @link http://stackoverflow.com/a/12335841
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
+    @return math.div($number, $number * 0 + 1);
   }
   @return $number;
 }
@@ -53,7 +54,7 @@
   $x1: $x0;
 
   @for $i from 1 through 10 {
-    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x1: $x0 - math.div($x0 * $x0 - abs($r), 2 * $x0);
     $x0: $x1;
   }
 
@@ -140,10 +141,10 @@
   $blue-component: blue($color);
 
   // Calculate a brightness value in 3d color space between 0 and 255
-  $number: _sqrt((($red-component * $red-component * $red-magic-number) + ($green-component * $green-component * $green-magic-number) + ($blue-component * $blue-component * $blue-magic-number)) / $brightness-divisor);
+  $number: _sqrt(math.div(($red-component * $red-component * $red-magic-number) + ($green-component * $green-component * $green-magic-number) + ($blue-component * $blue-component * $blue-magic-number), $brightness-divisor));
 
   // Convert to percentage and return
-  @return 100% * $number / 255;
+  @return math.div(100% * $number, 255);
 }
 
 /// Calculate the luminance for a color.
@@ -210,7 +211,7 @@
 
   @while $alpha < 1 and ($r < 0 or $g < 0 or $b < 0 or $r > 255 or $g > 255 or $b > 255) {
     $alpha: $alpha + 1/256;
-    $inv: 1 / $alpha;
+    $inv: math.div(1, $alpha);
     $r: $r2 * $inv + $r1 * (1 - $inv);
     $g: $g2 * $inv + $g1 * (1 - $inv);
     $b: $b2 * $inv + $b1 * (1 - $inv);
@@ -421,6 +422,7 @@ $_default-text-color--light: palette('text', 'light');
   $default-layers: (
     'modal': 5000,
     'dropdown': 4000,
+    'overlay': 3000,
     'default': 1,
     'below': -1,
   );
@@ -620,7 +622,7 @@ $_default-text-color--light: palette('text', 'light');
   $grid-image: $color 0, $color $gutter, transparent $gutter;
 
   @for $i from 1 to $columns {
-    $multiplier: $i / $columns;
+    $multiplier: math.div($i, $columns);
     $grid-image: append($grid-image, ( transparent calc(#{100% * $multiplier} - #{$gutter * $multiplier }), $color calc(#{100% * $multiplier} - #{$gutter * $multiplier }), $color calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)}), transparent calc(#{100% * $multiplier} + #{$gutter * (1 - $multiplier)})), comma);
   }
 

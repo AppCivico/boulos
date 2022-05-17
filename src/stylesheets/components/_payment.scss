@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .donation-form h2 {
   color: palette('white');
   font-size: ms(3);
@@ -91,8 +93,8 @@
 .form-wrapper {
   @media screen and (min-width: breakpoint('tablet')) {
     @include inline-block-wrapper;
-    margin-right: $gutter / -4;
-    margin-left: $gutter / -4;
+    margin-right: math.div($gutter, -4);
+    margin-left: math.div($gutter, -4);
   }
 
 }
@@ -101,8 +103,8 @@
   text-align: right;
 
   @include inline-block-wrapper;
-  margin-right: $gutter / -4;
-  margin-left: $gutter / -4;
+  margin-right: math.div($gutter, -4);
+  margin-left: math.div($gutter, -4);
 }
 
 .input-wrapper.half {
@@ -114,8 +116,8 @@
   @media screen and (min-width: breakpoint('tablet')) {
     @include inline-block-item;
     width: 50%;
-    padding-right: $gutter / 4;
-    padding-left: $gutter / 4;
+    padding-right: math.div($gutter, 4);
+    padding-left: math.div($gutter, 4);
   }
 }
 
@@ -128,7 +130,7 @@
   @media screen and (min-width: breakpoint('tablet')) {
     @include inline-block-item;
     width: 33%;
-    padding-right: $gutter / 4;
-    padding-left: $gutter / 4;
+    padding-right: math.div($gutter, 4);
+    padding-left: math.div($gutter, 4);
   }
 }

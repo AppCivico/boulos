@@ -1,3 +1,7 @@
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
@@ -77,11 +81,9 @@
 @mixin alt-ampersand {
   .amp { // sass-lint:disable-line no-qualifying-elements
     @include _italic-overflow;
-
+    font-family: $ampersand-font-stack;
     font-size: 2em;
     line-height: 0.25;
-    font-family: $ampersand-font-stack;
-
     vertical-align: middle;
 
     @content;
@@ -163,9 +165,8 @@
 @mixin inline-block-wrapper {
   // sass-lint:disable-block no-duplicate-properties
   $_inline-block-font-stack: 'FreeSans', 'Arimo', 'Droid Sans', 'Helvetica', 'Arial', sans-serif;
-
-  font-size: 0;
   font-family: $_inline-block-font-stack;
+  font-size: 0;
   /* Webkit: collapse white-space between units */
   letter-spacing: -0.31em;
   /* reset IE < 8 */
@@ -212,15 +213,16 @@
 @mixin inline-block-item($align: 'top', $font-size:  1rem) {
   display: inline-block;
 
-  font-size: $font-size;
   font-family: $text-font-stack;
+  font-size: $font-size;
   letter-spacing: normal;
-  word-spacing: normal;
-
-  text-rendering: auto;
   vertical-align: unquote($align);
 
   zoom: 1;
+
+  word-spacing: normal;
+
+  text-rendering: auto;
 }
 
 /// Helper for an table grid layout.
@@ -323,14 +325,12 @@
 ///
 @mixin icon-font {
   @include _font-smoothing(true);
-
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
   /* font-awesome pixel perfection is at 14px and multiples of 14 */
   font-size: 14px; // sass-lint:disable-line property-units
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
   line-height: 1;
-
   text-transform: none;
 
   speak: none;
@@ -353,11 +353,11 @@
     /* 2 */
     display: table;
 
-    /* 1 */
-    content: '';
-
     /* 3 */
     border-collapse: collapse;
+
+    /* 1 */
+    content: '';
   }
 
   &::after {
@@ -375,9 +375,8 @@
   &,
   &:link,
   &:visited {
-    text-decoration: inherit;
-
     color: inherit;
+    text-decoration: inherit;
 
     @content;
   }
@@ -511,8 +510,10 @@
 
   &::after {
     display: inline-block;
+
     width: 100%;
     height: 0;
+
     content: '';
   }
 }
@@ -586,49 +587,52 @@ $no-viewport: false !default;
   $fallback-units: ();
 
   @each $value in $values {
-    @if type-of($value) == number {
-      @if str-index(unit($value), 'v') != null {
+    @if meta.type-of($value) == number {
+      @if string.index(math.unit($value), 'v') != null {
         @if $fallbacks == null {
           @error 'fallback values, the 3rd parameter, are required for viewport units';
         } @else {
-          $fallback-units: join($fallback-units, 'viewport');
+          $fallback-units: list.join($fallback-units, 'viewport');
         }
       } @else {
-        $fallback-units: join($fallback-units, unit($value));
+        $fallback-units: list.join($fallback-units, math.unit($value));
       }
     } @else if $fallbacks == null {
       @error 'fallback values, the 3rd parameter, are required for everything except `rem` numbers';
-    } @else if str-index($value, 'calc') {
-      $fallback-units: join($fallback-units, 'calc');
-    } @else if str-index($value, 'gradient') {
-      $fallback-units: join($fallback-units, 'gradient');
+    } @else if meta.type-of($value) == calculation {
+      $fallback-units: list.join($fallback-units, 'calc');
+    } @else if string.index($value, 'gradient') {
+      $fallback-units: list.join($fallback-units, 'gradient');
     }
 
     @if $fallbacks == null {
-      @if type-of($value) == number and unit($value) == 'rem' {
-        $fallback-values: join($fallback-values, $value / 1rem * 16px);
+      @if meta.type-of($value) == number and math.unit($value) == 'rem' {
+        $fallback-values: list.join($fallback-values, math.div($value, 1rem) * 16px);
       } @else {
-        $fallback-values: join($fallback-values, $value);
+        $fallback-values: list.join($fallback-values, $value);
       }
     }
   }
 
   // sass-lint:disable-block indentation brace-style
-  @if (index($fallback-units, 'alpha') != null and $no-alpha != false) or
-      (index($fallback-units, 'calc') != null and $no-calc != false) or
-      (index($fallback-units, 'gradient') != null and $no-gradient != false) or
-      (index($fallback-units, 'rem') != null and $no-rem != false) or
-      (index($fallback-units, 'viewport') != null and $no-viewport != false)
-  {
+  @if (list.index($fallback-units, 'alpha') != null and $no-alpha != false) or
+    (list.index($fallback-units, 'calc') != null and $no-calc != false) or
+    (list.index($fallback-units, 'gradient') != null and $no-gradient != false) or
+    (list.index($fallback-units, 'rem') != null and $no-rem != false) or
+    (list.index($fallback-units, 'viewport') != null and $no-viewport != false) {
     #{$property}: #{$fallback-values};
   }
 
-  @if (index($fallback-units, 'alpha') != null and $no-alpha != true) or
-      (index($fallback-units, 'calc') != null and $no-calc != true) or
-      (index($fallback-units, 'gradient') != null and $no-gradient != true) or
-      (index($fallback-units, 'rem') != null and $no-rem != true) or
-      (index($fallback-units, 'viewport') != null and $no-viewport != true)
-  {
+  @if (list.index($fallback-units, 'alpha') != null and $no-alpha != true) or
+    (list.index($fallback-units, 'calc') != null and $no-calc != true) or
+    (list.index($fallback-units, 'gradient') != null and $no-gradient != true) or
+    (list.index($fallback-units, 'rem') != null and $no-rem != true) or
+    (list.index($fallback-units, 'viewport') != null and $no-viewport != true) {
+    #{$property}: #{$values};
+  }
+
+  @if ($fallback-units == () and $values) {
+    #{$property}: #{$fallback-values};
     #{$property}: #{$values};
   }
 }
@@ -731,8 +735,10 @@ $no-viewport: false !default;
   }
 
   z-index: 2;
+
   width: 0;
   height: 0;
+
   border-#{_opposite-direction($direction)}: ($size * 1.5) solid $color; // sass-lint:disable-line property-sort-order
 
   $perpendicular-borders: $size solid transparent;
@@ -821,9 +827,9 @@ $no-viewport: false !default;
 @mixin aspect-ratio ($ratio) {
   @if type-of($ratio) != list {
     @error '`aspect-ratio` function expecting a list for `$ratio`; `#{type-of($ratio)}` given.';
-  } @elseif length($ratio) == 3 and nth($ratio, 2) != 'x' {
+  } @else if length($ratio) == 3 and nth($ratio, 2) != 'x' {
     @error 'when using 3 values length list, `aspect-ratio` function expects the second to be `x`; #{nth($ratio, 2)} given.';
-  } @elseif length($ratio) < 2 and length($ratio) > 3 {
+  } @else if length($ratio) < 2 and length($ratio) > 3 {
     @error '`aspect-ratio` function expecting a list with 2 or 3 items for `$ratio`; `#{length($ratio)}` given.';
   }
 
@@ -832,13 +838,13 @@ $no-viewport: false !default;
 
   @if type-of($w) != 'number' {
     @error 'the value sent to `width` isn\'t a `number`.';
-  } @elseif not unitless($w) {
+  } @else if not unitless($w) {
     @error 'the value sent to `width` **must** be unitless.';
   }
 
   @if type-of($h) != 'number' {
     @error 'the value sent to `height` isn\'t a `number`.';
-  } @elseif not unitless($h) {
+  } @else if not unitless($h) {
     @error 'the value sent to `height` **must** be unitless.';
   }
 
@@ -846,16 +852,15 @@ $no-viewport: false !default;
 
   &::before {
     float: left;
-
-    padding-top: ($h / $w * 100%);
+    padding-top: math.div($h, $w) * 100%;
 
     content: '';
   }
 
   &::after {
-    clear: both;
-
     display: table;
+
+    clear: both;
 
     content: '';
   }
@@ -871,7 +876,6 @@ $no-viewport: false !default;
   $line-length-lower-gate: map-get($line-lengths, 'min'),
   $line-length-upper-gate: map-get($line-lengths, 'max')
 ) {
-
   @if $font-size == null {
     @error 'the `font-size` of the element **must** be provided to calculate the media query limits.';
   } @else if unit($font-size) == '%' {

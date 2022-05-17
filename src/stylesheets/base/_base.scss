@@ -9,19 +9,18 @@
 *,
 ::before,
 ::after {
-  background-repeat: no-repeat;
-
   box-sizing: inherit;
 
   tab-size: inherit;
+
+  background-repeat: no-repeat;
 }
 
 /* User interaction (https://www.w3.org/TR/html5/editing.html)
 ========================================================================== */
 ::selection {
-  text-shadow: none;
-
   color: palette('selection', 'foreground');
+  text-shadow: none;
 
   background-color: palette('selection', 'background');
 }
@@ -318,7 +317,6 @@ video > source {
 .ie:not(.ie6-8),
 object > img {
   position: relative;
-
   z-index: layer('below');
 
   font-size: 1em;
@@ -364,6 +362,7 @@ a > picture {
 
 /* links
 ============================================================================ */
+.like-a__link,
 a {
   // sass-lint:disable-block property-sort-order
   padding: 0;
@@ -371,9 +370,11 @@ a {
 
   font-size: 100%;
 
+  color: palette('anchor');
   vertical-align: baseline;
 
-  color: palette('anchor');
+  background: transparent;
+  border: 0;
 
   @include on-event {
     text-decoration: underline;
@@ -429,6 +430,10 @@ a {
   &[target='_blank'],
   &[rel='external'] {
   }
+}
+
+.like-a__link {
+  cursor: pointer;
 }
 
 /* Contact info and addresses

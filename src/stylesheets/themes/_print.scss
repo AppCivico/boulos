@@ -5,16 +5,14 @@
    * @see http://www.merttol.com/articles/css/too-light-for-print.html
    */
   * {
-    text-shadow: none !important;
-
     color: rgb(0, 0, 0) !important; /* Black prints faster: h5bp.com/s */
+    text-shadow: none !important;
 
     background: transparent !important;
   }
 
   body {
     font: 12pt/1.33333 'Palatino Linotype', Palatino, 'Times New Roman', Times, serif;
-
     color: rgb(0, 0, 0);
 
     background: rgb(255, 255, 255) none;
@@ -24,21 +22,17 @@
   a:link,
   a:visited {
     font-weight: bold;
-
-    text-decoration: underline;
-
     color: rgb(68, 68, 68) !important;
+    text-decoration: underline;
 
     background: transparent;
   }
 
   a[href]::after {
     font-style: italic;
-
+    color: rgb(51, 51, 51);
     word-wrap: break-word;
     white-space: pre-wrap;
-
-    color: rgb(51, 51, 51);
 
     content: ' (' attr(href) ') ';
   }
@@ -111,9 +105,7 @@
 
   [role='main'] {
     float: none !important;
-
     width: auto;
-
     padding: 0;
     margin: 0 5%;
 

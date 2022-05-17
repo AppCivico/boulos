@@ -14,38 +14,40 @@
  */
 
 %button-reset {
-  @extend %os-element-reset;
+  &:not([class*='like-a__']) {
+    @extend %os-element-reset;
 
-  width: auto; /* 3 */
+    width: auto; /* 3 */
 
-  padding: 1px 6px; /* 6 */ // sass-lint:disable-line property-units
+    padding: 1px 6px; /* 6 */ // sass-lint:disable-line property-units
 
-  overflow: visible; /* 3 */
+    overflow: visible; /* 3 */
 
-  text-indent: 0;
-  white-space: inherit;
+    text-indent: 0;
+    white-space: inherit;
 
-  cursor: pointer; /* 2 */
+    cursor: pointer; /* 2 */
 
-  background-color: palette('button'); /* 5 */
+    background-color: palette('button'); /* 5 */
 
-  box-sizing: inherit;
+    box-sizing: inherit;
 
-  appearance: button; /* 1 */
+    appearance: button; /* 1 */
 
-  &::-moz-focus-inner {
-    /* 4 */
-    padding: 0;
+    &::-moz-focus-inner {
+      /* 4 */
+      padding: 0;
 
-    border: 0;
-  }
+      border: 0;
+    }
 
-  &:hover,
-  &:focus {
-    background-color: palette('button', 'focus');
-  }
+    &:hover,
+    &:focus {
+      background-color: palette('button', 'focus');
+    }
 
-  &:active {
+    &:active {
+    }
   }
 }
 
@@ -60,6 +62,7 @@ html [type='button'] {
   @extend %button-reset;
 }
 
+.like-a-button,
 button,
 [role='button'],
 [type='button'] {

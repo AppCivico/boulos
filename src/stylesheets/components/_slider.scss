@@ -1,3 +1,4 @@
+@use 'sass:math';
 
 @mixin range-track ($height, $thumb-height, $bg-fallback: null) {
   &::-webkit-slider-runnable-track {
@@ -22,12 +23,13 @@
     width: 100%;
 
     color: transparent;
+
     background: transparent;
 
     @if unit($height) != unit($thumb-height) {
       border-width: calc((#{$thumb-height} - #{$height}) / 2) 0;
     } @else {
-      border-width: (($thumb-height - $height) / 2) 0;
+      border-width: math.div($thumb-height - $height, 2) 0;
     }
 
     border-color: transparent;
@@ -66,7 +68,7 @@
     @if unit($height) != unit($track-height) {
       margin-top: calc((#{$height} - #{$track-height}) / -2);
     } @else {
-      margin-top: ($height - $track-height) / -2;
+      margin-top: math.div($height - $track-height, -2);
     }
 
     appearance: none;
@@ -91,7 +93,7 @@
 @mixin vertical-input-range {
   writing-mode: bt-lr;
 
-  -webkit-appearance: slider-vertical; // sass-lint:disable-line no-vendor-prefixes
+  appearance: slider-vertical; // sass-lint:disable-line no-vendor-prefixes
 }
 
 /**
@@ -101,7 +103,6 @@
   display: block;
 
   width: 100%; /* 1 */
-
   padding: 0;
 
   vertical-align: middle;
@@ -123,7 +124,6 @@
 
   @include range-thumb ($height: 1.5rem, $track-height: 0.125rem) { // sass-lint:disable-line mixins-before-declarations
     background-color: palette('button', 'slider');
-
     border: 0;
   }
 

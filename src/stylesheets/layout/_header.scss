@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .site-header {
   position: relative;
 
@@ -96,11 +98,11 @@
   &:first-child span {
     color: transparent;
 
-    -webkit-text-stroke-width: $stroke / 3;
+    -webkit-text-stroke-width: math.div($stroke, 3);
     -webkit-text-stroke-color: palette('header', 'white');
 
     @media screen and (min-width: breakpoint('tablet')) {
-      -webkit-text-stroke-width: $stroke / 2;
+      -webkit-text-stroke-width: math.div($stroke, 2);
     }
 
     @media screen and (min-width: breakpoint('wide')) {
