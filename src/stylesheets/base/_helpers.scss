@@ -59,7 +59,7 @@
   }
 }
 
-img:not([src$='.png']):not([src$='.gif']),
+img:not([src$='.png']):not([src$='.gif']):not([src$='.svg']),
 embed {
   @extend %loading-bg;
 

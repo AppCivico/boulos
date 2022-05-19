@@ -300,7 +300,7 @@
 
   <div class="candidate-footer">
       <img
-        src="../assets/images/icons/Boulos_Erundina_Logo_Coligacao_21.png"
+        src="../assets/images/icons/logo__slogan.svg"
         alt="Logotipo campanha"
         class="candidate-footer__logo">
       <p>
