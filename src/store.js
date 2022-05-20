@@ -14,7 +14,7 @@ export default new Vuex.Store({
     donation: {},
     iugu: {},
     messages: [],
-    username: {},
+    donor_names: {},
     candidate: {},
     donations: [],
     donationsLoading: true,
@@ -34,8 +34,58 @@ export default new Vuex.Store({
     lastDonationMarker: '',
     donationPlatforms: [],
     donationSources: [],
+    offices: {},
+    projects: [],
+
+
+    device: '',
+    statusPaymentRequest: {},
+    paymentError: '',
+
+    content: '',
+
+    validation: {
+      errors: {
+        email: '',
+        zip_code: '',
+        state: '',
+        city: '',
+        street: '',
+        district: '',
+      },
+    },
+
+    candidateId: '',
+    userData: {},
+    receipt: {},
+    deposit: {
+      donations: [],
+      candidate: {
+        id: 0,
+        avatar: '',
+        popular_name: '',
+      },
+      meta: {
+        created_at: '',
+      },
+    },
   },
+
   mutations: {
+    storeToState: (state, { name, data }) => {
+      state[name] = data;
+    },
+
+    appendToStateList: (state, { name, payload }) => {
+      state[`hasMore:${name}`] = payload.has_more || false;
+
+      if (payload[name].length) {
+        state[`lastMarker:${name}`] = payload[name][payload[name].length - 1]._marker;
+      }
+
+      state[name] = state[name].concat(payload[`candidate_${name}`] || payload[name]);
+    },
+
     SET_PAYMENT_STEP(state, { data }) {
       state.paymentStep = data.step;
     },
@@ -48,8 +98,8 @@ export default new Vuex.Store({
     SET_REFERRAL(state, referral) {
       state.referral = referral;
     },
-    SET_USERNAME(state, { user }) {
-      state.username = user;
+    SET_DONOR_NAMES(state, { user }) {
+      state.donor_names = user;
     },
     SET_DONATION(state, { donation }) {
       state.donation = donation;
@@ -174,8 +224,8 @@ export default new Vuex.Store({
     CHANGE_PAYMENT_STEP({ commit }, data) {
       commit('SET_PAYMENT_STEP', { data });
     },
-    SAVE_USERNAME({ commit }, user) {
-      commit('SET_USERNAME', { user });
+    SAVE_DONOR_NAMES({ commit }, user) {
+      commit('SET_DONOR_NAMES', { user });
     },
     ADD_TOKEN({ commit }, data) {
       commit('SET_TOKEN', { token: data });
@@ -206,6 +256,7 @@ export default new Vuex.Store({
       commit('SET_PAYMENT_DATA', { paymentData: data });
     },
     GET_DONATION({ commit }, data) {
+      console.debug('store::GET_DONATION::data', data);
       return new Promise((resolve, reject) => {
         const rejectionByTimeout = setTimeout(() => {
           clearTimeout(rejectionByTimeout);
@@ -268,7 +319,7 @@ export default new Vuex.Store({
             commit('SET_MESSAGES', { messages: response.data.ui.messages });
             commit('SET_PAYMENT_STEP', { data });
 
-            resolve();
+            resolve(response);
           },
           (err) => {
             console.error(err.response || err.message || err);
@@ -292,8 +343,8 @@ export default new Vuex.Store({
             resolve();
           },
           (err) => {
-            reject(err.response || err.message || err);
             console.error(err);
+            reject(err.response || err.message || err);
           },
         );
       });
@@ -301,15 +352,19 @@ export default new Vuex.Store({
     GET_DONATIONS({ commit, state }, id) {
       state.donationsLoading = true;
 
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         axios.get(`${CONFIG.api}/public-api/candidate-donations/${id}/${state.lastDonationMarker}`)
           .then((response) => {
-            resolve(response.data.donations);
             commit('SET_DONATIONS', response.data);
             if (response.data.platforms) {
               commit('SET_PLATFORMS', response.data.platforms);
             }
             state.donationsLoading = false;
+            resolve(response.data.donations);
+          },
+          (err) => {
+            reject(err.response || err.message || err);
+            console.error(err);
           });
       });
     },
@@ -333,54 +388,48 @@ export default new Vuex.Store({
     UPDATE_DONATIONS({
       commit,
     }, id) {
-      setInterval(() => {
-        return new Promise((resolve) => {
-            .then((response) => {
-              resolve(response.data.donations);
-              commit('SET_RECENT_DONATIONS', response.data);
-            });
-        });
-      }, 1000 * 10);
+      setInterval(() => new Promise((resolve) => {
         axios.get(`${CONFIG.api}/public-api/candidate-donations/${id}`)
+          .then((response) => {
+            resolve(response.data.donations);
+            commit('SET_RECENT_DONATIONS', response.data);
+          });
+      }), 1000 * 10);
     },
     UPDATE_DONATIONS_SUMMARY({
       commit,
     }, id) {
-      setInterval(() => {
-        return new Promise((resolve, reject) => {
-          axios.get(`${api}/public-api/candidate-donations-summary/${id}`).then(
-            (response) => {
-              commit('SET_DONATIONS_SUMMARY', response.data.candidate);
-              commit('SET_DONATIONS_TODAY', response.data.today);
-              if (response.data.recent_donation) {
-                commit('SET_RECENT_DONATION', response.data.recent_donation);
-              }
-              if (response.data.platforms) {
-                commit('SET_SOURCES', response.data.platforms);
-              }
-              resolve();
-            },
-            (err) => {
-              reject(err.response || err.message || err);
-              console.error(err);
-            },
-          );
+      setInterval(() => new Promise((resolve, reject) => {
+        axios.get(`${CONFIG.api}/public-api/candidate-donations-summary/${id}`).then(
+          (response) => {
+            commit('SET_DONATIONS_SUMMARY', response.data.candidate);
+            commit('SET_DONATIONS_TODAY', response.data.today);
+            if (response.data.recent_donation) {
+              commit('SET_RECENT_DONATION', response.data.recent_donation);
+            }
+            if (response.data.platforms) {
+              commit('SET_SOURCES', response.data.platforms);
+            }
+            resolve();
+          },
+          (err) => {
+            reject(err.response || err.message || err);
+            console.error(err);
+          },
+        );
+      }), 1000 * 60);
+    },
+    GET_ADDRESS: ({ commit }, cep) => new Promise((resolve, reject) => {
+      axios
+        .get(`https://api2020vl.appcivico.com/api/cep?cep=${cep}`)
+        .then((response) => {
+          // commit('SET_ADDRESS', response.data);
+          resolve(response.data);
+        })
+        .catch((erro) => {
+          reject(erro);
         });
-      }, 1000 * 60);
-    },
-    GET_ADDRESS: ({ commit }, cep) => {
-      return new Promise((resolve, reject) => {
-        axios
-          .get(`//api2020vl.appcivico.com/api/cep?cep=${cep}`)
-          .then((response) => {
-            // commit('SET_ADDRESS', response.data);
-            resolve(response.data);
-          })
-          .catch((erro) => {
-            reject(erro);
-          });
-      });
-    },
+    }),
     START_DONATION_BOLETO({ commit }, payload) {
       let token = '';
       if (window.localStorage) {
@@ -425,6 +474,8 @@ export default new Vuex.Store({
   getters: {
     generateCandidateObject: (state) => {
       const candidateMerge = {
+        candidate: state.candidate,
+        projects: state.projects,
         donations: state.donations,
       };
       return candidateMerge;

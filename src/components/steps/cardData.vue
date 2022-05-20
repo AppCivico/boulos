@@ -82,7 +82,8 @@
 /* eslint-disable camelcase */
 import creditCardType from 'credit-card-type';
 import { mask } from 'vue-the-mask';
-import { validate, removeAccented } from '../../utilities';
+import { removeAccented, validate } from '../../utilities';
+import VotolegalFP from '../../vendor/loadme';
 
 export default {
   name: 'cardData',
@@ -108,8 +109,8 @@ export default {
     paymentWatingMessage() {
       return this.$store.state.paymentWatingMessage;
     },
-    username() {
-      return this.$store.state.username;
+    donor_names() {
+      return this.$store.state.donor_names;
     },
   },
   methods: {
@@ -124,7 +125,7 @@ export default {
       this.loading = !this.loading;
     },
     validateForm() {
-      this.toggleLoading();
+      this.toggleLoading('Validando dados de pagamento...');
 
       const {
         csc,
@@ -170,26 +171,12 @@ export default {
     saveCard(card) {
       const cc_hash = this.getCardHash(card.number);
 
-      let name = '';
-      let surname = '';
-
-      if (this.name) {
-        const names = this.name.split(' ');
-        name = names.shift();
-        surname = names.join(' ') || '';
-      } else {
-        ({ name, surname } = this.username);
-      }
-
-      name = removeAccented(name);
-      surname = removeAccented(surname);
-
       const cc = Iugu.CreditCard(
         card.number,
         card.validity_month,
         card.validity_year,
-        name,
-        surname,
+        removeAccented(this.donor_names.name),
+        removeAccented(this.donor_names.surname),
         card.csc,
       );
 
@@ -205,6 +192,9 @@ export default {
             id: response.id,
           };
           this.$store.dispatch('START_DONATION', payload)
+            // .then(() => {
+            //   sessionStorage.clear();
+            // })
             .catch((err) => {
               this.toggleLoading();
               this.handleErrorMessage(err);

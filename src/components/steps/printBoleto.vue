@@ -48,8 +48,8 @@ export default {
     };
   },
   computed: {
-    username() {
-      return this.$store.state.username;
+    donor_names() {
+      return this.$store.state.donor_names;
     },
     messages() {
       return this.$store.state.messages;

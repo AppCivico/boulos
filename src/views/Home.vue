@@ -36,12 +36,14 @@
         <p>
           <span class="currency">R$</span>
           <strong class="amount" v-inview="isAmountOnViewport">
-          <template v-if="candidate.total_donated">
+          <template v-if="totalAmount">
             <span>
               <animated-number
-                :value="amountInView ? candidate.total_donated : 0"
+                :value="amountInView ? totalAmount : 0"
                 :formatValue="FormatFixedBRL"
                 :duration="1000"/>
+                <small v-if="centsOfTotal"
+                class="campaign-progress__meta-cents">,{{ centsOfTotal }}</small>
             </span>
           </template>
           <template v-else>0</template>
@@ -75,7 +77,7 @@
         </progress>
 
         <p class="campaign-progress-porcentage">
-          {{ porcentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }},
+          {{ porcentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
           <a
             :href="`#goal-description__${expected}`"
             v-if="summary"
@@ -87,7 +89,7 @@
           <ul>
             <li v-for="(source, i) in donationSources" :key="i">
               <strong class="donations-sources__amount">
-                R$ {{ source.total_donated | formatBRL }}
+                R$ {{ source.total_donated | formatBRLDec }}
               </strong> /
               <em class="donations-sources__donations">
                 {{ source.people_donated }}
@@ -363,6 +365,11 @@ export default {
           0,
         )
         : (this.candidate.total_donated || 0);
+    },
+    centsOfTotal() {
+      const stringOfTotalAmount = String(this.totalAmount);
+      const cents = stringOfTotalAmount.substring(stringOfTotalAmount.length - 2);
+      return cents !== '00' ? cents : '';
     },
     totalDonors() {
       return this.donationSources.length

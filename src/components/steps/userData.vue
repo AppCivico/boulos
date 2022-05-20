@@ -1,25 +1,34 @@
 <template>
   <section id="user-data-payment">
-    <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'">
+    <form @submit.prevent="validateForm()" :aria-busy="loading ? 'true' : 'false'"
+      :data-busy-message="dataBusyMessage">
       <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
 
       <div class="instructions-donation">
-        <p class="instructions" v-if="allowedPaymentMethods.length > 1">Escolha a forma de pagamento</p>
+        <p class="instructions" v-if="allowedPaymentMethods.length > 1">
+          Escolha a forma de pagamento
+        </p>
         <ul class="payment-choices">
           <li class="payment-type" v-if="isPaymentMethodAllowed('credit_card')">
-            <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method" @change="focusNameField()">
+            <input name="payment_method" id="credit_card" value="credit_card"
+              type="radio" v-model="payment_method">
             <label for="credit_card">Cartão de Crédito</label>
           </li>
           <li class="payment-type" v-if="isPaymentMethodAllowed('boleto')">
-            <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method" @change="focusNameField()">
+            <input name="payment_method" id="boleto" value="boleto"
+              type="radio" v-model="payment_method">
             <label for="boleto">Boleto</label>
+          </li>
+          <li class="payment-type" v-if="isPaymentMethodAllowed('pix')">
+            <input name="payment_method" id="pix" value="pix" type="radio" v-model="payment_method">
+            <label for="pix">PIX</label>
           </li>
         </ul>
         <div class="error" v-if="validation.errors.payment_method">
           Selecione uma forma de pagamento
         </div>
       </div>
-      <fieldset>
+      <fieldset v-if="payment_method || formAction !== 'donate'">
         <div class="instructions-donation">
           <p class="instructions">Por favor, informe os seguintes dados:</p>
         </div>
@@ -31,6 +40,7 @@
             ref="nameField"
             type="text"
             name="name"
+            v-focus="formAction !== 'donate' || payment_method"
             v-model="name" required>
           <div class="error" v-if="validation.errors.name">
             {{ validation.errors.name }}
@@ -51,6 +61,7 @@
         </div>
 
         <div
+          v-if="formAction === 'donate'"
           :class="`input-wrapper
           ${validation.errors.cpf ? 'has-error' : ''}`">
           <label for="cpf">CPF</label>
@@ -77,6 +88,7 @@
           </div>
         </div>
       </fieldset>
+      <template v-if="formAction === 'donate' && candidateAmount">
       <p class="subtitle">
         Declaro que minhas doações não ultrapassam 10% dos meus rendimentos
         brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou
@@ -90,6 +102,23 @@
         href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf"
         target="_blank">termos de doação</a>.
       </p>
+        <div
+          v-if="formAction === 'donate' && candidateAmount"
+          class="candidate-amount"
+        >
+          <p>
+            Valor doado
+            <output>
+              R${{ candidateAmount | formatBRLDec }}
+            </output>
+          </p>
+          <p class="helper-text form__disclaimer" v-if="payment_method">
+            Taxa de {{ taxes[payment_method].text }}.
+            Esse valor é destinado a taxas de operação financeira, sistemas de
+            controle anti-fraude, impostos e infraestrutura.
+          </p>
+        </div>
+      </template>
 
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
@@ -105,15 +134,26 @@
 
 <script>
 import { mask } from 'vue-the-mask';
+import { mapMutations, mapState } from 'vuex';
+import CONFIG from '../../config';
 import { validate } from '../../utilities';
+import VotolegalFP from '../../vendor/loadme';
 
 export default {
   name: 'userData',
   directives: {
     mask,
   },
+  props: {
+    formAction: {
+      type: String,
+      default: 'donate',
+    },
+  },
   data() {
     return {
+      taxes: CONFIG.taxes,
+      dataBusyMessage: '',
       loading: false,
       errorMessage: '',
       name: '',
@@ -138,26 +178,35 @@ export default {
     candidate() {
       return this.$store.state.candidate;
     },
-    candidateAmount() {
-      let newAmount = null;
-      if (this.payment_method === 'credit_card') {
-        newAmount = this.amount - (this.amount * 0.074);
-      } else if (this.payment_method === 'boleto') {
-        newAmount = this.amount - this.amount * 0.04;
-        newAmount -= 400;
+    candidateAmount({ amount, taxes, payment_method } = this) {
+      let newAmount = 0;
+
+      if (payment_method && taxes[payment_method]) {
+        newAmount = amount - amount * taxes[payment_method].percent / 100;
+        newAmount -= taxes[payment_method].tax;
       }
       if (newAmount) {
         return Math.floor(newAmount).toFixed(0);
       }
+      return newAmount;
     },
     allowedPaymentMethods() {
-      const allowedMethods = (this.candidate || {}).allowed_payment_methods || ['credit_card', 'boleto'];
-
+      const allowedMethods = (this.candidate || {}).allowed_payment_methods || ['credit_card', 'boleto', 'pix'];
       if (allowedMethods.length === 1) {
         [this.payment_method] = allowedMethods;
       }
 
       return allowedMethods;
+    },
+    ...mapState(['candidateId']),
+  },
+  watch: {
+    payment_method(newValue, oldValue) {
+      if (newValue && !oldValue) {
+        if (this.validation.errors.payment_method) {
+          this.validation.errors.payment_method = undefined;
+        }
+      }
     },
   },
   methods: {
@@ -165,75 +214,96 @@ export default {
       return this.allowedPaymentMethods.indexOf(method.toLowerCase()) !== -1;
     },
     controlSession() {
-      const dataSession = JSON.parse(sessionStorage.getItem('user-donation-data'));
+      const dataSession = JSON.parse(sessionStorage.getItem('donor-data'));
       if (dataSession != null) {
         const data = {
           amount: (this.amount != undefined) ? this.amount : dataSession.amount,
           step: 'userData',
         };
+
+        if (this.formAction === 'donate') {
         this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
+        }
+
         this.name = dataSession.firstName;
         this.surname = dataSession.surname;
         this.cpf = dataSession.cpf;
         this.email = dataSession.email;
       }
     },
-    focusNameField() {
-      return this.$refs.nameField.focus();
-    },
     goBack() {
+      if (this.formAction === 'donate') {
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
+      } else {
+        this.SET_TICKET_STEP({ step: 'intro' });
+      }
+
+      this.$emit('go-back');
     },
-    scrollToDonate() {
-      const form = document.getElementById('doar');
+    scrollToForm({ formAction } = this) {
+      let form = null;
+
+      switch (formAction) {
+        case 'follow':
+          form = document.getElementById('acompanhar');
+          break;
+
+        case 'ticket':
+          form = document.getElementById('votar');
+          break;
+
+        default:
+          form = document.getElementById('doar');
+          break;
+      }
+
       form.scrollIntoView({ block: 'start', behavior: 'smooth' });
     },
-    toggleLoading() {
+    toggleLoading(message = '') {
       this.loading = !this.loading;
-    },
-    validateForm() {
-      this.toggleLoading();
 
-      const {
-        name,
-        surname,
-        cpf,
-        email,
-        payment_method,
-      } = this;
+      this.dataBusyMessage = this.dataBusyMessage !== message ? message : '';
+    },
+
+    validateForm({
+      payment_method, name, surname, cpf, email, amount,
+    } = this) {
+      this.toggleLoading('Validando valor e método...');
 
       const fields = {
         name,
         surname,
         cpf,
         email,
-        payment_method,
       };
+
+      if (this.formAction === 'donate') {
+        fields.payment_method = payment_method;
+      }
 
       const validation = validate(fields);
 
       if (validation.valid) {
         this.formData = fields;
         this.registerUser(fields);
-        let donerData = {
-          name,
-          cpf,
-          email: this.email,
-          firstName: this.name,
-          surname: this.surname,
-          cpfDirty: this.cpf,
-          amount: this.amount,
-          payment_method: this.payment_method,
+        let donorData = {
+          name: `${name} ${surname}`.toUpperCase().trim().replace(/\s/g, ''),
+          cpf: cpf.replace(/[^0-9]+/g, ''),
+          email,
+          firstName: name,
+          surname,
+          cpfDirty: cpf,
+          amount,
         };
 
-        let currentDonerData = sessionStorage.getItem('doner-data');
+        let currentDonorData = sessionStorage.getItem('donor-data');
 
-        if (currentDonerData) {
-          currentDonerData = JSON.parse(currentDonerData);
-          donerData = Object.assign(donerData, currentDonerData);
+        if (currentDonorData) {
+          currentDonorData = JSON.parse(currentDonorData);
+          donorData = Object.assign(currentDonorData, donorData);
         }
 
-        sessionStorage.setItem('user-donation-data', JSON.stringify(donerData));
+        sessionStorage.setItem('donor-data', JSON.stringify(donorData));
       } else {
         this.validation = validation;
         this.toggleLoading();
@@ -258,7 +328,7 @@ export default {
             surname: data.surname,
           };
           this.$store.dispatch('SAVE_PAYMENT_DATA', payload);
-          this.$store.dispatch('SAVE_USERNAME', user);
+          this.$store.dispatch('SAVE_DONOR_NAMES', user);
           this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
         }).catch(() => {
           this.toggleLoading();
@@ -266,9 +336,7 @@ export default {
         });
     },
     handleErrorMessage(err) {
-      if (err) {
-        this.errorMessage = err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
-      }
+      this.errorMessage = err.data[0].message;
     },
     getDonationFP() {
       return new Promise((resolve, reject) => {
@@ -357,9 +425,75 @@ export default {
         });
       });
     },
+
+    setData(data, {
+      token,
+      email,
+      name,
+      surname,
+      cpf,
+      candidateId,
+      donationFp,
+      formAction,
+      payment_method,
+      amount,
+    } = this) {
+      const payload = {
+        device_authorization_token_id: token,
+        email,
+        name: `${name} ${surname}`,
+        cpf,
+        candidate_id: candidateId,
+        donation_fp: donationFp,
+        referral_code: this.$store.state.referral,
+      };
+
+      if (formAction === 'donate') {
+        payload.payment_method = payment_method;
+        payload.amount = amount;
+      } else {
+        payload.name = name;
+        payload.surname = surname;
+      }
+
+      const user = {
+        name: data.name,
+        surname: data.surname,
+      };
+
+      this.$store.dispatch('SAVE_PAYMENT_DATA', payload);
+      this.$store.dispatch('SAVE_DONOR_NAMES', user);
+
+      if (formAction === 'donate') {
+        this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'boleto' });
+      } else {
+        this.SET_TICKET_STEP({ step: 'addressData' });
+      }
+
+      this.$emit('go-ahead');
+    },
+
+    handleSession() {
+      if (window.localStorage) {
+        const token = localStorage.getItem(CONFIG.tokenName);
+        if (token !== null) {
+          this.$store.dispatch('ADD_TOKEN', token);
+        } else {
+          this.$store.dispatch('GET_TOKEN').then((res) => {
+            localStorage.setItem(
+              CONFIG.tokenName,
+              res.data.device_authorization_token_id,
+            );
+          });
+        }
+      }
+    },
+
+    ...mapMutations(['SET_TICKET_STEP']),
   },
   mounted() {
-    this.scrollToDonate();
+    this.scrollToForm();
+    this.handleSession();
     this.controlSession();
   },
 };

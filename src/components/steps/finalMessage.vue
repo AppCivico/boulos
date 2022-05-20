@@ -41,7 +41,7 @@ export default {
     },
   },
   mounted() {
-    const form = document.getElementById('home__donate');
+    const form = document.getElementById('donation-form');
     form.scrollIntoView({ block: 'start', behavior: 'smooth' });
     this.scrollToDonate();
   },

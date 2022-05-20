@@ -1,5 +1,6 @@
 <template>
-    <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'">
+  <form @submit.prevent="validateForm()" :aria-busy="loading ? 'true' : 'false'"
+    :data-busy-message="dataBusyMessage">
       <fieldset>
         <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
         <div class="instructions-donation">
@@ -30,7 +31,9 @@
           class="input-wrapper"
           :class=" { 'has-error' : validation.errors.phone }"
         >
-          <label for="phone">Telefone</label>
+          <label for="phone">
+            {{ formAction === 'follow' ? 'Celular' : 'Telefone' }}
+          </label>
           <input
             v-model="phone"
             v-mask="['(##) ####-####', '(##) #####-####']"
@@ -38,7 +41,7 @@
             name="phone"
             placeholder="(00) 00000-0000"
             minlength="14"
-            required
+            :required="paymentData.payment_method !== 'credit_card'"
           >
           <div
             v-if="validation.errors.phone"
@@ -67,7 +70,7 @@
           ${validation.errors.state ? 'has-error' : ''}`">
           <label for="state">Estado</label>
           <select type="text" v-model="state" name="state" disabled="true" required ref="state">
-            <option></option>
+          <option value=""></option>
             <option :value="key" v-for="(state, key) in states" :key="key">{{ state }}</option>
           </select>
           <div class="error" v-if="validation.errors.state">
@@ -110,26 +113,38 @@
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
-      <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward">Continuar</button>
-    </form>
+
+    <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward"
+      v-if="formAction !== 'donate'">
+        Concluir</button>
+    <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward"
+      v-else>
+        Continuar
+    </button>
+  </form>
 </template>
 
 <script>
 import { mask } from 'vue-the-mask';
-import {
-  validate,
-  removeAccented,
-} from '../../utilities';
+import { mapMutations } from 'vuex';
 import states from '../../data/states.json';
+import { validate } from '../../utilities';
 
 export default {
   name: 'addressData',
   directives: {
     mask,
   },
+  props: {
+    formAction: {
+      type: String,
+      default: 'donate',
+    },
+  },
   data() {
     return {
       loading: false,
+      dataBusyMessage: '',
       states,
       errorMessage: '',
       zip_code: '',
@@ -163,7 +178,7 @@ export default {
   },
   methods: {
     controlSession() {
-      const dataSession = JSON.parse(sessionStorage.getItem('user-donation-data'));
+      const dataSession = JSON.parse(sessionStorage.getItem('donor-data'));
       if (dataSession != null) {
         this.zip_code = dataSession.zip_code || this.zip_code;
         this.state = dataSession.state || this.state;
@@ -179,17 +194,45 @@ export default {
       }
     },
     goBack() {
-      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'userData' });
+      this.$emit('go-back');
+      if (this.formAction === 'donate') {
+        this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'userData' });
+      } else {
+        this.SET_TICKET_STEP({ step: 'userData' });
+      }
     },
-    scrollToDonate() {
-      const form = document.getElementById('doar');
+    scrollToForm({ formAction } = this) {
+      let form = null;
+
+      switch (formAction) {
+        case 'follow':
+          form = document.getElementById('acompanhar');
+          break;
+
+        case 'testify':
+          form = document.getElementById('testemunhar');
+          break;
+
+        case 'ticket':
+          form = document.getElementById('votar');
+          break;
+
+        default:
+          form = document.getElementById('doar');
+          break;
+      }
+
       form.scrollIntoView({ block: 'start', behavior: 'smooth' });
     },
-    toggleLoading() {
+
+    toggleLoading(message = '') {
       this.loading = !this.loading;
+
+      this.dataBusyMessage = this.dataBusyMessage !== message ? message : '';
     },
+
     validateForm() {
-      this.toggleLoading();
+      this.toggleLoading('Validando endereço...');
       const birthdate = this.birthdate.split('/').reverse().join('-');
 
       const phone = this.phone
@@ -203,80 +246,106 @@ export default {
         district: this.district,
         number: this.number,
         phone,
-        birthdate,
       };
+
+      if (this.paymentData.payment_method === 'boleto' || this.formAction === 'ticket') {
+        address.birthdate = birthdate;
+      }
 
       const validation = validate(address);
 
       if (validation.valid) {
         this.saveAddress();
 
-        let donerData = {
+        let donorData = {
           zip_code: this.zip_code,
           state: this.state,
           city: this.city,
           street: this.street,
           district: this.district,
           number: this.number,
+          complement: this.complement,
           phone,
           birthdate,
         };
-        let currentDonerData = sessionStorage.getItem('doner-data');
+        let currentDonorData = sessionStorage.getItem('donor-data');
 
-        if (currentDonerData) {
-          currentDonerData = JSON.parse(currentDonerData);
-          donerData = Object.assign(donerData, currentDonerData);
+        if (currentDonorData) {
+          currentDonorData = JSON.parse(currentDonorData);
+          donorData = Object.assign(currentDonorData, donorData);
         }
 
-        sessionStorage.setItem('user-donation-data', JSON.stringify(donerData));
+        sessionStorage.setItem('donor-data', JSON.stringify(donorData));
       } else {
         this.validation = validation;
         this.toggleLoading();
       }
     },
-    saveAddress() {
+    saveAddress({
+      phone, zip_code, state, city, street, district, number, complement, birthdate, formAction,
+    } = this) {
       const payload = this.$store.state.paymentData;
-      const phone = this.phone
-        ? this.phone.replace(/[^\d]+/g, '')
-        : '';
 
-      payload.address_zipcode = this.zip_code;
-      payload.address_state = this.state;
-      payload.address_city = this.city;
-      payload.address_street = this.street;
-      payload.address_district = this.district;
-      payload.address_house_number = this.number;
-      payload.address_complement = this.complement;
-      payload.phone = phone;
+      payload.address_zipcode = zip_code;
+      payload.address_state = state;
+      payload.address_city = city;
+      payload.address_street = street;
+      payload.address_district = district;
+      payload.address_house_number = number;
+      payload.address_complement = complement;
+      payload.phone = phone ? phone.replace(/[^\d]+/g, '') : '';
+      payload.birthdate = birthdate.split('/').reverse().join('-');
+      payload.billing_address_zipcode = zip_code;
+      payload.billing_address_state = state;
+      payload.billing_address_city = city;
+      payload.billing_address_street = street;
+      payload.billing_address_district = district;
+      payload.billing_address_house_number = number;
+      payload.billing_address_complement = complement;
 
-      let birthdate = this.birthdate.split('/');
-      birthdate.reverse();
-      birthdate = birthdate.join('-');
-      payload.birthdate = birthdate;
+      if (formAction === 'donate') {
+        console.debug('addressData::saveAddress::payload', payload);
+        this.$store.dispatch('GET_DONATION', payload)
+          .then(() => {
+            this.handleIugu();
+            const stepToGoTo = this.paymentData.payment_method === 'credit_card'
+              ? 'cardData'
+              : 'certFaceVerify';
 
-      if (this.paymentData.payment_method === 'boleto') {
-        payload.billing_address_zipcode = this.zip_code;
-        payload.billing_address_state = this.state;
-        payload.billing_address_city = this.city;
-        payload.billing_address_street = this.street;
-        payload.billing_address_district = this.district;
-        payload.billing_address_house_number = this.number;
-        payload.billing_address_complement = this.complement;
+            this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: stepToGoTo });
+          })
+          .catch((err) => {
+            this.toggleLoading();
+            this.handleErrorMessage(err);
+          });
+      } else {
+        let action = 'SEND_TICKET';
+
+        switch (this.formAction) {
+          case 'follow':
+            action = 'requestToFollowCandidate';
+            break;
+
+          case 'testify':
+            action = 'submitCandidateTestimony';
+            break;
+
+          default:
+            break;
+        }
+
+        this.$store.dispatch(action, payload)
+          .then(() => {
+            this.$emit('go-ahead');
+            // this.SET_TICKET_STEP({ step: "finalMessage" });
+          })
+          .catch((err) => {
+            this.handleErrorMessage(err);
+          })
+          .finally(() => {
+            this.toggleLoading();
+          });
       }
-
-      this.$store.dispatch('GET_DONATION', payload)
-        .then(() => {
-          this.handleIugu();
-          const stepToGoTo = this.paymentData.payment_method === 'credit_card'
-            ? 'cardData'
-            : 'printBoleto';
-
-          this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: stepToGoTo });
-        })
-        .catch((err) => {
-          this.toggleLoading();
-          this.handleErrorMessage(err);
-        });
     },
     searchAddress(event) {
       this.$data.validation.errors.zip_code = '';
@@ -296,7 +365,7 @@ export default {
         return this.$refs.zipCode.select() || this.$refs.zipCode.focus();
       }
 
-      this.toggleLoading();
+      this.toggleLoading('Procurando endereço...');
 
       this.$store.dispatch('GET_ADDRESS', event.target.value)
         .then((response) => {
@@ -340,7 +409,7 @@ export default {
 
             this.$refs.zipCode.select() || this.$refs.zipCode.focus();
 
-            this.$data.validation.errors.zip_code = 'Cep não encontrado';
+            this.$data.validation.errors.zip_code = 'CEP não encontrado';
           } else {
             this.$refs.state.disabled = false;
             this.$refs.city.disabled = false;
@@ -351,7 +420,7 @@ export default {
 
             if (error.response.data.form_error && error.response.data.form_error.CEP) {
               this.$data.validation.errors.zip_code = error.response.data.form_error.CEP.indexOf('dismembered') !== -1
-                ? 'Não foi possível identificar seu CEP. Por favor, digite o endereço completo.'
+                ? 'Alguns endereços desse CEP mudaram. Por favor, confira o seu e preencha os campos restantes.'
                 : error.response.data.form_error.CEP;
             } else {
               this.$data.validation.errors.zip_code = error.response.data.form_error;
@@ -372,9 +441,10 @@ export default {
       Iugu.setAccountID(this.iugu.account_id);
       Iugu.setTestMode(this.iugu.is_testing === 1);
     },
+    ...mapMutations(['CHANGE_PAYMENT_STEP', 'SET_TICKET_STEP']),
   },
   mounted() {
-    this.scrollToDonate();
+    this.scrollToForm();
     this.controlSession();
   },
 };
