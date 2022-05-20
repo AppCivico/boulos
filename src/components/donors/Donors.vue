@@ -52,7 +52,7 @@
               </td>
               <td title="Data">{{ donation.captured_at | date }}</td>
               <td title="Método">{{ donation.payment_method_human }}</td>
-              <td title="Valor">R$ {{donation.amount | formatBRL}} </td>
+              <td title="Valor">R$ {{donation.amount | formatBRLDec }} </td>
               <td v-if="donation.digest" title="Recibo" class="decred-link">
                 <!-- eslint-disable-next-line -->
                 <a :href="`${generalSiteDomain}/em/${candidate.username}/recibo/${donation.digest}`"
