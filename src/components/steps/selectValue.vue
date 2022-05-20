@@ -49,19 +49,27 @@ export default {
       errorMessage: '',
       amount: '',
       other: '',
-      pledges: [
-        2000,
-        5000,
-        10000,
-        20000,
-        50000,
-        106400,
-      ],
+      valueCheckedOnUrl: false,
     };
   },
   computed: {
     candidate() {
       return this.$store.state.candidate;
+    },
+    pledges({ candidate } = this) {
+      const { pledges } = candidate;
+
+      return pledges && Array.isArray(pledges) && pledges.length
+        ? pledges
+        : [2000, 5000, 11000, 20000, 25000, 32000, 50000, 75000, 106400];
+    },
+  },
+  watch: {
+    candidate(newValue) {
+      if (newValue && !this.valueCheckedOnUrl) {
+        this.valueCheckedOnUrl = true;
+        this.getDonationAmount();
+      }
     },
   },
   methods: {
@@ -126,18 +134,14 @@ export default {
       amount = parseInt(amount, 10) || 0;
 
       if (amount) {
-        if (this.$data.pledges.indexOf(amount) === -1) {
-          this.$data.amount = 'other';
-          this.$data.other = amount;
+        if (this.pledges.indexOf(amount) === -1) {
+          this.amount = 'other';
+          this.other = amount;
           this.formatOther();
         }
-
-        this.$data.amount = amount;
+        this.amount = amount;
       }
     },
-  },
-  mounted() {
-    this.getDonationAmount();
   },
 };
 </script>
