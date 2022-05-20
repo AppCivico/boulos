@@ -1,10 +1,10 @@
 <template>
   <section class="content">
-    <form @submit.prevent="validateForm">
+    <form @submit.prevent="validateForm()">
       <fieldset class="of-radios-and-checks">
         <div class="input-wrapper" v-for="pledge in pledges" :key="pledge">
-          <input type="radio" :id="`amount_${pledge}`" name="amount" v-model="amount" :value="pledge" @change="validateForm">
-          <label :for="`amount_${pledge}`" class="bigger">R$ {{ pledge | formatBRL }}</label>
+          <input type="radio" :id="`amount_${pledge}`" name="amount" v-model="amount" :value="pledge" @change="validateForm()">
+          <label :for="`amount_${pledge}`" class="bigger">R$ {{ pledge | formatBRLDec }}</label>
         </div>
         <transition name="custom-value-fade" mode="out-in">
           <div
@@ -21,6 +21,7 @@
               type="tel"
               name="other"
               v-model.number="other"
+              @change="validateForm()"
               pattern="[0-9]*"
               :disabled="amount === 'other' ? false : true"
               v-mask="'####'" v-focus>
@@ -37,7 +38,7 @@
 
 <script>
 import { mask } from 'vue-the-mask';
-import { validate, formatBRL, getQueryString } from '../../utilities';
+import { formatBRL, getQueryString, validate } from '../../utilities';
 
 export default {
   name: 'selectValue',
@@ -137,9 +138,7 @@ export default {
         if (this.pledges.indexOf(amount) === -1) {
           this.amount = 'other';
           this.other = amount;
-          this.formatOther();
         }
-        this.amount = amount;
       }
     },
   },
