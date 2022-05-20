@@ -1,11 +1,9 @@
-/* eslint-disable no-undef, arrow-body-style, no-param-reassign, no-console, camelcase */
+import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import axios from 'axios';
+import CONFIG from './config';
 
 Vue.use(Vuex);
-
-const api = process.env.VUE_APP_API_ORIGIN;
 
 export default new Vuex.Store({
   state: {
@@ -190,7 +188,7 @@ export default new Vuex.Store({
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: `${api}/api2/device-authentication`,
+          url: `${CONFIG.api}/api2/device-authentication`,
           data,
         })
           .then((response) => {
@@ -216,7 +214,7 @@ export default new Vuex.Store({
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: `${api}/api2/donations`,
+          url: `${CONFIG.api}/api2/donations`,
           data,
         }).then(
           (response) => {
@@ -258,7 +256,7 @@ export default new Vuex.Store({
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: `${api}/api2/donations/${state.donation.id}?device_authorization_token_id=${
+          url: `${CONFIG.api}/api2/donations/${state.donation.id}?device_authorization_token_id=${
             state.token
           }&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
         }).then(
@@ -285,7 +283,7 @@ export default new Vuex.Store({
     },
     GET_CANDIDATE_INFO({ commit }, id) {
       return new Promise((resolve, reject) => {
-        axios.get(`${api}/public-api/candidate-summary/${id}`).then(
+        axios.get(`${CONFIG.api}/public-api/candidate-summary/${id}`).then(
           (response) => {
             commit('SET_CANDIDATE', { res: response.data });
             if (response.data.platforms) {
@@ -304,7 +302,7 @@ export default new Vuex.Store({
       state.donationsLoading = true;
 
       return new Promise((resolve) => {
-        axios.get(`${api}/public-api/candidate-donations/${id}/${state.lastDonationMarker}`)
+        axios.get(`${CONFIG.api}/public-api/candidate-donations/${id}/${state.lastDonationMarker}`)
           .then((response) => {
             resolve(response.data.donations);
             commit('SET_DONATIONS', response.data);
@@ -317,7 +315,7 @@ export default new Vuex.Store({
     },
     GetDonorsNames({ commit }, id) {
       return new Promise((resolve, reject) => {
-        axios.get(`${api}/public-api/candidate-donations/${id}/donators-name`).then(
+        axios.get(`${CONFIG.api}/public-api/candidate-donations/${id}/donators-name`).then(
           (response) => {
             commit('SET_DONORS', { res: response.data });
             resolve();
@@ -337,13 +335,13 @@ export default new Vuex.Store({
     }, id) {
       setInterval(() => {
         return new Promise((resolve) => {
-          axios.get(`${api}/public-api/candidate-donations/${id}`)
             .then((response) => {
               resolve(response.data.donations);
               commit('SET_RECENT_DONATIONS', response.data);
             });
         });
       }, 1000 * 10);
+        axios.get(`${CONFIG.api}/public-api/candidate-donations/${id}`)
     },
     UPDATE_DONATIONS_SUMMARY({
       commit,
@@ -386,8 +384,7 @@ export default new Vuex.Store({
     START_DONATION_BOLETO({ commit }, payload) {
       let token = '';
       if (window.localStorage) {
-        const tokenName = process.env.VUE_APP_TOKEN_NAME;
-        token = localStorage.getItem(tokenName);
+        token = localStorage.getItem(CONFIG.tokenName);
       }
 
       return new Promise((resolve, reject) => {
@@ -396,7 +393,7 @@ export default new Vuex.Store({
           headers: {
             'Content-Type': 'application/json',
           },
-          url: `${api}/api2/donations/${payload.donationId}?device_authorization_token_id=${token}`,
+          url: `${CONFIG.api}/api2/donations/${payload.donationId}?device_authorization_token_id=${token}`,
         }).then((response) => {
           const data = {
             step: 'printBoleto',

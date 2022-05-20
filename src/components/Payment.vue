@@ -13,7 +13,7 @@
     <template v-else>
       <div class="donation-form-title" v-if="paymentStep !== 'printBoleto'">
           <h2>Você escolheu doar:</h2>
-          <h2 v-if="amount">R$ {{ amount | formatBRL }}</h2>
+          <h2 v-if="amount">R$ {{ amount | formatBRLDec }}</h2>
       </div>
       <headSteps/>
       <userData v-if="paymentStep === 'userData'"/>
