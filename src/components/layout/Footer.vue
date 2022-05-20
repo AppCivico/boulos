@@ -8,21 +8,15 @@
         <div class="site-footer__copyright">
           <p>
             <a href="https://votolegal.com.br" target="_blank">Voto Legal</a> é
-            uma plataforma de software livre homologada pelo TSE e opera sob o
-            CNPJ "08.746.641/0001-00", razão social "APPCIVICO CONSULTORIA
-            LTDA". Todas as doações são registradas na blockchain da Decred com
-            objetivo de garantir a autenticidade das transações, promovendo a
-            confiabilidade no processo de doação eleitoral. Taxa de 5,5% via
-            cartão de crédito ou 3,5% + R$2,99 via boleto, esse valor é
-            destinado a taxas de operação financeira, sistemas de controle
-            anti-fraude, impostos e infraestrutura.
+            uma plataforma de financiamento coletivo eleitoral de propriedade do
+            <em>AppCívico Consultoria LTDA <small>(CNPJ: 08.746.641/0001-00)</small></em>.
           </p>
           <p>
-            <strong>© 2016-2020 <a href="https://votolegal.com.br"
-            target="_blank">Voto Legal</a> • Uma iniciativa <a
-            href="http://appcivico.com" target="_blank">AppCívico</a> -
-            Tecnologias Cívicas • <a href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf"
-            target="_blank">Contrato</a></strong>
+            <strong>
+              © 2016-2022 <a href="https://votolegal.com.br" target="_blank">Voto Legal</a>
+              • Uma iniciativa <a href="http://appcivico.com" target="_blank">AppCívico</a> - Tecnologias Cívicas
+              • <a href="https://docs.google.com/forms/d/e/1FAIpQLSfy6O6A80gtkCM---KuOwA2PsLZwh4GapJLrflP9TVZ8CgkPg/viewform" target="_blank">Afiliados</a>
+            </strong>
           </p>
         </div>
       </div>
