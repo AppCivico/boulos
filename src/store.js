@@ -187,9 +187,6 @@ export default new Vuex.Store({
         }
       }
     },
-    // SET_ADDRESS: (state, payload) => {
-    //   state.address = payload;
-    // },
     SET_PAYMENT_DATA(state, { paymentData }) {
       state.paymentData = paymentData;
     },
