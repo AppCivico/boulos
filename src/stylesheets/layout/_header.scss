@@ -96,17 +96,12 @@
   text-transform: uppercase;
 
   &:first-child span {
-    color: transparent;
-
-    -webkit-text-stroke-width: math.div($stroke, 3);
-    -webkit-text-stroke-color: palette('header', 'white');
+    font-weight: font-weight('text');
 
     @media screen and (min-width: breakpoint('tablet')) {
-      -webkit-text-stroke-width: math.div($stroke, 2);
     }
 
     @media screen and (min-width: breakpoint('wide')) {
-      -webkit-text-stroke-width: $stroke;
     }
   }
 
