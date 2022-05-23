@@ -54,8 +54,8 @@
         </h1>
 
         <h2>
-          Vamos eleger <span>Guilherme Boulos</span> como o deputado federal
-          mais votado de SP e garantir a retomada de direitos do povo.
+          Eleger <span>Boulos</span> como o Deputado Federal para garantir a
+          retomada de direitos do povo.
         </h2>
 
         <a href="#doar" class="call-to-action">

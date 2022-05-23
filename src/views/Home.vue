@@ -139,14 +139,28 @@
         Fim do teto de gastos
       </h3>
       <p>
-        O Teto de Gastos impede a economia de voltar a crescer e impossibilita a distribuição de renda e a inclusão social. E este não é só um caso brasileiro: países que implementaram o ajuste fiscal tiveram baixo crescimento. A regra do Teto de Gastos levou o país à crise econômica e social que estamos hoje. Precisamos de uma regra fiscal com responsabilidade social para que haja uma agenda de mudanças do país: acabar com a fome, desemprego e ter direito ao futuro.
+        O Teto de Gastos impede a economia de voltar a crescer e impossibilita a
+        distribuição de renda e a inclusão social. E este não é só um caso
+        brasileiro: países que implementaram o ajuste fiscal tiveram baixo
+        crescimento. A regra do Teto de Gastos levou o país à crise econômica e
+        social que estamos hoje. Precisamos de uma regra fiscal com
+        responsabilidade social para que haja uma agenda de mudanças do país:
+        acabar com a fome, desemprego e ter direito ao futuro.
       </p>
 
       <h3>
         Defesa dos serviços públicos e do patrimônio nacional
       </h3>
       <p>
-        Depois de 2008, os países redescobriram a importância do papel do Estado para que a economia cresça, principalmente em momento de crise. Hoje, as nossas empresas nacionais servem ao interesse de poucos acionistas, para fins de acumulação privada, inclusive estrangeira. Um exemplo é a Política de Preços da Petrobrás que distribui renda dos mais pobres, que compram gasolina cara na bomba, enquanto os mais ricos acumulam ações da estatal. Retomar nossas empresas e torná-las públicas significa recuperar a responsabilidade do Estado na garantia de empregos e direitos para o povo brasileiro.
+        Depois de 2008, os países redescobriram a importância do papel do Estado
+        para que a economia cresça, principalmente em momento de crise. Hoje, as
+        nossas empresas nacionais servem ao interesse de poucos acionistas, para
+        fins de acumulação privada, inclusive estrangeira. Um exemplo é a
+        Política de Preços da Petrobrás que distribui renda dos mais pobres, que
+        compram gasolina cara na bomba, enquanto os mais ricos acumulam ações da
+        estatal. Retomar nossas empresas e torná-las públicas significa
+        recuperar a responsabilidade do Estado na garantia de empregos e
+        direitos para o povo brasileiro.
       </p>
 
     </div>
@@ -226,10 +240,10 @@
       </h2>
 
       <p>
-        Veja aqueles sem medo de transformar o Congresso Nacional que já contribuíram para
-        que nossas propostas alcancem cada vez mais pessoas, nesta batalha
-        encabeçada por <strong>Guilherme Boulos</strong>, na esperança de acabar com os privilégios e as
-        desigualdades.
+        Veja aqueles sem medo de transformar o Congresso Nacional que já
+        contribuíram para que nossas propostas alcancem cada vez mais pessoas,
+        nesta batalha encabeçada por <strong>Guilherme Boulos</strong>, na
+        esperança de acabar com os privilégios e as desigualdades.
       </p>
 
       <p>
