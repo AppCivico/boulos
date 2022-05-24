@@ -87,10 +87,21 @@
 <script>
 export default {
   name: 'Header',
-  data() {
-    return {
-      youtubeVideoId: 'NZRJgWex6YM',
-    };
+  computed: {
+    youtubeVideoId() {
+      const { video_url: videoUrl = '' } = this.$store.state.candidate;
+
+      if (!videoUrl) return '';
+
+      const youtubeMatch = videoUrl.match(
+        /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/,
+      );
+      if (youtubeMatch && youtubeMatch[1].length == 11) {
+        return youtubeMatch[1];
+      }
+      // TODO Throw error.
+      return '';
+    },
   },
   methods: {
     toggleModal() {
