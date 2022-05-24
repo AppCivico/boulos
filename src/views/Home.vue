@@ -325,13 +325,18 @@
         alt="Logotipo campanha"
         class="candidate-footer__logo">
       <p>
-        Eleição 2020 Guilherme Castro Boulos Prefeito
+        Eleição 2022 {{ candidate.name }}
       </p>
+
       <p
-        class="candidate-footer__cnpj"
+        v-if="candidate.cnpj"
+        class="candidate-cnpj"
       >
-        <abbr title="Cadastro Nacional Pessoa Jurídica">CNPJ</abbr>
-        38.642.015/0001-26
+        <strong>
+          <abbr title="Cadastro Nacional de Pessoa Jurídica">CNPJ</abbr>
+          da campanha:
+        </strong>
+        {{ candidate.cnpj | formatCNPJ }}
       </p>
   </div>
 
