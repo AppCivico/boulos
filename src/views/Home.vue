@@ -81,7 +81,7 @@
           <a
             :href="`#goal-description__${expected}`"
             v-if="summary"
-          >{{ summary }}</a>
+          >{{ summary.toLowerCase() }}</a>
         </p>
 
         <div v-if="donationSources.length > 1" class="donations-sources">
@@ -228,10 +228,7 @@
           META {{ index + 1 }} - R$&nbsp;{{ FormatFixedBRL(item.goal) }}
         </h3>
 
-        <h4>
-            {{ porcentage(totalAmount, item.goal) }}% da primeira meta,
-            necessária para a contratação de uma equipe de comunicação em agosto
-        </h4>
+        <h4 v-if="item.summary">{{ item.summary }}</h4>
 
         <p>{{ item.description }}</p>
       </div>
