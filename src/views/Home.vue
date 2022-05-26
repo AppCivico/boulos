@@ -214,7 +214,7 @@
       </h2>
 
     <div
-        v-for="(item, index) in goalsWithDescription"
+        v-for="(item, index) in currentAndPastGoals"
         :key="index"
         :id="`goal-description__${item.goal}`"
         class="goal-description"
@@ -430,6 +430,11 @@ export default {
     },
     goalsWithDescription() {
       return (this.goals || []).filter((x) => !!x.description);
+    },
+    currentAndPastGoals() {
+      const { expected, goalsWithDescription } = this;
+
+      return goalsWithDescription.filter((x) => x.goal <= expected);
     },
   },
   methods: {
