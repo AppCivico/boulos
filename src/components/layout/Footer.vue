@@ -15,7 +15,6 @@
             <strong>
               © 2016-2022 <a href="https://votolegal.com.br" target="_blank">Voto Legal</a>
               • Uma iniciativa <a href="http://appcivico.com" target="_blank">AppCívico</a> - Tecnologias Cívicas
-              • <a href="https://docs.google.com/forms/d/e/1FAIpQLSfy6O6A80gtkCM---KuOwA2PsLZwh4GapJLrflP9TVZ8CgkPg/viewform" target="_blank">Afiliados</a>
             </strong>
           </p>
         </div>
