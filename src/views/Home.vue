@@ -62,22 +62,22 @@
           >
             <div v-for="(source, i) in donationSources" :key="i"
               :style="progressBarStyle(source)"
-              :title="`${porcentage(source.total_donated)}% via ${source.name}`"
+              :title="`${percentage(source.total_donated)}% via ${source.name}`"
             >
-              {{ porcentage(source.total_donated) }}
+              {{ percentage(source.total_donated) }}
             </div>
           </template>
         </div>
         <progress :value="totalAmount" :max="expected" v-else>
           <div role="progressbar" :aria-valuenow="totalAmount" :aria-valuemax="expected">
-            <div :style="{width: `${porcentage(totalAmount)}%`}">
-              {{ porcentage(totalAmount) }}
+            <div :style="{width: `${percentage(totalAmount)}%`}">
+              {{ percentage(totalAmount) }}
             </div>
           </div>
         </progress>
 
-        <p class="campaign-progress-porcentage">
-          {{ porcentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
+        <p class="campaign-progress-percentage">
+          {{ percentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
           <a
             :href="`#goal-description__${expected}`"
             v-if="summary"
@@ -438,14 +438,14 @@ export default {
     },
   },
   methods: {
-    porcentage(amount = this.totalAmount, expected = this.expected) {
-      return Math.round((parseFloat(amount) * 100) / Math.max(this.totalAmount, expected))
+    percentage(amount = this.totalAmount, expected = this.expected) {
+      return Math.floor((parseFloat(amount) * 100) / Math.max(this.totalAmount, expected))
         || 0;
     },
     progressBarStyle(source) {
       return {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, ${source.opacity}), rgba(0, 0, 0, ${source.opacity}))`,
-        width: `${this.porcentage(source.total_donated)}%`,
+        width: `${this.percentage(source.total_donated)}%`,
       };
     },
     FormatFixedBRL(amount) {
