@@ -9,28 +9,11 @@
   </div>
   <article class="home__intro">
     <div class="container">
-      <h2>
-        Por que doar?
-      </h2>
+      <template v-if="candidate.summary">
+        <h2>Por que doar?</h2>
 
-      <p>É hora de reconstruir o país e de acabar com o poder do Centrão, que
-      hoje faz o que quer no Congresso Nacional: controla o Orçamento da União e
-      decide quem governa e quem cai.</p>
-
-      <p>Por isso, temos a missão de eleger Guilherme Boulos como o Deputado
-      Federal mais bem votado de São Paulo e formar a maior bancada de esquerda
-      da Câmara dos Deputados. Só assim conseguiremos revogar a reforma
-      trabalhista e o teto de gastos, criar condições para combater a fome, o
-      desemprego e a recessão econômica. Vamos fazer uma profunda reforma
-      tributária e retomar investimentos públicos.</p>
-
-      <p>Precisamos provar que o Brasil é mais forte do que Bolsonaro e seus
-      filhos. E para isso, precisamos de você, que não desistiu de uma sociedade
-      mais justa e que acredita num país que não está à venda. Ajude a financiar
-      o nosso projeto de retomada da democracia.
-      </p>
-
-      <p>Vamos sem medo. O futuro é a gente que faz. Doe para Boulos Federal.</p>
+        <div v-html="parseMD(candidate.summary)"></div>
+      </template>
 
       <section id="campaign-progress" class="campaign-progress">
         <p>
@@ -125,44 +108,15 @@
 
       </section>
 
-      <h2>
-        Projetos prioritários
-      </h2>
-      <h3>
-        Revogação da Reforma Trabalhista
-      </h3>
-      <p>
-        A reforma foi vendida com a promessa da criação de cinco milhões de empregos. Como resultado, tivemos as maiores taxas de desemprego dos últimos anos. Precisamos de propostas para a parcela precarizada das trabalhadoras e trabalhadores, como um novo marco regulatório das relações trabalhistas que garantam bem-estar e segurança para os trabalhadores sem direitos, além do fortalecimento dos sindicatos, impactados negativamente pelas medidas pós-golpe.
-      </p>
-
-      <h3>
-        Fim do teto de gastos
-      </h3>
-      <p>
-        O Teto de Gastos impede a economia de voltar a crescer e impossibilita a
-        distribuição de renda e a inclusão social. E este não é só um caso
-        brasileiro: países que implementaram o ajuste fiscal tiveram baixo
-        crescimento. A regra do Teto de Gastos levou o país à crise econômica e
-        social que estamos hoje. Precisamos de uma regra fiscal com
-        responsabilidade social para que haja uma agenda de mudanças do país:
-        acabar com a fome, desemprego e ter direito ao futuro.
-      </p>
-
-      <h3>
-        Defesa dos serviços públicos e do patrimônio nacional
-      </h3>
-      <p>
-        Depois de 2008, os países redescobriram a importância do papel do Estado
-        para que a economia cresça, principalmente em momento de crise. Hoje, as
-        nossas empresas nacionais servem ao interesse de poucos acionistas, para
-        fins de acumulação privada, inclusive estrangeira. Um exemplo é a
-        Política de Preços da Petrobrás que distribui renda dos mais pobres, que
-        compram gasolina cara na bomba, enquanto os mais ricos acumulam ações da
-        estatal. Retomar nossas empresas e torná-las públicas significa
-        recuperar a responsabilidade do Estado na garantia de empregos e
-        direitos para o povo brasileiro.
-      </p>
-
+      <template v-if="candidate.projects">
+        <h2>
+          Projetos prioritários
+        </h2>
+        <template v-for="project in candidate.projects">
+          <h3 :key="project.id + '__title'">{{ project.title }}</h3>
+          <div :key="project.id + '__scope'" v-html="parseMD(project.scope)"></div>
+        </template>
+      </template>
     </div>
   </article>
 
@@ -172,38 +126,13 @@
     </div>
   </article>
 
-  <article id="home__knowMore" class="home__knowMore">
+  <article id="home__knowMore" class="home__knowMore" v-if="candidate.biography">
     <div class="container" id="donation-wrap">
       <h2>
         Conheça o candidato
       </h2>
 
-      <p>Guilherme Boulos é professor, ativista social do Movimento dos
-      Trabalhadores Sem Teto (MTST) e da Frente Povo Sem Medo. Concorreu no
-      primeiro e segundo turno à Prefeitura de São Paulo em 2020 e à Presidência
-      da República pelo PSOL em 2018, sendo o mais jovem a postulante ao cargo
-      na história do Brasil.</p>
-
-      <p>Sua atuação é marcada na luta contra as desigualdades e por um novo
-      modelo de sociedade. Aos 20 anos, deixou sua casa para morar e atuar em
-      uma ocupação sem teto. Liderança social consolidada, é formado em
-      Filosofia pela USP, especializado em Psicanálise pelo Cogeae/PUC e Mestre
-      em Psiquiatria pela USP. Já deu aulas na rede pública de ensino do Estado
-      de São Paulo e em várias Instituições.</p>
-
-      <p>Atualmente, ministra Cursos de Extensão na Escola de Sociologia e
-      Política (ESP) e Cursos Livres pelo Instituto Democratize, iniciativa que
-      coordena. Sua atuação rendeu o prêmio Santos Dias de Direitos Humanos,
-      concedido pela Assembléia Legislativa de São Paulo em 2017, além da
-      Medalha do Mérito Legislativo em 2016, concedida pela Câmara dos Deputados
-      em Brasília, dentre outros.</p>
-
-      <p>Após as eleições, retomou sua atividade como professor e sua atuação no
-      MTST e na Povo Sem Medo e segue como uma das lideranças sociais de
-      oposição ao Governo Bolsonaro.</p>
-
-      <p>É pai da Sofia e da Laura e marido da Natalia.</p>
-
+      <div v-html="parseMD(candidate.biography)"></div>
     </div>
   </article>
 
