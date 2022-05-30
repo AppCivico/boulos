@@ -229,8 +229,7 @@
         </h3>
 
         <h4 v-if="item.summary">{{ item.summary }}</h4>
-
-        <p>{{ item.description }}</p>
+        <div v-html="parseMD(item.description)"></div>
       </div>
     </div>
   </article>
