@@ -1,8 +1,11 @@
 <template>
   <section class="certiface-verify" v-if="messages.length > 0">
     <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
-    <div v-html="messages[0].text" @click="delegation($event)"></div>
-    <a :href="messages[1].href" target="_blank" class="donation-nav donation-nav--forward">{{ messages[1].text }}</a>
+    <div v-if="messages[0] && messages[0].text" v-html="messages[0].text"
+    @click="delegation($event)"/>
+    <a v-if="messages[1] && messages[1].href" :href="messages[1].href"
+    target="_blank" class="donation-nav donation-nav--forward">{{
+    messages[1].text }}</a>
   </section>
 </template>
 
