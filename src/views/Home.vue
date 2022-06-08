@@ -271,7 +271,7 @@
 <script>
 // @ is an alias to /src
 import Payment from '@/components/Payment.vue';
-import { root } from '@/data/goals.json';
+import { root as fallbackGoals } from '@/data/goals.json';
 // eslint-disable-next-line
 import AnimatedNumber from 'animated-number-vue';
 import parser from '../vendor/markdown.min';
@@ -280,7 +280,6 @@ export default {
   data() {
     return {
       amountInView: false,
-      goals: root,
     };
   },
   name: 'home',
@@ -297,6 +296,11 @@ export default {
   computed: {
     candidate() {
       return this.$store.state.candidate;
+    },
+    goals({ candidate } = this) {
+      return candidate.multiple_goals && candidate.multiple_goals.length
+        ? candidate.multiple_goals
+        : fallbackGoals;
     },
     donationSources() {
       let opacity = 0;
@@ -345,8 +349,7 @@ export default {
     expected() {
       const { totalAmount, goals } = this;
 
-      return (goals.find((x) => x.goal > totalAmount)
-        || goals[goals.length - 1]).goal
+      return (goals.find((x) => x.goal > totalAmount) || goals[goals.length - 1]).goal
         || (this.candidate || {}).raising_goal
         || 0;
     },
