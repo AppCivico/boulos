@@ -3,28 +3,24 @@
     <form @submit.prevent="validateForm()">
       <fieldset class="of-radios-and-checks">
         <div class="input-wrapper" v-for="pledge in pledges" :key="pledge">
-          <input type="radio" :id="`amount_${pledge}`" name="amount" v-model="amount" :value="pledge" @change="validateForm()">
-          <label :for="`amount_${pledge}`" class="bigger">R$ {{ pledge | formatBRLDec }}</label>
+          <input type="radio" :id="`amount_${pledge}`" name="amount" v-model="amount" :value="pledge"
+            @change="validateForm()">
+          <label :for="`amount_${pledge}`" class="bigger">
+            <small v-if="!centsInUse">R$</small>
+            {{ pledge | formatBRL }}<small v-if="centsInUse">,{{ pad(pledge % 100, 2, '0') }}</small>
+          </label>
         </div>
         <transition name="custom-value-fade" mode="out-in">
-          <div
-          class="input-wrapper
-          input-wrapper--full-width"
-          v-if="amount !== 'other'" key="other">
+          <div class="input-wrapper
+          input-wrapper--full-width" v-if="amount !== 'other'" key="other">
             <input type="radio" id="amount_other" name="amount" v-model="amount" value="other">
             <label for="amount_other">Outro valor</label>
           </div>
 
           <div class="input-wrapper has-real-value" v-else key="customValue">
             <label for="other">R$</label>
-            <input
-              type="tel"
-              name="other"
-              v-model.number="other"
-              @change="validateForm()"
-              pattern="[0-9]*"
-              :disabled="amount === 'other' ? false : true"
-              v-mask="'####'" v-focus>
+            <input type="tel" name="other" v-model.number="other" @change="validateForm()" pattern="[0-9]*"
+              :disabled="amount === 'other' ? false : true" v-mask="'####'" v-focus>
             <button type="button" href="#" @click.prevent="validateForm">OK</button>
           </div>
         </transition>
@@ -38,7 +34,9 @@
 
 <script>
 import { mask } from 'vue-the-mask';
-import { formatBRL, getQueryString, validate } from '../../utilities';
+import {
+formatBRL, getQueryString, pad, validate
+} from '../../utilities';
 
 export default {
   name: 'selectValue',
@@ -56,6 +54,9 @@ export default {
   computed: {
     candidate() {
       return this.$store.state.candidate;
+    },
+    centsInUse({ pledges } = this) {
+      return pledges.some((x) => x % 100 !== 0);
     },
     pledges({ candidate } = this) {
       const { pledges } = candidate;
@@ -141,6 +142,8 @@ export default {
         }
       }
     },
+    formatBRL,
+    pad,
   },
 };
 </script>

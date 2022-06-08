@@ -1,3 +1,8 @@
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
 
 function scrollTo($eventOrId) {
   const targetQuery = typeof $eventOrId === 'string'
@@ -189,5 +194,6 @@ export {
   thousandsSeparator,
   getQueryString,
   scrollTo,
+  pad,
   copyTextToClipboard,
 };
