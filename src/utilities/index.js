@@ -1,3 +1,14 @@
+
+function scrollTo($eventOrId) {
+  const targetQuery = typeof $eventOrId === 'string'
+    ? '#' + $eventOrId
+    : $eventOrId.target.getAttribute('href');
+  const targetEl = document.querySelector(targetQuery);
+
+  targetEl.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  window.history.pushState(null, null, targetQuery);
+}
+
 function validate(fields) {
   const keys = Object.keys(fields);
   const errors = {};
@@ -134,6 +145,38 @@ function getQueryString(url) {
   return params;
 }
 
+function fallbackCopyTextToClipboard(text) {
+  var textArea = document.createElement('textarea');
+  textArea.value = text;
+
+  // Avoid scrolling to bottom
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+  textArea.style.position = 'fixed';
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  return new Promise((resolve, reject) => {
+    try {
+      return document.execCommand('copy')
+        ? resolve()
+        : reject();
+    } catch (err) {
+      reject(err);
+    } finally {
+      document.body.removeChild(textArea);
+    }
+  });
+}
+
+function copyTextToClipboard(text) {
+  return !navigator.clipboard
+    ? fallbackCopyTextToClipboard(text)
+    : navigator.clipboard.writeText(text);
+}
+
 export {
   validate,
   formatBRL,
@@ -145,4 +188,6 @@ export {
   formatBRLDec,
   thousandsSeparator,
   getQueryString,
+  scrollTo,
+  copyTextToClipboard,
 };
