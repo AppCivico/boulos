@@ -64,7 +64,7 @@ export default {
           .then(() => {
             alert('Chave PIX copiada');
           }).catch((err) => {
-            alert('Seu navegador não permitiu a cópia da chave PIX! ', err);
+            alert('Seu navegador não permitiu a cópia da chave PIX! Como alternativa, ela foi enviada ao endereço de email informado. ', err);
           });
       }
     },
