@@ -20,11 +20,6 @@
         </div>
       </div>
     </div>
-    <div v-if="isDev" class="fb-customerchat"
-      attribution=setup_tool
-      page_id="257874391684846"
-      theme_color="#0a6661">
-    </div>
     <div class="notifications-wrapper">
       <Notification message="Apoie você também!"
       :title="`R$${recentDonationAmount} acabam de ser doados por ${recentDonationFirstName}!`"
