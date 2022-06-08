@@ -20,6 +20,27 @@
         </div>
       </div>
     </div>
+
+    <template
+      v-if="whatsAppNumber"
+    >
+      <a
+        :href="`https://api.whatsapp.com/send?phone=${whatsAppNumber}`"
+        style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;
+				box-shadow: 1px 1px 2px #888; z-index:1000; text-decoration: none;"
+        target="_blank"
+      >
+        <i
+          style="margin-top:16px"
+          class="fa fa-whatsapp"
+        />
+      </a>
+      <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+      >
+    </template>
+
     <div class="notifications-wrapper">
       <Notification message="Apoie você também!"
       :title="`R$${recentDonationAmount} acabam de ser doados por ${recentDonationFirstName}!`"
@@ -30,6 +51,7 @@
 
 <script>
 import Notification from '@/components/Notification.vue';
+import { mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'Footer',
@@ -44,17 +66,27 @@ export default {
     };
   },
   computed: {
+    whatsAppNumber() {
+      return this.candidate.whatsapp_number
+        ? this.candidate.whatsapp_number.replace(/[^0-9]/g, '')
+        : '';
+    },
+    candidate() {
+      return this.generateCandidateObject.candidate;
+    },
     recentDonationAmount() {
-      const { amount = 0 } = this.$store.state.recentDonation;
+      const { amount = 0 } = this.recentDonation;
 
       return amount / 100;
     },
     recentDonationFirstName() {
-      const { name = '' } = this.$store.state.recentDonation;
+      const { name = '' } = this.recentDonation;
       const firstName = name.substr(0, name.indexOf(' ')) || name;
 
       return firstName;
     },
+    ...mapGetters(['generateCandidateObject']),
+    ...mapState(['recentDonation']),
   },
 };
 </script>
