@@ -1,68 +1,51 @@
 <template>
   <section>
-    <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'" :data-aria-busy-message="paymentWatingMessage">
+    <form @submit.prevent="validateForm" :aria-busy="loading ? 'true' : 'false'"
+      :data-aria-busy-message="paymentWatingMessage">
       <fieldset>
         <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
         <div class="instructions-donation">
           <p class="instructions">Informe dados do cartão de crédito</p>
         </div>
         <div :class="`input-wrapper
-          ${validation.errors.name ? 'has-error' : ''}`">
+        ${validation.errors.name ? 'has-error' : ''}`">
           <label for="name">Nome impresso no cartão de crédito</label>
-          <input
-            type="text"
-            v-model="name"
-            name="name" required v-focus>
+          <input type="text" v-model="name" id="name" name="name" autocomplete="cc-name" required v-focus>
           <div class="error" v-if="validation.errors.name">
             {{ validation.errors.name }}
           </div>
         </div>
         <div :class="`input-wrapper
-          ${validation.errors.number ? 'has-error' : ''}`">
+        ${validation.errors.number ? 'has-error' : ''}`">
           <label for="number">Número do cartão de crédito</label>
-          <input
-            type="tel"
-            v-model="number"
-            name="number"
+          <input type="tel" v-model="number" id="number" name="number" autocomplete="cc-number"
             v-mask="['#### #### #### ####', '#### #### #### ##']" required>
           <div class="error" v-if="validation.errors.number">
             {{ validation.errors.number }}
           </div>
         </div>
         <div :class="`input-wrapper
-          ${validation.errors.validity_month ? 'has-error' : ''}`">
+        ${validation.errors.validity_month ? 'has-error' : ''}`">
           <label for="validity_month">Mês</label>
-          <input
-            type="tel"
-            v-model="validity_month"
-            name="validity_month"
-            placeholder="MM"
-            v-mask="'##'" required>
+          <input type="tel" v-model="validity_month" id="validity_month" name="validity_month"
+            autocomplete="cc-exp-month" placeholder="MM" v-mask="'##'" required>
           <div class="error" v-if="validation.errors.validity_month">
             {{ validation.errors.validity_month }}
           </div>
         </div>
         <div :class="`input-wrapper
-          ${validation.errors.validity_year ? 'has-error' : ''}`">
+        ${validation.errors.validity_year ? 'has-error' : ''}`">
           <label for="validity_year">Ano</label>
-          <input
-            type="tel"
-            v-model="validity_year"
-            name="validity_year"
-            placeholder="AAAA"
-            v-mask="'####'" required>
+          <input type="tel" v-model="validity_year" id="validity_year" name="validity_year" autocomplete="cc-exp-year"
+            placeholder="AAAA" v-mask="'####'" required>
           <div class="error" v-if="validation.errors.validity_year">
             {{ validation.errors.validity_year }}
           </div>
         </div>
         <div :class="`input-wrapper
-          ${validation.errors.csc ? 'has-error' : ''}`">
+        ${validation.errors.csc ? 'has-error' : ''}`">
           <label for="csc">Cód. Segurança</label>
-          <input
-            type="tel"
-            v-model="csc"
-            name="csc"
-            v-mask="['###', '####']"
+          <input type="tel" v-model="csc" id="csc" name="csc" autocomplete="cc-csc" v-mask="['###', '####']"
             maxlength="4" required>
           <div class="error" v-if="validation.errors.csc">
             {{ validation.errors.csc }}
@@ -72,7 +55,8 @@
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
-      <p class="form__disclaimer">Será enviado um recibo em seu e-mail com todos os dados sobre a doação. Não armazenamos seus dados de cartão de crédito.</p>
+      <p class="form__disclaimer">Será enviado um recibo em seu e-mail com todos os dados sobre a doação. Não
+        armazenamos seus dados de cartão de crédito.</p>
       <button class="donation-nav donation-nav--forward" type="submit" :disabled="loading">Continuar</button>
     </form>
   </section>

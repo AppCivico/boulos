@@ -1,7 +1,6 @@
 <template>
   <section id="user-data-payment">
-    <form @submit.prevent="validateForm()" :aria-busy="loading ? 'true' : 'false'"
-      :data-busy-message="dataBusyMessage">
+    <form @submit.prevent="validateForm()" :aria-busy="loading ? 'true' : 'false'" :data-busy-message="dataBusyMessage">
       <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
 
       <div class="instructions-donation">
@@ -10,13 +9,11 @@
         </p>
         <ul class="payment-choices">
           <li class="payment-type" v-if="isPaymentMethodAllowed('credit_card')">
-            <input name="payment_method" id="credit_card" value="credit_card"
-              type="radio" v-model="payment_method">
+            <input name="payment_method" id="credit_card" value="credit_card" type="radio" v-model="payment_method" />
             <label for="credit_card">Cartão de Crédito</label>
           </li>
           <li class="payment-type" v-if="isPaymentMethodAllowed('boleto')">
-            <input name="payment_method" id="boleto" value="boleto"
-              type="radio" v-model="payment_method">
+            <input name="payment_method" id="boleto" value="boleto" type="radio" v-model="payment_method" />
             <label for="boleto">Boleto</label>
           </li>
           <li class="payment-type" v-if="isPaymentMethodAllowed('pix')">
@@ -32,80 +29,58 @@
         <div class="instructions-donation">
           <p class="instructions">Por favor, informe os seguintes dados:</p>
         </div>
-        <div
-          :class="`input-wrapper
-          ${validation.errors.name ? 'has-error' : ''}`">
+        <div :class="`input-wrapper
+        ${validation.errors.name ? 'has-error' : ''}`">
           <label for="name">Nome</label>
-          <input
-            ref="nameField"
-            type="text"
-            name="name"
-            v-focus="formAction !== 'donate' || payment_method"
-            v-model="name" required>
+          <input ref="nameField" type="text" id="name" name="name" autocomplete="given-name"
+            v-focus="formAction !== 'donate' || payment_method" v-model="name" required />
           <div class="error" v-if="validation.errors.name">
             {{ validation.errors.name }}
           </div>
         </div>
 
-        <div
-          :class="`input-wrapper
-          ${validation.errors.surname ? 'has-error' : ''}`">
+        <div :class="`input-wrapper
+        ${validation.errors.surname ? 'has-error' : ''}`">
           <label for="surname">Sobrenome</label>
-          <input
-            type="text"
-            name="surname"
-            v-model="surname" required>
+          <input type="text" id="surname" name="surname" autocomplete="family-name" v-model="surname" required />
           <div class="error" v-if="validation.errors.surname">
             {{ validation.errors.surname }}
           </div>
         </div>
 
-        <div
-          v-if="formAction === 'donate'"
-          :class="`input-wrapper
-          ${validation.errors.cpf ? 'has-error' : ''}`">
+        <div v-if="formAction === 'donate'" :class="`input-wrapper
+        ${validation.errors.cpf ? 'has-error' : ''}`">
           <label for="cpf">CPF</label>
-          <input
-            type="tel"
-            name="cpf"
-            v-model="cpf"
-            v-mask="'###.###.###-##'" required>
+          <input type="tel" name="cpf" v-model="cpf" v-mask="'###.###.###-##'" required>
           <div class="error" v-if="validation.errors.cpf">
             {{ validation.errors.cpf }}
           </div>
         </div>
 
-        <div
-          :class="`input-wrapper
-          ${validation.errors.email ? 'has-error' : ''}`">
+        <div :class="`input-wrapper
+        ${validation.errors.email ? 'has-error' : ''}`">
           <label for="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            v-model="email" required>
+          <input type="email" id="email" name="email" autocomplete="email" v-model="email" required />
           <div class="error" v-if="validation.errors.email">
             {{ validation.errors.email }}
           </div>
         </div>
       </fieldset>
       <template v-if="formAction === 'donate' && candidateAmount">
-      <p class="subtitle">
-        Declaro que minhas doações não ultrapassam 10% dos meus rendimentos
-        brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou
-        concessionário ou permissionário de serviço público.
-      </p>
-      <p class="subtitle">
-        Declaro estar ciente, que ao realizar uma doação, por conta da
-        legislação eleitoral, os seus dados (nome completo, CPF, valor
-        individual de cada doação, forma de pagamento, data das doações) serão
-        publicados de forma pública no site do candidato, e concordo com os <a
-        href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf"
-        target="_blank">termos de doação</a>.
-      </p>
-        <div
-          v-if="formAction === 'donate' && candidateAmount"
-          class="candidate-amount"
-        >
+        <p class="subtitle">
+          Declaro que minhas doações não ultrapassam 10% dos meus rendimentos
+          brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou
+          concessionário ou permissionário de serviço público.
+        </p>
+        <p class="subtitle">
+          Declaro estar ciente, que ao realizar uma doação, por conta da
+          legislação eleitoral, os seus dados (nome completo, CPF, valor
+          individual de cada doação, forma de pagamento, data das doações) serão
+          publicados de forma pública no site do candidato, e concordo com os <a
+            href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf"
+            target="_blank">termos de doação</a>.
+        </p>
+        <div v-if="formAction === 'donate' && candidateAmount" class="candidate-amount">
           <p>
             Valor doado
             <output>
@@ -123,11 +98,7 @@
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
-      <button
-        type="submit"
-        :disabled="loading"
-        class="donation-nav donation-nav--forward"
-      >Continuar</button>
+      <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward">Continuar</button>
     </form>
   </section>
 </template>
@@ -222,7 +193,7 @@ export default {
         };
 
         if (this.formAction === 'donate') {
-        this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
+          this.$store.dispatch('CHANGE_PAYMENT_AMOUNT', data);
         }
 
         this.name = dataSession.firstName;
@@ -233,7 +204,7 @@ export default {
     },
     goBack() {
       if (this.formAction === 'donate') {
-      this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
+        this.$store.dispatch('CHANGE_PAYMENT_STEP', { step: 'selectValue' });
       } else {
         this.SET_TICKET_STEP({ step: 'intro' });
       }

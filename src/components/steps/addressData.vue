@@ -1,125 +1,103 @@
 <template>
-  <form @submit.prevent="validateForm()" :aria-busy="loading ? 'true' : 'false'"
-    :data-busy-message="dataBusyMessage">
-      <fieldset>
-        <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
-        <div class="instructions-donation">
-          <p class="instructions">Informe seu endereço</p>
+  <form @submit.prevent="validateForm()" :aria-busy="loading ? 'true' : 'false'" :data-busy-message="dataBusyMessage">
+    <fieldset>
+      <a class="donation-nav donation-nav--rewind" href="#" @click.prevent="goBack">voltar</a>
+      <div class="instructions-donation">
+        <p class="instructions">Informe seu endereço</p>
+      </div>
+      <div class="input-wrapper" :class="`${validation.errors.birthdate ? 'has-error' : ''}`">
+        <label for="birthdate">
+          Data de nascimento
+        </label>
+        <input type="text" v-model="birthdate" id="birthdate" name="birthdate" autocomplete="bday" v-mask="'##/##/####'" required
+          v-focus />
+        <div class="error" v-if="validation.errors.birthdate">
+          {{ validation.errors.birthdate }}
         </div>
-        <div
-          class="input-wrapper"
-          :class="`${validation.errors.birthdate ? 'has-error' : ''}`"
-        >
-          <label
-            for="birthdate"
-          >
-            Data de nascimento
-          </label>
-          <input
-            type="text"
-            v-model="birthdate"
-            name="birthdate"
-            v-mask="'##/##/####'"
-            required
-            v-focus
-          >
-          <div class="error" v-if="validation.errors.birthdate">
-            {{ validation.errors.birthdate }}
-          </div>
+      </div>
+      <div class="input-wrapper" :class="{ 'has-error': validation.errors.phone }">
+        <label for="phone">
+          {{ formAction === 'follow' ? 'Celular' : 'Telefone' }}
+        </label>
+        <input v-model="phone" v-mask="['(##) ####-####', '(##) #####-####']" type="tel" id="phone" name="phone"
+          autocomplete="tel-national" placeholder="(00) 00000-0000" minlength="14"
+          :required="paymentData.payment_method !== 'credit_card'" />
+        <div v-if="validation.errors.phone" class="error">
+          {{ validation.errors.phone }}
         </div>
-        <div
-          class="input-wrapper"
-          :class=" { 'has-error' : validation.errors.phone }"
-        >
-          <label for="phone">
-            {{ formAction === 'follow' ? 'Celular' : 'Telefone' }}
-          </label>
-          <input
-            v-model="phone"
-            v-mask="['(##) ####-####', '(##) #####-####']"
-            type="tel"
-            name="phone"
-            placeholder="(00) 00000-0000"
-            minlength="14"
-            :required="paymentData.payment_method !== 'credit_card'"
-          >
-          <div
-            v-if="validation.errors.phone"
-            class="error"
-          >
-            {{ validation.errors.phone }}
-          </div>
+      </div>
+      <div :class="`input-wrapper
+      ${validation.errors.zip_code ? 'has-error' : ''}`">
+        <label for="zip_code">CEP</label>
+        <input type="tel" v-model="zip_code" id="zip_code" name="zipcode" autocomplete="postal-code" v-mask="'#####-###'"
+          @change="searchAddress($event)" required minlength="9" ref="zipCode" />
+        <div class="error" v-if="validation.errors.zip_code">
+          {{ validation.errors.zip_code }}
         </div>
-        <div :class="`input-wrapper
-          ${validation.errors.zip_code ? 'has-error' : ''}`">
-          <label for="zip_code">CEP</label>
-          <input type="tel" v-model="zip_code" name="zipcode" v-mask="'#####-###'" @change="searchAddress($event)" required minlength="9" ref="zipCode">
-          <div class="error" v-if="validation.errors.zip_code">
-            {{ validation.errors.zip_code }}
-          </div>
+      </div>
+      <div :class="`input-wrapper
+      ${validation.errors.city ? 'has-error' : ''}`">
+        <label for="city">Cidade</label>
+        <input type="text" v-model="city" id="city" name="city" autocomplete="address-level2" disabled="true" required ref="city" />
+        <div class="error" v-if="validation.errors.city">
+          {{ validation.errors.city }}
         </div>
-        <div :class="`input-wrapper
-          ${validation.errors.city ? 'has-error' : ''}`">
-          <label for="city">Cidade</label>
-          <input type="text" v-model="city" name="city" disabled="true" required ref="city">
-          <div class="error" v-if="validation.errors.city">
-            {{ validation.errors.city }}
-          </div>
-        </div>
-        <div :class="`input-wrapper
-          ${validation.errors.state ? 'has-error' : ''}`">
-          <label for="state">Estado</label>
-          <select type="text" v-model="state" name="state" disabled="true" required ref="state">
+      </div>
+      <div :class="`input-wrapper
+      ${validation.errors.state ? 'has-error' : ''}`">
+        <label for="state">Estado</label>
+        <select type="text" v-model="state" id="state" name="state" autocomplete="address-level1" disabled="true" required
+          ref="state" />
           <option value=""></option>
-            <option :value="key" v-for="(state, key) in states" :key="key">{{ state }}</option>
-          </select>
-          <div class="error" v-if="validation.errors.state">
-            {{ validation.errors.state }}
-          </div>
+          <option :value="key" v-for="(state, key) in states" :key="key">{{ state }}</option>
+        </select>
+        <div class="error" v-if="validation.errors.state">
+          {{ validation.errors.state }}
         </div>
-        <div :class="`input-wrapper
-          ${validation.errors.street ? 'has-error' : ''}`">
-          <label for="street">Rua</label>
-          <input type="text" v-model="street" name="street" disabled="true" required ref="street">
-          <div class="error" v-if="validation.errors.street">
-            {{ validation.errors.street }}
-          </div>
+      </div>
+      <div :class="`input-wrapper
+      ${validation.errors.street ? 'has-error' : ''}`">
+        <label for="street">Rua</label>
+        <input type="text" v-model="street" id="street"  name="street" autocomplete="address-level4" disabled="true" required
+          ref="street" />
+        <div class="error" v-if="validation.errors.street">
+          {{ validation.errors.street }}
         </div>
-        <div :class="`input-wrapper
-          ${validation.errors.district ? 'has-error' : ''}`">
-          <label for="district">Bairro</label>
-          <input type="text" v-model="district" name="district" disabled="true" required ref="district">
-          <div class="error" v-if="validation.errors.district">
-            {{ validation.errors.district }}
-          </div>
+      </div>
+      <div :class="`input-wrapper
+      ${validation.errors.district ? 'has-error' : ''}`">
+        <label for="district">Bairro</label>
+        <input type="text" v-model="district" id="district" name="district" autocomplete="address-level3" disabled="true" required
+          ref="district" />
+        <div class="error" v-if="validation.errors.district">
+          {{ validation.errors.district }}
         </div>
-        <div :class="`input-wrapper
-          ${validation.errors.number ? 'has-error' : ''}`">
-          <label for="number">Número</label>
-          <input type="tel" v-model="number" name="number" required>
-          <div class="error" v-if="validation.errors.number" >
-            {{ validation.errors.number }}
-          </div>
+      </div>
+      <div :class="`input-wrapper
+      ${validation.errors.number ? 'has-error' : ''}`">
+        <label for="number">Número</label>
+        <input type="tel" v-model="number" id="number" name="number" required>
+        <div class="error" v-if="validation.errors.number">
+          {{ validation.errors.number }}
         </div>
-          <div :class="`input-wrapper
-          ${validation.errors.complement ? 'has-error' : ''}`">
-          <label for="complement">Complemento</label>
-          <input type="text" v-model="complement" name="complement">
-          <div class="error" v-if="validation.errors.complement">
-            {{ validation.errors.complement }}
-          </div>
+      </div>
+      <div :class="`input-wrapper
+      ${validation.errors.complement ? 'has-error' : ''}`">
+        <label for="complement">Complemento</label>
+        <input type="text" v-model="complement" name="complement">
+        <div class="error" v-if="validation.errors.complement">
+          {{ validation.errors.complement }}
         </div>
-      </fieldset>
-      <p class="error" v-if="errorMessage != ''">
-        {{ errorMessage }}
-      </p>
+      </div>
+    </fieldset>
+    <p class="error" v-if="errorMessage != ''">
+      {{ errorMessage }}
+    </p>
 
-    <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward"
-      v-if="formAction !== 'donate'">
-        Concluir</button>
-    <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward"
-      v-else>
-        Continuar
+    <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward" v-if="formAction !== 'donate'">
+      Concluir</button>
+    <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward" v-else>
+      Continuar
     </button>
   </form>
 </template>
