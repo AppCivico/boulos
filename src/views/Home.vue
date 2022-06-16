@@ -14,9 +14,11 @@
             <strong class="amount" v-inview="isAmountOnViewport">
               <template v-if="totalAmount">
                 <span>
-                  <animated-number :value="amountInView ? totalAmount : 0" :formatValue="FormatFixedBRL"
-                    :duration="1000" />
-                  <small v-if="centsOfTotal" class="campaign-progress__meta-cents">,{{ centsOfTotal }}</small>
+                  <animated-number :value="amountInView ? totalAmount : 0"
+                  :formatValue="FormatFixedBRL" :duration="1000" />
+                  <small v-if="centsOfTotal"
+                  class="campaign-progress__meta-cents">,{{ centsOfTotal
+                  }}</small>
                 </span>
               </template>
               <template v-else>0</template>
@@ -26,8 +28,8 @@
             {{ totalDonors | thousandsSeparator }} doações realizadas
           </p>
 
-          <div role="progressbar" aria-valuemin="0" :aria-valuenow="totalAmount" :aria-valuemax="expected"
-            v-if="donationSources.length > 1">
+          <div role="progressbar" aria-valuemin="0" :aria-valuenow="totalAmount"
+          :aria-valuemax="expected" v-if="donationSources.length > 1">
 
             <template v-if="source.total_donated">
               <div v-for="(source, i) in donationSources" :key="i" :style="progressBarStyle(source)"
@@ -38,7 +40,7 @@
           </div>
           <progress :value="totalAmount" :max="expected" v-else>
             <div role="progressbar" :aria-valuenow="totalAmount" :aria-valuemax="expected">
-              <div :style="{width: `${percentage(totalAmount)}%`}">
+              <div :style="{ width: `${percentage(totalAmount)}%` }">
                 {{ percentage(totalAmount) }}
               </div>
             </div>
@@ -46,7 +48,8 @@
 
           <p class="campaign-progress-percentage">
             {{ percentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
-            <a :href="`#goal-description__${expected}`" v-if="summary">{{ summary.toLowerCase() }}</a>
+            <a :href="`#goal-description__${expected}`" v-if="summary">{{
+            summary.toLowerCase() }}</a>
           </p>
 
           <div v-if="donationSources.length > 1" class="donations-sources">
@@ -118,17 +121,18 @@
       </div>
     </article>
 
-    <article id="home__goals" class="home__goals">
+    <article id="home__goals" class="home__goals" v-if="currentAndPastGoals.length">
       <div class="container" id="donation-wrap">
         <h2>
           Metas
         </h2>
 
         <div v-for="(item, index) in currentAndPastGoals" :key="index"
-          :id="`goal-description__${item.goal}`" class="goal-description"
-          :class="{ 'goal-description--reached': (candidate.total_donated >=
-          item.goal) }"
-        >
+        :id="`goal-description__${item.goal}`"
+          class="goal-description" :class="{
+            'goal-description--reached': (candidate.total_donated >=
+              item.goal)
+          }">
           <h3>
             <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"
               v-if="candidate.total_donated >= item.goal">
@@ -158,7 +162,7 @@
 
         <p>
           <span v-for="(person, i) in donors" :key="i">
-            {{ person | titleCase }}{{ i !== donors.length -1 ? ',' : '' }}
+            {{ person | titleCase }}{{ i !== donors.length - 1 ? ',' : '' }}
           </span>
         </p>
 
@@ -225,7 +229,8 @@
     </article>
 
     <div class="candidate-footer">
-      <img src="../assets/images/icons/logo__slogan.svg" alt="Logotipo campanha" class="candidate-footer__logo">
+      <img src="../assets/images/icons/logo__slogan.svg" alt="Logotipo campanha"
+      class="candidate-footer__logo" />
       <p>
         Eleição 2022 {{ candidate.name }}
       </p>
@@ -243,17 +248,17 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 // @ is an alias to /src
 import Payment from '@/components/Payment.vue';
-import { parseMD } from '../utilities';
-// eslint-disable-next-line
 import AnimatedNumber from 'animated-number-vue';
+import { FormatFixedBRL, parseMD } from '../utilities';
 
 export default {
   data() {
     return {
       amountInView: false,
+      candidateId: process.env.VUE_APP_CANDIDATE_ID,
     };
   },
   name: 'home',
@@ -261,11 +266,10 @@ export default {
     Payment,
     AnimatedNumber,
   },
-  mounted() {
-    const candidateId = process.env.VUE_APP_CANDIDATE_ID;
-    this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
-    this.$store.dispatch('GetDonorsNames', candidateId);
-    this.$store.dispatch('UPDATE_DONATIONS_SUMMARY', candidateId);
+  mounted({ candidateId } = this) {
+    this.GET_CANDIDATE_INFO(candidateId);
+    this.GetDonorsNames(candidateId);
+    this.UPDATE_DONATIONS_SUMMARY(candidateId);
   },
   computed: {
     centsOfTotal() {
@@ -288,12 +292,12 @@ export default {
       const { totalAmount, goals } = this;
 
       return (goals.find((x) => x.goal > totalAmount)
-        || goals[goals.length - 1]).summary
+        || goals[goals.length - 1] || {}).summary
         || '';
     },
 
-    ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'goals', 'goalsWithDescription', 'totalAmount']),
-    ...mapState(['candidate', 'donors', 'donationsRecentCount', 'donationsRecent', 'hasMoreDonations']),
+    ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'goals', 'totalAmount']),
+    ...mapState(['candidate', 'donors']),
   },
   methods: {
     percentage(amount = this.totalAmount, expected = this.expected) {
@@ -306,16 +310,7 @@ export default {
         width: `${this.percentage(source.total_donated)}%`,
       };
     },
-    FormatFixedBRL(amount) {
-      let formated = `${(amount / 100).toFixed(2)}`;
-
-      formated = formated
-        .substring(0, formated.length - 2)
-        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-        .replace(/\.+$/, '');
-      return formated;
-    },
-    isAmountOnViewport(evt, el) {
+    isAmountOnViewport(_evt, el) {
       const rect = el.getBoundingClientRect();
       const inView = (
         rect.width > 0
@@ -328,7 +323,10 @@ export default {
 
       return this.$data.amountInView;
     },
+    FormatFixedBRL,
     parseMD,
+
+    ...mapActions(['GET_CANDIDATE_INFO', 'GetDonorsNames', 'UPDATE_DONATIONS_SUMMARY']),
   },
   directives: {
     inview: {

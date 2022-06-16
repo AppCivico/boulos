@@ -2,6 +2,7 @@ import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import CONFIG from './config';
+import { office_list } from "./data/offices";
 
 Vue.use(Vuex);
 
@@ -34,7 +35,7 @@ export default new Vuex.Store({
     lastDonationMarker: '',
     donationPlatforms: [],
     donationSources: [],
-    offices: {},
+    offices: office_list,
     projects: [],
 
 

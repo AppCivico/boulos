@@ -1,0 +1,76 @@
+{
+  "office_list": [
+    {
+      "id": 4,
+      "name": "Presidente",
+      "byGender": {
+        "female": "Presidente",
+        "male": "Presidente"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Senador(a)",
+      "byGender": {
+        "female": "Senadora",
+        "male": "Senador"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Governador(a)",
+      "byGender": {
+        "female": "Governadora",
+        "male": "Governador"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Deputado(a) Estadual",
+      "byGender": {
+        "female": "Deputada Estadual",
+        "male": "Deputado Estadual"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Deputado(a) Federal",
+      "byGender": {
+        "female": "Deputada Federal",
+        "male": "Deputado Federal"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Deputado(a) Distrital",
+      "byGender": {
+        "female": "Deputada Distrital",
+        "male": "Deputado Distrital"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Prefeito(a)",
+      "byGender": {
+        "female": "Prefeita",
+        "male": "Prefeito"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Vereador(a)",
+      "byGender": {
+        "female": "Vereadora",
+        "male": "Vereador"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Vice-prefeito(a)",
+      "byGender": {
+        "female": "Vice-pefeitoa",
+        "male": "Vice-prefeito"
+      }
+    }
+  ]
+}
