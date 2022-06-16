@@ -282,7 +282,6 @@ export default {
       payload.billing_address_complement = complement;
 
       if (formAction === 'donate') {
-        console.debug('addressData::saveAddress::payload', payload);
         this.$store.dispatch('GET_DONATION', payload)
           .then(() => {
             this.handleIugu();
