@@ -2,6 +2,12 @@ function pad(n, width, z) {
   z = z || '0';
   n = n + '';
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+import parser from '../vendor/markdown.min';
+
+function parseMD(content) {
+  return parser.parse(content).innerHTML;
+}
+
 }
 
 function scrollTo($eventOrId) {
@@ -194,6 +200,7 @@ export {
   thousandsSeparator,
   getQueryString,
   scrollTo,
+  parseMD,
   pad,
   copyTextToClipboard,
 };

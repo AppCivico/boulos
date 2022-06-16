@@ -265,9 +265,9 @@
 // @ is an alias to /src
 import Payment from '@/components/Payment.vue';
 import { root as fallbackGoals } from '@/data/goals.json';
+import { parseMD } from '../utilities';
 // eslint-disable-next-line
 import AnimatedNumber from 'animated-number-vue';
-import parser from '../vendor/markdown.min';
 
 export default {
   data() {
@@ -363,10 +363,6 @@ export default {
     },
   },
   methods: {
-    parseMD(content) {
-      return parser.parse(content).innerHTML;
-    },
-
     percentage(amount = this.totalAmount, expected = this.expected) {
       return Math.floor((parseFloat(amount) * 100) / Math.max(this.totalAmount, expected))
         || 0;
@@ -399,6 +395,7 @@ export default {
 
       return this.$data.amountInView;
     },
+    parseMD,
   },
   directives: {
     inview: {
