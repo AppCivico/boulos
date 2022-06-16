@@ -271,7 +271,7 @@ export default new Vuex.Store({
             commit('SET_DONATION', { donation });
             commit('SET_IUGU', { iugu: ui.messages[1] });
             commit('SET_MESSAGES', { messages: response.data.ui.messages });
-            resolve();
+            resolve(response.data);
           },
           (err) => {
             console.error(err.response || err.message || err);
@@ -305,9 +305,7 @@ export default new Vuex.Store({
         axios({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          url: `${CONFIG.api}/api2/donations/${state.donation.id}?device_authorization_token_id=${
-            state.token
-          }&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
+          url: `${CONFIG.api}/api2/donations/${state.donation.id}?device_authorization_token_id=${state.token}&credit_card_token=${payload.id}&cc_hash=${payload.cc_hash}`,
         }).then(
           (response) => {
             const data = {
@@ -331,21 +329,18 @@ export default new Vuex.Store({
       });
     },
     GET_CANDIDATE_INFO({ commit }, id) {
-      return new Promise((resolve, reject) => {
-        axios.get(`${CONFIG.api}/public-api/candidate-summary/${id}`).then(
-          (response) => {
+      return new Promise((resolve, reject) => axios.get(`${CONFIG.api}/public-api/candidate-summary/${id}`)
+        .then((response) => {
             commit('SET_CANDIDATE', { res: response.data });
             if (response.data.platforms) {
               commit('SET_SOURCES', response.data.platforms);
             }
-            resolve();
-          },
-          (err) => {
-            console.error(err);
-            reject(err.response || err.message || err);
-          },
-        );
-      });
+            resolve(response.data);
+          })
+        .catch((err) => {
+          reject(err.response || err.message || err);
+        })
+      );
     },
     GET_DONATIONS({ commit, state }, id) {
       state.donationsLoading = true;
@@ -360,10 +355,10 @@ export default new Vuex.Store({
             state.donationsLoading = false;
             resolve(response.data.donations);
           },
-          (err) => {
-            reject(err.response || err.message || err);
-            console.error(err);
-          });
+            (err) => {
+              reject(err.response || err.message || err);
+              console.error(err);
+            });
       });
     },
     GetDonorsNames({ commit }, id) {
@@ -371,7 +366,7 @@ export default new Vuex.Store({
         axios.get(`${CONFIG.api}/public-api/candidate-donations/${id}/donators-name`).then(
           (response) => {
             commit('SET_DONORS', { res: response.data });
-            resolve();
+            resolve(response.data);
           },
           (err) => {
             reject(err.response || err.message || err);
@@ -569,10 +564,10 @@ export default new Vuex.Store({
 
           resolve();
         },
-        (err) => {
-          console.error(err.response);
-          reject(err.response);
-        });
+          (err) => {
+            console.error(err.response);
+            reject(err.response);
+          });
       });
     },
 
