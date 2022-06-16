@@ -55,6 +55,14 @@
       <p class="error" v-if="errorMessage != ''">
         {{ errorMessage }}
       </p>
+      <p class="form__disclaimer">Doação processada por <strong>AppCívico
+          Consultoria Ltda.</strong>,
+        <em>CNPJ 08.746.641/0001-00</em>, razão social pela qual o Voto Legal é
+        homologado no <abbr title="Tribunal Superior Eleitoral">TSE</abbr>.
+      <p class="form__disclaimer">
+        Doação processada por <strong>IUGU*AppCívico</strong>.
+      </p>
+
       <p class="form__disclaimer">Será enviado um recibo em seu e-mail com todos os dados sobre a doação. Não
         armazenamos seus dados de cartão de crédito.</p>
       <button class="donation-nav donation-nav--forward" type="submit" :disabled="loading">Continuar</button>

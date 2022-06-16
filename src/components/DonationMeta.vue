@@ -5,14 +5,6 @@
       <dd>
         AppCívico Consultoria Ltda.
       </dd>
-      <dd>
-        razão social pela qual o <strong>Voto Legal</strong>
-        é homologado no <abbr title="Tribunal Superior Eleitoral">TSE</abbr>
-      </dd>
-    </div>
-    <div>
-      <dt><abbr title="Cadastro Nacional de Pessoa Jurídica">CNPJ</abbr>:</dt>
-      <dd>08.746.641/0001-00</dd>
     </div>
   </dl>
 </template>
