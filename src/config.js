@@ -1,24 +1,6 @@
-let api = 'https://votolegal-test-api.appcivico.com';
-let tokenName = 'dev_dat22_token';
-
-switch (window.location.host) {
-  case 'votolegal.com.br':
-  case 'votolegal.com':
-  case '2022.votolegal.com.br':
-  case '2022.votolegal.com':
-  case 'doeboulos.com':
-  case 'doeboulos.com.br':
-    api = 'https://api2022vl.appcivico.com';
-    tokenName = 'prod_dat22_token';
-    break;
-
-  default:
-    break;
-}
-
 export default {
-  api,
-  tokenName,
+  api: process.env.VUE_APP_API_ORIGIN,
+  tokenName: process.env.VUE_APP_TOKEN_NAME,
   contract: 'https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf',
   ToS: 'tos/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202022.pdf',
   taxes: {
