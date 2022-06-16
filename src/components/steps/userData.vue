@@ -107,6 +107,7 @@
 import { mask } from 'vue-the-mask';
 import { mapMutations, mapState } from 'vuex';
 import CONFIG from '../../config';
+import { root as minimumPerMethodFallback } from '../../data/minimum_donations_per_payment_method.json';
 import { validate } from '../../utilities';
 import VotolegalFP from '../../vendor/loadme';
 
@@ -140,15 +141,6 @@ export default {
     };
   },
   computed: {
-    amount() {
-      return this.$store.state.amount;
-    },
-    token() {
-      return this.$store.state.token;
-    },
-    candidate() {
-      return this.$store.state.candidate;
-    },
     candidateAmount({ amount, taxes, payment_method } = this) {
       let newAmount = 0;
 
@@ -161,15 +153,16 @@ export default {
       }
       return newAmount;
     },
-    allowedPaymentMethods() {
-      const allowedMethods = (this.candidate || {}).allowed_payment_methods || ['credit_card', 'boleto', 'pix'];
-      if (allowedMethods.length === 1) {
-        [this.payment_method] = allowedMethods;
-      }
+    allowedPaymentMethods({ amount, candidate } = this) {
+      const allowedPaymentMethodsFallback = ['credit_card', 'boleto', 'pix'];
+      const {
+        min_donation_values: minimumPerMethod = minimumPerMethodFallback,
+        allowed_payment_methods: allowedPaymentMethods = allowedPaymentMethodsFallback,
+      } = candidate;
 
-      return allowedMethods;
+      return allowedPaymentMethods.filter((x) => amount >= minimumPerMethod[x]);
     },
-    ...mapState(['candidateId']),
+    ...mapState(['amount', 'candidate', 'candidateId', 'token']),
   },
   watch: {
     payment_method(newValue, oldValue) {

@@ -1,0 +1,7 @@
+{
+  "root": {
+    "credit_card": 2000,
+    "boleto": 2000,
+    "pix": 100
+  }
+}
