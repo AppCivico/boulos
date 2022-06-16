@@ -254,7 +254,6 @@ export default new Vuex.Store({
       commit('SET_PAYMENT_DATA', { paymentData: data });
     },
     GET_DONATION({ commit }, data) {
-      console.debug('store::GET_DONATION::data', data);
       return new Promise((resolve, reject) => {
         const rejectionByTimeout = setTimeout(() => {
           clearTimeout(rejectionByTimeout);
