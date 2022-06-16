@@ -1,18 +1,17 @@
-function pad(n, width, z) {
-  z = z || '0';
-  n = n + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 import parser from '../vendor/markdown.min';
 
 function parseMD(content) {
   return parser.parse(content).innerHTML;
 }
 
+function pad(n, width, z = '0') {
+  const s = String(n);
+  return s.length >= width ? s : new Array(width - s.length + 1).join(z) + s;
 }
 
 function scrollTo($eventOrId) {
   const targetQuery = typeof $eventOrId === 'string'
-    ? '#' + $eventOrId
+    ? `#${$eventOrId}`
     : $eventOrId.target.getAttribute('href');
   const targetEl = document.querySelector(targetQuery);
 
@@ -37,14 +36,14 @@ function validate(fields) {
 }
 
 function formatBRLDec(amount) {
-  let formated = `${amount}`;
-  formated = formated.replace(/([0-9]{2})$/g, ',$1');
+  let formatted = `${amount}`;
+  formatted = formatted.replace(/([0-9]{2})$/g, ',$1');
 
-  if (formated.length > 6) {
-    formated = formated.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
+  if (formatted.length > 6) {
+    formatted = formatted.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
   }
 
-  return formated;
+  return formatted.replace(/^[0.]+/, '');
 }
 
 function thousandsSeparator(x = 0) {
@@ -52,11 +51,13 @@ function thousandsSeparator(x = 0) {
 }
 
 function formatBRL(amount) {
-  let formated = `${amount}`;
+  let formatted = `${amount}`;
 
-  formated = formated.substring(0, formated.length - 2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  formatted = formatted
+    .substring(0, formatted.length - 2)
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 
-  return formated;
+  return formatted;
 }
 
 function cleanPhone(phone) {
@@ -135,7 +136,10 @@ function formatDateBasic(date) {
 }
 
 function formatCNPJ(value) {
-  return value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+  return value.replace(
+    /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+    '$1.$2.$3/$4-$5',
+  );
 }
 
 function getQueryString(url) {
