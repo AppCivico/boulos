@@ -7,24 +7,33 @@
         <a :href="message.href" class="donation-nav donation-nav--forward">{{ message.text }}</a>
       </p>
 
-      <div v-else v-html="message.text" @click="delegation($event)" :key="idx" />
+      <div v-else-if="message.text" v-html="message.text" @click="delegation($event)" :key="idx" />
 
-      <DonationMeta v-if="idx === 0" class="donation-meta" :key="idx + '--meta'" />
+      <template v-if="idx === 0">
+        <div class="input-wrapper field-for-copy__wrapper" v-if="isClipboardInaccessible" :key="idx + '--copy-field'">
+          <label class="field-for-copy__label">
+            Selecione e copie
+          </label>
+          <input class="field-for-copy" type="text" @click="selectContent($event)"
+            readonly :value="pixKey" v-focus.select />
+        </div>
+        <DonationMeta class="donation-meta" :key="idx + '--meta'" />
+      </template>
     </template>
 
     <p v-if="candidate.followers_activated">
-      <a class="donation-nav donation-nav--forward" @click="scrollTo"
-      href="#acompanhar">Acompanhar campanha</a>
+      <a class="donation-nav donation-nav--forward" @click="scrollTo" href="#acompanhar">Acompanhar campanha</a>
     </p>
     <p v-if="candidate.reviews_activated">
-      <a class="donation-nav donation-nav--forward" @click="scrollTo"
-      href="#testemunhar">Testemunhar sobre {{ candidate.popular_name }}</a>
+      <a class="donation-nav donation-nav--forward" @click="scrollTo" href="#testemunhar">Testemunhar sobre {{
+          candidate.popular_name
+      }}</a>
     </p>
   </section>
 </template>
 
 <script>
-import { copyTextToClipboard, scrollTo } from '../../utilities';
+import { scrollTo } from '../../utilities';
 import DonationMeta from '../DonationMeta.vue';
 
 export default {
@@ -37,13 +46,27 @@ export default {
       loading: false,
       dataBusyMessage: '',
       errorMessage: '',
-
+      isClipboardInaccessible: !navigator.clipboard,
       validation: {
         errors: {},
       },
     };
   },
   computed: {
+    pixKey({ messages } = this) {
+      let key = '';
+
+      messages.every(x => {
+        const found = x.text.match(/(?:data-pix='(.+)')/i);
+        if (found?.[1]) {
+          key = found[1];
+          return false;
+        }
+        return true;
+      });
+
+      return key;
+    },
     donor_names() {
       return this.$store.state.donor_names;
     },
@@ -60,11 +83,12 @@ export default {
   methods: {
     delegation({ target }) {
       if (target.hasAttribute('data-pix')) {
-        this.copyTextToClipboard(target.getAttribute('data-pix'))
+        navigator.clipboard.writeText(target.getAttribute('data-pix'))
           .then(() => {
             alert('Chave PIX copiada');
           }).catch((err) => {
-            alert('Seu navegador não permitiu a cópia da chave PIX! Como alternativa, ela foi enviada ao endereço de email informado. ', err);
+            this.isClipboardInaccessible = true;
+            throw err;
           });
       }
     },
@@ -78,31 +102,44 @@ export default {
 
       this.dataBusyMessage = this.dataBusyMessage !== message ? message : '';
     },
+
     handleErrorMessage(err) {
       if (err) {
         this.errorMessage = err.message || err.name || (err.data && err.data[0] ? err.data[0].message : err);
       }
     },
     scrollTo,
-    copyTextToClipboard,
   },
 };
 </script>
 
-<style lang="scss">
-  .certiface-verify p {
-    &::before,
-    &::after {
+<style lang="scss" scoped>
+.certiface-verify p {
 
-      display: table;
+  &::before,
+  &::after {
 
-      border-collapse: collapse;
+    display: table;
 
-      content: '';
-    }
+    border-collapse: collapse;
 
-    &::after {
-      clear: both;
-    }
+    content: '';
   }
+
+  &::after {
+    clear: both;
+  }
+}
+
+.field-for-copy__wrapper {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.field-for-copy {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 </style>
