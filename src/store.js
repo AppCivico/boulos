@@ -467,6 +467,114 @@ export default new Vuex.Store({
         });
       });
     },
+
+    submitCandidateTestimony({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        const keys = {
+          candidate_id: 'candidate_id',
+          testimony: 'content',
+          device_authorization_token_id: 'device_authorization_token_id',
+          birthdate: 'birthdate',
+          email: 'email',
+          name: 'first_name',
+          surname: 'family_name',
+          phone: 'mobile_phone',
+        };
+
+        const translatedAndCleanData = Object.keys(data).reduce((acc, cur) => {
+          if (keys[cur]) {
+            acc[keys[cur]] = data[cur];
+          }
+          return acc;
+        }, {});
+
+        axios({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          url: `${CONFIG.api}/api2/candidate-review`,
+          data: translatedAndCleanData,
+        }).then(
+          (response) => {
+            if (response.data && response.data.ui && response.data.ui.messages) {
+              commit('SET_MESSAGES', { messages: response.data.ui.messages });
+            }
+
+            resolve();
+          },
+          (err) => {
+            console.error(err.response);
+            reject(err.response);
+          },
+        );
+      });
+    },
+
+    requestToFollowCandidate({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        const keys = {
+          candidate_id: 'candidate_id',
+          device_authorization_token_id: 'device_authorization_token_id',
+          address_district: 'address_district',
+          address_house_number: 'address_house_number',
+          address_state: 'address_state',
+          address_street: 'address_street',
+          address_zipcode: 'address_zipcode',
+          address_city: 'address_city',
+          birthdate: 'birthdate',
+          email: 'email',
+          name: 'first_name',
+          surname: 'family_name',
+          phone: 'mobile_phone',
+        };
+
+        const translatedAndCleanData = Object.keys(data).reduce((acc, cur) => {
+          if (keys[cur]) {
+            acc[keys[cur]] = data[cur];
+          }
+          return acc;
+        }, {});
+
+        axios({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          url: `${CONFIG.api}/api2/candidate-followers`,
+          data: translatedAndCleanData,
+        }).then(
+          (response) => {
+            if (response.data && response.data.ui && response.data.ui.messages) {
+              commit('SET_MESSAGES', { messages: response.data.ui.messages });
+            }
+            resolve();
+          },
+          (err) => {
+            console.error(err.response);
+            reject(err.response);
+          },
+        );
+      });
+    },
+
+    requestToUnfollowCandidate({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        axios({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          url: `${CONFIG.api}/api2/candidate-followers/unfollow`,
+          data,
+        }).then((response) => {
+          if (response.data && response.data.ui && response.data.ui.messages) {
+            commit('SET_MESSAGES', { messages: response.data.ui.messages });
+          }
+
+          resolve();
+        },
+        (err) => {
+          console.error(err.response);
+          reject(err.response);
+        });
+      });
+    },
+
   },
   getters: {
     generateCandidateObject: (state) => {
@@ -477,5 +585,89 @@ export default new Vuex.Store({
       };
       return candidateMerge;
     },
+
+    campaignStateWithGender: ({ candidate }) => {
+      let candidateState = candidate.campaign_donation_type === 'campaign'
+        ? 'Candidat'
+        : 'Pré-candidat';
+
+      switch (candidate.gender) {
+        case 'female':
+          candidateState += 'a';
+          break;
+
+        case 'male':
+          candidateState += 'o';
+
+          break;
+
+        default:
+          candidateState += 'o(a)';
+          break;
+      }
+
+      return candidateState;
+    },
+
+    campaign: ({ candidate }) => candidate.campaign_donation_type === 'campaign' ? 'Candidatura' : 'Pré-candidatura',
+
+    candidatePreposition: ({ candidate }) => {
+      switch (candidate.gender) {
+        case 'female':
+          return 'da';
+
+        case 'male':
+          return 'do';
+
+        default:
+          return 'do(a)';
+      }
+    },
+
+    partyAndName: ({ candidate }) => candidate.party?.name?.toLowerCase().indexOf('partido') === -1 ?
+      'Partido ' + candidate.party?.name : candidate.party?.name,
+
+    runningFor: ({ candidate, offices }) => {
+      const office = offices.find((x) => x.id === candidate.office_id || candidate.office?.id);
+      return !candidate.gender
+        ? office?.name
+        : office?.byGender[candidate.gender] || office?.name;
+    },
+
+    goals: ({ candidate }) => {
+      return candidate?.multiple_goals || [];
+    },
+
+    donationSources: ({ donationSources }) => {
+      let opacity = 0;
+      return donationSources.map((x) => {
+        const y = x;
+        y.opacity = opacity;
+        opacity += 0.25;
+        return y;
+      });
+    },
+
+    totalAmount: ({ candidate }, { donationSources }) => {
+      return donationSources.length
+        ? donationSources.reduce(
+          (accumulator, currentValue) =>
+            accumulator + currentValue.total_donated,
+          0
+        )
+        : candidate.total_donated || 0;
+    },
+
+    expected: ({ candidate }, { goals, totalAmount }) => {
+      const { raising_goal: raisingGoal } = candidate;
+
+      return (goals.find((x) => x.goal > totalAmount) || goals[goals.length - 1])?.goal
+        || raisingGoal
+        || 0;
+    },
+
+    goalsWithDescription: (_state, { goals }) => goals.filter((x) => !!x.description),
+
+    currentAndPastGoals: (_state, { expected, goalsWithDescription }) => goalsWithDescription.filter((x) => x.goal <= expected).sort((a, b) => b.goal - a.goal),
   },
 });
