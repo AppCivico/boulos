@@ -160,6 +160,29 @@ function getQueryString(url) {
   return params;
 }
 
+function FormatFixedBRL(amount) {
+  const formatted = `${(amount / 100).toFixed(2)}`;
+
+  return formatted
+    .substring(0, formatted.length - 2)
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+    .replace(/\.+$/, '');
+}
+
+function formatCPF(value) {
+  return /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(value)
+    ? value
+    : value.trim().replace(/[^0-9]/g, '').replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/g, '$1.$2.$3-$4');
+}
+
+function maskCPF(value) {
+  return formatCPF(value).replace(/^\d{3}/, '***').replace(/\d{2}$/, '**');
+}
+
+function maskName(value) {
+  return value.trim().split(' ').map((x, i) => (i === 0 ? x : x.replace(/(?<!^).(?!$)/g, '*'))).join(' ');
+}
+
 function fallbackCopyTextToClipboard(text) {
   var textArea = document.createElement('textarea');
   textArea.value = text;
@@ -195,6 +218,10 @@ function copyTextToClipboard(text) {
 export {
   validate,
   formatBRL,
+  FormatFixedBRL,
+  formatCPF,
+  maskCPF,
+  maskName,
   cleanPhone,
   formatDate,
   formatCNPJ,

@@ -16,8 +16,9 @@
 %button-reset {
   @extend %os-element-reset;
 
-  width: auto; /* 3 */
+  box-sizing: inherit;
 
+  width: auto; /* 3 */
   padding: 1px 6px; /* 6 */ // sass-lint:disable-line property-units
 
   overflow: visible; /* 3 */
@@ -28,8 +29,6 @@
   cursor: pointer; /* 2 */
 
   background-color: palette('button'); /* 5 */
-
-  box-sizing: inherit;
 
   appearance: button; /* 1 */
 
@@ -60,6 +59,17 @@ html [type='button'] {
   @extend %button-reset;
 }
 
+.like-a__button--submit,
+.like-a__button {
+  cursor: pointer;
+
+  input[type='checkbox'],
+  input[type='radio'] {
+    display: none;
+  }
+}
+
+.like-a__button,
 button,
 [role='button'],
 [type='button'] {
@@ -70,8 +80,11 @@ button,
   @extend %button-reset;
 }
 
+.like-a__button--submit,
 [type='submit'] {
   @extend %button-reset;
+
+  text-align: center;
 }
 
 /**
@@ -81,65 +94,75 @@ button:-moz-focusring,
 input:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
+
 .button--load-more[class] {
   display: block;
-  border-radius: 1.25rem;
-  border: 0;
-  overflow: visible;
-  text-indent: 0;
-  white-space: inherit;
+
   padding-top: $leading * 0.15rem;
-  padding-left: $leading * 1em;
   padding-right: $leading * 1em;
   padding-bottom: $leading * 0.15rem;
+  padding-left: $leading * 1em;
   margin-top: $leading * 1rem;
   margin-right: auto;
   margin-bottom: $leading * 2rem;
   margin-left: auto;
+  overflow: visible;
+
   font-weight: bold;
-  cursor: pointer;
-  background-color: palette('gray', 'base');
   color: palette('white');
+  text-indent: 0;
   text-transform: lowercase;
+  white-space: inherit;
+
+  cursor: pointer;
+
+  background-color: palette('gray', 'base');
+  border: 0;
+  border-radius: 1.25rem;
+
   &:hover {
     background-color: palette('green', 'base');
   }
 }
 
 .nav-link-donations-wrap {
-  text-align: center;
   margin: auto;
+
+  text-align: center;
 }
 
 .nav-link-donations-wrap a {
   display: block;
-  border-radius: 1.25rem;
-  white-space: inherit;
+
+  width: 14em;
   padding-top: $leading * 0.15rem;
-  padding-left: $leading * 0.8em;
   padding-right: $leading * 0.8em;
   padding-bottom: $leading * 0.15rem;
+  padding-left: $leading * 0.8em;
   margin-top: $leading * 1rem;
   margin-right: auto;
   margin-bottom: $leading * 2rem;
   margin-left: auto;
+
   font-weight: bold;
+  color: palette('white');
   text-align: center;
-  color: palette('white');
   text-decoration: none;
-  background-color: palette('gray', 'base');
-  color: palette('white');
   text-transform: lowercase;
-  width: 14em;
+  white-space: inherit;
+
+  background-color: palette('gray', 'base');
+  border-radius: 1.25rem;
 
   &:link {
-    text-decoration: none;
     color: palette('white');
+    text-decoration: none;
   }
 
   &:hover {
-    text-decoration: none;
-    background-color: palette('green', 'base');
     color: palette('white');
+    text-decoration: none;
+
+    background-color: palette('green', 'base');
   }
 }

@@ -8,29 +8,34 @@ tfoot,
 tr,
 th,
 td {
-  background: red;
   width: auto;
   height: auto;
+  padding: 1em;
+
   font-size: ms(0);
   vertical-align: top;
+
   background-color: transparent;
   border: 0;
-  padding: 1em;
+
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
     display: block;
   }
 }
 
 table {
+  @include fallback('margin', 0 0 1.5em 0);/* line-height */
+
   width: 100%;
   max-width: 100%;
-  @include fallback('margin', 0 0 1.5em 0);
-  /* line-height */
-  font-size: 100%;
+
   font-family: inherit;
+  font-size: 100%;
   font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
-  border-collapse: collapse;
+
   empty-cells: show;
+  border-collapse: collapse;
+
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
     padding: 0;
   }
@@ -45,13 +50,23 @@ caption {}
 
 tr {
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    padding: 0;
-    padding-bottom: $leading * 0.25em;
-    padding-top: $leading * 0.25em;
     @include fallback('margin', 0 0 1.5rem);
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    padding: 0;
+    padding-top: $leading * 0.25em;
+    padding-bottom: $leading * 0.25em;
+
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  @media screen and (max-width: #{map-get($breakpoints, 'phablet') - 0.01}) {
+    display: block;
   }
 }
 
@@ -62,18 +77,23 @@ tr {
 
 th {
   font-weight: bold;
-  text-transform: capitalize;
+
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    text-transform: capitalize;
+    min-width: 100%;
     padding-top: $leading * 0.25em;
   }
 }
 
 td {
   font-family: inherit;
+
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    padding-bottom: $leading * 0.25em;
+    flex-grow: 1;
+
+    min-width: 50%;
     padding-top: $leading * 0.25em;
+    padding-bottom: $leading * 0.25em;
+
     &:empty {
       display: none;
     }
@@ -88,10 +108,12 @@ thead {
 
 thead th,
 thead td {
-  background-color: palette('blue');
   color: palette('white');
   text-align: left;
   vertical-align: bottom;
+
+  background-color: palette('blue');
+
 }
 
 thead th:first-child,
@@ -99,11 +121,12 @@ tfoot th:first-child {
   text-align: left;
 }
 
-thead>tr:nth-last-of-type(odd)>th,
-thead>tr:nth-last-of-type(odd)>td {}
+thead > tr:nth-last-of-type(odd) > th,
+thead > tr:nth-last-of-type(odd) > td {}
 
 tbody {
   text-align: left;
+
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
     padding: 0;
   }
@@ -111,36 +134,43 @@ tbody {
 
 tbody th {
   @include truncate;
+
   text-align: left;
 }
 
 tbody td {
   @include truncate;
+
+  font-variant-numeric: lining-nums oldstyle-nums;
   text-align: left;
+
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
     text-align: left;
+    vertical-align: baseline;
+
     &[title] {
-      text-align: right;
       &::before {
-        float: left;
-        font-style: italic;
+        font-size: ms(-1);
+
         content: attr(title)': ';
       }
     }
   }
-  font-variant-numeric: lining-nums oldstyle-nums;
 }
 
 tbody tr:nth-child(odd) {
-  background-color: palette('box', 'base');
+  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
+    background-color: palette('box', 'base');
+  }
 }
 
 td img {
   vertical-align: top;
 }
 
-tbody tr:nth-of-type(odd)>th,
-tbody tr:nth-of-type(odd)>td {
+tbody tr:nth-child(even) {
+  background-color: palette('box', 'base');
+
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
     background-color: transparent;
   }
@@ -148,165 +178,20 @@ tbody tr:nth-of-type(odd)>td {
 
 tfoot th,
 tfoot td {
-  background-color: palette('blue');
   color: palette('white');
-  vertical-align: top;
   text-align: left;
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    display: none;
-  }
-}
-
-/* TABLES
-============================================================================ */
-
-table,
-thead,
-tbody,
-tfoot,
-tr,
-th,
-td {
-  width: auto;
-  height: auto;
-  font-size: ms(0);
   vertical-align: top;
-  background-color: transparent;
-  border: 0;
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    display: block;
-  }
-}
 
-table {
-  width: 100%;
-  max-width: 100%;
-  @include fallback('margin', 0 0 1.5em 0);
-  /* line-height */
-  font-size: 100%;
-  font-family: inherit;
-  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 0;
-  border-collapse: collapse;
-  empty-cells: show;
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    padding: 0;
-  }
-}
-
-table p,
-table li {
-  font-size: ms(0);
-}
-
-.blockchain-cell {
-  @include truncate;
-}
-
-caption {}
-
-tr {
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    padding: 0;
-    padding-bottom: $leading * 0.25em;
-    padding-top: $leading * 0.25em;
-    @include fallback('margin', 0 0 1.5rem);
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
-th {
-  font-weight: bold;
-  text-transform: capitalize;
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    text-transform: capitalize;
-    padding-top: $leading * 0.25em;
-  }
-}
-
-td {
-  font-family: inherit;
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    padding-bottom: $leading * 0.25em;
-    padding-top: $leading * 0.25em;
-    &:empty {
-      display: none;
-    }
-  }
-}
-
-thead {
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    display: none;
-  }
-}
-
-thead th,
-thead td {
   background-color: palette('blue', 'base');
-  color: palette('white');
-  text-align: left;
-  vertical-align: bottom;
-}
 
-thead th:first-child,
-tfoot th:first-child {
-  text-align: left;
-}
-
-thead>tr:nth-last-of-type(odd)>th,
-thead>tr:nth-last-of-type(odd)>td {}
-
-tbody {
-  text-align: left;
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    padding: 0;
+    display: none;
   }
 }
 
-tbody th {
-  text-align: left;
-}
-
-tbody td {
-  text-align: left;
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    text-align: left;
-    &[title] {
-      text-align: right;
-      &::before {
-        float: left;
-        font-style: italic;
-        content: attr(title)': ';
-      }
-    }
-  }
-  font-variant-numeric: lining-nums oldstyle-nums;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: palette('box', 'base');
-}
-
-td img {
-  vertical-align: top;
-}
-
-tbody tr:nth-of-type(odd)>th,
-tbody tr:nth-of-type(odd)>td {
+tbody tr:nth-of-type(even) > th,
+tbody tr:nth-of-type(even) > td {
   @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
     background-color: transparent;
-  }
-}
-
-tfoot th,
-tfoot td {
-  background-color: palette('blue', 'base');
-  color: palette('white');
-  vertical-align: top;
-  text-align: left;
-  @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
-    display: none;
   }
 }
