@@ -35,7 +35,7 @@
 <script>
 import { mask } from 'vue-the-mask';
 import {
-formatBRL, getQueryString, pad, validate
+  formatBRL, getQueryString, pad, validate,
 } from '../../utilities';
 
 export default {

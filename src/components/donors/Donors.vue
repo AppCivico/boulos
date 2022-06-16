@@ -80,7 +80,7 @@
 <script>
 import { mapState } from 'vuex';
 import {
-formatCPF, maskCPF, maskName, pad
+  formatCPF, maskCPF, maskName, pad,
 } from '../../utilities';
 
 export default {
