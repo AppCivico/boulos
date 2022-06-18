@@ -180,7 +180,7 @@ function maskCPF(value) {
 }
 
 function maskName(value) {
-  return value.trim().split(' ').map((x, i) => (i === 0 ? x : x.replace(/(?<!^).(?!$)/g, '*'))).join(' ');
+  return value.trim().split(' ').map((x, i) => (i === 0 ? x : x.replace(/(?!^).(?!$)/g, '*'))).join(' ');
 }
 
 function fallbackCopyTextToClipboard(text) {
