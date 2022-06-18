@@ -2,7 +2,7 @@ import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import CONFIG from './config';
-import { office_list } from "./data/offices";
+import { office_list as officeList } from './data/offices.json';
 
 Vue.use(Vuex);
 
@@ -35,10 +35,16 @@ export default new Vuex.Store({
     lastDonationMarker: '',
     donationPlatforms: [],
     donationSources: [],
-    offices: office_list,
+    offices: officeList,
+    'hasMore:reviews': false,
+    'lastMarker:reviews': '',
     projects: [],
 
+    followers: [],
+    'hasMore:followers': false,
+    'lastMarker:followers': '',
 
+    reviews: [],
     device: '',
     statusPaymentRequest: {},
     paymentError: '',
@@ -81,6 +87,7 @@ export default new Vuex.Store({
       state[`hasMore:${name}`] = payload.has_more || false;
 
       if (payload[name].length) {
+        // eslint-disable-next-line no-underscore-dangle
         state[`lastMarker:${name}`] = payload[name][payload[name].length - 1]._marker;
       }
 
@@ -330,16 +337,15 @@ export default new Vuex.Store({
     GET_CANDIDATE_INFO({ commit }, id) {
       return new Promise((resolve, reject) => axios.get(`${CONFIG.api}/public-api/candidate-summary/${id}`)
         .then((response) => {
-            commit('SET_CANDIDATE', { res: response.data });
-            if (response.data.platforms) {
-              commit('SET_SOURCES', response.data.platforms);
-            }
-            resolve(response.data);
-          })
+          commit('SET_CANDIDATE', { res: response.data });
+          if (response.data.platforms) {
+            commit('SET_SOURCES', response.data.platforms);
+          }
+          resolve(response.data);
+        })
         .catch((err) => {
           reject(err.response || err.message || err);
-        })
-      );
+        }));
     },
     GET_DONATIONS({ commit, state }, id) {
       state.donationsLoading = true;
@@ -354,10 +360,10 @@ export default new Vuex.Store({
             state.donationsLoading = false;
             resolve(response.data.donations);
           },
-            (err) => {
-              reject(err.response || err.message || err);
-              console.error(err);
-            });
+          (err) => {
+            reject(err.response || err.message || err);
+            console.error(err);
+          });
       });
     },
     GetDonorsNames({ commit }, id) {
@@ -563,10 +569,10 @@ export default new Vuex.Store({
 
           resolve();
         },
-          (err) => {
-            console.error(err.response);
-            reject(err.response);
-          });
+        (err) => {
+          console.error(err.response);
+          reject(err.response);
+        });
       });
     },
 
@@ -604,7 +610,7 @@ export default new Vuex.Store({
       return candidateState;
     },
 
-    campaign: ({ candidate }) => candidate.campaign_donation_type === 'campaign' ? 'Candidatura' : 'Pré-candidatura',
+    campaign: ({ candidate }) => (candidate.campaign_donation_type === 'campaign' ? 'Candidatura' : 'Pré-candidatura'),
 
     candidatePreposition: ({ candidate }) => {
       switch (candidate.gender) {
@@ -619,19 +625,18 @@ export default new Vuex.Store({
       }
     },
 
-    partyAndName: ({ candidate }) => candidate.party?.name?.toLowerCase().indexOf('partido') === -1 ?
-      'Partido ' + candidate.party?.name : candidate.party?.name,
+    partyAndName: ({ candidate }) => (candidate.party?.name?.toLowerCase().indexOf('partido') === -1
+      ? `Partido ${candidate.party?.name}` : candidate.party?.name),
 
     runningFor: ({ candidate, offices }) => {
-      const office = offices.find((x) => x.id === candidate.office_id || candidate.office?.id);
+      // eslint-disable-next-line max-len
+      const office = offices.find((x) => [candidate.office_id, candidate.office?.id].indexOf(x.id) > -1);
       return !candidate.gender
         ? office?.name
         : office?.byGender[candidate.gender] || office?.name;
     },
 
-    goals: ({ candidate }) => {
-      return candidate?.multiple_goals || [];
-    },
+    goals: ({ candidate }) => candidate?.multiple_goals || [],
 
     donationSources: ({ donationSources }) => {
       let opacity = 0;
@@ -643,15 +648,12 @@ export default new Vuex.Store({
       });
     },
 
-    totalAmount: ({ candidate }, { donationSources }) => {
-      return donationSources.length
-        ? donationSources.reduce(
-          (accumulator, currentValue) =>
-            accumulator + currentValue.total_donated,
-          0
-        )
-        : candidate.total_donated || 0;
-    },
+    totalAmount: ({ candidate }, { donationSources }) => (donationSources.length
+      ? donationSources.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.total_donated,
+        0,
+      )
+      : candidate.total_donated || 0),
 
     expected: ({ candidate }, { goals, totalAmount }) => {
       const { raising_goal: raisingGoal } = candidate;
