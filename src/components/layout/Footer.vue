@@ -2,13 +2,9 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="site-footer__copyright">
-        <div class="wrap-logo">
-          <a href="https://votolegal.com.br" target="_blank" class="votolegal-logo"></a>
-        </div>
         <div class="site-footer__copyright">
           <p>
-            <a href="https://votolegal.com.br" target="_blank">Voto Legal</a> é
-            uma plataforma de financiamento coletivo eleitoral de propriedade do
+            Plataforma de financiamento coletivo eleitoral de propriedade do
             <em>AppCívico Consultoria LTDA <small>(CNPJ: 08.746.641/0001-00)</small></em>.
           </p>
           <p>
