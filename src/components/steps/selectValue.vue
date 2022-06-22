@@ -35,7 +35,7 @@
 <script>
 import { mask } from 'vue-the-mask';
 import {
-  formatBRL, getQueryString, pad, validate,
+formatBRL, formatBRLDec, getQueryString, pad, validate
 } from '../../utilities';
 
 export default {
@@ -78,16 +78,16 @@ export default {
     validateForm() {
       const { amount, other } = this;
       const values = amount === 'other' ? { amount, other: other * 100 } : { amount };
-      const maxvalue = this.candidate ? this.candidate.max_donation_value : 106400;
-      const minvalue = this.candidate ? this.candidate.min_donation_value : 1000;
+      const maxValue = this.candidate ? this.candidate.max_donation_value : 106400;
+      const minValue = this.candidate ? this.candidate.min_donation_value : 1000;
 
       const validation = validate(values);
 
-      if (amount === 'other' && values.other < minvalue) {
-        this.errorMessage = `O valor mínimo da doação é de R$ ${formatBRL(minvalue)}`;
+      if (amount === 'other' && values.other < minValue) {
+        this.errorMessage = `O valor mínimo da doação é de R$ ${formatBRLDec(minValue)}`;
         return;
-      } if (amount === 'other' && values.other > maxvalue) {
-        this.errorMessage = `O valor máximo da doação é de R$ ${formatBRL(maxvalue)}`;
+      } if (amount === 'other' && values.other > maxValue) {
+        this.errorMessage = `O valor máximo da doação é de R$ ${formatBRLDec(maxValue)}`;
         return;
       }
 
