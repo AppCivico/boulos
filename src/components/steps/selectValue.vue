@@ -78,7 +78,7 @@ export default {
     validateForm() {
       const { amount, other } = this;
       const values = amount === 'other' ? { amount, other: other * 100 } : { amount };
-      const maxValue = this.candidate ? this.candidate.max_donation_value : 106400;
+      const maxValue = this.candidate ? this.candidate.max_donation_value : 106409;
       const minValue = this.candidate ? this.candidate.min_donation_value : 1000;
 
       const validation = validate(values);
