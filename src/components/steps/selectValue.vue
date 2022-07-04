@@ -35,7 +35,7 @@
 <script>
 import { mask } from 'vue-the-mask';
 import {
-formatBRL, formatBRLDec, getQueryString, pad, validate
+  formatBRL, formatBRLDec, getQueryString, pad, validate,
 } from '../../utilities';
 
 export default {
@@ -61,9 +61,9 @@ export default {
     pledges({ candidate } = this) {
       const { pledges } = candidate;
 
-      return pledges && Array.isArray(pledges) && pledges.length
+      return (pledges && Array.isArray(pledges) && pledges.length
         ? pledges
-        : [2000, 5000, 11000, 20000, 25000, 32000, 50000, 75000, 106400];
+        : [2000, 5000, 11000, 20000, 25000, 32000, 50000, 75000, 106400]).sort((a, b) => b - a);
     },
   },
   watch: {
