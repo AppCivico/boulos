@@ -49,7 +49,7 @@
           <p class="campaign-progress-percentage">
             {{ percentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
             <a :href="`#goal-description__${expected}`" v-if="summary">{{
-            summary.toLowerCase() }}</a>
+            summary }}</a>
           </p>
 
           <div v-if="donationSources.length > 1" class="donations-sources">
