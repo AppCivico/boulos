@@ -66,42 +66,31 @@
         </a>
       </div>
     </div>
-    <button id="open-modal" @click="toggleModal()" class="play-button" v-if="youtubeVideoId">
+    <button id="open-modal" @click="toggleModal()" class="play-button" v-if="candidateVideoId">
       assista ao vídeo
     </button>
-    <template v-if="youtubeVideoId">
+    <template v-if="candidateVideoId">
       <div class="modal-overlay closed" @click="toggleModal()" id="modal-overlay"></div>
 
       <div class="modal closed" id="modal">
         <button class="close-button" id="close-button" @click="toggleModal()">&times;</button>
-          <div class="embed-container">
-            <iframe width="560" height="315" :src="`https://www.youtube-nocookie.com/embed/${youtubeVideoId}?rel=0&amp;showinfo=0&enablejsapi=1`"
-            frameborder="0" allow="autoplay; encrypted-media"
-            allowfullscreen id="iframeYoutube"></iframe>
-          </div>
+        <div class="embed-container">
+          <iframe width="560" height="315"
+            :src="`https://www.youtube-nocookie.com/embed/${candidateVideoId}?rel=0&amp;showinfo=0&enablejsapi=1`"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen id="iframeYoutube"></iframe>
+        </div>
       </div>
     </template>
   </header>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Header',
   computed: {
-    youtubeVideoId() {
-      const { video_url: videoUrl = '' } = this.$store.state.candidate;
-
-      if (!videoUrl) return '';
-
-      const youtubeMatch = videoUrl.match(
-        /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/,
-      );
-      if (youtubeMatch && youtubeMatch[1].length == 11) {
-        return youtubeMatch[1];
-      }
-      // TODO Throw error.
-      return '';
-    },
+    ...mapGetters(['candidateVideoId']),
   },
   methods: {
     toggleModal() {

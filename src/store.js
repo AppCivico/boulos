@@ -650,6 +650,18 @@ export default new Vuex.Store({
 
     goals: ({ candidate }) => candidate?.multiple_goals || [],
 
+    candidateVideoId: (({ candidate }) => {
+      const { video_url: videoUrl = '' } = candidate;
+
+      const youtubeMatch = videoUrl.match(
+        /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/,
+      );
+      if (youtubeMatch && youtubeMatch[1].length === 11) {
+        return youtubeMatch[1];
+      }
+      return '';
+    }),
+
     donationSources: ({ donationSources }) => {
       let opacity = 0;
       return donationSources.map((x) => {
