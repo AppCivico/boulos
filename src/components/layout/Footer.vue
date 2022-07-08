@@ -22,8 +22,9 @@
     >
       <a
         :href="`https://api.whatsapp.com/send?phone=${whatsAppNumber}`"
-        style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;
-				box-shadow: 1px 1px 2px #888; z-index:1000; text-decoration: none;"
+        style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;
+        background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;
+        font-size:30px;box-shadow:1px 1px 2px #888; z-index:1000; text-decoration: none;"
         target="_blank"
       >
         <i

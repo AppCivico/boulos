@@ -56,7 +56,7 @@ export default {
     pixKey({ messages } = this) {
       let key = '';
 
-      messages.every(x => {
+      messages.every((x) => {
         const found = x.text.match(/(?:data-pix='(.+)')/i);
         if (found?.[1]) {
           key = found[1];

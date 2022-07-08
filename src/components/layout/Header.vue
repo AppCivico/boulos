@@ -18,10 +18,12 @@
         </div>
         <ul class="menu-wrap">
           <li class="menu-icon">
-            <a href="https://twitter.com/intent/tweet?text=Com%20Boulos%20%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com" target="_blank" class="twitter"></a>
+            <a href="https://twitter.com/intent/tweet?text=Com%20Boulos%20%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com"
+              target="_blank" class="twitter"></a>
           </li>
           <li class="menu-icon">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com%2F&amp;src=sdkpreparse" target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com%2F&amp;src=sdkpreparse"
+              target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
           </li>
           <li class="menu-item donate-nav">
             <a href="#doar" v-scroll-to="'#doar'">
