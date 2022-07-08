@@ -14,11 +14,10 @@
             <strong class="amount" v-inview="isAmountOnViewport">
               <template v-if="totalAmount">
                 <span>
-                  <animated-number :value="amountInView ? totalAmount : 0"
-                  :formatValue="FormatFixedBRL" :duration="1000" />
-                  <small v-if="centsOfTotal"
-                  class="campaign-progress__meta-cents">,{{ centsOfTotal
-                  }}</small>
+                  <animated-number :value="amountInView ? totalAmount : 0" :formatValue="FormatFixedBRL"
+                    :duration="1000" />
+                  <small v-if="centsOfTotal" class="campaign-progress__meta-cents">,{{ centsOfTotal
+                    }}</small>
                 </span>
               </template>
               <template v-else>0</template>
@@ -28,8 +27,8 @@
             {{ totalDonors | thousandsSeparator }} doações realizadas
           </p>
 
-          <div role="progressbar" aria-valuemin="0" :aria-valuenow="totalAmount"
-          :aria-valuemax="expected" v-if="donationSources.length > 1">
+          <div role="progressbar" aria-valuemin="0" :aria-valuenow="totalAmount" :aria-valuemax="expected"
+            v-if="donationSources.length > 1">
 
             <template v-if="source.total_donated">
               <div v-for="(source, i) in donationSources" :key="i" :style="progressBarStyle(source)"
@@ -49,7 +48,7 @@
           <p class="campaign-progress-percentage">
             {{ percentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
             <a :href="`#goal-description__${expected}`" v-if="summary">{{
-            summary }}</a>
+              summary }}</a>
           </p>
 
           <div v-if="donationSources.length > 1" class="donations-sources">
@@ -127,8 +126,7 @@
           Metas
         </h2>
 
-        <div v-for="(item, index) in currentAndPastGoals" :key="index"
-        :id="`goal-description__${item.goal}`"
+        <div v-for="(item, index) in currentAndPastGoals" :key="index" :id="`goal-description__${item.goal}`"
           class="goal-description" :class="{
             'goal-description--reached': (candidate.total_donated >=
               item.goal)
@@ -185,8 +183,8 @@
             Como fazer a doação?
           </summary>
           <p>
-            Siga os passos nessa plataforma. Você pode doar no cartão de crédito
-            ou boleto bancário.
+            Siga os passos nessa plataforma. Você pode doar através de PIX,
+            cartão de crédito ou boleto bancário.
           </p>
         </details>
         <details>
@@ -195,7 +193,7 @@
             É seguro?
           </summary>
           <p>
-            Claro. A plataforma é cadastrada no TSE e foi escolhida por que
+            Claro. A plataforma é cadastrada no TSE e foi escolhida porque
             permite a segurança de nossos doadores.
           </p>
         </details>
@@ -205,8 +203,10 @@
             Terei algum comprovante?
           </summary>
           <p>
-            Será enviado um recibo provisório logo após sua doação ser aprovada.
-            Depois será enviado o recibo de doação eleitoral.
+            Os recibos são enviados para o seu e-mail, cadastrado no momento da
+            doação. No período de pré-campanha, será enviado um recibo
+            provisório logo após sua doação ser aprovada. Já no período de
+            campanha, será enviado o recibo de doação eleitoral.
           </p>
         </details>
         <details>
@@ -216,21 +216,20 @@
           </summary>
           <p>
             Para apoiar uma candidatura você pode doar até 10% de sua renda
-            declarada para a Receita no ano anterior. No caso de não ter declarado
-            renda o limite este ano é de R$&nbsp;2855,00.
+            declarada para a Receita no ano anterior. No
+            caso de não ter declarado renda o limite este ano é de R$&nbsp;2.855,00.
           </p>
           <p>
-            Agora, aqui na plataforma, o limite máximo é de R$&nbsp;1064,10. Caso
-            queira doar mais, aí será necessário transferência direta para a conta
-            de nossa candidatura.
+            Agora, aqui na plataforma, o limite máximo diário é de R$&nbsp;1.064,09.
+            Caso queira doar mais, aí será
+            necessário realizar mais de uma doação em dias diferentes.
           </p>
         </details>
       </div>
     </article>
 
     <div class="candidate-footer">
-      <img src="../assets/images/icons/logo__slogan.svg" alt="Logotipo campanha"
-      class="candidate-footer__logo" />
+      <img src="../assets/images/icons/logo__slogan.svg" alt="Logotipo campanha" class="candidate-footer__logo" />
       <p>
         Eleição 2022 {{ candidate.name }}
       </p>
