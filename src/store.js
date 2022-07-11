@@ -430,7 +430,7 @@ export default new Vuex.Store({
         );
       }), 1000 * 60);
     },
-    GET_ADDRESS: ({ commit }, cep) => new Promise((resolve, reject) => {
+    GET_ADDRESS: (_, cep) => new Promise((resolve, reject) => {
       axios
         .get(`https://api2020vl.appcivico.com/api/cep?cep=${cep}`)
         .then((response) => {
