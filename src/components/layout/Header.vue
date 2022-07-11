@@ -14,15 +14,16 @@
           <span></span>
         </button>
         <div class="brand-wrap">
-          <a href="#home__header" v-scroll-to="'#home__header'" class="logo-campaign">Doe Boulos</a>
+          <a href="#home__header" v-scroll-to="'#home__header'"
+          class="logo-campaign">Doe {{ candidate.popular_name }}</a>
         </div>
         <ul class="menu-wrap">
           <li class="menu-icon">
-            <a href="https://twitter.com/intent/tweet?text=Com%20Boulos%20%2C%20somos%20n%C3%B3s%20l%C3%A1!%20https%3A%2F%2Fdoeboulos.com"
+            <a :href="'https://twitter.com/intent/tweet?hashtags=VotoLegal&twitter&text=Eu%20apoiei%20' + candidate.popular_name + ',%20apoie%20você%20também!%20' + encodeURIComponent(location.href)"
               target="_blank" class="twitter"></a>
           </li>
           <li class="menu-icon">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdoeboulos.com%2F&amp;src=sdkpreparse"
+            <a :href="'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(location.href) + '&src=sdkpreparse'"
               target="_blank" class="fb-xfbml-parse-ignore facebook"></a>
           </li>
           <li class="menu-item donate-nav">
@@ -51,21 +52,11 @@
 
     <div id="home__greetings">
       <div class="site-label">
-        <h1>
-          Um novo <span>Congresso Nacional</span> é possível
-        </h1>
+        <h1 v-if="siteTitle" v-html="siteTitle" />
+        <h2 v-if="siteTagline" v-html="siteTagline" />
 
-        <h2>
-          Eleger <span>Boulos</span> como o Deputado Federal para garantir a
-          retomada de direitos do povo.
-        </h2>
-
-        <a href="#doar" class="call-to-action">
-          <span>#</span>doe<span class="heavy">Boulos</span>
-        </a>
-        <a href="#doar" class="call-to-action">
-          <span>#</span>pra<span class="heavy">cima</span>deles
-        </a>
+        <router-link to="#doar" class="call-to-action" v-for="(hashtag, i) in
+        hashtags" v-html="hashtag" :key="i" />
       </div>
     </div>
     <button id="open-modal" @click="toggleModal()" class="play-button" v-if="candidateVideoId">
@@ -79,7 +70,7 @@
         <div class="embed-container">
           <iframe width="560" height="315"
             :src="`https://www.youtube-nocookie.com/embed/${candidateVideoId}?rel=0&amp;showinfo=0&enablejsapi=1`"
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen id="iframeYoutube"></iframe>
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen id="iframeYoutube" />
         </div>
       </div>
     </template>
@@ -87,13 +78,46 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
+import parser from '../../vendor/markdown.min';
 
 export default {
   name: 'Header',
-  computed: {
-    ...mapGetters(['candidateVideoId']),
+
+  data() {
+    return {
+      location: window.location,
+    };
   },
+
+  computed: {
+    siteTitle({ candidateWithProjectAndDonations } = this) {
+      const { siteTitle = '' } = candidateWithProjectAndDonations.candidate;
+
+      return siteTitle
+        ? parser.parse(`${siteTitle}`).firstChild.innerHTML
+        : '';
+    },
+
+    siteTagline({ candidateWithProjectAndDonations } = this) {
+      const { siteTagline = '' } = candidateWithProjectAndDonations.candidate;
+
+      return siteTagline
+        ? parser.parse(`${siteTagline}`).firstChild.innerHTML
+        : '';
+    },
+
+    hashtags({ candidateWithProjectAndDonations } = this) {
+      const { hashtags = [] } = candidateWithProjectAndDonations.candidate;
+
+      return Array.isArray(hashtags)
+        ? hashtags.map((x) => x.split(' ').filter(Boolean).map((y, i) => (i % 2 === 0 ? y : `<span class="heavy">${y}</span>`)).join('')).map((y) => `<span>#</span>${y}`)
+        : [];
+    },
+    ...mapState(['candidate']),
+    ...mapGetters(['candidateWithProjectAndDonations', 'candidateVideoId']),
+  },
+
   methods: {
     toggleModal() {
       const modal = document.querySelector('#modal');
@@ -126,6 +150,7 @@ export default {
       });
     },
   },
+
   created() {
     this.$nextTick(() => {
       this.scrollMenu();

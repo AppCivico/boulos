@@ -47,7 +47,7 @@ export default {
       return this.getMergeCandidate.candidate;
     },
     getMergeCandidate() {
-      return this.$store.getters.generateCandidateObject;
+      return this.$store.getters.candidateWithProjectAndDonations;
     },
     ...mapState(['messages']),
   },

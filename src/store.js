@@ -2,6 +2,7 @@ import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import CONFIG from './config';
+import { root as candidatesData } from './data/candidates_data.json';
 import { office_list as officeList } from './data/offices.json';
 import { randomString } from './utilities/index.js';
 import VotolegalFP from './vendor/loadme';
@@ -552,18 +553,19 @@ export default new Vuex.Store({
           headers: { 'Content-Type': 'application/json' },
           url: `${CONFIG.api}/api2/candidate-followers`,
           data: translatedAndCleanData,
-        }).then(
-          (response) => {
-            if (response.data && response.data.ui && response.data.ui.messages) {
-              commit('SET_MESSAGES', { messages: response.data.ui.messages });
-            }
-            resolve();
-          },
-          (err) => {
+        })
+          .then(
+            (response) => {
+              if (response.data && response.data.ui && response.data.ui.messages) {
+                commit('SET_MESSAGES', { messages: response.data.ui.messages });
+              }
+              resolve();
+            },
+          )
+          .catch((err) => {
             console.error(err.response);
             reject(err.response);
-          },
-        );
+          });
       });
     },
 
@@ -590,11 +592,11 @@ export default new Vuex.Store({
 
   },
   getters: {
-    generateCandidateObject: (state) => {
+    candidateWithProjectAndDonations: ({ candidate, donations, projects }) => {
       const candidateMerge = {
-        candidate: state.candidate,
-        projects: state.projects,
-        donations: state.donations,
+        candidate: { ...(candidatesData[candidate?.username] || {}), ...candidate },
+        projects,
+        donations,
       };
       return candidateMerge;
     },

@@ -48,7 +48,7 @@
           <p class="campaign-progress-percentage">
             {{ percentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
             <a :href="`#goal-description__${expected}`" v-if="summary">{{
-              summary }}</a>
+            summary }}</a>
           </p>
 
           <div v-if="donationSources.length > 1" class="donations-sources">
@@ -151,12 +151,9 @@
           Doadores
         </h2>
 
-        <p>
-          Veja aqueles sem medo de transformar o Congresso Nacional que já
-          contribuíram para que nossas propostas alcancem cada vez mais pessoas,
-          nesta batalha encabeçada por <strong>Guilherme Boulos</strong>, na
-          esperança de acabar com os privilégios e as desigualdades.
-        </p>
+        <div v-if="candidateWithProjectAndDonations.candidate &&
+        candidateWithProjectAndDonations.candidate.donors_message"
+        v-html="parseMD(candidateWithProjectAndDonations.candidate.donors_message)"></div>
 
         <p>
           <span v-for="(person, i) in donors" :key="i">
@@ -165,9 +162,9 @@
         </p>
 
         <div class="nav-link-donations-wrap">
-          <a class="nav-link-donations" href="/doadores" target="_blank">
+          <router-link class="nav-link-donations" to="/doadores" target="_blank">
             ver dados completos
-          </a>
+          </router-link>
         </div>
       </div>
     </article>
@@ -295,7 +292,7 @@ export default {
         || '';
     },
 
-    ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'goals', 'totalAmount']),
+    ...mapGetters(['currentAndPastGoals', 'donationSources', 'candidateWithProjectAndDonations', 'expected', 'goals', 'totalAmount']),
     ...mapState(['candidate', 'donors']),
   },
   methods: {

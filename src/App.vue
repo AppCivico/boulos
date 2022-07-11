@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <Header v-if="$route.name === 'home'"/>
-    <Menu v-if="$route.name === 'donors'"/>
+    <Header v-if="$route.name === 'home'" />
+    <Menu v-if="$route.name === 'donors'" />
     <div class="content-container">
-      <router-view/>
+      <router-view />
     </div>
     <Footer />
   </div>
 </template>
 
 <script>
-import Header from '@/components/layout/Header';
+import { mapGetters } from 'vuex';
+
 import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
 import Menu from '@/components/layout/Menu';
 import { getQueryString } from './utilities';
 

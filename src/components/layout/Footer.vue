@@ -69,7 +69,7 @@ export default {
         : '';
     },
     candidate() {
-      return this.generateCandidateObject.candidate;
+      return this.candidateWithProjectAndDonations.candidate;
     },
     recentDonationAmount() {
       const { amount = 0 } = this.recentDonation;
@@ -82,7 +82,7 @@ export default {
 
       return firstName;
     },
-    ...mapGetters(['generateCandidateObject']),
+    ...mapGetters(['candidateWithProjectAndDonations']),
     ...mapState(['recentDonation']),
   },
 };
