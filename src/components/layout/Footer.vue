@@ -48,7 +48,7 @@
 
 <script>
 import Notification from '@/components/Notification.vue';
-import { mapGetters, mapState } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Footer',
@@ -69,7 +69,7 @@ export default {
         : '';
     },
     candidate() {
-      return this.candidateWithProjectAndDonations.candidate;
+      return this.$store.getters.candidateWithProjectAndDonations?.candidate;
     },
     recentDonationAmount() {
       const { amount = 0 } = this.recentDonation;
@@ -82,7 +82,6 @@ export default {
 
       return firstName;
     },
-    ...mapGetters(['candidateWithProjectAndDonations']),
     ...mapState(['recentDonation']),
   },
 };
