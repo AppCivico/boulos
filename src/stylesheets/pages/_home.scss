@@ -15,10 +15,10 @@ $max-section-width: 50rem;
 .home__intro {
   color: palette('white');
 
+  background-color: palette('orange');
   background-image: url('../assets/images/backgrounds/bg-textura-1200w.png');
   background-position: center -320px;
   background-size: auto;
-  background-color: palette('orange');
 
   @media screen and (min-width: breakpoint('tablet')) {
     background-position: center -250px;
@@ -31,7 +31,6 @@ $max-section-width: 50rem;
 
 .home-page .container > * {
   max-width: $max-section-width;
-
   margin-right: 0;
   margin-left: auto;
 }
@@ -40,7 +39,6 @@ $max-section-width: 50rem;
 .home__intro ul,
 .home__intro h2 {
   max-width: $max-section-width;
-
   margin-right: 0;
   margin-left: auto;
 }
@@ -58,10 +56,8 @@ $max-section-width: 50rem;
 
   font-size: ms(2);
   line-height: 1;
-
-  text-transform: uppercase;
-
   color: inherit;
+  text-transform: uppercase;
 
   @media screen and (min-width: breakpoint('phablet')) {
     font-size: ms(4);
@@ -73,13 +69,15 @@ $max-section-width: 50rem;
 }
 
 .home__donate {
+  position: relative;
+
   color: palette('white');
 
+  background-color: palette('blue');
   background-image: url('../assets/images/backgrounds/bg-doacao-very-small.jpg');
+  background-repeat: repeat;
   background-position: center center;
   background-size: cover;
-  background-repeat: repeat;
-  background-color: palette('blue');
 
   @media screen and (min-width: breakpoint('phablet')) {
     background-image: url('../assets/images/backgrounds/bg-doacao-medium.jpg');
@@ -94,7 +92,6 @@ $max-section-width: 50rem;
   padding-right: 0.9375rem;
 
   font-size: ms(-1);
-
   color: palette('white');
 }
 
@@ -110,7 +107,6 @@ $max-section-width: 50rem;
   padding: $gutter * 0.5;
 
   background-color: palette('orange');
-
   border-radius: $rounded-corner;
 
   @media (max-width: 490px) {
@@ -119,7 +115,6 @@ $max-section-width: 50rem;
     padding: $gutter * 0.4;
 
     font-size: ms(4);
-
     white-space: nowrap;
   }
 
@@ -130,18 +125,11 @@ $max-section-width: 50rem;
 
 .home__donate .donation-form[class] {
   max-width: 33.75rem;
-
   margin-right: auto;
   margin-left: auto;
 }
 
 .donation-nav[class] {
-  @include link-undercover {
-    text-decoration: underline;
-
-    color: palette('orange');
-  }
-
   display: block;
 
   margin-top: $leading * 1rem;
@@ -149,13 +137,16 @@ $max-section-width: 50rem;
   margin-bottom: $leading * 1rem;
 
   font-weight: 800;
-
+  color: palette('orange');
   text-decoration: underline;
   text-transform: lowercase;
 
-  color: palette('orange');
-
   background: none;
+
+  @include link-undercover {
+    color: palette('orange');
+    text-decoration: underline;
+  }
 
   &:hover {
     color: palette('purple', 'light');
@@ -170,15 +161,12 @@ $max-section-width: 50rem;
 
 .donation-nav--forward[class] {
   float: right;
-
   margin-top: 0;
   margin-bottom: 0;
 
   font-size: ms(1);
-
-  text-decoration: underline;
-
   color: palette('orange');
+  text-decoration: underline;
 
   &::before {
     content: '> ';
@@ -186,13 +174,12 @@ $max-section-width: 50rem;
 }
 
 .home__donate ul {
-  clear: both;
-
   padding: 0;
   margin-bottom: $leading * 1rem;
+  clear: both;
 
-  font-weight: 800;
   font-size: ms(1);
+  font-weight: 800;
 
   @media screen and (min-width: breakpoint('phablet')) {
     font-size: ms(2);
@@ -206,7 +193,6 @@ $max-section-width: 50rem;
 .home__donate li {
   position: relative;
 
-  display: inline;
   display: none;
 
   margin-right: 2em;
@@ -228,7 +214,6 @@ $max-section-width: 50rem;
     left: 50%;
 
     width: 1em;
-
     margin-left: -0.5em;
 
     text-align: center;
@@ -251,11 +236,10 @@ $max-section-width: 50rem;
 
 .home__knowMore {
   $bg: #f1f1f1;
-
+  background-color: $bg;
   background-image: url('../assets/images/backgrounds/img-saibamais--320w.jpg');
   background-position: center bottom;
   background-size: 100% auto;
-  background-color: $bg;
 
   &[class] {
     padding-bottom: 60%;
@@ -306,8 +290,8 @@ $max-section-width: 50rem;
 }
 
 .bigger-text {
-  font-weight: 800;
   font-size: ms(1);
+  font-weight: 800;
 }
 
 .goal-description {

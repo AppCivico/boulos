@@ -8,10 +8,10 @@
 
   color: palette('white');
 
+  background-color: palette('gray', 'dark');
   background-image: url('../assets/images/backgrounds/capa-fundo-very-small.jpg');
   background-position: right bottom;
   background-size: 100% auto;
-  background-color: palette('gray', 'dark');
 
   @media screen and (min-width: breakpoint('phablet')) {
     min-height: 620px;
@@ -38,7 +38,6 @@
 
 .header-container {
   max-width: $max-width;
-
   padding-right: $gutter;
   padding-left: $gutter;
   margin-right: auto;
@@ -78,22 +77,19 @@
   padding: 0;
   margin: 0;
 
+  font-family: Montserrat, sans-serif;
   font-weight: 800;
   line-height: 1;
-  font-family: 'Montserrat', sans-serif;
-
-  text-align: center;
-
   color: palette('white');
+  text-align: center;
 }
 
 .site-label h1 {
   $stroke: 3px;
 
   font-size: ms(3);
-  letter-spacing: -3px;
-
   text-transform: uppercase;
+  letter-spacing: -3px;
 
   &:first-child span {
     font-weight: font-weight('text');
@@ -108,9 +104,8 @@
   &:nth-child(2) span {
     display: block;
 
-    font-weight: 900;
     font-size: 1.2em;
-
+    font-weight: 900;
     color: palette('header', 'yellow');
   }
 
@@ -125,7 +120,6 @@
 
 .site-label h2 {
   max-width: 13.5em;
-
   margin-top: $leading * 0.5em;
   margin-right: auto;
   margin-bottom: $leading * 0.5em;
@@ -148,23 +142,21 @@
 
 .site-label .call-to-action {
   position: relative;
+  z-index: 2;
 
   display: block;
-  z-index: 2;
 
   padding-right: $gutter;
   padding-left: $gutter;
 
-  font-weight: bold;
+  font-family: Montserrat, sans-serif;
   font-size: ms(3);
+  font-weight: bold;
   line-height: 1;
-  font-family: 'Montserrat', sans-serif;
-
+  color: palette('white');
   text-align: left;
   text-decoration: none;
   text-transform: lowercase;
-
-  color: palette('white');
 
   @media screen and (min-width: breakpoint('tablet')) {
     font-size: ms(4);
@@ -174,9 +166,8 @@
     font-size: ms(5);
   }
 
-  & span {
+  span {
     font-weight: 900;
-
     color: palette('header', 'yellow');
   }
 }
@@ -185,25 +176,24 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 100;
   /* This way it could be display flex or grid or whatever also. */
 
   display: block;
-  z-index: 100;
   /* Probably need media queries here */
 
   width: 100%;
-  height: auto;
   max-width: 800px;
+  height: auto;
   max-height: 100%;
   /* If known, negative margins are probably better (less chance of blurry text). */
   /* margin: -200px 0 0 -200px; */
 
   background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
   /* Use this for centering if unknown width/height */
 
   transform: translate(-50%, -50%);
-
-  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
 }
 
 .closed {
@@ -214,7 +204,6 @@
   position: fixed;
   top: 0;
   left: 0;
-
   z-index: 50;
 
   width: 100%;
@@ -227,22 +216,17 @@
   position: absolute;
   top: 10px;
   right: 10px;
-
   z-index: 1;
 
   width: 1em;
-
-  padding: 0.1em 0.1em;
+  padding: 0.1em;
 
   font-size: 1.3rem;
   line-height: 1;
-
+  color: palette('white');
   text-align: center;
 
-  color: white;
-
-  background: black;
-
+  background: palette('black');
   border: 0;
 }
 
@@ -256,10 +240,9 @@
   position: absolute;
   top: 100%;
   left: 50%;
-
-  display: inline-block;
-  display: block;
   z-index: 1;
+
+  display: block;
 
   padding-top: $leading * 0.5em;
   padding-right: $gutter * 0.5;
@@ -268,16 +251,14 @@
   margin-right: auto;
   margin-left: auto;
 
-  font-weight: font-weight('heading');
   font-size: ms(-1);
-
+  font-weight: font-weight('heading');
   text-transform: uppercase;
   white-space: nowrap;
 
+  background-color: palette('purple', 'dark');
   background-image: url('../assets/images/icons/play-video.png');
   background-position: 1em 45%;
-  background-color: palette('purple', 'dark');
-
   border: 0;
 
   transform: translate(-50%, -50%);
