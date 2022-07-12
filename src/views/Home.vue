@@ -5,13 +5,13 @@
         <template v-if="candidate.summary">
           <h2>Por que doar?</h2>
 
-          <div v-html="parseMD(candidate.summary)"></div>
+          <div v-html="parseMD(candidate.summary)" />
         </template>
 
         <section id="campaign-progress" class="campaign-progress">
           <p>
             <span class="currency">R$</span>
-            <strong class="amount" v-inview="isAmountOnViewport">
+            <strong class="amount" v-inView="isAmountOnViewport">
               <template v-if="totalAmount">
                 <span>
                   <animated-number :value="amountInView ? totalAmount : 0" :formatValue="FormatFixedBRL"
@@ -98,7 +98,7 @@
           </h2>
           <template v-for="project in candidate.projects">
             <h3 :key="project.id + '__title'">{{ project.title }}</h3>
-            <div :key="project.id + '__scope'" v-html="parseMD(project.scope)"></div>
+            <div :key="project.id + '__scope'" v-html="parseMD(project.scope)" />
           </template>
         </template>
       </div>
@@ -116,7 +116,7 @@
           Conheça o candidato
         </h2>
 
-        <div v-html="parseMD(candidate.biography)"></div>
+        <div v-html="parseMD(candidate.biography)" />
       </div>
     </article>
 
@@ -140,7 +140,7 @@
           </h3>
 
           <h4 v-if="item.summary">{{ item.summary }}</h4>
-          <div v-html="parseMD(item.description)"></div>
+          <div v-html="parseMD(item.description)" />
         </div>
       </div>
     </article>
@@ -339,7 +339,7 @@ export default {
     ...mapActions(['GET_CANDIDATE_INFO', 'GetDonorsNames', 'UPDATE_DONATIONS_SUMMARY']),
   },
   directives: {
-    inview: {
+    inView: {
       inserted: (el, binding) => {
         const f = (evt) => {
           if (binding.value(evt, el)) {
@@ -351,5 +351,6 @@ export default {
       },
     },
   },
+
 };
 </script>
