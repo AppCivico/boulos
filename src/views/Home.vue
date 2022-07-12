@@ -254,7 +254,6 @@ export default {
   data() {
     return {
       amountInView: false,
-      candidateId: process.env.VUE_APP_CANDIDATE_ID,
     };
   },
   name: 'home',
@@ -268,6 +267,21 @@ export default {
     this.UPDATE_DONATIONS_SUMMARY(candidateId);
   },
   computed: {
+    candidateId() {
+      switch (true) {
+        case window.location.hostname === ('localhost'):
+        case window.location.hostname.indexOf('192.168') === 0:
+        case window.location.hostname.indexOf('.local') > -1:
+          return this.$route?.query?.candidate_id || process.env.VUE_APP_CANDIDATE_ID;
+
+        default:
+          return process.env.VUE_APP_CANDIDATE_ID;
+      }
+    },
+
+    footerLogo({ candidateWithProjectAndDonations } = this) {
+      return candidateWithProjectAndDonations?.candidate?.footer_logo;
+    },
     centsOfTotal() {
       const stringOfTotalAmount = String(this.totalAmount);
       const cents = stringOfTotalAmount.substring(stringOfTotalAmount.length - 2);
