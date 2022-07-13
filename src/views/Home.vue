@@ -271,6 +271,7 @@ export default {
       switch (true) {
         case window.location.hostname === ('localhost'):
         case window.location.hostname.indexOf('192.168') === 0:
+        case window.location.hostname.indexOf('dev.') === 0:
         case window.location.hostname.indexOf('.local') > -1:
           return this.$route?.query?.candidate_id || process.env.VUE_APP_CANDIDATE_ID;
 
