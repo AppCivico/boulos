@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueHead from 'vue-head';
 import VueScrollTo from 'vue-scrollto';
 import App from './App.vue';
 import router from './router';
@@ -6,11 +7,8 @@ import store from './store';
 
 import {
   formatBRL,
-  formatBRLDec,
-  formatDate,
-  formatCNPJ,
-  formatDateBasic,
-  thousandsSeparator,
+  formatBRLDec, formatCNPJ, formatDate, formatDateBasic,
+  thousandsSeparator
 } from './utilities';
 
 Vue.use(VueScrollTo);
@@ -46,6 +44,11 @@ Vue.filter('titleCase', (str) => str
     return item.toLowerCase();
   })
   .join(' '));
+
+Vue.use(VueHead, {
+  separator: '·',
+  complement: 'Voto Legal',
+});
 
 new Vue({
   router,

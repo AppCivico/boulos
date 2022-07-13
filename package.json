@@ -12,6 +12,7 @@
     "axios": "^0.21.2",
     "credit-card-type": "^7.0.0",
     "vue": "^2.6.11",
+    "vue-head": "^2.2.0",
     "vue-router": "^3.0.1",
     "vue-scrollto": "^2.11.0",
     "vue-the-mask": "^0.11.1",
