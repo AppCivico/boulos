@@ -15,7 +15,6 @@ $max-section-width: 50rem;
 .home__intro {
   color: palette('white');
 
-  background-color: palette('orange');
   background-image: url('../assets/images/backgrounds/bg-textura-1200w.png');
   background-position: center -320px;
   background-size: auto;
@@ -73,18 +72,41 @@ $max-section-width: 50rem;
 
   color: palette('white');
 
-  background-color: palette('blue');
-  background-image: url('../assets/images/backgrounds/bg-doacao-very-small.jpg');
+  background-color: palette('green', 'light');
+  background-image: url('../assets/images/backgrounds/bg-doacao--320w.jpg');
   background-repeat: repeat;
-  background-position: center center;
-  background-size: cover;
+  background-position: center top;
 
-  @media screen and (min-width: breakpoint('phablet')) {
-    background-image: url('../assets/images/backgrounds/bg-doacao-medium.jpg');
+  @media screen and (min-width: 480px) {
+    background-image: url('../assets/images/backgrounds/bg-doacao--640w.jpg');
   }
 
-  @media screen and (min-width: breakpoint('desktop')) {
+  @media screen and (min-width: 640px) {
+    background-image: url('../assets/images/backgrounds/bg-doacao--960w.jpg');
+  }
+
+  @media screen and (min-width: 960px) {
+    background-image: url('../assets/images/backgrounds/bg-doacao--1280w.jpg');
+  }
+
+  @media screen and (min-width: 1280px) {
     background-image: url('../assets/images/backgrounds/bg-doacao.jpg');
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    content: '';
+
+    background-color: currentcolor;
+  }
+
+  > * {
+    position: relative;
   }
 }
 
@@ -236,37 +258,21 @@ $max-section-width: 50rem;
 
 .home__knowMore {
   $bg: #f1f1f1;
+
   background-color: $bg;
-  background-image: url('../assets/images/backgrounds/img-saibamais--320w.jpg');
   background-position: center bottom;
-  background-size: 100% auto;
 
   &[class] {
     padding-bottom: 60%;
   }
 
-  @media screen and (min-width: 480px) {
-    background-image: url('../assets/images/backgrounds/img-saibamais--480w.jpg');
-  }
-
-  @media screen and (min-width: 640px) {
-    background-image: url('../assets/images/backgrounds/img-saibamais--640w.jpg');
-  }
-
   @media screen and (min-width: 1024px) {
-    background-image: url('../assets/images/backgrounds/img-saibamais--1024w.jpg');
-    background-position: right bottom;
-    background-size: auto;
-
     &[class] {
       padding-bottom: 560px;
     }
   }
 
   @media screen and (min-width: 1280px) {
-    background-image: url('../assets/images/backgrounds/img-saibamais--1280w.jpg');
-    background-position: left bottom, right bottom;
-
     &[class] {
       padding-bottom: 480px;
     }

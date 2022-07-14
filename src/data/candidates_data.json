@@ -1,13 +1,34 @@
 {
   "root": {
     "boulos": {
+      "windowTitle": "Boulos para cima deles",
       "siteTitle": "Um novo **Congresso Nacional** é possível",
       "siteTagline": "Eleger **Boulos** como o Deputado Federal para garantir a retomada de direitos do povo.",
       "donors_message": "Veja aqueles sem medo de transformar o Congresso Nacional que já contribuíram para que nossas propostas alcancem cada vez mais pessoas, nesta batalha encabeçada por **Guilherme Boulos**, na esperança de acabar com os privilégios e as desigualdades.",
+      "footer_logo": "./assets/boulos/icons/logo__slogan.svg",
       "hashtags": [
         "doe Boulos",
         "pra cima deles"
-      ]
+      ],
+      "mask_icon_color": "",
+      "ms_application_tile_color": "",
+      "theme_color": "",
+      "notification_footer": "#doeBoulos"
+    },
+    "poit": {
+      "windowTitle": "",
+      "siteTitle": "",
+      "siteTagline": "",
+      "donors_message": "",
+      "footer_logo": "./assets/poit/icons/logotipo.svg",
+      "hashtags": [
+        "doe Poit",
+        "chega dos mesmos"
+      ],
+      "mask_icon_color": "#5bbad5",
+      "ms_application_tile_color": "#00aba9",
+      "theme_color": "#0c85a5",
+      "notification_footer": "#doePoit"
     }
   }
 }

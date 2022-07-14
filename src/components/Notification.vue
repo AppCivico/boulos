@@ -7,8 +7,8 @@
       <div class="notification__message">
         {{ message }}
       </div>
-      <div class="notification__footer">
-        #doeBoulos
+      <div class="notification__footer" v-if="candidate.notification_footer">
+        {{ candidate.notification_footer }}
       </div>
     </div>
   </transition>
@@ -43,6 +43,11 @@ export default {
       this.$data.showingNotification = setTimeout(function _() {
         this.$data.show = !this.$data.show;
       }, this.$props.duration);
+    },
+  },
+  computed: {
+    candidate() {
+      return this.$store.getters.candidateWithProjectAndDonations?.candidate;
     },
   },
 };

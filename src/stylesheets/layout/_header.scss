@@ -3,36 +3,28 @@
 .site-header {
   position: relative;
 
-  height: 70vh;
-  min-height: 480px;
+  display: flex;
+
+  flex-direction: column;
 
   color: palette('white');
 
   background-color: palette('gray', 'dark');
-  background-image: url('../assets/images/backgrounds/capa-fundo-very-small.jpg');
   background-position: right bottom;
-  background-size: 100% auto;
+
 
   @media screen and (min-width: breakpoint('phablet')) {
     min-height: 620px;
-
-    background-image: url('../assets/images/backgrounds/capa-boulos-small.png'), url('../assets/images/backgrounds/capa-fundo-small.jpg');
-    background-position: right bottom, 0 0;
-    background-size: 550px auto, cover;
   }
 
   @media screen and (min-width: breakpoint('tablet')) {
-    background-image: url('../assets/images/backgrounds/capa-boulos-medium.png'), url('../assets/images/backgrounds/capa-fundo-medium.jpg');
     background-position: right bottom, 0 0;
-    background-size: 680px auto, cover;
   }
 
   @media screen and (min-width: breakpoint('desktop')) {
     min-height: 680px;
 
-    background-image: url('../assets/images/backgrounds/capa-boulos.png'), url('../assets/images/backgrounds/capa-fundo.jpg');
     background-position: right bottom, 0 0;
-    background-size: 750px auto, cover;
   }
 }
 
@@ -45,16 +37,12 @@
 }
 
 #home__greetings {
-  position: absolute;
-  top: 20%;
-
   width: 100%;
+  margin-top: auto;
+
+  margin-bottom: auto;
 
   text-align: center;
-
-  @media screen and (min-width: breakpoint('desktop')) {
-    top: 13%;
-  }
 }
 
 .site-label {
@@ -91,6 +79,7 @@
   text-transform: uppercase;
   letter-spacing: -3px;
 
+  &:first-child strong,
   &:first-child span {
     font-weight: font-weight('text');
 
@@ -101,6 +90,7 @@
     }
   }
 
+  &:nth-child(2) strong,
   &:nth-child(2) span {
     display: block;
 
@@ -135,6 +125,7 @@
     font-size: ms(3);
   }
 
+  strong,
   span {
     color: palette('header', 'yellow');
   }
@@ -153,7 +144,6 @@
   font-size: ms(3);
   font-weight: bold;
   line-height: 1;
-  color: palette('white');
   text-align: left;
   text-decoration: none;
   text-transform: lowercase;
@@ -168,7 +158,6 @@
 
   span {
     font-weight: 900;
-    color: palette('header', 'yellow');
   }
 }
 
@@ -189,7 +178,7 @@
   /* If known, negative margins are probably better (less chance of blurry text). */
   /* margin: -200px 0 0 -200px; */
 
-  background: white;
+  background: palette('white');
   box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
   /* Use this for centering if unknown width/height */
 
@@ -253,6 +242,7 @@
 
   font-size: ms(-1);
   font-weight: font-weight('heading');
+  color: palette('white');
   text-transform: uppercase;
   white-space: nowrap;
 
@@ -271,5 +261,4 @@
   &:active {
     background-color: palette('purple', 'x-dark');
   }
-
 }

@@ -5,7 +5,7 @@
         <template v-if="candidate.summary">
           <h2>Por que doar?</h2>
 
-          <div v-html="parseMD(candidate.summary)" />
+          <div class="content" v-html="parseMD(candidate.summary)" />
         </template>
 
         <section id="campaign-progress" class="campaign-progress">
@@ -48,7 +48,8 @@
           <p class="campaign-progress-percentage">
             {{ percentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
             <a :href="`#goal-description__${expected}`" v-if="summary">{{
-            summary }}</a>
+              summary
+              }}</a>
           </p>
 
           <div v-if="donationSources.length > 1" class="donations-sources">
@@ -98,7 +99,7 @@
           </h2>
           <template v-for="project in candidate.projects">
             <h3 :key="project.id + '__title'">{{ project.title }}</h3>
-            <div :key="project.id + '__scope'" v-html="parseMD(project.scope)" />
+            <div :key="project.id + '__scope'" class="content" v-html="parseMD(project.scope)" />
           </template>
         </template>
       </div>
@@ -116,7 +117,7 @@
           Conheça o candidato
         </h2>
 
-        <div v-html="parseMD(candidate.biography)" />
+        <div class="content" v-html="parseMD(candidate.biography)" />
       </div>
     </article>
 
@@ -140,7 +141,7 @@
           </h3>
 
           <h4 v-if="item.summary">{{ item.summary }}</h4>
-          <div v-html="parseMD(item.description)" />
+          <div class="content" v-html="parseMD(item.description)" />
         </div>
       </div>
     </article>
@@ -151,9 +152,7 @@
           Doadores
         </h2>
 
-        <div v-if="candidateWithProjectAndDonations.candidate &&
-        candidateWithProjectAndDonations.candidate.donors_message"
-        v-html="parseMD(candidateWithProjectAndDonations.candidate.donors_message)"></div>
+        <div v-if="candidate && candidate.donors_message" class="content" v-html="parseMD(candidate.donors_message)" />
 
         <p>
           <span v-for="(person, i) in donors" :key="i">
@@ -225,8 +224,8 @@
       </div>
     </article>
 
-    <div class="candidate-footer">
-      <img src="../assets/images/icons/logo__slogan.svg" alt="Logotipo campanha" class="candidate-footer__logo" />
+    <div class="candidate-footer" v-if="candidate.footer_logo">
+      <img :src="candidate.footer_logo" alt="Logotipo campanha" class="candidate-footer__logo" />
       <p>
         Eleição 2022 {{ candidate.name }}
       </p>
@@ -286,9 +285,8 @@ export default {
           return CONFIG.candidateId;
       }
     },
-
-    footerLogo({ candidateWithProjectAndDonations } = this) {
-      return candidateWithProjectAndDonations?.candidate?.footer_logo;
+    candidate() {
+      return this.$store.getters.candidateWithProjectAndDonations?.candidate;
     },
     centsOfTotal() {
       const stringOfTotalAmount = String(this.totalAmount);
@@ -314,8 +312,8 @@ export default {
         || '';
     },
 
-    ...mapGetters(['currentAndPastGoals', 'donationSources', 'candidateWithProjectAndDonations', 'expected', 'goals', 'totalAmount']),
-    ...mapState(['candidate', 'donors']),
+    ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'goals', 'totalAmount']),
+    ...mapState(['donors']),
   },
   methods: {
     percentage(amount = this.totalAmount, expected = this.expected) {

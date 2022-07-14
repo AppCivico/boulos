@@ -50,11 +50,8 @@
 
   display: block;
 
-  min-width: 213px;
   height: $leading * 2rem;
-  min-height: 39px;
 
-  background-image: url('../assets/images/icons/logo__slogan--negative.svg');
   background-repeat: no-repeat;
   background-position: 50% 50%;
 
@@ -63,7 +60,6 @@
 }
 
 .animate .logo-campaign {
-  background-size: auto 44px;
 }
 
 .donate-nav {
