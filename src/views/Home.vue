@@ -247,6 +247,7 @@
 import { mapActions, mapGetters, mapState } from 'vuex';
 // @ is an alias to /src
 import Payment from '@/components/Payment.vue';
+import CONFIG from "@/config";
 import AnimatedNumber from 'animated-number-vue';
 import { FormatFixedBRL, parseMD } from '../utilities';
 
@@ -272,11 +273,12 @@ export default {
         case window.location.hostname === ('localhost'):
         case window.location.hostname.indexOf('192.168') === 0:
         case window.location.hostname.indexOf('dev.') === 0:
+        case window.location.hostname.indexOf('test.') === 0:
         case window.location.hostname.indexOf('.local') > -1:
-          return this.$route?.query?.candidate_id || process.env.VUE_APP_CANDIDATE_ID;
+          return this.$route?.query?.candidate_id || CONFIG.candidateId;
 
         default:
-          return process.env.VUE_APP_CANDIDATE_ID;
+          return CONFIG.candidateId;
       }
     },
 

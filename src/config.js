@@ -1,6 +1,27 @@
+let candidateId = process.env.VUE_APP_CANDIDATE_ID;
+let api = process.env.VUE_APP_API_ORIGIN;
+
+switch (window.location.hostname) {
+  case 'boulos.com':
+  case 'boulos.com.br':
+    candidateId = 10325;
+    break;
+
+  case 'doepoit.com':
+  case 'doepoit.com.br':
+  case 'poit.votolegal.com.br':
+    candidateId = 10357;
+    api = 'https://api2022vl.appcivico.com';
+    break;
+
+  default:
+    break;
+}
+
 export default {
-  api: process.env.VUE_APP_API_ORIGIN,
+  api,
   tokenName: process.env.VUE_APP_TOKEN_NAME,
+  candidateId,
   contract: 'https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf',
   ToS: 'tos/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202022.pdf',
   taxes: {
