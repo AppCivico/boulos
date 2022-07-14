@@ -6,7 +6,6 @@
   z-index: 100;
 
   width: 100%;
-  height: $menu-height;
   padding-top: 1em;
   padding-bottom: 0.5rem;
   margin: 0;
@@ -24,10 +23,11 @@
 }
 
 .menu-container {
+  @include clearfix;
+
   position: relative;
 
   max-width: $max-width;
-  height: $menu-height;
   padding-right: $gutter;
   padding-left: $gutter;
   margin-right: auto;
@@ -35,27 +35,14 @@
 }
 
 .main-menu.animate {
-  height: $menu-height-animate;
   padding-top: 0;
 
   background-color: palette('blue');
 }
 
 .brand-wrap {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
+  float: left;
   max-width: 100%;
-
-  transform: translate(-50%, -50%);
-
-  @media (min-width: breakpoint('tablet')) {
-    top: 0;
-    left: 0;
-
-    transform: translate(0, 0);
-  }
 }
 
 .logo-campaign {
