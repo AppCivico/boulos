@@ -13,14 +13,13 @@
   &:first-of-type {
     padding-top: 12px;
 
-    border-top: 2px solid currentColor;
+    border-top: 2px solid currentcolor;
   }
 }
 
 .candidate-footer abbr {
-  letter-spacing: normal;
-
   text-decoration: none;
+  letter-spacing: normal;
 }
 
 .candidate-footer__logo {
@@ -28,13 +27,11 @@
 
   width: auto;
   max-width: 200px;
-
-  margin: 0 auto 24px auto;
+  margin: 0 auto 24px;
 }
 
 .candidate-footer__cnpj {
   font-size: smaller;
-
   color: black;
 }
 
@@ -46,7 +43,6 @@
 
 .footer-container {
   max-width: $max-width;
-
   padding-top: 6rem;
   padding-right: $gutter;
   padding-bottom: 6rem;
@@ -79,10 +75,8 @@
 
 .site-footer__copyright {
   font-size: 0.98em;
-
-  text-align: center;
-
   color: rgb(255, 255, 255);
+  text-align: center;
 
   & a {
     color: rgb(255, 255, 255);
@@ -91,7 +85,6 @@
 
 .site-footer .psol[class] {
   max-width: 50rem;
-
   margin-right: auto;
   margin-bottom: $leading * 3rem;
   margin-left: auto;
