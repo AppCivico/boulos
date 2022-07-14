@@ -357,6 +357,147 @@ export default {
       },
     },
   },
+  head: {
+    title() {
+      return this.candidate?.popular_name
+        ? {
+          inner: this.candidate?.popular_name,
+          complement: 'Voto Legal',
+        }
+        : {
+          inner: 'Voto Legal',
+          complement: 'Financiamento coletivo eleitoral',
+        };
+    },
 
+    link() {
+      return [
+        {
+          id: 'apple-touch-icon',
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: `/assets/${this.candidate.username}/apple-touch-icon.png`,
+        },
+        {
+          id: 'icon:32x32',
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '32x32',
+          href: `/assets/${this.candidate.username}/favicon-32x32.png`,
+        },
+        {
+          id: 'icon:16x16',
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '16x16',
+          href: `/assets/${this.candidate.username}/favicon-16x16.png`,
+        },
+        {
+          id: 'manifest',
+          rel: 'manifest',
+          href: `/assets/${this.candidate.username}/site.webmanifest`,
+        },
+        {
+          id: 'mask-icon',
+          rel: 'mask-icon',
+          href: `/assets/${this.candidate.username}/safari-pinned-tab.svg`,
+          color: this.candidate.mask_icon_color,
+        },
+        {
+          id: 'favicon',
+          rel: 'shortcut icon',
+          href: `/assets/${this.candidate.username}/favicon.ico`,
+        },
+      ];
+    },
+
+    meta() {
+      return [
+        {
+          id: 'msapplication-TileColor',
+          name: 'msapplication-TileColor',
+          content: this.candidate.ms_application_tile_color,
+        },
+        {
+          id: 'msapplication-config',
+          name: 'msapplication-config',
+          content: `/assets/${this.candidate.username}/browserconfig.xml`,
+        },
+        {
+          id: 'theme-color',
+          name: 'theme-color',
+          content: this.candidate.theme_color,
+        },
+        {
+          id: 'description',
+          name: 'description',
+          content: this.candidate?.description || this.defaultDescription,
+        },
+        {
+          id: 'og:locale',
+          property: 'og:locale',
+          content: 'pt_BR',
+        },
+        {
+          id: 'fb:admins',
+          property: 'fb:admins',
+          content: '1063503096997131',
+        },
+        {
+          id: 'og:type',
+          property: 'og:type',
+          content: 'website',
+        },
+        {
+          id: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary',
+        },
+        {
+          id: 'twitter:creator',
+          name: 'twitter:creator',
+          content: '@appcivico',
+        },
+        {
+          id: 'twitter:description',
+          itemprop: 'description',
+          name: 'twitter:description',
+          property: 'og:description',
+          content: this.candidate?.description || this.defaultDescription,
+        },
+        {
+          id: 'image',
+          itemprop: 'image',
+          name: 'image',
+          content: this.candidate?.sharing_image_avatar || this.candidate?.picture || '',
+        },
+        {
+          id: 'twitter:title',
+          itemprop: 'name',
+          name: 'twitter:title',
+          property: 'og:title',
+          content: `Eu apoio ${this.candidate?.popular_name || this.candidateId
+          }! Apoie você também!`,
+        },
+        {
+          id: 'twitter:url',
+          name: 'twitter:url',
+          property: 'og:url',
+          content: `${window.location.origin}/${this.candidate?.slug}`,
+        },
+        {
+          id: 'twitter:site',
+          name: 'twitter:site',
+          content: this.candidate?.twitter_profile || '',
+        },
+        {
+          id: 'og:image',
+          name: 'twitter:image:src',
+          property: 'og:image',
+          content: this.candidate?.sharing_image_avatar || this.candidate?.picture || '',
+        },
+      ];
+    },
+  },
 };
 </script>
