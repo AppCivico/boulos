@@ -263,7 +263,12 @@ export default {
     AnimatedNumber,
   },
   mounted({ candidateId } = this) {
-    this.GET_CANDIDATE_INFO(candidateId);
+    this.GET_CANDIDATE_INFO(candidateId).finally(() => {
+      this.$nextTick(() => {
+        this.$emit('updateHead');
+        window.prerenderReady = true;
+      });
+    });
     this.GetDonorsNames(candidateId);
     this.UPDATE_DONATIONS_SUMMARY(candidateId);
   },
