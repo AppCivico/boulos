@@ -14,7 +14,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        webpackImporter: true,
+        // webpackImporter: true,
         additionalData: `
         // 2. Vendors
         @import '@/stylesheets/vendor/modularscale';
@@ -32,8 +32,8 @@ module.exports = {
         '@/stylesheets/base/base',
         '@/stylesheets/base/fonts',
         '@/stylesheets/base/typography';
-        `
-      }
-    }
-  }
+        `,
+      },
+    },
+  },
 };
