@@ -78,6 +78,11 @@ $modularscale: ( base: 1rem, ratio: 1.25);
 /// @require {function} palette
 /// @todo Customize the colors or add new ones to match your design needs.
 $palette: (
+  'poit': (
+    'orange' : #ff5614,
+    'green': #0c85a5,
+    'dark-green': #075e7a,
+  ),
   'gray': (
     'x-light': tint(rgb(229, 231, 234), 10%),
     'light': rgb(242, 242, 242),
