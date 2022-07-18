@@ -1,0 +1,182 @@
+[data-candidate='boulos'] {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  legend,
+  caption,
+  details > summary {
+    color: hsl(301deg, 59%, 35%);
+  }
+
+  .of-radios-and-checks label {
+    background-color: hsl(301deg, 59%, 35%);
+  }
+
+  .site-header {
+    height: 70vh;
+    min-height: 600px;
+
+    color: palette('white');
+
+    background-color: #150230;
+    background-image: url('../assets/boulos/backgrounds/capa-fundo-very-small.jpg');
+    background-position: right bottom;
+    background-size: 100% auto;
+
+    @media screen and (min-width: breakpoint('phablet')) {
+      min-height: 710px;
+
+      background-image: url('../assets/boulos/backgrounds/capa-fundo-small.jpg');
+      background-position: 0 0;
+      background-size: cover;
+    }
+
+    @media screen and (min-width: breakpoint('tablet')) {
+      background-image: url('../assets/boulos/backgrounds/capa-fundo-medium.jpg');
+    }
+
+    @media screen and (min-width: breakpoint('desktop')) {
+      min-height: 720px;
+
+      background-image: url('../assets/boulos/backgrounds/capa-fundo.jpg');
+    }
+  }
+
+  .site-header__image img {
+    @media screen and (min-width: breakpoint('tablet')) {
+      object-position: right bottom;
+    }
+
+    @media screen and (min-width: 1500px) {
+      object-position: 75% 100%;
+    }
+  }
+
+  .logo-campaign img {
+    width: 120px;
+    height: auto;
+  }
+
+  .animate .logo-campaign img {
+    width: auto;
+    height: 44px;
+  }
+
+  .main-menu {
+    background-color: palette('blue');
+
+    &.animate {
+      background-color: palette('blue');
+    }
+
+    @media (min-width: breakpoint('tablet')) {
+    }
+  }
+
+  .site-label h1,
+  .site-label h2 {
+    color: palette('white');
+  }
+
+  .site-label h2 {
+    @media screen and (min-width: breakpoint('desktop')) {
+      margin-left: 0;
+
+      text-align: left;
+    }
+
+    @media screen and (min-width: breakpoint('wide')) {
+      margin-left: auto;
+
+      text-align: center;
+    }
+  }
+
+  .site-label .call-to-action {
+    color: palette('white');
+
+    span {
+      color: palette('header', 'yellow');
+    }
+  }
+
+  .home__intro {
+    color: #ffffff;
+
+    background-color: hsl(19deg, 76%, 51%);
+  }
+
+  .home__donate {
+    color: palette('white');
+
+    background-color: palette('blue');
+
+    &::before {
+      color: palette('blue');
+
+      opacity: 0.35;
+
+      @supports (mix-blend-mode: color) {
+        mix-blend-mode: color;
+        opacity: 1;
+      }
+    }
+  }
+
+  .home__knowMore {
+    $bg: #f1f1f1;
+
+    background-color: $bg;
+    background-position: center bottom;
+    background-size: 100% auto;
+
+    &[class] {
+      padding-bottom: 60%;
+    }
+
+    @media screen and (min-width: breakpoint('desktop')) {
+      background-position: right bottom;
+      background-size: auto;
+
+      &[class] {
+        padding-bottom: 560px;
+      }
+    }
+
+    @media screen and (min-width: 1280px) {
+      background-position: left bottom, right bottom;
+
+      &[class] {
+        padding-bottom: 480px;
+      }
+    }
+  }
+
+  .site-footer {
+    color: hsl(0, 0%, 100%);
+
+    background-color: hsl(198deg, 100%, 44%);
+  }
+
+  .play-button {
+    color: palette('white');
+
+    background-color: palette('purple', 'dark');
+
+    &:hover,
+    &:focus {
+      background-color: palette('orange', 'dark');
+    }
+
+    &:active {
+      background-color: palette('purple', 'x-dark');
+    }
+  }
+
+  .candidate-footer {
+    color: #8500b4;
+  }
+}

@@ -257,10 +257,9 @@ $max-section-width: 50rem;
 }
 
 .home__knowMore {
-  $bg: #f1f1f1;
+  position: relative;
 
-  background-color: $bg;
-  background-position: center bottom;
+  background-color: transparent;
 
   &[class] {
     padding-bottom: 60%;
@@ -289,6 +288,18 @@ $max-section-width: 50rem;
       padding-bottom: $default-articles-padding;
     }
   }
+}
+
+.knowMore__image.knowMore__image img {
+  $bg: #f1f1f1;
+
+  @include img-as-bg;
+
+  z-index: -1;
+
+  background-color: $bg;
+  object-fit: contain;
+  object-position: center bottom;
 }
 
 .italic-text {

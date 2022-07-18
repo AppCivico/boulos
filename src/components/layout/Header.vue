@@ -14,8 +14,9 @@
           <span></span>
         </button>
         <div class="brand-wrap">
-          <a href="#home__header" v-scroll-to="'#home__header'"
-          class="logo-campaign">Doe {{ candidate.popular_name }}</a>
+          <a href="#home__header" v-scroll-to="'#home__header'" class="logo-campaign">
+            <img v-if="headerLogo" :src="headerLogo" :alt="`Doe ${candidate.popular_name}`" />
+          </a>
         </div>
         <ul class="menu-wrap">
           <li class="menu-icon">
@@ -59,9 +60,13 @@
         hashtags" v-html="hashtag" :key="i" />
       </div>
     </div>
+
+    <Picture class="site-header__image" :images="headerImages" />
+
     <button id="open-modal" @click="toggleModal()" class="play-button" v-if="candidateVideoId">
       assista ao vídeo
     </button>
+
     <template v-if="candidateVideoId">
       <div class="modal-overlay closed" @click="toggleModal()" id="modal-overlay"></div>
 
@@ -80,9 +85,14 @@
 <script>
 import { mapGetters, mapState } from 'vuex';
 import parser from '../../vendor/markdown.min';
+import Picture from '../Picture.vue';
 
 export default {
   name: 'Header',
+
+  components: {
+    Picture,
+  },
 
   data() {
     return {
@@ -91,6 +101,12 @@ export default {
   },
 
   computed: {
+    headerImages({ candidateWithProjectAndDonations } = this) {
+      const { header_images: headerImages = [] } = candidateWithProjectAndDonations?.candidate;
+
+      return headerImages;
+    },
+
     siteTitle({ candidateWithProjectAndDonations } = this) {
       const { siteTitle = '' } = candidateWithProjectAndDonations.candidate;
 
@@ -105,6 +121,12 @@ export default {
       return siteTagline
         ? parser.parse(`${siteTagline}`).firstChild.innerHTML
         : '';
+    },
+
+    headerLogo({ candidateWithProjectAndDonations } = this) {
+      const { header_logo: headerLogo = '' } = candidateWithProjectAndDonations.candidate;
+
+      return headerLogo;
     },
 
     hashtags({ candidateWithProjectAndDonations } = this) {

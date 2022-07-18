@@ -117,6 +117,8 @@
           Conheça o candidato
         </h2>
 
+        <Picture class="knowMore__image" :images="candidate.know_more_images" />
+
         <div class="content" v-html="parseMD(candidate.biography)" />
       </div>
     </article>

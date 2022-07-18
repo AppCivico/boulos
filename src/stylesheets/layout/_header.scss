@@ -7,11 +7,7 @@
 
   flex-direction: column;
 
-  color: palette('white');
-
-  background-color: palette('gray', 'dark');
-  background-position: right bottom;
-
+  padding-top: 96px;
 
   @media screen and (min-width: breakpoint('phablet')) {
     min-height: 620px;
@@ -28,6 +24,10 @@
   }
 }
 
+.site-header__image img {
+  @include img-as-bg;
+}
+
 .header-container {
   max-width: $max-width;
   padding-right: $gutter;
@@ -38,8 +38,7 @@
 
 #home__greetings {
   width: 100%;
-  margin-top: auto;
-
+  margin-top: 0;
   margin-bottom: auto;
 
   text-align: center;
@@ -54,7 +53,7 @@
   text-align: center;
 
   @media screen and (min-width: breakpoint('desktop')) {
-    max-width: 836px;
+    max-width: $max-width;
 
     text-align: right;
   }

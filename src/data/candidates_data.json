@@ -10,6 +10,125 @@
         "doe Boulos",
         "pra cima deles"
       ],
+      "header_logo": "./assets/boulos/icons/logo__slogan--negative.svg",
+      "header_images": [
+        {
+          "srcset": "./assets/boulos/images/capa-boulos-very-small.png",
+          "type": "image/png"
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos-very-small.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos-very-small.jxl",
+          "type": "image/jxl"
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos-small.png",
+          "type": "image/png",
+          "media": 480
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos-small.webp",
+          "type": "image/webp",
+          "media": 480
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos-small.jxl",
+          "type": "image/jxl",
+          "media": 480
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos-medium.png",
+          "type": "image/png",
+          "media": 768
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos-medium.webp",
+          "type": "image/webp",
+          "media": 768
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos-medium.jxl",
+          "type": "image/jxl",
+          "media": 768
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos.png",
+          "type": "image/png",
+          "media": 1024
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos.webp",
+          "type": "image/webp",
+          "media": 1024
+        },
+        {
+          "srcset": "./assets/boulos/images/capa-boulos.jxl",
+          "type": "image/jxl",
+          "media": 1024
+        }
+      ],
+      "know_more_images": [
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--320w.jpg",
+          "type": "image/jpg"
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--480w.jpg",
+          "type": "image/jpg",
+          "media": 480
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--640w.jpg",
+          "type": "image/jpg",
+          "media": 640
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--1024w.jpg",
+          "type": "image/jpg",
+          "media": 1024
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--320w.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--480w.webp",
+          "type": "image/webp",
+          "media": 480
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--640w.webp",
+          "type": "image/webp",
+          "media": 640
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--1024w.webp",
+          "type": "image/webp",
+          "media": 1024
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--320w.avif",
+          "type": "image/avif"
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--480w.avif",
+          "type": "image/avif",
+          "media": 480
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--640w.avif",
+          "type": "image/avif",
+          "media": 640
+        },
+        {
+          "srcset": "./assets/boulos/images/img-saibamais--1024w.avif",
+          "type": "image/avif",
+          "media": 1024
+        }
+      ],
       "mask_icon_color": "",
       "ms_application_tile_color": "",
       "theme_color": "",
@@ -24,6 +143,125 @@
       "hashtags": [
         "doe Poit",
         "chega dos mesmos"
+      ],
+      "header_logo": "./assets/poit/icons/logotipo.svg",
+      "header_images": [
+        {
+          "srcset": "./assets/poit/images/640x360.jpg",
+          "type": "image/jpg",
+          "media": 480
+        },
+        {
+          "srcset": "./assets/poit/images/1280x720.jpg",
+          "type": "image/jpg",
+          "media": 1024
+        },
+        {
+          "srcset": "./assets/poit/images/1024x576.jpg",
+          "type": "image/jpg",
+          "media": 768
+        },
+        {
+          "srcset": "./assets/poit/images/480x270.jpg",
+          "type": "image/jpg"
+        },
+        {
+          "srcset": "./assets/poit/images/640x360.jxl",
+          "type": "image/jxl",
+          "media": 480
+        },
+        {
+          "srcset": "./assets/poit/images/1280x720.jxl",
+          "type": "image/jxl",
+          "media": 1024
+        },
+        {
+          "srcset": "./assets/poit/images/1024x576.jxl",
+          "type": "image/jxl",
+          "media": 768
+        },
+        {
+          "srcset": "./assets/poit/images/480x270.jxl",
+          "type": "image/jxl"
+        },
+        {
+          "srcset": "./assets/poit/images/640x360.webp",
+          "type": "image/webp",
+          "media": 480
+        },
+        {
+          "srcset": "./assets/poit/images/1280x720.webp",
+          "type": "image/webp",
+          "media": 1024
+        },
+        {
+          "srcset": "./assets/poit/images/1024x576.webp",
+          "type": "image/webp",
+          "media": 768
+        },
+        {
+          "srcset": "./assets/poit/images/480x270.webp",
+          "type": "image/webp"
+        }
+      ],
+      "know_more_images": [
+        {
+          "srcset": "./assets/poit/images/img-saibamais--320w.jpg",
+          "type": "image/jpg"
+        },
+        {
+          "media": 480,
+          "srcset": "./assets/poit/images/img-saibamais--480w.jpg",
+          "type": "image/jpg"
+        },
+        {
+          "media": 640,
+          "srcset": "./assets/poit/images/img-saibamais--640w.jpg",
+          "type": "image/jpg"
+        },
+        {
+          "media": 1280,
+          "srcset": "./assets/poit/images/img-saibamais--1024w.jpg",
+          "type": "image/jpg"
+        },
+        {
+          "srcset": "./assets/poit/images/img-saibamais--320w.jxl",
+          "type": "image/jxl"
+        },
+        {
+          "media": 480,
+          "srcset": "./assets/poit/images/img-saibamais--480w.jxl",
+          "type": "image/jxl"
+        },
+        {
+          "media": 640,
+          "srcset": "./assets/poit/images/img-saibamais--640w.jxl",
+          "type": "image/jxl"
+        },
+        {
+          "media": 1280,
+          "srcset": "./assets/poit/images/img-saibamais--1024w.jxl",
+          "type": "image/jxl"
+        },
+        {
+          "srcset": "./assets/poit/images/img-saibamais--320w.webp",
+          "type": "image/webp"
+        },
+        {
+          "media": 480,
+          "srcset": "./assets/poit/images/img-saibamais--480w.webp",
+          "type": "image/webp"
+        },
+        {
+          "media": 640,
+          "srcset": "./assets/poit/images/img-saibamais--640w.webp",
+          "type": "image/webp"
+        },
+        {
+          "media": 1280,
+          "srcset": "./assets/poit/images/img-saibamais--1024w.webp",
+          "type": "image/webp"
+        }
       ],
       "mask_icon_color": "#5bbad5",
       "ms_application_tile_color": "#00aba9",

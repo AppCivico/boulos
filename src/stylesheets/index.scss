@@ -4,61 +4,57 @@
 @import 'vendor/modularscale';
 
 // 1. Configuration and helpers
-@import
-'abstracts/constants',
-'abstracts/font-stacks',
-'abstracts/functions',
-'abstracts/variables',
-'abstracts/mixins';
+@import 'abstracts/constants',
+  'abstracts/font-stacks',
+  'abstracts/functions',
+  'abstracts/variables',
+  'abstracts/mixins';
 
 // 3. Base stuff
-@import
-'base/base',
-'base/fonts',
-'base/typography',
-'base/helpers';
+@import 'base/base',
+  'base/fonts',
+  'base/typography',
+  'base/helpers';
 
 // 4. Layout-related sections
-@import
-'layout/lists',
-'layout/navigation',
-'layout/table',
-'layout/form',
-'layout/gallery',
-'layout/main',
-'layout/header',
-'layout/footer',
-'layout/h-feed';
+@import 'layout/lists',
+  'layout/navigation',
+  'layout/table',
+  'layout/form',
+  'layout/gallery',
+  'layout/main',
+  'layout/header',
+  'layout/footer',
+  'layout/h-feed';
 
 // 5. Components
 @import 'components/pix-qrcode',
-'components/donations-sources',
-'components/campaign-progress',
-'components/h-entry',
-'components/figure',
-'components/button',
-'components/checkbox-and-radio',
-'components/output',
-'components/progress',
-'components/menu',
-'components/select',
-'components/share-campaign',
-'components/faq',
-'components/slider',
-'components/payment',
-'components/text-field',
-'components/alerts',
-'components/donation-nav',
-'components/donation-table',
-'components/notification',
-'components/embed-container'
-;
+  'components/donations-sources',
+  'components/campaign-progress',
+  'components/h-entry',
+  'components/figure',
+  'components/button',
+  'components/checkbox-and-radio',
+  'components/output',
+  'components/progress',
+  'components/menu',
+  'components/select',
+  'components/share-campaign',
+  'components/faq',
+  'components/slider',
+  'components/payment',
+  'components/text-field',
+  'components/alerts',
+  'components/donation-nav',
+  'components/donation-table',
+  'components/notification',
+  'components/embed-container';
 
 // 6. Page-specific styles
-@import
-'pages/home';
+@import 'pages/home';
 
 // 7. Themes
-@import
-'themes/default',
-'themes/print';
+@import 'themes/default',
+  'themes/boulos',
+  'themes/poit',
+  'themes/print';

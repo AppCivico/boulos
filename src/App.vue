@@ -1,7 +1,5 @@
 <template>
-  <div id="app">
-    <v-style v-if="candidate.username" :src="styleSrc" />
-
+  <div id="app" :data-candidate="candidate.username">
     <Header v-if="$route.name === 'home'" />
     <Menu v-if="$route.name === 'donors'" />
     <div class="content-container">
@@ -23,24 +21,8 @@ export default {
     Header,
     Footer,
     Menu,
-
-    'v-style': {
-      render(createElement) {
-        return createElement('style', this.$slots.default);
-      },
-    },
   },
   computed: {
-    styleSrc({ candidate } = this) {
-      try {
-        // eslint-disable-next-line global-require, import/no-dynamic-require
-        return require(`./stylesheets/themes/${candidate.username}.scss`);
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error(err);
-      }
-      return '';
-    },
     candidate() {
       return this.$store.getters.candidateWithProjectAndDonations?.candidate;
     },
