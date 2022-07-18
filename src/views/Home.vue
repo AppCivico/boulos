@@ -1,5 +1,11 @@
 <template>
   <main id="conteudo">
+    <article id="doar" class="home__donate">
+      <div class="container" id="donation-wrap">
+        <Payment />
+      </div>
+    </article>
+
     <article class="home__intro">
       <div class="container">
         <template v-if="candidate.summary">
@@ -17,7 +23,7 @@
                   <animated-number :value="amountInView ? totalAmount : 0" :formatValue="FormatFixedBRL"
                     :duration="1000" />
                   <small v-if="centsOfTotal" class="campaign-progress__meta-cents">,{{ centsOfTotal
-                    }}</small>
+                  }}</small>
                 </span>
               </template>
               <template v-else>0</template>
@@ -48,8 +54,8 @@
           <p class="campaign-progress-percentage">
             {{ percentage() }}% da meta de R$&nbsp;{{ expected | formatBRL }}
             <a :href="`#goal-description__${expected}`" v-if="summary">{{
-              summary
-              }}</a>
+            summary
+            }}</a>
           </p>
 
           <div v-if="donationSources.length > 1" class="donations-sources">
@@ -102,12 +108,6 @@
             <div :key="project.id + '__scope'" class="content" v-html="parseMD(project.scope)" />
           </template>
         </template>
-      </div>
-    </article>
-
-    <article id="doar" class="home__donate">
-      <div class="container" id="donation-wrap">
-        <Payment />
       </div>
     </article>
 
