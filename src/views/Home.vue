@@ -246,7 +246,8 @@
 import { mapActions, mapGetters, mapState } from 'vuex';
 // @ is an alias to /src
 import Payment from '@/components/Payment.vue';
-import CONFIG from "@/config";
+import Picture from '@/components/Picture.vue';
+import CONFIG from '@/config';
 import AnimatedNumber from 'animated-number-vue';
 import { FormatFixedBRL, parseMD } from '../utilities';
 
@@ -259,6 +260,7 @@ export default {
   name: 'home',
   components: {
     Payment,
+    Picture,
     AnimatedNumber,
   },
   mounted({ candidateId } = this) {
