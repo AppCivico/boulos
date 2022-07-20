@@ -13,15 +13,12 @@
     }
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  legend,
-  caption,
-  details > summary {
+  /* stylelint-disable-next-line order/order */
+  @include headings ('odd') {
+    color: palette('poit', 'green');
+  }
+
+  @include headings ('even') {
     color: palette('poit', 'orange');
   }
 
@@ -114,6 +111,10 @@
     color: palette('white');
 
     background-color: palette('poit', 'green');
+
+    @include headings {
+      color: inherit;
+    }
   }
 
   .home__donate {
@@ -280,6 +281,6 @@
   .site-footer a {
     @include link-undercover {
       text-decoration: underline;
-    };
+    }
   }
 }
