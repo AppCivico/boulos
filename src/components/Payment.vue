@@ -3,6 +3,17 @@
     <h2 v-if="!allowedPaymentMethods.length">
       Doações desabilitadas
     </h2>
+
+    <div v-if="!allowedPaymentMethods.length">
+      <p>
+        Os serviços de meios de pagamento passam por
+        uma instabilidade. Estamos trabalhando
+        para reestabelecer as doações.
+      </p>
+      <p>Tente novamente mais tarde.</p>
+      <p>Nos desculpamos pelo transtorno.</p>
+    </div>
+
     <template v-else-if="paymentStep === 'selectValue'">
       <h2>Escolha um valor para doar</h2>
       <selectValue />
