@@ -12,14 +12,14 @@
     </template>
     <template v-else>
       <div class="donation-form-title" v-if="paymentStep !== 'printBoleto'">
-          <h2>Você escolheu doar:</h2>
-          <h2 v-if="amount">R$ {{ amount | formatBRLDec }}</h2>
+        <h2>Você escolheu doar:</h2>
+        <h2 v-if="amount">R$ {{ amount | formatBRLDec }}</h2>
       </div>
-      <headSteps/>
-      <userData v-if="paymentStep === 'userData'"/>
-      <cardData v-if="paymentStep === 'cardData'"/>
-      <addressData v-if="paymentStep === 'boleto'"/>
-      <certFaceVerify v-if="paymentStep === 'certFaceVerify'"/>
+      <headSteps />
+      <userData v-if="paymentStep === 'userData'" />
+      <cardData v-if="paymentStep === 'cardData'" />
+      <addressData v-if="paymentStep === 'boleto'" />
+      <certFaceVerify v-if="paymentStep === 'certFaceVerify'" />
       <section :aria-busy="loading " v-if="loading"> verificando</section>
       <printBoleto v-if="paymentStep === 'printBoleto'" class="loading" />
     </template>
@@ -28,14 +28,14 @@
 
 <script>
 // @ is an alias to /src
+import addressData from '@/components/steps/addressData.vue';
+import cardData from '@/components/steps/cardData.vue';
+import certFaceVerify from '@/components/steps/certFaceVerify.vue';
+import finalMessage from '@/components/steps/finalMessage.vue';
+import headSteps from '@/components/steps/headSteps.vue';
+import printBoleto from '@/components/steps/printBoleto.vue';
 import selectValue from '@/components/steps/selectValue.vue';
 import userData from '@/components/steps/userData.vue';
-import cardData from '@/components/steps/cardData.vue';
-import finalMessage from '@/components/steps/finalMessage.vue';
-import addressData from '@/components/steps/addressData.vue';
-import certFaceVerify from '@/components/steps/certFaceVerify.vue';
-import printBoleto from '@/components/steps/printBoleto.vue';
-import headSteps from '@/components/steps/headSteps.vue';
 
 export default {
   name: 'Payment',
