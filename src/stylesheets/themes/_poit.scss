@@ -46,24 +46,46 @@
   }
 
   .site-header {
-    min-height: 360px;
+    min-height: 340px;
 
     color: palette('black');
 
     background-color: palette('white');
+    background-image: url('../assets/poit/backgrounds/320x180.jpg');
+    background-position: center bottom;
+    background-size: cover;
 
-    @media screen and (min-width: 480px) {
-      min-height: 480px;
+    @media screen and (min-width: breakpoint('phone')) {
+      background-image: url('../assets/poit/backgrounds/480x270.jpg');
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: breakpoint('phablet')) {
+      min-height: 410px;
+
+      background-image: url('../assets/poit/backgrounds/640x360.jpg');
+    }
+
+    @media screen and (min-width: breakpoint('tablet')) {
+      min-height: 500px;
+
+      background-image: url('../assets/poit/backgrounds/1024x576.jpg');
+    }
+
+    @media screen and (min-width: breakpoint('desktop')) {
       min-height: 640px;
+
+      background-image: url('../assets/poit/backgrounds/1280x720.jpg');
     }
 
-    @media screen and (min-width: 1024px) {
-      min-height: 768px;
+    @media screen and (min-width: breakpoint('wide')) {
+      min-height: 720px;
+    }
+  }
 
-      background-position: 50% bottom;
+  .site-header__image img {
+    object-position: 75% bottom;
+
+    @media screen and (min-width: breakpoint('desktop')) {
     }
   }
 
@@ -138,6 +160,11 @@
 
   #home__greetings {
     margin-top: auto;
+    margin-bottom: $gutter;
+
+    @media (min-width: breakpoint('tablet')) {
+      margin-bottom: auto;
+    }
   }
 
   .donation-nav[class],

@@ -24,6 +24,10 @@
   }
 }
 
+.site-header__image {
+  pointer-events: none;
+}
+
 .site-header__image img {
   @include img-as-bg;
 }
@@ -140,12 +144,16 @@
   padding-left: $gutter;
 
   font-family: Montserrat, sans-serif;
-  font-size: ms(3);
+  font-size: ms(2);
   font-weight: bold;
   line-height: 1;
   text-align: left;
   text-decoration: none;
   text-transform: lowercase;
+
+  @media screen and (min-width: breakpoint('phablet')) {
+    font-size: ms(3);
+  }
 
   @media screen and (min-width: breakpoint('tablet')) {
     font-size: ms(4);

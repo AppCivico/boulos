@@ -146,62 +146,65 @@
       ],
       "header_logo": "./assets/poit/icons/logotipo.svg",
       "header_images": [
+
         {
-          "srcset": "./assets/poit/images/640x360.jpg",
-          "type": "image/jpg",
-          "media": 480
-        },
-        {
-          "srcset": "./assets/poit/images/1280x720.jpg",
-          "type": "image/jpg",
-          "media": 1024
-        },
-        {
-          "srcset": "./assets/poit/images/1024x576.jpg",
-          "type": "image/jpg",
-          "media": 768
-        },
-        {
-          "srcset": "./assets/poit/images/480x270.jpg",
+          "srcset": "./assets/poit/images/270x270.jpg",
           "type": "image/jpg"
         },
         {
-          "srcset": "./assets/poit/images/640x360.jxl",
-          "type": "image/jxl",
-          "media": 480
+          "srcset": "./assets/poit/images/360x360.jpg",
+          "type": "image/jpg",
+          "media": 640
         },
         {
-          "srcset": "./assets/poit/images/1280x720.jxl",
-          "type": "image/jxl",
+          "srcset": "./assets/poit/images/576x576.jpg",
+          "type": "image/jpg",
           "media": 1024
         },
         {
-          "srcset": "./assets/poit/images/1024x576.jxl",
-          "type": "image/jxl",
-          "media": 768
+          "srcset": "./assets/poit/images/720x720.jpg",
+          "type": "image/jpg",
+          "media": 1280
         },
+
         {
-          "srcset": "./assets/poit/images/480x270.jxl",
+          "srcset": "./assets/poit/images/270x270.jxl",
           "type": "image/jxl"
         },
         {
-          "srcset": "./assets/poit/images/640x360.webp",
-          "type": "image/webp",
-          "media": 480
+          "srcset": "./assets/poit/images/360x360.jxl",
+          "type": "image/jxl",
+          "media": 640
         },
         {
-          "srcset": "./assets/poit/images/1280x720.webp",
+          "srcset": "./assets/poit/images/576x576.jxl",
+          "type": "image/jxl",
+          "media": 1024
+        },
+        {
+          "srcset": "./assets/poit/images/720x720.jxl",
+          "type": "image/jxl",
+          "media": 1280
+        },
+
+        {
+          "srcset": "./assets/poit/images/270x270.webp",
+          "type": "image/webp"
+        },
+        {
+          "srcset": "./assets/poit/images/360x360.webp",
+          "type": "image/webp",
+          "media": 640
+        },
+        {
+          "srcset": "./assets/poit/images/576x576.webp",
           "type": "image/webp",
           "media": 1024
         },
         {
-          "srcset": "./assets/poit/images/1024x576.webp",
+          "srcset": "./assets/poit/images/720x720.webp",
           "type": "image/webp",
-          "media": 768
-        },
-        {
-          "srcset": "./assets/poit/images/480x270.webp",
-          "type": "image/webp"
+          "media": 1280
         }
       ],
       "know_more_images": [

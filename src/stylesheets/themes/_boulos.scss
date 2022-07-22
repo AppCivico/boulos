@@ -16,7 +16,6 @@
   }
 
   .site-header {
-    height: 70vh;
     min-height: 600px;
 
     color: palette('white');
@@ -76,6 +75,10 @@
     }
   }
 
+  .site-label {
+    max-width: 836px;
+  }
+
   .site-label h1,
   .site-label h2 {
     color: palette('white');
@@ -85,7 +88,6 @@
     @media screen and (min-width: breakpoint('desktop')) {
       margin-left: 0;
 
-      text-align: left;
     }
 
     @media screen and (min-width: breakpoint('wide')) {
