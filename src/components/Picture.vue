@@ -29,8 +29,8 @@ export default {
       if (!Array.isArray(images)) console.trace();
       const preferredOrderOfTypes = [
         'image/jxl',
-        'image/avif',
         'image/webp',
+        'image/avif',
         'image/jpg',
         'image/png',
         'image/gif',
