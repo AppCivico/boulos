@@ -146,7 +146,6 @@
       ],
       "header_logo": "./assets/poit/icons/logotipo.svg",
       "header_images": [
-
         {
           "srcset": "./assets/poit/images/270x270.jpg",
           "type": "image/jpg"
@@ -209,60 +208,77 @@
       ],
       "know_more_images": [
         {
-          "srcset": "./assets/poit/images/img-saibamais--320w.jpg",
+          "srcset": "./assets/poit/images/320x320.jpg",
           "type": "image/jpg"
         },
         {
           "media": 480,
-          "srcset": "./assets/poit/images/img-saibamais--480w.jpg",
+          "srcset": "./assets/poit/images/480x480.jpg",
           "type": "image/jpg"
         },
         {
           "media": 640,
-          "srcset": "./assets/poit/images/img-saibamais--640w.jpg",
+          "srcset": "./assets/poit/images/640x640.jpg",
           "type": "image/jpg"
         },
         {
           "media": 1280,
-          "srcset": "./assets/poit/images/img-saibamais--1024w.jpg",
+          "srcset": "./assets/poit/images/1024x1024.jpg",
           "type": "image/jpg"
         },
         {
-          "srcset": "./assets/poit/images/img-saibamais--320w.jxl",
+          "media": 1600,
+          "srcset": "./assets/poit/images/640x640.jpg",
+          "type": "image/jpg"
+        },
+
+        {
+          "srcset": "./assets/poit/images/320x320.jxl",
           "type": "image/jxl"
         },
         {
           "media": 480,
-          "srcset": "./assets/poit/images/img-saibamais--480w.jxl",
+          "srcset": "./assets/poit/images/480x480.jxl",
           "type": "image/jxl"
         },
         {
           "media": 640,
-          "srcset": "./assets/poit/images/img-saibamais--640w.jxl",
+          "srcset": "./assets/poit/images/640x640.jxl",
           "type": "image/jxl"
         },
         {
           "media": 1280,
-          "srcset": "./assets/poit/images/img-saibamais--1024w.jxl",
+          "srcset": "./assets/poit/images/1024x1024.jxl",
           "type": "image/jxl"
         },
         {
-          "srcset": "./assets/poit/images/img-saibamais--320w.webp",
+          "media": 1600,
+          "srcset": "./assets/poit/images/640x640.jxl",
+          "type": "image/jxl"
+        },
+
+        {
+          "srcset": "./assets/poit/images/320x320.webp",
           "type": "image/webp"
         },
         {
           "media": 480,
-          "srcset": "./assets/poit/images/img-saibamais--480w.webp",
+          "srcset": "./assets/poit/images/480x480.webp",
           "type": "image/webp"
         },
         {
           "media": 640,
-          "srcset": "./assets/poit/images/img-saibamais--640w.webp",
+          "srcset": "./assets/poit/images/640x640.webp",
           "type": "image/webp"
         },
         {
           "media": 1280,
-          "srcset": "./assets/poit/images/img-saibamais--1024w.webp",
+          "srcset": "./assets/poit/images/1024x1024.webp",
+          "type": "image/webp"
+        },
+        {
+          "media": 1600,
+          "srcset": "./assets/poit/images/640x640.webp",
           "type": "image/webp"
         }
       ],

@@ -17,7 +17,7 @@
 /// @example scss
 /// $title-font-stack: ComicSans, $basic-title-font-stack;
 $title-font-stack: 'Open Sans',
-$basic-title-font-stack !default;
+  $basic-title-font-stack !default;
 /// Text body font stack
 ///
 /// @access public
@@ -27,7 +27,7 @@ $basic-title-font-stack !default;
 /// @example scss
 /// $text-font-stack: ComicSans, $native-font-stack;
 $text-font-stack: 'Open Sans',
-$native-font-stack !default;
+  $native-font-stack !default;
 /// Code (monospace) font stack
 ///
 /// @access public
@@ -104,7 +104,7 @@ $palette: (
   'border': (
     'base': rgb(192, 192, 192),
     'focus': rgb(0, 0 , 0),
-    ),
+  ),
   'button': (
     'base': rgb(225, 225, 225),
     'focus': rgb(229, 241, 251),
@@ -221,7 +221,7 @@ $gutter: math.div($leading * $body-font-size, 1em) * 1rem;
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
-$breakpoints: _im-to-em( ( 'phone': 320px, 'phablet': 480px, 'tablet': 768px, 'desktop': 1024px, 'wide': 1280px, )) !default;
+$breakpoints: _im-to-em(( 'phone': 320px, 'phablet': 480px, 'tablet': 768px, 'desktop': 1024px, 'wide': 1280px, 'x-wide': 1600px, )) !default;
 $toggle-breakpoints: ( 'toggle-table-layout': 48em, 'toggle-menu': 64em, );
 $breakpoints: map-merge($breakpoints, $toggle-breakpoints);
 // 320
@@ -246,8 +246,9 @@ $base-url: '/static/' !default;
 
 @function _im-to-px($breakpoints, $base-value: 16px) {
   $new-breakpoints: ();
+
   @each $name,
-  $value in $breakpoints {
+    $value in $breakpoints {
     $px-value: if(math.unit($value) == 'em', $value / 1em * $base-value, $value);
     $new-breakpoints: map.merge($new-breakpoints, ($name: $px-value));
 
