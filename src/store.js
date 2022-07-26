@@ -3,6 +3,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import CONFIG from './config';
 import { office_list as officeList } from './data/offices.json';
+import { randomString } from './utilities/index.js';
+import VotolegalFP from './vendor/loadme';
 
 Vue.use(Vuex);
 
@@ -261,6 +263,16 @@ export default new Vuex.Store({
       commit('SET_PAYMENT_DATA', { paymentData: data });
     },
     GET_DONATION({ commit }, data) {
+      const { amount, email, cpf = '' } = data;
+
+      const nonce = randomString(13);
+      const str = `${nonce}${Number.parseInt(cpf.replace(/[^0-9]+/g, ''), 10) * -1}/\u00A0${amount}${email.toUpperCase()}`;
+      const fp = new VotolegalFP({
+        excludeUserAgent: true,
+        dontUseFakeFontInCanvas: true,
+      });
+      const hash = fp.x64hash128(str);
+
       return new Promise((resolve, reject) => {
         const rejectionByTimeout = setTimeout(() => {
           clearTimeout(rejectionByTimeout);
@@ -270,7 +282,7 @@ export default new Vuex.Store({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           url: `${CONFIG.api}/api2/donations`,
-          data,
+          data: { ...data, nc: nonce, sv: hash },
         }).then(
           (response) => {
             const { donation, ui } = response.data;
