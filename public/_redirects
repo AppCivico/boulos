@@ -2,9 +2,15 @@
 http://doeboulos.com/* https://doeboulos.com/:splat 301!
 http://www.doeboulos.com/* https://doeboulos.com/:splat 301!
 https://www.doeboulos.com/* https://doeboulos.com/:splat 301!
+http://doeboulos.com.br/* https://doeboulos.com.br/:splat 301!
+http://www.doeboulos.com.br/* https://doeboulos.com.br/:splat 301!
+https://www.doeboulos.com.br/* https://doeboulos.com.br/:splat 301!
 
 http://doepoit.com/* https://doepoit.com/:splat 301!
 http://www.doepoit.com/* https://doepoit.com/:splat 301!
 https://www.doepoit.com/* https://doepoit.com/:splat 301!
+http://doepoit.com.br/* https://doepoit.com.br/:splat 301!
+http://www.doepoit.com.br/* https://doepoit.com.br/:splat 301!
+https://www.doepoit.com.br/* https://doepoit.com.br/:splat 301!
 
 /*                /index.html 200
