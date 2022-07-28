@@ -4,11 +4,16 @@ let api = process.env.VUE_APP_API_ORIGIN;
 switch (window.location.hostname) {
   case 'boulos.com':
   case 'boulos.com.br':
+  case 'www.boulos.com':
+  case 'www.boulos.com.br':
+  case 'boulos.votolegal.com.br':
     candidateId = 10325;
     break;
 
   case 'doepoit.com':
   case 'doepoit.com.br':
+  case 'www.doepoit.com':
+  case 'www.doepoit.com.br':
   case 'poit.votolegal.com.br':
     candidateId = 10357;
     api = 'https://api2022vl.appcivico.com';
