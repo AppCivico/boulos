@@ -7,7 +7,7 @@
       <div class="instructions-donation">
         <p class="instructions">Informe seu endereço</p>
       </div>
-      <div class="input-wrapper" :class="`${validation.errors.birthdate ? 'has-error' : ''}`">
+      <div class="input-wrapper" :class="{'has-error': validation.errors.birthdate}">
         <label for="birthdate">
           Data de nascimento
         </label>
@@ -17,7 +17,7 @@
           {{ validation.errors.birthdate }}
         </div>
       </div>
-      <div class="input-wrapper" :class="{ 'has-error': validation.errors.phone }">
+      <div class="input-wrapper" :class="{'has-error': validation.errors.phone}">
         <label for="phone">
           {{ formAction === 'follow' ? 'Celular' : 'Telefone' }}
         </label>
@@ -29,8 +29,7 @@
           {{ validation.errors.phone }}
         </div>
       </div>
-      <div :class="`input-wrapper
-      ${validation.errors.zip_code ? 'has-error' : ''}`">
+      <div class="input-wrapper" :class="{'has-error': validation.errors.zip_code}">
         <label for="zip_code">CEP</label>
         <input type="tel" v-model="zip_code" id="zip_code" name="zipcode"
         autocomplete="postal-code" v-mask="'#####-###'"
@@ -39,8 +38,7 @@
           {{ validation.errors.zip_code }}
         </div>
       </div>
-      <div :class="`input-wrapper
-      ${validation.errors.city ? 'has-error' : ''}`">
+      <div class="input-wrapper" :class="{'has-error': validation.errors.city}">
         <label for="city">Cidade</label>
         <input type="text" v-model="city" id="city" name="city"
         autocomplete="address-level2" disabled="true" required ref="city" />
@@ -48,8 +46,7 @@
           {{ validation.errors.city }}
         </div>
       </div>
-      <div :class="`input-wrapper
-      ${validation.errors.state ? 'has-error' : ''}`">
+      <div class="input-wrapper" :class="{'has-error': validation.errors.state}">
         <label for="state">Estado</label>
         <select type="text" v-model="state" id="state" name="state"
         autocomplete="address-level1" disabled="true" required ref="state">
@@ -61,8 +58,7 @@
           {{ validation.errors.state }}
         </div>
       </div>
-      <div :class="`input-wrapper
-      ${validation.errors.street ? 'has-error' : ''}`">
+      <div class="input-wrapper" :class="{'has-error': validation.errors.street}">
         <label for="street">Rua</label>
         <input type="text" v-model="street" id="street" name="street"
         autocomplete="address-level4" disabled="true" required ref="street" />
@@ -70,8 +66,7 @@
           {{ validation.errors.street }}
         </div>
       </div>
-      <div :class="`input-wrapper
-      ${validation.errors.district ? 'has-error' : ''}`">
+      <div class="input-wrapper" :class="{'has-error': validation.errors.district}">
         <label for="district">Bairro</label>
         <input type="text" v-model="district" id="district" name="district"
         autocomplete="address-level3" disabled="true" required ref="district" />
@@ -79,18 +74,16 @@
           {{ validation.errors.district }}
         </div>
       </div>
-      <div :class="`input-wrapper
-      ${validation.errors.number ? 'has-error' : ''}`">
+      <div class="input-wrapper" :class="{'has-error': validation.errors.number}">
         <label for="number">Número</label>
-        <input type="tel" v-model="number" id="number" name="number" required>
+        <input type="tel" v-model="number" id="number" name="number" required />
         <div class="error" v-if="validation.errors.number">
           {{ validation.errors.number }}
         </div>
       </div>
-      <div :class="`input-wrapper
-      ${validation.errors.complement ? 'has-error' : ''}`">
+      <div class="input-wrapper" :class="{'has-error': validation.errors.complement}">
         <label for="complement">Complemento</label>
-        <input type="text" v-model="complement" name="complement">
+        <input type="text" v-model="complement" name="complement" />
         <div class="error" v-if="validation.errors.complement">
           {{ validation.errors.complement }}
         </div>
