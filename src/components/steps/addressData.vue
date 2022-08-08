@@ -41,7 +41,7 @@
       <div class="input-wrapper" :class="{'has-error': validation.errors.city}">
         <label for="city">Cidade</label>
         <input type="text" v-model="city" id="city" name="city"
-        autocomplete="address-level2" disabled="true" required ref="city" />
+        autocomplete="address-level2" :disabled="true" required ref="city" />
         <div class="error" v-if="validation.errors.city">
           {{ validation.errors.city }}
         </div>
@@ -49,7 +49,7 @@
       <div class="input-wrapper" :class="{'has-error': validation.errors.state}">
         <label for="state">Estado</label>
         <select type="text" v-model="state" id="state" name="state"
-        autocomplete="address-level1" disabled="true" required ref="state">
+        autocomplete="address-level1" :disabled="true" required ref="state">
           <option value=""></option>
           <option :value="key" v-for="(state, key) in states" :key="key">{{
           state }}</option>
@@ -61,7 +61,7 @@
       <div class="input-wrapper" :class="{'has-error': validation.errors.street}">
         <label for="street">Rua</label>
         <input type="text" v-model="street" id="street" name="street"
-        autocomplete="address-level4" disabled="true" required ref="street" />
+        autocomplete="address-level4" :disabled="true" required ref="street" />
         <div class="error" v-if="validation.errors.street">
           {{ validation.errors.street }}
         </div>
@@ -69,7 +69,7 @@
       <div class="input-wrapper" :class="{'has-error': validation.errors.district}">
         <label for="district">Bairro</label>
         <input type="text" v-model="district" id="district" name="district"
-        autocomplete="address-level3" disabled="true" required ref="district" />
+        autocomplete="address-level3" :disabled="true" required ref="district" />
         <div class="error" v-if="validation.errors.district">
           {{ validation.errors.district }}
         </div>
@@ -406,7 +406,7 @@ export default {
             }
           }
 
-          return this.$data.validation.errors.zip_code;
+          this.$data.validation.errors.zip_code = error.response.data.form_error;
         });
 
       return true;
