@@ -4,12 +4,12 @@ module.exports = {
   lintOnSave: true,
 
   configureWebpack: {
-    plugins: [
+    plugins: process.env.NODE_ENV === 'production' ? [
       new WebpackObfuscator({
         rotateStringArray: true,
         identifierNamesGenerator: 'mangled',
       }),
-    ],
+    ] : [],
   },
   css: {
     loaderOptions: {
