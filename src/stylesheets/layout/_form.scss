@@ -10,9 +10,8 @@ form {
 }
 
 fieldset {
-  max-width: none;
   min-width: 0;
-
+  max-width: none;
   padding: 0;
   margin: 0;
 
@@ -32,31 +31,27 @@ fieldset fieldset {
 /* 4 */
 fieldset > legend,
 legend {
+  box-sizing: border-box; /* 1 */
   display: table; /* 1 */
 
   max-width: 100%; /* 1 */
-
   padding: 0; /* 3 */
 
   font-weight: bolder;
-
-  white-space: normal; /* 1 */
-
   color: inherit; /* 2 */
-
-  box-sizing: border-box; /* 1 */
+  white-space: normal; /* 1 */
 }
 
 label {
+  position: absolute;
+
   padding: 0;
+  padding-left: 1ex;
   margin: 0;
 
   font-size: ms(-1);
   line-height: inherit;
-
-  position: absolute;
   color: palette('gray', 'dark');
-  padding-left: 1ex;
 }
 
 label * {
@@ -85,34 +80,29 @@ form br {
  * 6. Set the focus outline to be just around the field border.
  */
 %os-element-reset {
+  box-sizing: border-box; /* 4 */
   display: inline-block;
 
   padding: 1px; /* 2 */ // sass-lint:disable-line property-units
   margin: 0;
-
   overflow: visible;
 
+  font-family: inherit; /* 1 */
   font-size: inherit; /* 1 */
   line-height: inherit; /* 1 */
-  font-family: inherit; /* 1 */
-  -webkit-font-smoothing: inherit; // sass-lint:disable-line no-vendor-prefixes
-  letter-spacing: inherit;
-
+  color: inherit;
   text-align: inherit;
   text-transform: inherit; /* 3 */
+  letter-spacing: inherit;
   white-space: normal;
   vertical-align: top;
 
-  color: inherit;
-
-  border-width: $stroke;
-  border-style: solid;
   border-color: palette('border');
+  border-style: solid;
+  border-width: $stroke;
   border-radius: $rounded-corner;
-
   outline: 0;
-
-  box-sizing: border-box; /* 4 */
+  -webkit-font-smoothing: inherit; // sass-lint:disable-line no-vendor-prefixes
 
   &:hover {
   }
@@ -123,20 +113,25 @@ form br {
   }
 }
 
+[disabled],
 :disabled,
+[readonly],
 :readonly {
   color: palette('disabled', 'foreground');
 
   background: palette('disabled', 'background');
 }
 
+[disabled],
 :disabled {
   color: palette('disabled', 'foreground');
 
-  background: palette('disabled', 'background');
   cursor: not-allowed;
+
+  background: palette('disabled', 'background');
 }
 
+[readonly],
 :readonly {
   cursor: default;
 }
@@ -278,7 +273,6 @@ form br {
 }
 
 
-
 // sobral, confira isso
 //
 /**
@@ -286,21 +280,18 @@ form br {
  * 2. override Opera margin and padding
  */
 [type='file'] {
-  height: 2em;
   min-width: 250px;
-
+  height: 2em;
   padding: 0 !important; /* 2 */ // sass-lint:disable-line no-important
   margin: 0; /* 2 */
 
   font-family: inherit;
-
   text-align: start !important; // sass-lint:disable-line no-important
   white-space: nowrap;
 
   cursor: default;
 
   background-color: transparent; /* 1 */
-
   border-style: none !important; // sass-lint:disable-line no-important
 
   -webkit-box-align: baseline; //sass-lint:disable-line no-vendor-prefixes
@@ -319,26 +310,23 @@ form br {
   height: inherit;
 
   font-size: inherit;
+  color: inherit;
   letter-spacing: inherit;
 
-  color: inherit;
-
   background-color: inherit;
-
   border-color: inherit;
 }
 
 [type='file'] > [type='button'] {
-  height: inherit;
+  box-sizing: content-box;
 
+  height: inherit;
   padding: 0;
 
   font-size: inherit;
-
   white-space: normal;
 
   -webkit-box-align: center; // sass-lint:disable-line no-vendor-prefixes
-  box-sizing: content-box;
 
   appearance: button;
 }
@@ -356,10 +344,9 @@ form br {
   cursor: pointer;
 
   background-color: palette('button'); /* 2 */
-
-  border-width: 1px; /* 3 */
-  border-style: solid; /* 3 */
   border-color: palette('border'); /* 3 */
+  border-style: solid; /* 3 */
+  border-width: 1px; /* 3 */
 
   -webkit-appearance: button; /* 1 */ // sass-lint:disable-line no-vendor-prefixes
 
@@ -382,9 +369,9 @@ form br {
  */
 
 ::-ms-browse {
-  border-width: 1px; /* 1 */
-  border-style: solid; /* 1 */
   border-color: palette('border'); /* 1 */
+  border-style: solid; /* 1 */
+  border-width: 1px; /* 1 */
 
   &:hover {
     background-color: palette('button', 'focus');
@@ -442,22 +429,26 @@ x-moz-errormessage {
 }
 
 form .error {
-  border: 1px solid palette('orange');
-  margin-top: 20px;
   padding: 10px;
+  margin-top: 20px;
+
   font-size: 0.9em;
   font-weight: bold;
+
+  border: 1px solid palette('orange');
 }
 
 form .input-wrapper .error {
+  padding: 0;
   margin-top: -15px;
-  text-transform: lowercase;
+  margin-bottom: $leading * 0.5em;
+
   font-size: ms(-1);
   font-weight: bold;
-  border: 0;
-  padding: 0;
-  margin-bottom: $leading * 0.5em;
   color: palette('purple', 'light');
+  text-transform: lowercase;
+
+  border: 0;
 }
 
 form .has-error input {
@@ -468,6 +459,6 @@ form .has-error input {
   font-size: 0.9em;
 }
 
-.certiface-verify{
+.certiface-verify {
   text-align: center;
 }
