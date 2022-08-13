@@ -69,8 +69,8 @@ export default {
     });
   },
   methods: {
-    getReferral() {
-      const referral = getQueryString(window.location.search).ref;
+    getReferral({ candidate } = this) {
+      const referral = candidate?.ref || getQueryString(window.location.search).ref;
 
       if (referral) {
         this.$store.dispatch('ADD_REFERRAL', referral);
