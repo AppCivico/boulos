@@ -79,8 +79,9 @@
 
 <script>
 import { mapState } from 'vuex';
+import config from '../../config';
 import {
-  formatCPF, maskCPF, maskName, pad,
+formatCPF, maskCPF, maskName, pad
 } from '../../utilities';
 
 export default {
@@ -92,7 +93,7 @@ export default {
     };
   },
   mounted() {
-    const candidateId = process.env.VUE_APP_CANDIDATE_ID;
+    const { candidateId } = config;
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
     this.$store.dispatch('GET_DONATIONS', candidateId);
     this.$store.dispatch('UPDATE_DONATIONS', candidateId);

@@ -1,4 +1,4 @@
-let candidateId = process.env.VUE_APP_CANDIDATE_ID;
+let candidateId;
 let api = process.env.VUE_APP_API_ORIGIN;
 
 switch (window.location.hostname) {
