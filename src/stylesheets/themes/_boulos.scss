@@ -128,32 +128,44 @@
     }
   }
 
+
+
   .home__knowMore {
-    $bg: #f1f1f1;
-
-    background-color: $bg;
-    background-position: center bottom;
-    background-size: 100% auto;
-
     &[class] {
       padding-bottom: 60%;
     }
 
     @media screen and (min-width: breakpoint('desktop')) {
-      background-position: right bottom;
-      background-size: auto;
-
-      &[class] {
-        padding-bottom: 560px;
-      }
-    }
-
-    @media screen and (min-width: 1280px) {
-      background-position: left bottom, right bottom;
-
       &[class] {
         padding-bottom: 480px;
       }
+    }
+
+    @media screen and (min-width: breakpoint('wide')) {
+      &[class] {
+      }
+    }
+
+    @media screen and (min-width: breakpoint('x-wide')) {
+      &[class] {
+        padding-bottom: 280px;
+      }
+    }
+  }
+
+  .knowMore__image.knowMore__image img {
+    $bg: #f1f1f1;
+
+    background-color: $bg;
+
+    object-position: center bottom;
+
+    @media screen and (min-width: breakpoint('desktop')) {
+      object-fit: none;
+    }
+
+    @media screen and (min-width: breakpoint('wide')) {
+      object-position: left bottom;
     }
   }
 
