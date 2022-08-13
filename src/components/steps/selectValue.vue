@@ -2,12 +2,13 @@
   <section class="content">
     <form @submit.prevent="validateForm()">
       <fieldset class="of-radios-and-checks">
-        <div class="input-wrapper" v-for="pledge in pledges" :key="pledge">
-          <input type="radio" :id="`amount_${pledge}`" name="amount" v-model="amount" :value="pledge"
+        <div class="input-wrapper" v-for="pledge in pledges" :key="pledge.id">
+          <input type="radio" :id="`amount_${pledge.id}`" name="amount"
+          v-model="amount" :value="pledge.value"
             @change="validateForm()">
-          <label :for="`amount_${pledge}`" class="bigger">
+          <label :for="`amount_${pledge.id}`" class="bigger">
             <small v-if="!centsInUse">R$</small>
-            {{ pledge | formatBRL }}<small v-if="centsInUse">,{{ pad(pledge % 100, 2, '0') }}</small>
+            {{ pledge.value | formatBRL }}<small v-if="centsInUse">,{{ pad(pledge.value % 100, 2, '0') }}</small>
           </label>
         </div>
         <transition name="custom-value-fade" mode="out-in">
@@ -35,7 +36,7 @@
 <script>
 import { mask } from 'vue-the-mask';
 import {
-  formatBRL, formatBRLDec, getQueryString, pad, validate,
+formatBRL, formatBRLDec, getQueryString, pad, validate
 } from '../../utilities';
 
 export default {
@@ -51,25 +52,30 @@ export default {
       valueCheckedOnUrl: false,
     };
   },
+  mounted() {
+    this.getDonationAmount();
+  },
   computed: {
     candidate() {
-      return this.$store.state.candidate;
+      return this.$store.getters.candidateWithProjectAndDonations?.candidate;
     },
     centsInUse({ pledges } = this) {
       return pledges.some((x) => x % 100 !== 0);
     },
     pledges({ candidate } = this) {
-      const { pledges } = candidate;
+      const {
+        pledges = [2000, 5000, 11000, 20000, 25000, 32000, 50000, 75000, 106400],
+      } = candidate;
 
-      return (pledges && Array.isArray(pledges) && pledges.length
-        ? pledges
-        : [2000, 5000, 11000, 20000, 25000, 32000, 50000, 75000, 106400]).sort((a, b) => b - a);
+      return pledges
+        .map((x) => (typeof x === 'number' ? { value: x, label: x, id: x } : x))
+        .filter((x) => !!x.value)
+        .sort((a, b) => b.value - a.value);
     },
   },
   watch: {
     candidate(newValue) {
       if (newValue && !this.valueCheckedOnUrl) {
-        this.valueCheckedOnUrl = true;
         this.getDonationAmount();
       }
     },
@@ -113,6 +119,8 @@ export default {
     getDonationAmount() {
       let amount = getQueryString(window.location.search).valor || '';
 
+      this.valueCheckedOnUrl = true;
+
       /*
       accepted formats:
       10
@@ -136,7 +144,7 @@ export default {
       amount = parseInt(amount, 10) || 0;
 
       if (amount) {
-        if (this.pledges.indexOf(amount) === -1) {
+        if (!this.pledges.some((x) => x.value === amount)) {
           this.amount = 'other';
           this.other = amount;
         }
