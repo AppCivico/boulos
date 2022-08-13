@@ -13,13 +13,12 @@ fieldset ul {
 
 .of-radios-and-checks {
   @include clearfix;
-
-  font-size: ms(2);
-  color: palette('white');
   margin-right: $gutter * -0.5;
   margin-left: $gutter * -0.5;
 
+  font-size: ms(2);
   font-weight: 800;
+  color: palette('white');
 }
 
 .of-radios-and-checks button,
@@ -34,17 +33,16 @@ fieldset ul {
 
 .of-radios-and-checks .input-wrapper {
   display: block;
-  width: 33.33333%;
-  float: left;
 
+  float: left;
+  width: 33.33333%;
   padding-right: $gutter * 0.5;
-  margin-bottom: $gutter;
   padding-left: $gutter * 0.5;
+  margin-bottom: $gutter;
+  overflow: hidden;
 
   white-space: nowrap;
-
   list-style-type: none;
-  overflow: hidden;
 
   &::before {
     content: none;
@@ -62,38 +60,46 @@ fieldset ul {
 }
 
 .of-radios-and-checks .has-real-value {
-  background-color: palette('white');
-  border-radius: $rounded-corner;
-  color: palette('text', 'dark');
+  position: relative;
+
   float: none;
-  margin-right: $gutter * 0.5;
-  margin-left: $gutter * 0.5;
+  width: auto;
   padding-top: $leading * 0.3em;
   padding-bottom: $leading * 0.3em;
-  position: relative;
-  width: auto;
+  margin-right: $gutter * 0.5;
+  margin-left: $gutter * 0.5;
+
+  color: palette('text', 'dark');
+
+  background-color: palette('white');
+  border-radius: $rounded-corner;
 }
 
 .of-radios-and-checks label {
+  position: static;
+
   display: block;
 
   padding-top: $leading * 0.6rem;
+  padding-right: 0;
   padding-bottom: $leading * 0.6rem;
   padding-left: 0;
-  padding-right: 0;
-  white-space: nowrap;
-  text-align: center;
-  font-weight: inherit;
-  background-color: palette('purple');
-  border-radius: $rounded-corner;
+
   font-size: inherit;
-  position: static;
+  font-weight: inherit;
   color: inherit;
+  text-align: center;
+  white-space: nowrap;
+
   cursor: pointer;
 
+  background-color: palette('purple');
+  border-radius: $rounded-corner;
+
   @media (max-width: 500px) {
-    font-size: ms(0);
     padding: 1rem 0;
+
+    font-size: ms(0);
   }
 
   @media (max-width: 400px) {
@@ -111,12 +117,15 @@ fieldset ul {
 
 .has-real-value label {
   display: inline;
-  background-color: transparent;
+
   padding: 0;
+  /* stylelint-disable-next-line declaration-no-important */
+  background-color: transparent !important;
 
   &:hover,
   &:focus {
     color: inherit;
+
     background-color: transparent;
   }
 }
@@ -127,35 +136,42 @@ fieldset ul {
 }
 
 .has-real-value [type='text'] {
-  color: inherit;
   position: absolute;
   top: 0;
   right: 0;
-  left: 0;
   bottom: 0;
+  left: 0;
+
   width: 100%;
   height: 100%;
-  color: transparent;
-  background: transparent;
-  margin: 0;
   padding: 0;
+  margin: 0;
+
+  color: inherit;
+  color: transparent;
+
+  background: transparent;
 
   &::selection {
-    background: transparent;
     color: transparent;
+
+    background: transparent;
   }
 }
 
 .has-real-value [type='button'] {
-  border: 0;
-  background-color: palette('gray');
-  color: palette('white');
-  padding-right: $gutter * 0.5;
-  padding-left: $gutter * 0.5;
   position: absolute;
   top: $leading * 0.3em;
   right: $gutter * 0.5;
   z-index: 2;
+
+  padding-right: $gutter * 0.5;
+  padding-left: $gutter * 0.5;
+
+  color: palette('white');
+
+  background-color: palette('gray');
+  border: 0;
 }
 
 [type='checkbox'],
@@ -185,19 +201,19 @@ fieldset ul {
 
 [disabled] + label,
 :disabled + label {
-  cursor: default;
-
   color: palette('disabled', 'foreground');
+
+  cursor: default;
 }
 
 .checkbox-custom {
   @include clearfix;
+  padding-right: 0.9375rem;
 
   color: palette('white');
-  padding-right: 0.9375rem;
 }
 
-.checkbox-custom [type="checkbox"] {
+.checkbox-custom [type='checkbox'] {
   display: inline-block;
 }
 
@@ -212,13 +228,14 @@ fieldset ul {
 }
 
 
-
 #user-data-payment li {
-  font-size: ms(0);
   display: block;
-  margin: 0;
+
   padding-top: math.div($gutter, 4);
   padding-bottom: math.div($gutter, 4);
+  margin: 0;
+
+  font-size: ms(0);
 
   @media screen and (min-width: breakpoint('tablet')) {
     @include inline-block-item;
@@ -233,30 +250,37 @@ fieldset ul {
 }
 
 #user-data-payment .payment-type label {
+  position: static;
+
   display: block;
+
   padding-top: $leading * 0.4rem;
   padding-bottom: $leading * 0.4rem;
-  white-space: nowrap;
-  text-align: center;
+
+  font-size: inherit;
   font-weight: inherit;
+  color: palette('orange');
+  text-align: center;
+  white-space: nowrap;
+
   background-color: palette('white');
   border-radius: $rounded-corner;
-  font-size: inherit;
-  position: static;
-  color: palette('orange');
 }
 
 #user-data-payment ul label:hover {
-  background-color: palette('orange');
   color: palette('white');
+
+  background-color: palette('orange');
 }
 
-#user-data-payment ul :checked+label {
-  background-color: palette('orange');
+#user-data-payment ul :checked+ label {
   color: palette('white');
+
+  background-color: palette('orange');
 }
 
 #user-data-payment .payment-type label:hover {
-  background-color: palette('orange', 'light');
   color: palette('white');
+
+  background-color: palette('orange', 'light');
 }
