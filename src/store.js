@@ -602,12 +602,24 @@ export default new Vuex.Store({
   },
   getters: {
     candidateWithProjectAndDonations: ({ candidate, donations, projects }) => {
-      const candidateMerge = {
-        candidate: { ...(candidatesData[candidate?.username] || {}), ...candidate },
-        projects,
-        donations,
-      };
-      return candidateMerge;
+      const candidateData = { ...candidatesData[candidate?.username] };
+      const { overrides = {} } = candidateData;
+
+      delete candidateData.overrides;
+
+      return !candidate || candidate.pending
+        ? {
+          candidate,
+        }
+        : {
+          candidate: {
+            ...candidateData,
+            ...candidate,
+            ...overrides,
+          },
+          projects,
+          donations,
+        };
     },
 
     campaignStateWithGender: ({ candidate }) => {
