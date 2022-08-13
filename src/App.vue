@@ -1,18 +1,35 @@
 <template>
-  <div id="app" :data-candidate="candidate.username">
-    <Header v-if="$route.name === 'home'" />
-    <Menu v-if="$route.name === 'donors'" />
-    <div class="content-container">
-      <router-view />
-    </div>
+  <div id="app" :data-candidate="candidate && candidate.username ?
+  candidate.username : null" :aria-busy="candidate && candidate.pending">
+    <main v-if="!candidate">
+      <header class="site-header">
+        <div class="container">
+          <div class="site-label">
+            <h1>
+              Página não encontrada
+            </h1>
+          </div>
+        </div>
+      </header>
+    </main>
+    <template v-else-if="!candidate.pending">
+        <Header v-if="$route.name === 'home'" />
+        <Menu v-if="$route.name === 'donors'" />
+        <main class="content-container">
+          <router-view />
+        </main>
+    </template>
     <Footer />
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 import Footer from '@/components/layout/Footer.vue';
 import Header from '@/components/layout/Header.vue';
 import Menu from '@/components/layout/Menu.vue';
+import CONFIG from '@/config';
 import { getQueryString } from './utilities';
 
 export default {
@@ -23,13 +40,33 @@ export default {
     Menu,
   },
   computed: {
+    candidateId() {
+      switch (true) {
+        case window.location.hostname === ('localhost'):
+        case window.location.hostname.indexOf('192.168') === 0:
+        case window.location.hostname.indexOf('dev.') === 0:
+        case window.location.hostname.indexOf('test.') === 0:
+        case window.location.hostname.indexOf('.local') > -1:
+          return this.$route?.query?.candidate_id || CONFIG.candidateId;
+
+        default:
+          return CONFIG.candidateId;
+      }
+    },
     candidate() {
       return this.$store.getters.candidateWithProjectAndDonations?.candidate;
     },
   },
-  mounted() {
+  mounted({ candidateId } = this) {
     this.handleSession();
     this.getReferral();
+
+    this.GET_CANDIDATE_INFO(candidateId).finally(() => {
+      this.$nextTick(() => {
+        this.$emit('updateHead');
+        window.prerenderReady = true;
+      });
+    });
   },
   methods: {
     getReferral() {
@@ -53,6 +90,7 @@ export default {
         }
       }
     },
+    ...mapActions(['GET_CANDIDATE_INFO']),
   },
 };
 </script>

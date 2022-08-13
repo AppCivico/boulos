@@ -249,7 +249,6 @@ import { mapActions, mapGetters, mapState } from 'vuex';
 // @ is an alias to /src
 import Payment from '@/components/Payment.vue';
 import Picture from '@/components/Picture.vue';
-import CONFIG from '@/config';
 import AnimatedNumber from 'animated-number-vue';
 import { FormatFixedBRL, parseMD } from '../utilities';
 
@@ -265,30 +264,11 @@ export default {
     Picture,
     AnimatedNumber,
   },
-  mounted({ candidateId } = this) {
-    this.GET_CANDIDATE_INFO(candidateId).finally(() => {
-      this.$nextTick(() => {
-        this.$emit('updateHead');
-        window.prerenderReady = true;
-      });
-    });
-    this.GetDonorsNames(candidateId);
-    this.UPDATE_DONATIONS_SUMMARY(candidateId);
+  mounted({ candidate } = this) {
+    this.GetDonorsNames(candidate.id);
+    this.UPDATE_DONATIONS_SUMMARY(candidate.id);
   },
   computed: {
-    candidateId() {
-      switch (true) {
-        case window.location.hostname === ('localhost'):
-        case window.location.hostname.indexOf('192.168') === 0:
-        case window.location.hostname.indexOf('dev.') === 0:
-        case window.location.hostname.indexOf('test.') === 0:
-        case window.location.hostname.indexOf('.local') > -1:
-          return this.$route?.query?.candidate_id || CONFIG.candidateId;
-
-        default:
-          return CONFIG.candidateId;
-      }
-    },
     candidate() {
       return this.$store.getters.candidateWithProjectAndDonations?.candidate;
     },
@@ -346,7 +326,7 @@ export default {
     FormatFixedBRL,
     parseMD,
 
-    ...mapActions(['GET_CANDIDATE_INFO', 'GetDonorsNames', 'UPDATE_DONATIONS_SUMMARY']),
+    ...mapActions(['GetDonorsNames', 'UPDATE_DONATIONS_SUMMARY']),
   },
   directives: {
     inView: {

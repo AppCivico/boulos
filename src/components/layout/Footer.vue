@@ -64,7 +64,7 @@ export default {
   },
   computed: {
     whatsAppNumber() {
-      return this.candidate.whatsapp_number
+      return this.candidate?.whatsapp_number
         ? this.candidate.whatsapp_number.replace(/[^0-9]/g, '')
         : '';
     },

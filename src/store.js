@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 import CONFIG from './config';
 import { root as candidatesData } from './data/candidates_data.json';
 import { office_list as officeList } from './data/offices.json';
-import { randomString } from './utilities/index.js';
+import { randomString } from './utilities';
 import VotolegalFP from './vendor/loadme';
 
 Vue.use(Vuex);
@@ -19,7 +19,9 @@ export default new Vuex.Store({
     iugu: {},
     messages: [],
     donor_names: {},
-    candidate: {},
+    candidate: {
+      pending: true,
+    },
     donations: [],
     donationsLoading: true,
     donors: [],
@@ -121,8 +123,8 @@ export default new Vuex.Store({
     SET_MESSAGES(state, { messages }) {
       state.messages = messages;
     },
-    SET_CANDIDATE(state, { res }) {
-      state.candidate = res.candidate;
+    SET_CANDIDATE(state, payload) {
+      state.candidate = payload;
     },
     SET_DONATIONS: (state, payload) => {
       state.hasMoreDonations = payload.has_more || false;
@@ -350,13 +352,20 @@ export default new Vuex.Store({
     GET_CANDIDATE_INFO({ commit }, id) {
       return new Promise((resolve, reject) => axios.get(`${CONFIG.api}/public-api/candidate-summary/${id}`)
         .then((response) => {
-          commit('SET_CANDIDATE', { res: response.data });
-          if (response.data.platforms) {
-            commit('SET_SOURCES', response.data.platforms);
+          const { candidate, platforms } = response.data;
+
+          if (candidate) {
+            commit('SET_CANDIDATE', candidate);
+          } else {
+            throw new Error('candidate data missing');
+          }
+          if (platforms) {
+            commit('SET_SOURCES', platforms);
           }
           resolve(response.data);
         })
         .catch((err) => {
+          commit('SET_CANDIDATE', null);
           reject(err.response || err.message || err);
         }));
     },
