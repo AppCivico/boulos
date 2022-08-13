@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 import CONFIG from './config';
 import { root as candidatesData } from './data/candidates_data.json';
 import { office_list as officeList } from './data/offices.json';
-import { randomString } from './utilities/index.js';
+import { randomString } from './utilities';
 import VotolegalFP from './vendor/loadme';
 
 Vue.use(Vuex);
@@ -22,7 +22,9 @@ export default new Vuex.Store({
     candidate: {},
     donations: [],
     donationsLoading: true,
+
     donors: [],
+
     todayDonations: {
       total_donated: 0,
       people_donated: 0,
@@ -33,6 +35,9 @@ export default new Vuex.Store({
     recentDonation: {},
     address: {},
     paymentData: {},
+
+    testimony: '',
+
     paymentWatingMessage: '',
     hasMoreDonations: false,
     lastDonationMarker: '',
@@ -48,6 +53,21 @@ export default new Vuex.Store({
     'lastMarker:followers': '',
 
     reviews: [],
+
+    lastMarker: {
+      donations: '',
+      reviews: '',
+      followers: '',
+      tickets: '',
+    },
+
+    hasMore: {
+      donations: true,
+      reviews: true,
+      followers: true,
+      tickets: true,
+    },
+
     device: '',
     statusPaymentRequest: {},
     paymentError: '',
@@ -481,7 +501,6 @@ export default new Vuex.Store({
         });
       });
     },
-
     submitCandidateTestimony({ commit }, data) {
       return new Promise((resolve, reject) => {
         const keys = {
@@ -502,24 +521,47 @@ export default new Vuex.Store({
           return acc;
         }, {});
 
+        if (translatedAndCleanData.mobile_phone.indexOf('+55') === -1) {
+          translatedAndCleanData.mobile_phone = `+55${translatedAndCleanData.mobile_phone}`;
+        }
+
         axios({
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           url: `${CONFIG.api}/api2/candidate-review`,
-          data: translatedAndCleanData,
-        }).then(
-          (response) => {
+          data: new URLSearchParams(translatedAndCleanData).toString(),
+        })
+          .then((response) => {
             if (response.data && response.data.ui && response.data.ui.messages) {
               commit('SET_MESSAGES', { messages: response.data.ui.messages });
             }
 
-            resolve();
-          },
-          (err) => {
+            resolve(response.data);
+          })
+          .catch((err) => {
             console.error(err.response);
             reject(err.response);
-          },
-        );
+          });
+      });
+    },
+
+    requestToUnpublishTestimony({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        axios({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          url: `${CONFIG.api}/api2/candidate-review/${data.review_id}/delete`,
+          data,
+        }).then((response) => {
+          if (response.data && response.data.ui && response.data.ui.messages) {
+            commit('SET_MESSAGES', { messages: response.data.ui.messages });
+          }
+          resolve(response.data);
+        })
+          .catch((err) => {
+            console.error(err.response);
+            reject(err.response);
+          });
       });
     },
 
@@ -553,19 +595,19 @@ export default new Vuex.Store({
           headers: { 'Content-Type': 'application/json' },
           url: `${CONFIG.api}/api2/candidate-followers`,
           data: translatedAndCleanData,
-        })
-          .then(
-            (response) => {
-              if (response.data && response.data.ui && response.data.ui.messages) {
-                commit('SET_MESSAGES', { messages: response.data.ui.messages });
-              }
-              resolve();
-            },
-          )
-          .catch((err) => {
+        }).then(
+          (response) => {
+            if (response.data && response.data.ui && response.data.ui.messages) {
+              commit('SET_MESSAGES', { messages: response.data.ui.messages });
+            }
+
+            resolve();
+          },
+          (err) => {
             console.error(err.response);
             reject(err.response);
-          });
+          },
+        );
       });
     },
 
@@ -576,20 +618,21 @@ export default new Vuex.Store({
           headers: { 'Content-Type': 'application/json' },
           url: `${CONFIG.api}/api2/candidate-followers/unfollow`,
           data,
-        }).then((response) => {
-          if (response.data && response.data.ui && response.data.ui.messages) {
-            commit('SET_MESSAGES', { messages: response.data.ui.messages });
-          }
+        }).then(
+          (response) => {
+            if (response.data && response.data.ui && response.data.ui.messages) {
+              commit('SET_MESSAGES', { messages: response.data.ui.messages });
+            }
 
-          resolve();
-        },
-        (err) => {
-          console.error(err.response);
-          reject(err.response);
-        });
+            resolve();
+          },
+          (err) => {
+            console.error(err.response);
+            reject(err.response);
+          },
+        );
       });
     },
-
   },
   getters: {
     candidateWithProjectAndDonations: ({ candidate, donations, projects }) => {
@@ -602,7 +645,7 @@ export default new Vuex.Store({
     },
 
     campaignStateWithGender: ({ candidate }) => {
-      let candidateState = candidate.campaign_donation_type === 'campaign'
+      let candidateState = candidate.campaign_donation_type === 'effective_campaign'
         ? 'Candidat'
         : 'Pré-candidat';
 
@@ -624,7 +667,7 @@ export default new Vuex.Store({
       return candidateState;
     },
 
-    campaign: ({ candidate }) => (candidate.campaign_donation_type === 'campaign' ? 'Candidatura' : 'Pré-candidatura'),
+    campaign: ({ candidate }) => (candidate.campaign_donation_type === 'effective_campaign' ? 'Candidatura' : 'Pré-candidatura'),
 
     candidatePreposition: ({ candidate }) => {
       switch (candidate.gender) {

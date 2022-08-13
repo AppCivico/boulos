@@ -148,6 +148,16 @@
       </div>
     </article>
 
+    <section v-if="candidate.reviews_activated" class="secondary-box" id="testemunhar">
+      <ToTestify formAction="'testify'" />
+    </section>
+    <Reviews v-if="candidate.reviews_activated && reviews.length" id="depoimentos" class="entry-content" />
+
+    <section v-if="candidate.followers_activated" class="secondary-box" id="acompanhar">
+      <ToFollow formAction="'follow'" />
+    </section>
+    <Followers v-if="candidate.followers_activated" id="seguidores" class="entry-content" />
+
     <article id="home__donors" class="home__donors">
       <div class="container" id="donation-wrap">
         <h2>
@@ -251,19 +261,27 @@ import Payment from '@/components/Payment.vue';
 import Picture from '@/components/Picture.vue';
 import CONFIG from '@/config';
 import AnimatedNumber from 'animated-number-vue';
+import Followers from '../components/sections/Followers.vue';
+import Reviews from '../components/sections/Reviews.vue';
+import ToFollow from '../components/ToFollow.vue';
+import ToTestify from '../components/ToTestify.vue';
 import { FormatFixedBRL, parseMD } from '../utilities';
 
 export default {
+  name: 'home',
+  components: {
+    AnimatedNumber,
+    Followers,
+    Payment,
+    Picture,
+    Reviews,
+    ToFollow,
+    ToTestify,
+  },
   data() {
     return {
       amountInView: false,
     };
-  },
-  name: 'home',
-  components: {
-    Payment,
-    Picture,
-    AnimatedNumber,
   },
   mounted({ candidateId } = this) {
     this.GET_CANDIDATE_INFO(candidateId).finally(() => {
@@ -317,7 +335,7 @@ export default {
     },
 
     ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'goals', 'totalAmount']),
-    ...mapState(['donors']),
+    ...mapState(['donors', 'reviews']),
   },
   methods: {
     percentage(amount = this.totalAmount, expected = this.expected) {
