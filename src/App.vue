@@ -1,7 +1,7 @@
 <template>
   <div id="app" :data-candidate="candidate && candidate.username ?
   candidate.username : null" :aria-busy="candidate && candidate.pending">
-    <main v-if="!candidate">
+    <main v-if="!candidate" class="not-found">
       <header class="site-header">
         <div class="container">
           <div class="site-label">
