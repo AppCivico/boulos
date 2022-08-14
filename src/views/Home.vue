@@ -163,7 +163,7 @@
         </p>
 
         <div class="nav-link-donations-wrap">
-          <router-link class="nav-link-donations" to="/doadores" target="_blank">
+          <router-link class="nav-link-donations" :to="{ name: 'donors' }" target="_blank">
             ver dados completos
           </router-link>
         </div>
