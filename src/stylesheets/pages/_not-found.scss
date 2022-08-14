@@ -21,4 +21,13 @@
   @media screen and (min-width: 1280px) {
     background-image: url('../assets/images/backgrounds/bg-doacao.jpg');
   }
+
+  .site-header {
+    padding-top: 0;
+
+    .container {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
 }
