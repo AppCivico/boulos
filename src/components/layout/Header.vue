@@ -84,6 +84,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex';
+import { slugify } from '../../utilities';
 import parser from '../../vendor/markdown.min';
 import Picture from '../Picture.vue';
 
@@ -133,7 +134,8 @@ export default {
       const { hashtags = [] } = candidateWithProjectAndDonations.candidate;
 
       return Array.isArray(hashtags)
-        ? hashtags.map((x) => x.split(' ').filter(Boolean).map((y, i) => (i % 2 === 0 ? y : `<span class="heavy">${y}</span>`)).join('')).map((y) => `<span>#</span>${y}`)
+        ? hashtags.map((x) => x.split(' ').filter(Boolean).map((y) => slugify(y)).map((y, i) => (i % 2 === 0 ? y : `<span class="heavy">${y}</span>`))
+          .join('')).map((y) => `<span>#</span>${y}`)
         : [];
     },
     ...mapState(['candidate']),

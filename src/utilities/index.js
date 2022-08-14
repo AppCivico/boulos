@@ -1,5 +1,7 @@
 import parser from '../vendor/markdown.min';
 
+import slugify from './slugify';
+
 function parseMD(content) {
   return parser.parse(content).innerHTML;
 }
@@ -237,4 +239,5 @@ export {
   pad,
   copyTextToClipboard,
   randomString,
+  slugify,
 };
