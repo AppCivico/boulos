@@ -19,6 +19,12 @@ switch (window.location.hostname) {
     api = 'https://api2022vl.appcivico.com';
     break;
 
+  case 'omelhorprorio.com.br':
+  case 'molon.votolegal.com.br':
+    candidateId = 10439;
+    api = 'https://api2022vl.appcivico.com';
+    break;
+
   default:
     break;
 }
