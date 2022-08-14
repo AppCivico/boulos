@@ -60,8 +60,19 @@
     }
   }
 
+  #user-data-payment .payment-choices label,
   .of-radios-and-checks label {
+    color: palette('white');
+
     background-color: palette('molon', 'orange');
+
+    &:hover {
+      background-color: palette('molon', 'blue-dark');
+    }
+  }
+
+  #user-data-payment ul :checked + label {
+    background-color: palette('molon', 'blue-dark');
   }
 
   .site-header {
@@ -69,8 +80,7 @@
 
     color: palette('black');
 
-    background-color: palette('white');
-    background-color: #c11b1a;
+    background-color: palette('molon', 'orange');
     background-image: url('../assets/molon/backgrounds/fundo.png');
     background-repeat: repeat;
     // background-image: url('../assets/molon/backgrounds/320x180.png');
@@ -202,23 +212,23 @@
 
   .donation-nav[class],
   .donation-nav--forward[class] {
-    // color: palette('poit', 'green');
+    color: inherit;
 
     &:link,
     &:visited {
-      // color: palette('poit', 'green');
+      color: inherit;
     }
 
     &:hover,
     &:focus,
     &:active {
-      // color: palette('poit', 'dark-green');
+      color: inherit;
     }
   }
 
   .donation-form-title h2:last-child,
   #user-data-payment ul :checked + label {
-    // background-color: palette('poit', 'green');
+    background-color: palette('molon', 'blue-dark');
   }
 
   .home__knowMore[class] {
