@@ -140,6 +140,7 @@
       "siteTagline": "",
       "donors_message": "",
       "footer_logo": "./assets/molon/icons/Logo_SemTexto--black.png",
+      "disable_custom_donation_value": true,
       "overrides": {
         "donors_message": "Veja quem topou contribuir para fortalecer nossa luta pelo #MelhorProRio:",
         "ref": "o_melhor_pro_rio",

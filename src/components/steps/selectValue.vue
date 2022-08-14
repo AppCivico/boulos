@@ -12,7 +12,7 @@
             {{ pledge.value | formatBRL }}<small v-if="centsInUse">,{{ pad(pledge.value % 100, 2, '0') }}</small>
           </label>
         </div>
-        <transition name="custom-value-fade" mode="out-in">
+        <transition name="custom-value-fade" mode="out-in" v-if="!candidate.disable_custom_donation_value">
           <div class="input-wrapper
           input-wrapper--full-width" v-if="amount !== 'other'" key="other">
             <input type="radio" id="amount_other" name="amount" v-model="amount" value="other">
@@ -119,6 +119,10 @@ export default {
     },
     getDonationAmount() {
       let amount = getQueryString(window.location.search).valor || '';
+
+      if (this.candidate.disable_custom_donation_value) {
+        return;
+      }
 
       this.valueCheckedOnUrl = true;
 
