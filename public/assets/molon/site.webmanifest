@@ -1,0 +1,19 @@
+{
+    "name": "O melhor p'ro Rio",
+    "short_name": "O melhor p'ro Rio",
+    "icons": [
+        {
+            "src": "/assets/molon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/molon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#c11b1a",
+    "background_color": "#c11b1a",
+    "display": "standalone"
+}

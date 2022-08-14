@@ -91,6 +91,13 @@ $palette: (
     'purple': hsl(301deg, 59%, 35%),
     'purple-light': hsl(301, 59%, 65%),
   ),
+  'molon': (
+    'yellow': #ede70b,
+    'blue-light': #00b7aa,
+    'blue-medium': #0090b6,
+    'blue-dark': hsl(192.5, 100%, 20.7%),
+    'orange': #ee4523,
+  ),
   'gray': (
     'x-light': tint(rgb(229, 231, 234), 10%),
     'light': rgb(242, 242, 242),

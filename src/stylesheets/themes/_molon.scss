@@ -1,0 +1,350 @@
+[data-candidate='molon'] {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  legend,
+  caption,
+  details > summary {
+    color: palette('molon', 'blue-medium');
+  }
+
+  thead th,
+  thead td,
+  tfoot th,
+  tfoot td {
+    background-color: palette('molon', 'blue-medium');
+  }
+
+  a {
+    color: palette('molon', 'blue-light');
+
+    &:link,
+    &:visited {
+      color: palette('molon', 'blue-light');
+    }
+
+    &:hover,
+    &:focus {
+      color: palette('molon', 'blue-medium');
+    }
+  }
+
+  /* stylelint-disable-next-line order/order */
+  @include headings ('odd') {
+    // color: palette('poit', 'green');
+  }
+
+  @include headings ('even') {
+    // color: palette('poit', 'orange');
+  }
+
+  menu a,
+  nav a {
+    @include link-undercover;
+
+    display: block;
+
+    overflow: hidden;
+
+    &:link {
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+
+  .of-radios-and-checks label {
+    background-color: palette('molon', 'orange');
+  }
+
+  .site-header {
+    min-height: 340px;
+
+    color: palette('black');
+
+    background-color: palette('white');
+    background-color: #c11b1a;
+    background-image: url('../assets/molon/backgrounds/fundo.png');
+    background-repeat: repeat;
+    // background-image: url('../assets/molon/backgrounds/320x180.png');
+    background-position: center bottom;
+    background-size: contain;
+
+    @media screen and (min-width: breakpoint('phone')) {
+      // background-image: url('../assets/molon/backgrounds/480x270.png');
+    }
+
+    @media screen and (min-width: breakpoint('phablet')) {
+      min-height: 410px;
+
+      // background-image: url('../assets/molon/backgrounds/640x360.png');
+    }
+
+    @media screen and (min-width: breakpoint('tablet')) {
+      min-height: 640px;
+
+      // background-image: url('../assets/molon/backgrounds/1024x576.png');
+    }
+
+    @media screen and (min-width: breakpoint('desktop')) {
+      min-height: 768px;
+
+      background-size: auto;
+
+      // background-image: url('../assets/molon/backgrounds/1280x720.png');
+    }
+
+    @media screen and (min-width: breakpoint('wide')) {
+      min-height: 900px;
+    }
+  }
+
+  .site-header__image img {
+    object-position: 75% bottom;
+
+    @media screen and (min-width: breakpoint('desktop')) {
+    }
+  }
+
+  button.mobile-button span {
+    border-color: palette('black');
+  }
+
+  .logo-campaign > img {
+    min-width: 77px;
+    min-height: 39px;
+  }
+
+  .animate .logo-campaign > img {
+    min-height: 44px;
+  }
+
+  .main-menu {
+    color: palette('white');
+
+    &.animate {
+      color: palette('molon', 'blue-medium');
+
+      background-color: palette('white');
+    }
+  }
+
+  .menu-wrap.show {
+    background-color: transparent;
+  }
+
+  .donate-nav a {
+    background-color: palette('molon', 'orange');
+  }
+
+  .site-label .call-to-action {
+    color: palette('white');
+
+    span {
+      color: palette('white');
+    }
+  }
+
+  .home__intro {
+    color: palette('white');
+
+    background-color: palette('molon', 'blue-medium');
+
+    @include headings {
+      color: inherit;
+    }
+
+    a {
+      @include link-undercover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .home__donate {
+    color: palette('white');
+
+    background-color: palette('molon', 'blue-light');
+    background-repeat: repeat;
+    background-size: auto;
+
+    &::before {
+      color: palette('molon', 'blue-light');
+
+      opacity: 0.35;
+
+      @supports (mix-blend-mode: color) {
+        mix-blend-mode: color;
+        opacity: 0.85;
+      }
+    }
+  }
+
+  #home__greetings {
+    margin-top: 0;
+    margin-bottom: auto;
+
+    @media (min-width: breakpoint('phablet')) {
+      margin-top: $gutter;
+    }
+
+    @media (min-width: breakpoint('x-wide')) {
+      margin-top: $gutter * 2;
+    }
+  }
+
+  .donation-nav[class],
+  .donation-nav--forward[class] {
+    // color: palette('poit', 'green');
+
+    &:link,
+    &:visited {
+      // color: palette('poit', 'green');
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      // color: palette('poit', 'dark-green');
+    }
+  }
+
+  .donation-form-title h2:last-child,
+  #user-data-payment ul :checked + label {
+    // background-color: palette('poit', 'green');
+  }
+
+  .home__knowMore[class] {
+    padding-bottom: 280px;
+
+    @media screen and (min-width: breakpoint('phablet')) {
+      padding-bottom: 420px;
+    }
+
+    @media screen and (min-width: 640px) {
+      padding-bottom: 560px;
+    }
+
+    @media screen and (min-width: breakpoint('wide')) {
+      padding-bottom: 900px;
+    }
+
+    @media screen and (min-width: breakpoint('x-wide')) {
+      padding-bottom: 6rem;
+    }
+  }
+
+  .knowMore__image.knowMore__image img {
+    $bg: #f1f1f1;
+
+    object-fit: none;
+    object-position: center bottom;
+
+    background-color: $bg;
+
+    @media screen and (min-width: breakpoint('x-wide')) {
+      object-position: left bottom;
+    }
+  }
+
+  .play-button {
+    background-color: palette('molon', 'orange');
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: palette('molon', 'blue-medium');
+    }
+  }
+
+  progress,
+  [role='progressbar'] {
+    @mixin progress-bar-bg {
+      &::-webkit-progress-bar {
+        @content;
+      }
+
+      @content;
+    }
+
+    @mixin progress-bar-fg {
+      &[value]::-moz-progress-bar {
+        @content;
+      }
+
+      &[value]::-webkit-progress-value {
+        @content;
+      }
+
+      > div {
+        @include hide-text;
+
+        display: inline-block;
+
+        max-width: 100%;
+        height: 100%;
+
+        @content;
+      }
+    }
+
+    /* stylelint-disable-next-line at-rule-empty-line-before */
+    @include progress-bar-fg {
+      background-color: palette('molon', 'blue-light');
+    }
+
+    /* stylelint-disable-next-line at-rule-empty-line-before */
+    @include progress-bar-bg {
+      background-color: #00a4b0;
+    }
+
+    /* stylelint-disable-next-line order/order */
+    color: palette('molon', 'blue-light');
+
+    background-color: #00a4b0;
+  }
+
+  #campaign-progress .campaign-progress__link {
+    // color: palette('poit', 'orange');
+  }
+
+  .nav-link-donations-wrap a {
+    background-color: palette('white');
+  }
+
+  .candidate-footer {
+    // color: palette('poit', 'orange');
+  }
+
+  .site-footer {
+    // color: palette('white');
+
+    // background-color: palette('poit', 'green');
+
+    // color: palette('black');
+    // color: inherit;
+
+    // background-color: palette('molon', 'yellow');
+
+    a {
+      @include link-undercover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .site-footer__copyright {
+    color: inherit;
+  }
+
+  .notification {
+    // background-color: palette('poit', 'green');
+  }
+}
