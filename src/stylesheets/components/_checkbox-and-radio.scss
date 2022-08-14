@@ -301,14 +301,14 @@ fieldset ul {
   background-color: palette('gray', 'dark');
 }
 
-#user-data-payment ul :checked+ label {
+#user-data-payment ul :checked + label {
   color: palette('white');
 
   background-color: palette('gray', 'dark');
 }
 
 #user-data-payment .payment-type label:hover {
-  color: palette('white');
+  color: palette('gray', 'light');
 
-  background-color: palette('gray', 'light');
+  background-color: palette('gray', 'dark');
 }
