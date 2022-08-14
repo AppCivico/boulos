@@ -38,6 +38,8 @@ fieldset ul {
 .of-radios-and-checks .input-wrapper {
   display: block;
 
+  flex-grow: 1;
+
   float: left;
   width: 33.33333%;
   padding-right: $gutter * 0.5;
