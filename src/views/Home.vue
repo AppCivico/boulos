@@ -99,7 +99,7 @@
 
         </section>
 
-        <template v-if="candidate.projects">
+        <template v-if="candidate.projects && candidate.projects.length">
           <h2>
             Projetos prioritários
           </h2>
