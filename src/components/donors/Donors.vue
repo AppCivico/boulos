@@ -79,21 +79,23 @@
 
 <script>
 import { mapState } from 'vuex';
-import config from '../../config';
 import {
 formatCPF, maskCPF, maskName, pad
 } from '../../utilities';
 
 export default {
   name: 'donors',
+  props: {
+  // we get candidateId as a prop to allow overriding it on local environment
+    candidateId: String,
+  },
   data() {
     return {
       donationToUnmask: '',
       loading: false,
     };
   },
-  mounted() {
-    const { candidateId } = config;
+  mounted({ candidateId } = this) {
     this.$store.dispatch('GET_CANDIDATE_INFO', candidateId);
     this.$store.dispatch('GET_DONATIONS', candidateId);
     this.$store.dispatch('UPDATE_DONATIONS', candidateId);

@@ -13,11 +13,11 @@
       </header>
     </main>
     <template v-else-if="!candidate.pending">
-        <Header v-if="$route.name === 'home'" />
-        <Menu v-if="$route.name === 'donors'" />
-        <main class="content-container">
-          <router-view />
-        </main>
+      <Header v-if="$route.name === 'home'" />
+      <Menu v-if="$route.name === 'donors'" />
+      <div class="content-container">
+        <router-view :candidate-id="candidateId" />
+      </div>
     </template>
     <Footer />
   </div>
