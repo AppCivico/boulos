@@ -8,11 +8,26 @@
   legend,
   caption,
   details > summary {
-    color: hsl(301deg, 59%, 35%);
+    color: palette('boulos', 'purple');
+  }
+
+  thead th,
+  thead td,
+  tfoot th,
+  tfoot td {
+    background-color: palette('boulos', 'blue');
   }
 
   .of-radios-and-checks label {
-    background-color: hsl(301deg, 59%, 35%);
+    background-color: palette('boulos', 'purple');
+
+    &:hover {
+      background-color: palette('boulos', 'orange');
+    }
+  }
+
+  .of-radios-and-checks :checked + label {
+    background-color: palette('boulos', 'orange');
   }
 
   .site-header {
@@ -65,13 +80,24 @@
   }
 
   .main-menu {
-    background-color: palette('blue');
+    background-color: palette('boulos', 'blue');
 
     &.animate {
-      background-color: palette('blue');
+      background-color: palette('boulos', 'blue');
     }
 
     @media (min-width: breakpoint('tablet')) {
+    }
+  }
+
+  .donate-nav a {
+    background-color: palette('boulos', 'orange');
+
+    &:hover,
+    &:link:focus,
+    &:focus,
+    &:active {
+      background-color: palette('boulos', 'blue');
     }
   }
 
@@ -105,6 +131,12 @@
     }
   }
 
+  .subtitle a {
+    &:hover {
+      color: palette('boulos', 'orange');
+    }
+  }
+
   .home__intro {
     color: #ffffff;
 
@@ -114,10 +146,10 @@
   .home__donate {
     color: palette('white');
 
-    background-color: palette('blue');
+    background-color: palette('boulos', 'blue');
 
     &::before {
-      color: palette('blue');
+      color: palette('boulos', 'blue');
 
       opacity: 0.35;
 
@@ -128,7 +160,61 @@
     }
   }
 
+  .donation-nav[class] {
+    color: palette('boulos', 'orange');
 
+    @include link-undercover {
+      color: palette('boulos', 'orange');
+    }
+
+    &:hover {
+      color: palette('boulos', 'purple-light');
+    }
+  }
+
+  .donation-nav--forward[class] {
+    color: palette('boulos', 'orange');
+  }
+
+  .home__donate h2 strong {
+    background-color: palette('boulos', 'orange');
+  }
+
+  .donation-form-title h2 {
+    &:last-child {
+      background-color: palette('boulos', 'orange');
+    }
+  }
+
+  [id='user-data-payment'] .payment-type label {
+    background-color: palette('white');
+  }
+
+  [id='user-data-payment'] ul label:hover {
+    color: palette('white');
+
+    background-color: palette('boulos', 'orange');
+  }
+
+  [id='user-data-payment'] ul :checked+ label {
+    color: palette('white');
+
+    background-color: palette('boulos', 'orange');
+  }
+
+  [id='user-data-payment'] .payment-type label:hover {
+    color: palette('white');
+
+    background-color: palette('boulos', 'orange-light');
+  }
+
+  #campaign-progress .campaign-progress__link {
+    color: palette('boulos', 'purple');
+
+    &:hover:link {
+      color: palette('white');
+    }
+  }
 
   .home__knowMore {
     &[class] {
@@ -170,9 +256,9 @@
   }
 
   .site-footer {
-    color: hsl(0, 0%, 100%);
+    color: palette('white');
 
-    background-color: hsl(198deg, 100%, 44%);
+    background-color: palette('boulos', 'blue');
   }
 
   .play-button {
@@ -182,7 +268,7 @@
 
     &:hover,
     &:focus {
-      background-color: palette('orange', 'dark');
+      background-color: palette('boulos', 'orange-dark');
     }
 
     &:active {

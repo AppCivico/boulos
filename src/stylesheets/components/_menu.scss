@@ -39,7 +39,7 @@
 .main-menu.animate {
   padding-top: 0.5rem;
 
-  background-color: palette('blue');
+  background-color: palette('gray', 'dark');
 }
 
 .brand-wrap {
@@ -73,7 +73,7 @@
   margin-right: auto;
   margin-left: auto;
 
-  background-color: palette('orange');
+  background-color: palette('gray', 'dark');
   border: 2px solid palette('white');
   border-radius: 10px;
 
@@ -81,7 +81,7 @@
   &:link:focus,
   &:focus,
   &:active {
-    color: palette('blue', 'base');
+    color: palette('gray', 'dark');
     text-decoration: none;
 
     background-color: palette('white');
@@ -95,7 +95,7 @@
   &.show {
     margin: 0;
 
-    background-color: palette('blue');
+    background-color: palette('gray', 'dark');
   }
 
   @media screen and (min-width: breakpoint('tablet')) {

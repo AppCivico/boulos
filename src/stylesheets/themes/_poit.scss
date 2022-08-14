@@ -120,6 +120,16 @@
     background-color: transparent;
   }
 
+  .donate-nav a {
+    background-color: palette('poit', 'orange');
+
+    &:hover,
+    &:link:focus,
+    &:focus,
+    &:active {
+      background-color: palette('poit', 'dark-green');
+    }
+  }
 
   .site-label .call-to-action {
     color: palette('poit', 'dark-green');
@@ -186,6 +196,13 @@
   .donation-form-title h2:last-child,
   #user-data-payment ul :checked + label {
     background-color: palette('poit', 'green');
+  }
+
+  #user-data-payment .payment-type label {
+    &:hover,
+    &:focus {
+      background-color: palette('poit', 'dark-green');
+    }
   }
 
   .home__knowMore[class] {

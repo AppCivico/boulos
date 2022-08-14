@@ -17,12 +17,6 @@
   margin-top: $leading * 1em;
 
   text-transform: lowercase;
-
-  color: palette('purple');
-
-  &:hover:link {
-    color: palette('white');
-  }
 }
 
 .campaign-progress-amount {

@@ -15,6 +15,7 @@ $max-section-width: 50rem;
 .home__intro {
   color: palette('white');
 
+  background-color: palette('gray', 'dark');
   background-image: url('../assets/images/backgrounds/bg-textura-1200w.png');
   background-position: center -320px;
   background-size: auto;
@@ -121,14 +122,14 @@ $max-section-width: 50rem;
   color: palette('white');
 
   &:hover {
-    color: palette('orange');
+    color: palette('gray', 'dark');
   }
 }
 
 .home__donate h2 strong {
   padding: $gutter * 0.5;
 
-  background-color: palette('orange');
+  background-color: palette('gray', 'dark');
   border-radius: $rounded-corner;
 
   @media (max-width: 490px) {
@@ -159,19 +160,19 @@ $max-section-width: 50rem;
   margin-bottom: $leading * 1rem;
 
   font-weight: 800;
-  color: palette('orange');
+  color: palette('gray', 'dark');
   text-decoration: underline;
   text-transform: lowercase;
 
   background: none;
 
   @include link-undercover {
-    color: palette('orange');
+    color: palette('gray', 'dark');
     text-decoration: underline;
   }
 
   &:hover {
-    color: palette('purple', 'light');
+    color: palette('gray', 'light');
   }
 }
 
@@ -187,7 +188,7 @@ $max-section-width: 50rem;
   margin-bottom: 0;
 
   font-size: ms(1);
-  color: palette('orange');
+  color: palette('gray', 'dark');
   text-decoration: underline;
 
   &::before {

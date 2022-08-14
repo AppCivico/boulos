@@ -45,11 +45,10 @@ details > summary {
   line-height: 1.125;
   font-family: $title-font-stack;
   font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
+  color: palette('gray', 'dark');
 
   break-after: avoid;
   page-break-after: avoid;
-
-  color: palette('purple');
 }
 
 h1 a,
@@ -114,10 +113,6 @@ details > summary {
   margin-bottom: $leading * 1rem;
 
   font-size: ms(1);
-}
-
-.orange-highlight {
-  color: palette('orange', 'base');
 }
 
 p {

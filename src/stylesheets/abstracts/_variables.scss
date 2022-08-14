@@ -83,6 +83,14 @@ $palette: (
     'green': #0c85a5,
     'dark-green': #075e7a,
   ),
+  'boulos': (
+    'blue': hsl(198, 100%, 44%),
+    'orange': hsl(19, 76%, 51%),
+    'orange-light': hsl(19, 76%, 65%),
+    'orange-dark': hsl(19, 76%, 35%),
+    'purple': hsl(301deg, 59%, 35%),
+    'purple-light': hsl(301, 59%, 65%),
+  ),
   'gray': (
     'x-light': tint(rgb(229, 231, 234), 10%),
     'light': rgb(242, 242, 242),

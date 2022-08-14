@@ -108,11 +108,11 @@ fieldset ul {
 }
 
 .of-radios-and-checks label:hover {
-  background-color: palette('orange');
+  background-color: palette('gray', 'dark');
 }
 
 .of-radios-and-checks :checked + label {
-  background-color: palette('orange');
+  background-color: palette('gray', 'dark');
 }
 
 .has-real-value label {
@@ -259,7 +259,7 @@ fieldset ul {
 
   font-size: inherit;
   font-weight: inherit;
-  color: palette('orange');
+  color: palette('gray', 'dark');
   text-align: center;
   white-space: nowrap;
 
@@ -270,17 +270,17 @@ fieldset ul {
 #user-data-payment ul label:hover {
   color: palette('white');
 
-  background-color: palette('orange');
+  background-color: palette('gray', 'dark');
 }
 
 #user-data-payment ul :checked+ label {
   color: palette('white');
 
-  background-color: palette('orange');
+  background-color: palette('gray', 'dark');
 }
 
 #user-data-payment .payment-type label:hover {
   color: palette('white');
 
-  background-color: palette('orange', 'light');
+  background-color: palette('gray', 'light');
 }

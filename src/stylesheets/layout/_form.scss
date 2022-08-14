@@ -435,7 +435,7 @@ form .error {
   font-size: 0.9em;
   font-weight: bold;
 
-  border: 1px solid palette('orange');
+  border: 1px solid palette('label', 'danger');
 }
 
 form .input-wrapper .error {
@@ -445,14 +445,12 @@ form .input-wrapper .error {
 
   font-size: ms(-1);
   font-weight: bold;
-  color: palette('purple', 'light');
   text-transform: lowercase;
 
   border: 0;
 }
 
 form .has-error input {
-  border: 1px solid palette('purple');
 }
 
 .form__disclaimer {

@@ -30,7 +30,7 @@
 
 .candidate-footer__cnpj {
   font-size: smaller;
-  color: black;
+  color: palette('black');
 }
 
 .site-footer {
@@ -38,7 +38,7 @@
 
   color: palette('white');
 
-  background-color: palette('blue');
+  background-color: palette('gray', 'dark');
 }
 
 .footer-container {
