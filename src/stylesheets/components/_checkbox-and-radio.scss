@@ -13,6 +13,10 @@ fieldset ul {
 
 .of-radios-and-checks {
   @include clearfix;
+  display: flex;
+
+  flex-wrap: wrap;
+
   margin-right: $gutter * -0.5;
   margin-left: $gutter * -0.5;
 
@@ -63,7 +67,7 @@ fieldset ul {
   position: relative;
 
   float: none;
-  width: auto;
+  width: 100%;
   padding-top: $leading * 0.3em;
   padding-bottom: $leading * 0.3em;
   margin-right: $gutter * 0.5;
@@ -78,12 +82,18 @@ fieldset ul {
 .of-radios-and-checks label {
   position: static;
 
-  display: block;
+  display: flex;
 
+  flex-wrap: wrap;
+
+  align-content: flex-end;
+  justify-content: center;
+
+  height: 100%;
   padding-top: $leading * 0.6rem;
-  padding-right: 0;
+  padding-right: $gutter * 0.25;
   padding-bottom: $leading * 0.6rem;
-  padding-left: 0;
+  padding-left: $gutter * 0.25;
 
   font-size: inherit;
   font-weight: inherit;
@@ -113,6 +123,22 @@ fieldset ul {
 
 .of-radios-and-checks :checked + label {
   background-color: palette('gray', 'dark');
+}
+
+.of-radios-and-checks label strong {
+  display: block;
+
+  width: 100%;
+  overflow: hidden;
+
+  font-size: ms(0);
+  line-height: 0.9;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.of-radios-and-checks label small {
+  align-self: center;
 }
 
 .has-real-value label {

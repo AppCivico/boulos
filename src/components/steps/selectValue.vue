@@ -2,11 +2,12 @@
   <section class="content">
     <form @submit.prevent="validateForm()">
       <fieldset class="of-radios-and-checks">
-        <div class="input-wrapper" v-for="pledge in pledges" :key="pledge.id">
-          <input type="radio" :id="`amount_${pledge.id}`" name="amount"
-          v-model="amount" :value="pledge.value"
+        <div class="input-wrapper" v-for="pledge in pledges" :key="pledge.value"
+          :class="{ 'input-wrapper--has-label': !!pledge.label}">
+          <input type="radio" :id="`amount_${pledge.value}`" name="amount" v-model="amount" :value="pledge.value"
             @change="validateForm()">
-          <label :for="`amount_${pledge.id}`" class="bigger">
+          <label :for="`amount_${pledge.value}`" class="bigger">
+            <strong v-if="pledge.label">{{ pledge.label }}</strong>
             <small v-if="!centsInUse">R$</small>
             {{ pledge.value | formatBRL }}<small v-if="centsInUse">,{{ pad(pledge.value % 100, 2, '0') }}</small>
           </label>
@@ -68,7 +69,7 @@ export default {
       } = candidate;
 
       return pledges
-        .map((x) => (typeof x === 'number' ? { value: x, label: x, id: x } : x))
+        .map((x) => (typeof x === 'number' ? { value: x } : x))
         .filter((x) => !!x.value)
         .sort((a, b) => b.value - a.value);
     },
