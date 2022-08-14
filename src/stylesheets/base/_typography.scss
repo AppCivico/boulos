@@ -6,7 +6,6 @@
   // 2. Add vertical alignment inheritence in all browsers (opinionated).
   //
   line-height: inherit;
-
   text-decoration: inherit; /* 1 */
   vertical-align: inherit; /* 2 */
 }
@@ -16,12 +15,10 @@
  */
 body {
   @include _font-smoothing;
-
-  font-weight: font-weight('text');
-  font-size: $body-font-size;
-  line-height: $leading;
   font-family: $text-font-stack;
-
+  font-size: $body-font-size;
+  font-weight: font-weight('text');
+  line-height: $leading;
   color: palette('text', 'dark');
 }
 
@@ -41,10 +38,10 @@ h6,
 legend,
 caption,
 details > summary {
-  font-weight: font-weight('heading');
-  line-height: 1.125;
   font-family: $title-font-stack;
+  font-weight: font-weight('heading');
   font-feature-settings: 'case' 1, 'cpsp' 1, 'cswh' 1, 'liga' 1, 'locl' 1, 'lnum' 1, 'pnum' 1, 'titl' 1, 'zero' 1;
+  line-height: 1.125;
   color: palette('gray', 'dark');
 
   break-after: avoid;
@@ -60,25 +57,21 @@ h6 a,
 legend a,
 caption a,
 dt a {
+  color: inherit;
   text-decoration: inherit;
 
-  color: inherit;
-
   &:link {
-    text-decoration: inherit;
-
     color: inherit;
+    text-decoration: inherit;
   }
 }
 
 h1 {
-  font-weight: 800;
   font-size: ms(3);
-  letter-spacing: -3px;
-
-  text-transform: uppercase;
-
+  font-weight: 800;
   color: palette('white');
+  text-transform: uppercase;
+  letter-spacing: -3px;
 
   @media screen and(min-width: breakpoint('phablet')) {
     font-size: ms(5);
@@ -188,9 +181,8 @@ abbr {
  */
 dfn {
   @extend %abbr-title;
-
-  font-style: italic; /* 1 */
   font-size: 1em;
+  font-style: italic; /* 1 */
 }
 
 /**
@@ -255,7 +247,6 @@ sup {
 
   font-size: 83.3333%; /* 1 */
   line-height: 0;
-
   vertical-align: baseline;
 }
 
@@ -288,8 +279,8 @@ kbd,
 pre,
 samp,
 var {
-  font-size: 1em; /* 1 */
   font-family: $code-font-stack, monospace, monospace; /* 2 */
+  font-size: 1em; /* 1 */
 }
 
 code {
@@ -307,7 +298,6 @@ pre {
   // sass-lint:disable-block no-duplicate-properties
   padding: 0;
   margin: 0;
-
   overflow: auto;
 
   word-wrap: break-word; /* IE */
@@ -338,7 +328,6 @@ s {
 %updated {
   &::before {
     font-weight: bold;
-
     text-decoration: none;
 
     content: '[update] ';
@@ -424,13 +413,12 @@ blockquote > p {
 q,
 blockquote {
   font-style: italic;
-
   color: palette('quotes');
 }
 
 cite {
-  font-style: italic;
   font-size: 1em;
+  font-style: italic;
 }
 
 blockquote footer {
@@ -462,7 +450,6 @@ blockquote.verse p {
   display: inline-block;
 
   width: auto;
-
   margin-right: auto;
   margin-left: auto;
 
