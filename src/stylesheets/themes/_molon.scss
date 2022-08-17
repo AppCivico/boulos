@@ -139,10 +139,12 @@
   .main-menu {
     color: palette('white');
 
-    &.animate {
-      color: palette('molon', 'blue-medium');
+    background-color: palette('molon', 'blue-dark');
 
-      background-color: palette('white');
+    &.animate {
+      color: palette('white');
+
+      background-color: palette('molon', 'blue-dark');
     }
   }
 
@@ -334,9 +336,9 @@
   }
 
   .site-footer {
-    // color: palette('white');
+    color: palette('white');
 
-    // background-color: palette('poit', 'green');
+    background-color: palette('molon', 'blue-dark');
 
     // color: palette('black');
     // color: inherit;
