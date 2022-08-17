@@ -70,10 +70,10 @@ export default {
   },
   methods: {
     getReferral({ candidate } = this) {
-      const referral = candidate?.ref || getQueryString(window.location.search).ref;
+      const referral = getQueryString(window.location.search).ref || candidate?.ref;
 
       if (referral) {
-        this.$store.dispatch('ADD_REFERRAL', referral);
+        this.$store.commit('SET_REFERRAL', referral);
       }
     },
     handleSession() {

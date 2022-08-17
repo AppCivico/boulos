@@ -240,9 +240,6 @@ export default new Vuex.Store({
     ADD_TOKEN({ commit }, data) {
       commit('SET_TOKEN', { token: data });
     },
-    ADD_REFERRAL({ commit }, data) {
-      commit('SET_REFERRAL', data);
-    },
     GET_TOKEN({ commit }, data) {
       return new Promise((resolve, reject) => {
         axios({
