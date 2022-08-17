@@ -34,11 +34,9 @@
 
   /* stylelint-disable-next-line order/order */
   @include headings ('odd') {
-    // color: palette('poit', 'green');
   }
 
   @include headings ('even') {
-    // color: palette('poit', 'orange');
   }
 
   menu a,
@@ -76,60 +74,74 @@
   }
 
   .site-header {
-    min-height: 340px;
+    display: block;
 
     color: palette('black');
 
     background-color: palette('molon', 'orange');
     background-image: url('../assets/molon/backgrounds/fundo.png');
     background-repeat: repeat;
-    // background-image: url('../assets/molon/backgrounds/320x180.png');
     background-position: center bottom;
-    background-size: contain;
 
     @media screen and (min-width: breakpoint('phone')) {
-      // background-image: url('../assets/molon/backgrounds/480x270.png');
     }
 
     @media screen and (min-width: breakpoint('phablet')) {
-      min-height: 410px;
-
-      // background-image: url('../assets/molon/backgrounds/640x360.png');
     }
 
     @media screen and (min-width: breakpoint('tablet')) {
-      min-height: 640px;
+      display: flex;
 
-      // background-image: url('../assets/molon/backgrounds/1024x576.png');
+      flex-direction: row-reverse;
+
+      justify-content: center;
     }
 
     @media screen and (min-width: breakpoint('desktop')) {
       min-height: 768px;
-
-      background-size: auto;
-
-      // background-image: url('../assets/molon/backgrounds/1280x720.png');
     }
 
     @media screen and (min-width: breakpoint('wide')) {
-      min-height: 900px;
+    }
+  }
+
+  .site-header__image {
+    padding: $gutter $gutter 0 $gutter;
+    margin: auto 0 0 auto;
+
+    @media screen and (min-width: breakpoint('tablet')) {
+      padding: 0;
+    }
+
+    @media screen and (min-width: breakpoint('wide')) {
+      margin-right: $gutter;
+      margin-left: auto;
     }
   }
 
   .site-header__image img {
-    object-position: 75% bottom;
+    position: static;
+
+    display: block;
+
+    width: auto;
+    margin-top: auto;
+    margin-right: auto;
+    margin-left: auto;
+    object-position: none;
 
     @media screen and (min-width: breakpoint('desktop')) {
+      object-position: none;
     }
   }
 
   button.mobile-button span {
-    border-color: palette('black');
   }
 
   .logo-campaign > img {
     min-width: 77px;
     min-height: 39px;
+    object-fit: contain;
   }
 
   .animate .logo-campaign > img {
@@ -156,11 +168,34 @@
     background-color: palette('molon', 'orange');
   }
 
+  .site-label {
+    @include image-replacement;
+    @include aspect-ratio(367 x 467);
+
+    z-index: layer('default');
+
+    max-width: 367px;
+    max-height: 467px;
+    padding: 0;
+
+    background-image: url('../assets/molon/Logo_ComTexto.png');
+    background-size: contain;
+
+    * {
+      max-width: none;
+      padding: 0;
+    }
+  }
+
   .site-label .call-to-action {
+    overflow: hidden;
+
+    font-weight: 900;
     color: palette('white');
+    text-transform: uppercase;
 
     span {
-      color: palette('white');
+      color: palette('molon', 'yellow');
     }
   }
 
@@ -200,15 +235,36 @@
   }
 
   #home__greetings {
+    width: auto;
+    max-width: 75%;
     margin-top: 0;
-    margin-bottom: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
 
     @media (min-width: breakpoint('phablet')) {
       margin-top: $gutter;
+      margin-bottom: $gutter;
+    }
+
+    @media (min-width: breakpoint('tablet')) {
+      max-width: 35%;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    @media (min-width: breakpoint('desktop')) {
+      margin-bottom: auto;
+    }
+
+    @media (min-width: breakpoint('wide')) {
+      margin-right: auto;
+      margin-left: $gutter;
     }
 
     @media (min-width: breakpoint('x-wide')) {
       margin-top: $gutter * 2;
+      margin-bottom: $gutter * 2;
     }
   }
 
@@ -324,7 +380,6 @@
   }
 
   #campaign-progress .campaign-progress__link {
-    // color: palette('poit', 'orange');
   }
 
   .nav-link-donations-wrap a {
@@ -332,18 +387,12 @@
   }
 
   .candidate-footer {
-    // color: palette('poit', 'orange');
   }
 
   .site-footer {
     color: palette('white');
 
     background-color: palette('molon', 'blue-dark');
-
-    // color: palette('black');
-    // color: inherit;
-
-    // background-color: palette('molon', 'yellow');
 
     a {
       @include link-undercover {
@@ -357,6 +406,5 @@
   }
 
   .notification {
-    // background-color: palette('poit', 'green');
   }
 }

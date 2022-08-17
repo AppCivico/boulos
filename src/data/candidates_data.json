@@ -156,127 +156,96 @@
         ],
         "summary": "Está nas nossas mãos derrotar o bolsonarismo aqui em seu berço, o **Rio**. Temos pouco mais de um mês para cumprir essa missão!\n\nPor isso, precisamos estar juntos para mostrar a força da nossa luta!\n\nAtualmente, todos os três senadores do Rio são bolsonaristas. Nessas eleições, teremos a chance de derrotar *Romário*, e o candidato com melhores chances de fazer isso é **Alessandro Molon**."
       },
-      "hashtags": [
-        "doe Molon"
-      ],
+      "hashtags": [],
       "header_logo": "./assets/molon/icons/logotipo.png",
       "header_images": [
         {
-          "srcset": "./assets/molon/images/lineup--180x143.webp",
+          "srcset": "./assets/molon/images/lineup--270x215.webp",
           "type": "image/webp"
         },
         {
-          "srcset": "./assets/molon/images/lineup--180x143.jxl",
+          "srcset": "./assets/molon/images/lineup--270x215.jxl",
           "type": "image/jxl"
         },
         {
-          "srcset": "./assets/molon/images/lineup--180x143.png",
-          "type": "image/png"
-        },
-        {
-          "srcset": "./assets/molon/images/lineup--270x215.webp",
-          "type": "image/webp",
-          "media": 480
-        },
-        {
-          "srcset": "./assets/molon/images/lineup--270x215.jxl",
-          "type": "image/jxl",
-          "media": 480
-        },
-        {
           "srcset": "./assets/molon/images/lineup--270x215.png",
-          "type": "image/png",
-          "media": 480
+          "type": "image/png"
         },
         {
           "srcset": "./assets/molon/images/lineup--320x255.webp",
           "type": "image/webp",
-          "media": 640
+          "media": 480
         },
         {
           "srcset": "./assets/molon/images/lineup--320x255.jxl",
           "type": "image/jxl",
-          "media": 640
+          "media": 480
         },
         {
           "srcset": "./assets/molon/images/lineup--320x255.png",
           "type": "image/png",
-          "media": 640
+          "media": 480
         },
         {
           "srcset": "./assets/molon/images/lineup--480x383.webp",
           "type": "image/webp",
-          "media": 768
+          "media": 600
         },
         {
           "srcset": "./assets/molon/images/lineup--480x383.jxl",
           "type": "image/jxl",
-          "media": 768
+          "media": 600
         },
         {
           "srcset": "./assets/molon/images/lineup--480x383.png",
           "type": "image/png",
-          "media": 768
+          "media": 600
         },
         {
           "srcset": "./assets/molon/images/lineup--576x459.webp",
           "type": "image/webp",
-          "media": 800
+          "media": 960
         },
         {
           "srcset": "./assets/molon/images/lineup--576x459.jxl",
           "type": "image/jxl",
-          "media": 800
+          "media": 960
         },
         {
           "srcset": "./assets/molon/images/lineup--576x459.png",
           "type": "image/png",
-          "media": 800
+          "media": 960
         },
         {
           "srcset": "./assets/molon/images/lineup--640x510.webp",
           "type": "image/webp",
-          "media": 960
+          "media": 1024
         },
         {
           "srcset": "./assets/molon/images/lineup--640x510.jxl",
           "type": "image/jxl",
-          "media": 960
+          "media": 1024
         },
         {
           "srcset": "./assets/molon/images/lineup--640x510.png",
           "type": "image/png",
-          "media": 960
+          "media": 1024
         },
         {
           "srcset": "./assets/molon/images/lineup--720x574.webp",
           "type": "image/webp",
-          "media": 1024
+          "media": 1280
         },
         {
           "srcset": "./assets/molon/images/lineup--720x574.jxl",
           "type": "image/jxl",
-          "media": 1024
+          "media": 1280
         },
         {
           "srcset": "./assets/molon/images/lineup--720x574.png",
           "type": "image/png",
-          "media": 1024
-        },
-        {
-          "srcset": "./assets/molon/images/lineup--1024x816.webp",
-          "type": "image/webp",
           "media": 1280
-        },
-        {
-          "srcset": "./assets/molon/images/lineup--1024x816.jxl",
-          "type": "image/jxl",
-          "media": 1280
-        },
-        {
-          "srcset": "./assets/molon/images/lineup--1024x816.png",
-          "type": "image/png",
-          "media": 1280
+
         }
       ],
       "know_more_images": [
