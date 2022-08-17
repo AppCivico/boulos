@@ -15,7 +15,6 @@
     </div>
 
     <template v-else-if="paymentStep === 'selectValue'">
-      <h2>Escolha um valor para doar</h2>
       <selectValue />
     </template>
     <template v-else-if="paymentStep === 'finalMessage'">

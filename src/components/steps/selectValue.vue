@@ -1,5 +1,11 @@
 <template>
   <section class="content">
+
+    <h2 v-if="candidate && candidate.donation_title" v-html="parseMD(candidate.donation_title)" />
+    <h2 v-else>Escolha um valor para doar</h2>
+
+    <div v-if="candidate.donation_intro" v-html="parseMD(candidate.donation_intro)"></div>
+
     <form @submit.prevent="validateForm()">
       <fieldset class="of-radios-and-checks">
         <div class="input-wrapper" v-for="pledge in pledges" :key="pledge.value"
