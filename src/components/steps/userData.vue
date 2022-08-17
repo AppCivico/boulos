@@ -141,6 +141,9 @@ export default {
     };
   },
   computed: {
+    candidate() {
+      return this.$store.getters.candidateWithProjectAndDonations.candidate || {};
+    },
     candidateAmount({ amount, taxes, payment_method } = this) {
       let newAmount = 0;
 
@@ -162,7 +165,7 @@ export default {
 
       return allowedPaymentMethods.filter((x) => amount >= minimumPerMethod[x]);
     },
-    ...mapState(['amount', 'candidate', 'candidateId', 'token']),
+    ...mapState(['amount', 'candidateId', 'token']),
   },
   watch: {
     payment_method(newValue, oldValue) {

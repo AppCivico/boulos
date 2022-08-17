@@ -69,11 +69,14 @@ export default {
     paymentStep() {
       return this.$store.state.paymentStep;
     },
+    candidate() {
+      return this.$store.getters.candidateWithProjectAndDonations?.candidate || {};
+    },
     amount() {
       return this.$store.state.amount;
     },
     allowedPaymentMethods() {
-      return (this.$store.state.candidate || {}).allowed_payment_methods || ['credit_card', 'boleto'];
+      return this.candidate?.allowed_payment_methods || ['credit_card', 'boleto'];
     },
   },
   mounted() {
