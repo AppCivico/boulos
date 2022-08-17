@@ -175,6 +175,7 @@ button.mobile-button {
   z-index: 2;
 
   width: 40px;
+  min-width: 44px;
   height: 40px;
 
   cursor: pointer;
@@ -189,6 +190,8 @@ button.mobile-button span {
   padding-bottom: 1px;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+
+  color: inherit;
 
   border-bottom: solid 2px palette('white');
 }
