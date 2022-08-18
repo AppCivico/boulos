@@ -73,6 +73,10 @@
     background-color: palette('molon', 'blue-dark');
   }
 
+  label[for='other'] {
+    color: palette('black');
+  }
+
   .site-header {
     display: block;
 
@@ -233,6 +237,17 @@
       }
     }
   }
+
+  .home__donate a {
+    @include link-undercover {
+      text-decoration: underline;
+    }
+
+    @include on-event {
+      color: inherit;
+    }
+  }
+
 
   #home__greetings {
     width: auto;
