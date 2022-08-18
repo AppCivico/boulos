@@ -462,6 +462,10 @@ export default {
     this.scrollToForm();
     this.handleSession();
     this.controlSession();
+
+    if (this.allowedPaymentMethods.length === 1) {
+      [this.payment_method] = this.allowedPaymentMethods;
+    }
   },
 };
 </script>
