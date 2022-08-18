@@ -67,18 +67,18 @@
         </div>
       </fieldset>
       <template v-if="formAction === 'donate' && candidateAmount">
-        <p class="subtitle">
+        <p class="subtitle warning-text">
           Declaro que minhas doações não ultrapassam 10% dos meus rendimentos
           brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou
           concessionário ou permissionário de serviço público.
         </p>
-        <p class="subtitle">
-          Declaro estar ciente, que ao realizar uma doação, por conta da
+        <p class="subtitle warning-text">
+          Declaro estar ciente de que, ao realizar uma doação, por conta da
           legislação eleitoral, os seus dados (nome completo, CPF, valor
           individual de cada doação, forma de pagamento, data das doações) serão
-          publicados de forma pública no site do candidato, e concordo com os <a
+          disponibilizados de forma pública no site do candidato, e concordo com os <a
             href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf"
-            target="_blank">termos de doação</a>.
+            target="_blank">seus termos</a>.
         </p>
         <div v-if="formAction === 'donate' && candidateAmount" class="candidate-amount">
           <p>

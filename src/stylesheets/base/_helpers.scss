@@ -1,8 +1,8 @@
 %loading-bg {
-  background-image: url('../assets/images/backgrounds/loading.svg');
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
   background-color: palette('loading', 'background');
+  background-image: url('../assets/images/backgrounds/loading.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 %loading-el {
@@ -13,17 +13,16 @@
   &::after {
     @extend %loading-bg;
 
-    border-radius: $rounded-corner;
-
     position: absolute;
     top: $gutter * -0.5;
     right: $gutter * -0.5;
     bottom: $gutter * -0.5;
     left: $gutter * -0.5;
-
     z-index: layer('modal');
 
     content: '';
+
+    border-radius: $rounded-corner;
   }
 }
 
@@ -89,7 +88,6 @@ textarea {
 
 .container {
   max-width: $max-width;
-
   padding-right: $gutter;
   padding-left: $gutter;
   margin-right: auto;
@@ -177,4 +175,32 @@ textarea {
   max-width: 70rem;
   margin-right: auto;
   margin-left: auto;
+}
+
+.warning-text {
+  $fg-color: palette('label', 'warning');
+  $bg-color: #2dc9be;
+
+  &[class] {
+    color: text-contrast($bg-color, $fg-color, $level: 'AA');
+  }
+
+  &::before {
+    display: inline-block;
+
+    width: 1.5em;
+    height: 1.5em;
+
+    font-family: $alt-font-stack;
+    font-style: italic;
+    font-weight: font-weight('bold');
+    line-height: 1.5;
+    color: $bg-color;
+    text-align: center;
+
+    content: 'i';
+
+    background-color: $fg-color;
+    border-radius: 100%;
+  }
 }
