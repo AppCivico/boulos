@@ -143,6 +143,7 @@
       "disable_custom_donation_value": false,
       "overrides": {
         "allowed_payment_methods": [
+          "boleto",
           "pix"
         ],
         "donation_title": "Doe e assista O Melhor pro Rio ao vivo!",
