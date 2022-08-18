@@ -237,6 +237,10 @@
         opacity: 0.85;
       }
     }
+
+    @include headings {
+      color: inherit;
+    }
   }
 
   .home__donate a {
@@ -325,7 +329,7 @@
     }
   }
 
-  .knowMore__image.knowMore__image img {
+  .knowMore__image[class] img {
     $bg: #f1f1f1;
 
     object-fit: none;
@@ -335,6 +339,16 @@
 
     @media screen and (min-width: breakpoint('x-wide')) {
       object-position: left bottom;
+    }
+  }
+
+  #home__donors {
+    color: palette('white');
+
+    background-color: palette('molon', 'blue-medium');
+
+    @include headings {
+      color: inherit;
     }
   }
 
