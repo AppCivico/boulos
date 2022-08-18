@@ -6,6 +6,20 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
+@mixin headings {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  legend,
+  caption,
+  summary {
+    @content;
+  }
+}
+
 /// Gray placeholder image
 ///
 /// @group helpers
