@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueHead from 'vue-head';
 import VueScrollTo from 'vue-scrollto';
+import { sync } from 'vuex-router-sync';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -10,6 +11,8 @@ import {
   formatBRLDec, formatCNPJ, formatDate, formatDateBasic,
   thousandsSeparator
 } from './utilities';
+
+sync(store, router);
 
 Vue.use(VueScrollTo);
 

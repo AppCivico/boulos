@@ -598,11 +598,34 @@ export default new Vuex.Store({
 
   },
   getters: {
-    candidateWithProjectAndDonations: ({ candidate, donations, projects }) => {
+    candidateWithProjectAndDonations: ({
+      candidate, donations, projects, route,
+    }) => {
       const candidateData = { ...candidatesData[candidate?.username] };
       const { overrides = {} } = candidateData;
 
       delete candidateData.overrides;
+
+      // molon VIP override
+      if (route.query.ref === '2exclusivo') {
+        overrides.pledgesAsFieldSets = [
+          {
+            legend: 'Presencial',
+            intro: 'Assistir ao vivo no **Circo Voador**!',
+            minValue: 25000,
+            fields: [
+              {
+                value: 'other',
+                referral: 'presencial_especial',
+              },
+              {
+                value: 'filisteu',
+                referral: 'presencial_especial',
+              },
+            ],
+          },
+        ];
+      }
 
       return !candidate || candidate.pending
         ? {
