@@ -146,10 +146,34 @@ $max-section-width: 50rem;
   }
 }
 
-.home__donate .donation-form[class] {
-  max-width: 33.75rem;
+.home__donate .donation-form {
+  max-width: 100%;
+}
+
+.home__donate .donation-form .content {
+  display: flex;
+
+  flex-wrap: wrap;
+}
+
+.home__donate .donation-form h2 {
+  flex-basis: 100%;
+}
+
+.home__donate .donation-form form {
+  max-width: $max-width--short;
   margin-right: auto;
   margin-left: auto;
+}
+
+.home__donate .donation-form .donation-intro {
+  max-width: #{$max-width - $max-width--short};
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.home__donate .donation-form .donation-intro + form {
+  // margin-right: 0;
 }
 
 .donation-nav[class] {
