@@ -170,58 +170,17 @@
       </div>
     </article>
 
-    <article id="home__faq" class="home__faq">
+    <article id="home__faq" class="home__faq" v-if="faq && faq.length">
       <div class="container" id="donation-wrap">
         <h2>
           Perguntas Frequentes
         </h2>
-        <details>
+        <details v-for="item, idx in faq" :key="idx">
           <summary>
             <span class="caret"></span>
-            Como fazer a doação?
+            {{ item.question }}
           </summary>
-          <p>
-            Siga os passos nessa plataforma. Você pode doar através de PIX,
-            cartão de crédito ou boleto bancário.
-          </p>
-        </details>
-        <details>
-          <summary>
-            <span class="caret"></span>
-            É seguro?
-          </summary>
-          <p>
-            Claro. A plataforma é cadastrada no TSE e foi escolhida porque
-            permite a segurança de nossos doadores.
-          </p>
-        </details>
-        <details>
-          <summary>
-            <span class="caret"></span>
-            Terei algum comprovante?
-          </summary>
-          <p>
-            Os recibos são enviados para o seu e-mail, cadastrado no momento da
-            doação. No período de pré-campanha, será enviado um recibo
-            provisório logo após sua doação ser aprovada. Já no período de
-            campanha, será enviado o recibo de doação eleitoral.
-          </p>
-        </details>
-        <details>
-          <summary>
-            <span class="caret"></span>
-            Quanto posso doar?
-          </summary>
-          <p>
-            Para apoiar uma candidatura você pode doar até 10% de sua renda
-            declarada para a Receita no ano anterior. No
-            caso de não ter declarado renda o limite este ano é de R$&nbsp;2.855,00.
-          </p>
-          <p>
-            Agora, aqui na plataforma, o limite máximo diário é de R$&nbsp;1.064,09.
-            Caso queira doar mais, aí será
-            necessário realizar mais de uma doação em dias diferentes.
-          </p>
+          <div v-html="parseMD(item.answer)"></div>
         </details>
       </div>
     </article>
@@ -296,7 +255,7 @@ export default {
         || '';
     },
 
-    ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'goals', 'totalAmount']),
+    ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'faq', 'goals', 'totalAmount']),
     ...mapState(['donors']),
   },
   methods: {

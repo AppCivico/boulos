@@ -3,6 +3,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import CONFIG from './config';
 import { root as candidatesData } from './data/candidates_data.json';
+import { root as faq } from './data/faq.json';
 import { office_list as officeList } from './data/offices.json';
 import { randomString } from './utilities';
 import VotolegalFP from './vendor/loadme';
@@ -679,6 +680,8 @@ export default new Vuex.Store({
           return 'do(a)';
       }
     },
+
+    faq: ((_, { candidateWithProjectAndDonations }) => candidateWithProjectAndDonations?.candidate.faq || faq),
 
     partyAndName: ({ candidate }) => (candidate.party?.name?.toLowerCase().indexOf('partido') === -1
       ? `Partido ${candidate.party?.name}` : candidate.party?.name),

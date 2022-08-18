@@ -42,7 +42,7 @@
               Doadores
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item" v-if="faq && faq.length">
             <a href="#home__faq" v-scroll-to="'#home__faq'">
               Perguntas frequentes
             </a>
@@ -139,7 +139,7 @@ export default {
         : [];
     },
     ...mapState(['candidate']),
-    ...mapGetters(['candidateWithProjectAndDonations', 'candidateVideoId']),
+    ...mapGetters(['candidateWithProjectAndDonations', 'candidateVideoId', 'faq']),
   },
 
   methods: {

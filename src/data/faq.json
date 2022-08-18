@@ -1,0 +1,20 @@
+{
+  "root": [
+    {
+      "question": "Como fazer a doação?",
+      "answer": "Siga os passos nessa plataforma. Você pode doar através dos meios de pagamento disponíveis após escolher seu valor."
+    },
+    {
+      "question": "É seguro?",
+      "answer": "Claro. A plataforma é cadastrada no TSE e foi escolhida porque permite a segurança de nossos doadores."
+    },
+    {
+      "question": "Terei algum comprovante?",
+      "answer": "Os recibos são enviados para o seu e-mail, cadastrado no momento da doação. No período de pré-campanha, será enviado um recibo provisório logo após sua doação ser aprovada. Já no período de campanha, será enviado o recibo de doação eleitoral."
+    },
+    {
+      "question": "Quanto posso doar?",
+      "answer": "Para apoiar uma candidatura você pode doar até 10% de sua renda declarada para a Receita no ano anterior. No caso de não ter declarado renda o limite este ano é de R$&nbsp;2.855,00.\r\n\r\nAgora, aqui na plataforma, o limite máximo diário é de R$&nbsp;1.064,09. Caso queira doar mais, aí será necessário realizar mais de uma doação em dias diferentes."
+    }
+  ]
+}
