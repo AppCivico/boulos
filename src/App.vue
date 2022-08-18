@@ -30,7 +30,6 @@ import Footer from '@/components/layout/Footer.vue';
 import Header from '@/components/layout/Header.vue';
 import Menu from '@/components/layout/Menu.vue';
 import CONFIG from '@/config';
-import { getQueryString } from './utilities';
 
 export default {
   name: 'App',
@@ -59,10 +58,10 @@ export default {
   },
   mounted({ candidateId } = this) {
     this.handleSession();
-    this.getReferral();
 
     this.GET_CANDIDATE_INFO(candidateId).finally(() => {
       this.$nextTick(() => {
+        this.getReferral();
         this.$emit('updateHead');
         window.prerenderReady = true;
       });
@@ -70,8 +69,7 @@ export default {
   },
   methods: {
     getReferral({ candidate } = this) {
-      const referral = getQueryString(window.location.search).ref || candidate?.ref;
-
+      const referral = this.$route.query?.ref || candidate?.ref;
       if (referral) {
         this.$store.commit('SET_REFERRAL', referral);
       }
