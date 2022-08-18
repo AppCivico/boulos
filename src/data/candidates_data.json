@@ -140,18 +140,41 @@
       "siteTagline": "05/09 às 19h no Circo Voador",
       "donors_message": "",
       "footer_logo": "./assets/molon/icons/Logo_Colorido.png",
-      "disable_custom_donation_value": true,
+      "disable_custom_donation_value": false,
       "overrides": {
+        "allowed_payment_methods": [
+          "pix"
+        ],
+        "donation_title": "Doe e assista O Melhor pro Rio ao vivo!",
+        "donation_intro": "\n\nNo dia 5 de Setembro, *Caetano Veloso*, *Maria Gadú* e *Pretinho da Serrinha* estarão juntos no Circo Voador cantando em defesa do Melhor pro Rio, um show de arrecadação para a campanha de Molon ao Senado. \n\nVocê pode doar a partir de **R$250** para assistir o show ao vivo (sujeito à lotação), ou doar a partir de **R$70** para assistir online.\n\n**Venha com a gente pelo Melhor pro Rio!**",
         "donors_message": "Veja quem topou contribuir para fortalecer nossa luta pelo #MelhorProRio:",
         "ref": "o_melhor_pro_rio",
-        "pledges": [
+        "pledgesAsFieldSets": [
           {
-            "label": "Vale SHOW",
-            "value": 2000
+            "legend": "Presencial",
+            "intro": "Assistir ao vivo no **Circo Voador**",
+            "minValue": 25000,
+            "fields": [
+              {
+                "value": "other",
+                "referral": "presencial"
+              },
+              {
+                "value": "filisbino",
+                "referral": "presencial"
+              }
+            ]
           },
           {
-            "label": "Vale LIVE",
-            "value": 3000
+            "legend": "Live",
+            "intro": "Assistir ao vivo *online*",
+            "minValue": 7000,
+            "fields": [
+              {
+                "value": "other",
+                "referral": "live"
+              }
+            ]
           }
         ],
         "summary": "Está nas nossas mãos derrotar o bolsonarismo aqui em seu berço, o **Rio**. Temos pouco mais de um mês para cumprir essa missão!\n\nPor isso, precisamos estar juntos para mostrar a força da nossa luta!\n\nAtualmente, todos os três senadores do Rio são bolsonaristas. Nessas eleições, teremos a chance de derrotar *Romário*, e o candidato com melhores chances de fazer isso é **Alessandro Molon**."
