@@ -174,15 +174,16 @@
 
   .site-label {
     @include image-replacement;
-    @include aspect-ratio(367 x 467);
+    @include aspect-ratio(266 x 433);
 
     z-index: layer('default');
 
-    max-width: 367px;
-    max-height: 467px;
+    max-width: 266px;
+    max-height: 433px;
     padding: 0;
 
     background-image: url('../assets/molon/Logo.png');
+    background-position: 50% 50%;
     background-size: contain;
 
     * {
