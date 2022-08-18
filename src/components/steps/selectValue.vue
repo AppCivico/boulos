@@ -6,48 +6,49 @@
     <div class="donation-intro" v-if="candidate.donation_intro" v-html="parseMD(candidate.donation_intro)"></div>
 
     <form @submit.prevent="validateForm()">
-      <fieldset v-for="fieldSet, i in pledgesAsFieldSets" class="of-radios-and-checks" :key="i">
+      <fieldset v-for="fieldSet, i in pledgesAsFieldSets" :key="i">
         <legend class="of-radios-and-checks__legend" v-if="fieldSet.legend">{{ fieldSet.legend }}</legend>
 
         <div class="of-radios-and-checks__intro" v-if="fieldSet.intro" v-html="parseMD(fieldSet.intro)" />
-
-        <template v-for="pledge in fieldSet.fields">
-          <div class="input-wrapper" v-if="pledge.value !== 'other'" :key="pledge.value"
-            :class="{ 'input-wrapper--has-label': !!pledge.label}">
-            <input type="radio" :id="`amount_${pledge.value}`" name="amount" v-model="amount" :value="pledge.value"
-              @change="setButtonReferral(pledge.referral); validateForm();" />
-            <label :for="`amount_${pledge.value}`" class="bigger">
-              <strong v-if="pledge.label">{{ pledge.label }}</strong>
-              <small v-if="!centsInUse">R$</small>
-              {{ pledge.value | formatBRL }}<small v-if="centsInUse">,{{ pad(pledge.value % 100, 2, '0') }}</small>
-            </label>
-          </div>
-
-          <transition name="custom-value-fade" mode="out-in" :key="pledge.value+'--other-amount-transition'"
-            v-else-if="!candidate.disable_custom_donation_value">
-            <div class="input-wrapper input-wrapper--full-width" :key="`${pledge.value}--custom-amount`"
-              v-if="amount !== 'other' || focusedFieldSet !== i">
-              <input type="radio" id="amount_other" name="amount" v-model="amount" value="other" />
-              <label for="amount_other" @click="setInitialValueForOther(fieldSet.minValue);
-              setButtonReferral(pledge.referral); focusedFieldSet = i">
-                <template v-if="pledge.label">
-                  {{ pledge.label }}
-                </template>
-                <template v-else-if="fieldSet.minValue">
-                  <small v-if="!centsInUse">R$</small>{{ fieldSet.minValue | formatBRL }} ou +
-                </template>
-                <template v-else>Outro valor</template>
+        <div class="of-radios-and-checks">
+          <template v-for="pledge in fieldSet.fields">
+            <div class="input-wrapper" v-if="pledge.value !== 'other'" :key="pledge.value"
+              :class="{ 'input-wrapper--has-label': !!pledge.label}">
+              <input type="radio" :id="`amount_${pledge.value}`" name="amount" v-model="amount" :value="pledge.value"
+                @change="setButtonReferral(pledge.referral); validateForm();" />
+              <label :for="`amount_${pledge.value}`" class="bigger">
+                <strong v-if="pledge.label">{{ pledge.label }}</strong>
+                <small v-if="!centsInUse">R$</small>
+                {{ pledge.value | formatBRL }}<small v-if="centsInUse">,{{ pad(pledge.value % 100, 2, '0') }}</small>
               </label>
             </div>
-            <div class="input-wrapper has-real-value" :key="pledge.value+'--other-amount'"
-              v-else-if="focusedFieldSet === i">
-              <label for="other">R$</label>
-              <input type="tel" name="other" v-model.number="other" @change="validateForm()" pattern="[0-9]*"
-                :disabled="amount === 'other' ? false : true" v-mask="'####'" v-focus.select />
-              <button type="button" href="#" @click.prevent="validateForm">OK</button>
-            </div>
-          </transition>
-        </template>
+
+            <transition name="custom-value-fade" mode="out-in" :key="pledge.value+'--other-amount-transition'"
+              v-else-if="!candidate.disable_custom_donation_value">
+              <div class="input-wrapper input-wrapper--full-width" :key="`${pledge.value}--custom-amount`"
+                v-if="amount !== 'other' || focusedFieldSet !== i">
+                <input type="radio" id="amount_other" name="amount" v-model="amount" value="other" />
+                <label for="amount_other" @click="setInitialValueForOther(fieldSet.minValue);
+                setButtonReferral(pledge.referral); focusedFieldSet = i">
+                  <template v-if="pledge.label">
+                    {{ pledge.label }}
+                  </template>
+                  <template v-else-if="fieldSet.minValue">
+                    <small v-if="!centsInUse">R$</small>{{ fieldSet.minValue | formatBRL }} ou +
+                  </template>
+                  <template v-else>Outro valor</template>
+                </label>
+              </div>
+              <div class="input-wrapper has-real-value" :key="pledge.value+'--other-amount'"
+                v-else-if="focusedFieldSet === i">
+                <label for="other">R$</label>
+                <input type="tel" name="other" v-model.number="other" @change="validateForm()" pattern="[0-9]*"
+                  :disabled="amount === 'other' ? false : true" v-mask="'####'" v-focus.select />
+                <button type="button" href="#" @click.prevent="validateForm">OK</button>
+              </div>
+            </transition>
+          </template>
+        </div>
         <p class="error" v-if="errorMessage != '' && focusedFieldSet === i">
           {{ errorMessage }}
         </p>
