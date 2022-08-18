@@ -268,7 +268,6 @@
           "srcset": "./assets/molon/images/lineup--720x574.png",
           "type": "image/png",
           "media": 1280
-
         }
       ],
       "know_more_images": [
@@ -287,16 +286,6 @@
           "type": "image/jpg"
         },
         {
-          "media": 1280,
-          "srcset": "./assets/molon/images/Molon_FotoNova--1024x1024.jpg",
-          "type": "image/jpg"
-        },
-        {
-          "media": 1600,
-          "srcset": "./assets/molon/images/Molon_FotoNova--600x600.jpg",
-          "type": "image/jpg"
-        },
-        {
           "srcset": "./assets/molon/images/Molon_FotoNova--320x320.jxl",
           "type": "image/jxl"
         },
@@ -311,16 +300,6 @@
           "type": "image/jxl"
         },
         {
-          "media": 1280,
-          "srcset": "./assets/molon/images/Molon_FotoNova--1024x1024.jxl",
-          "type": "image/jxl"
-        },
-        {
-          "media": 1600,
-          "srcset": "./assets/molon/images/Molon_FotoNova--600x600.jxl",
-          "type": "image/jxl"
-        },
-        {
           "srcset": "./assets/molon/images/Molon_FotoNova--320x320.webp",
           "type": "image/webp"
         },
@@ -331,16 +310,6 @@
         },
         {
           "media": 640,
-          "srcset": "./assets/molon/images/Molon_FotoNova--600x600.webp",
-          "type": "image/webp"
-        },
-        {
-          "media": 1280,
-          "srcset": "./assets/molon/images/Molon_FotoNova--1024x1024.webp",
-          "type": "image/webp"
-        },
-        {
-          "media": 1600,
           "srcset": "./assets/molon/images/Molon_FotoNova--600x600.webp",
           "type": "image/webp"
         }
@@ -381,7 +350,6 @@
           "type": "image/jpg",
           "media": 1280
         },
-
         {
           "srcset": "./assets/poit/images/270x270.jxl",
           "type": "image/jxl"
@@ -401,7 +369,6 @@
           "type": "image/jxl",
           "media": 1280
         },
-
         {
           "srcset": "./assets/poit/images/270x270.webp",
           "type": "image/webp"
@@ -447,7 +414,6 @@
           "srcset": "./assets/poit/images/640x640.jpg",
           "type": "image/jpg"
         },
-
         {
           "srcset": "./assets/poit/images/320x320.jxl",
           "type": "image/jxl"
@@ -472,7 +438,6 @@
           "srcset": "./assets/poit/images/640x640.jxl",
           "type": "image/jxl"
         },
-
         {
           "srcset": "./assets/poit/images/320x320.webp",
           "type": "image/webp"

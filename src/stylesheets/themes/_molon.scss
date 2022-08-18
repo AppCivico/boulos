@@ -317,11 +317,11 @@
     }
 
     @media screen and (min-width: 640px) {
-      padding-bottom: 560px;
+      padding-bottom: 540px;
     }
 
     @media screen and (min-width: breakpoint('wide')) {
-      padding-bottom: 900px;
+      padding-bottom: 240px;
     }
 
     @media screen and (min-width: breakpoint('x-wide')) {
@@ -337,7 +337,7 @@
 
     background-color: $bg;
 
-    @media screen and (min-width: breakpoint('x-wide')) {
+    @media screen and (min-width: breakpoint('wide')) {
       object-position: left bottom;
     }
   }
