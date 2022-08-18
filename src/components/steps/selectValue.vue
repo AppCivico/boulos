@@ -1,10 +1,9 @@
 <template>
   <section class="content">
-
-    <h2 v-if="candidate && candidate.donation_title" v-html="parseMD(candidate.donation_title)" />
+    <h2 v-if="candidate && candidate.donation_title">{{ candidate.donation_title }}</h2>
     <h2 v-else>Escolha um valor para doar</h2>
 
-    <div v-if="candidate.donation_intro" v-html="parseMD(candidate.donation_intro)"></div>
+    <div class="donation-intro" v-if="candidate.donation_intro" v-html="parseMD(candidate.donation_intro)"></div>
 
     <form @submit.prevent="validateForm()">
       <fieldset class="of-radios-and-checks">
@@ -43,7 +42,7 @@
 <script>
 import { mask } from 'vue-the-mask';
 import {
-formatBRL, formatBRLDec, getQueryString, pad, validate
+formatBRL, formatBRLDec, getQueryString, pad, parseMD, validate
 } from '../../utilities';
 
 export default {
@@ -163,6 +162,7 @@ export default {
     },
     formatBRL,
     pad,
+    parseMD,
   },
 };
 </script>

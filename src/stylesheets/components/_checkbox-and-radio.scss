@@ -2,7 +2,7 @@
 /* checkboxes and radio buttons
 ---------------------------------------------------------------------------- */
 /**
- * All checkboxes and readio buttons as list-items
+ * All checkboxes and radio buttons as list-items
  * <li><label for="id">label</label> <input type="checkbox" id="id" /></li>
  */
 fieldset ol,
@@ -23,6 +23,15 @@ fieldset ul {
   font-size: ms(2);
   font-weight: 800;
   color: palette('white');
+
+  .of-radios-and-checks__legend,
+  .of-radios-and-checks__intro {
+    display: block;
+
+    width: 100%;
+
+    color: inherit;
+  }
 }
 
 .of-radios-and-checks button,
@@ -33,6 +42,11 @@ fieldset ul {
   &:focus {
     outline: 0;
   }
+}
+
+.of-radios-and-checks__intro {
+  font-size: ms(0);
+  font-weight: normal;
 }
 
 .of-radios-and-checks .input-wrapper {
