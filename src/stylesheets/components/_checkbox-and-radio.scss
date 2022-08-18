@@ -17,8 +17,8 @@ fieldset ul {
 
   flex-wrap: wrap;
 
-  margin-right: $gutter * -0.5;
-  margin-left: $gutter * -0.5;
+  margin-right: 0;
+  margin-left: 0;
 
   font-size: ms(2);
   font-weight: 800;
@@ -77,6 +77,8 @@ fieldset ul {
 
 .of-radios-and-checks .input-wrapper--full-width {
   width: 100%;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .of-radios-and-checks .has-real-value {
@@ -86,8 +88,8 @@ fieldset ul {
   width: 100%;
   padding-top: $leading * 0.3em;
   padding-bottom: $leading * 0.3em;
-  margin-right: $gutter * 0.5;
-  margin-left: $gutter * 0.5;
+  margin-right: 0;
+  margin-left: 0;
 
   color: palette('text', 'dark');
 
