@@ -155,12 +155,12 @@
   .main-menu {
     color: palette('white');
 
-    background-color: palette('molon', 'blue-dark');
+    background-color: palette('molon', 'blue-medium');
 
     &.animate {
       color: palette('white');
 
-      background-color: palette('molon', 'blue-dark');
+      background-color: palette('molon', 'blue-medium');
     }
   }
 
@@ -422,7 +422,7 @@
   .site-footer {
     color: palette('white');
 
-    background-color: palette('molon', 'blue-dark');
+    background-color: palette('molon', 'blue-medium');
 
     a {
       @include link-undercover {
@@ -436,5 +436,6 @@
   }
 
   .notification {
+    background-color: palette('molon', 'blue-medium');
   }
 }
