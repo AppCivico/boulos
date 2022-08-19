@@ -142,6 +142,52 @@
       "footer_logo": "./assets/molon/icons/Logo_Colorido.png",
       "disable_custom_donation_value": false,
       "overrides": {
+        "faq": [
+          {
+            "question": "Qual o dia do evento e horário?",
+            "answer": "O evento ocorrerá dia 05 de setembro de 2022, segunda-feira, às 20h.\n\n**De forma presencial**\nNo Circo Voador, com abertura dos portões às 19h.\nEndereço: R. dos Arcos, s/n - Centro, Rio de Janeiro - RJ\n\n**De forma online**\nInicia às 20h, você receberá o link para assistir por e-mail cadastrado no momento da doação."
+          },
+          {
+            "question": "Cada doação dá direito a somente um acesso?",
+            "answer": "Sim, cada doação dá direito a um link único para assistir ao show online OU **a somente UM acesso ao Circo Voador**. Se você quiser ir presencialmente no Circo Voador com seu companheiro, por exemplo, precisa fazer DUAS doações. E cada doação deve ser em nome da pessoa que irá ao evento.\n\n1 doação = 1 acesso ao evento."
+          },
+          {
+            "question": "Como deve ser feita a doação?",
+            "answer": "Cada pagamento de doação (via PIX ou boleto) deverá ser feito pelo mesmo titular do CPF que irá ao show. Isso garante que seja comprovada a doação e o acesso único ao evento."
+          },
+          {
+            "question": "Doei para ir ao show presencial, vou receber um acesso para entrar no Circo Voador?",
+            "answer": "Sim, você receberá por e-mail um código de acesso exclusivo. Esse código deve ser validado no site [eventim.com.br](https://eventim.com.br). Depois de validar seu código, você deverá entrar na sua conta Eventim ou criar uma conta exclusiva. Então, preencha seus dados e gere o QR Code a ser apresentado na entrada do Circo Voador, no dia do evento.\n\n**Importante: seu código é único, não compartilhe. O código é de uso individual.**"
+          },
+          {
+            "question": "Doei para assistir ao show online, como vou receber o link de acesso?",
+            "answer": "Você receberá no e-mail cadastrado na doação o link de acesso para a transmissão online do evento. E o lembrete no dia do evento. Sempre verifique a Caixa de Spam do seu e-mail."
+          },
+          {
+            "question": "Quero doar um valor maior, como faço?",
+            "answer": "Para apoiar o Molon ao Senado você pode doar até 10% de sua renda declarada para a Receita no ano anterior. No caso de não ter declarado renda o limite este ano é de R$ 2.855,00. Aqui na plataforma, o limite máximo por doação é de R$ 1.064,09. \n\nPara doar valores maiores, entre em contato conosco:\n\n- Whatsapp: [(21) 99088-0678](https://api.whatsapp.com/send/?phone=5521990880678&text&type=phone_number&app_absent=0)\n- E-mail: [contato@omelhorprorio.com.br](mailto:contato@omelhorprorio.com.br)"
+          },
+          {
+            "question": "Qual a diferença de doar para assistir ao show presencial ou online?",
+            "answer": "Em ambas modalidades você tem direito a assistir ao show na íntegra, a diferença é que na forma presencial você deverá ir até o Circo Voador.Já na transmissão online você receberá um link único para assistir em qualquer dispositivo (celular, computador ou televisão, por exemplo)."
+          },
+          {
+            "question": "Até quando posso doar para ter acesso ao evento?",
+            "answer": "De forma presencial: até esgotar a lotação do Circo Voador.\n\nDe forma online: até às 12h do dia do evento. Limitado a capacidade da plataforma de transmissão.\n\nOs pagamentos de doação por boleto deverão ser feitos em até 3 dias antes do show. Após esse prazo, somente serão aceitas doações via PIX."
+          },
+          {
+            "question": "Por que é uma doação eleitoral?",
+            "answer": "É uma doação eleitoral, pois esse é um evento de arrecadação para a candidatura de Alessandro Molon para o Senado, esse evento faz parte do financiamento coletivo da candidatura. Os valores arrecadados serão utilizados para o financiamento da campanha eleitoral."
+          },
+          {
+            "question": "Por que recebi um comprovante?",
+            "answer": "Porque a Candidatura do Alessandro Molon registra todas suas doações em um cartório cívico digital para comprovar e manter a autenticidade da sua doação.\n\nEssa rede de informações é vinculada a uma das mais seguras e confiáveis do mundo, que é a blockchain do DECRED. Esses números são a referência sobre as doações realizadas.As doações eleitorais são muito importantes para a construção de projetos políticos. Porém, é fundamental que as plataformas de financiamento coletivo, sociedade e o TSE tenham garantias que as informações ofereçam integridade e confiabilidade de maneira descentralizada para garantir controle social.\n\nPor isso, a Candidatura do Alessandro Molon (PSB) está registrando todas suas doações financeiras e disponibilizando publicamente os dados dos doadores para comprovar a integridade e honestidade do processo de captação de recursos, conforme dita a Lei Eleitoral."
+          },
+          {
+            "question": "Ainda fiquei com dúvidas ou tive algum problema no processo, como entro em contato?",
+            "answer": "Whatsapp: [(21) 99088-0678](https://api.whatsapp.com/send/?phone=5521990880678&text&type=phone_number&app_absent=0)"
+          }
+        ],
         "allowed_payment_methods": [
           "boleto",
           "pix"
