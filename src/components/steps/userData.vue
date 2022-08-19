@@ -105,7 +105,7 @@
 
 <script>
 import { mask } from 'vue-the-mask';
-import { mapMutations, mapState } from 'vuex';
+import { mapGetters, mapMutations, mapState } from 'vuex';
 import CONFIG from '../../config';
 import { root as minimumPerMethodFallback } from '../../data/minimum_donations_per_payment_method.json';
 import { validate } from '../../utilities';
@@ -165,6 +165,7 @@ export default {
 
       return allowedPaymentMethods.filter((x) => amount >= minimumPerMethod[x]);
     },
+    ...mapGetters(['referralCode']),
     ...mapState(['amount', 'candidateId', 'token']),
   },
   watch: {
@@ -288,7 +289,7 @@ export default {
             amount: this.amount,
             candidate_id: this.candidate.id,
             donation_fp: this.donationFp,
-            referral_code: this.$store.state.referral,
+            referral_code: this.referralCode,
           };
           const user = {
             name: data.name,

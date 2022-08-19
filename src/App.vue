@@ -71,7 +71,7 @@ export default {
     getReferral({ candidate } = this) {
       const referral = this.$route.query?.ref || candidate?.ref;
       if (referral) {
-        this.$store.commit('SET_REFERRAL', referral);
+        this.$store.commit('storeToState', { name: 'referral', data: referral });
       }
     },
     handleSession() {

@@ -15,6 +15,7 @@ export default new Vuex.Store({
     paymentStep: 'selectValue',
     amount: 0,
     referral: '',
+    buttonReferral: '',
     token: '',
     donation: {},
     iugu: {},
@@ -108,9 +109,6 @@ export default new Vuex.Store({
     },
     SET_TOKEN(state, { token }) {
       state.token = token;
-    },
-    SET_REFERRAL(state, referral) {
-      state.referral = referral;
     },
     SET_DONOR_NAMES(state, { user }) {
       state.donor_names = user;
@@ -736,5 +734,9 @@ export default new Vuex.Store({
     goalsWithDescription: (_state, { goals }) => goals.filter((x) => !!x.description),
 
     currentAndPastGoals: (_state, { expected, goalsWithDescription }) => goalsWithDescription.filter((x) => x.goal <= expected).sort((a, b) => b.goal - a.goal),
+
+    referralCode: ({ buttonReferral, referral }) => (buttonReferral
+      ? `${buttonReferral}:${referral}`
+      : referral),
   },
 });

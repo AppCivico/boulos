@@ -75,19 +75,13 @@ export default {
       amount: '',
       other: '',
       valueCheckedOnUrl: false,
-      buttonReferral: '',
       focusedFieldSet: 0,
       minValueError: '',
     };
   },
   mounted() {
     this.getDonationAmount();
-
-    if (this.referral.indexOf(':') > -1) {
-      const cleanReferral = this.referral.replace(`${this.buttonReferral}:`, '');
-      this.SET_REFERRAL(cleanReferral);
-    }
-    this.buttonReferral = '';
+    this.setButtonReferral('');
   },
   computed: {
     candidate() {
@@ -153,8 +147,8 @@ export default {
           return 0;
         });
     },
-    setButtonReferral(referral) {
-      this.buttonReferral = referral || '';
+    setButtonReferral(referral = '') {
+      this.storeToState({ name: 'buttonReferral', data: referral });
     },
     setInitialValueForOther(value) {
       if (value) {
@@ -163,13 +157,12 @@ export default {
     },
     validateForm() {
       const {
-        amount, buttonReferral, focusedFieldSet, other, pledgesAsFieldSets, referral,
+        amount, focusedFieldSet, other, pledgesAsFieldSets, referral,
       } = this;
       const values = amount === 'other' ? { amount, other: other * 100 } : { amount };
       const maxValue = this.candidate?.max_donation_value || 106409;
       const minValue = pledgesAsFieldSets[focusedFieldSet]?.minValue || this.candidate?.min_donation_value || 1000;
 
-      console.debug('minValue', minValue);
       const validation = validate(values);
 
       if (amount === 'other' && values.other < minValue) {
@@ -184,9 +177,6 @@ export default {
 
       if (validation.valid) {
         this.saveStep(values);
-        if (buttonReferral) {
-          this.SET_REFERRAL(`${buttonReferral}:${referral}`);
-        }
       } else {
         this.errorMessage = 'Todos os campos são obrigatórios';
       }
@@ -245,7 +235,7 @@ export default {
     formatBRL,
     pad,
     parseMD,
-    ...mapMutations(['SET_REFERRAL']),
+    ...mapMutations(['storeToState']),
   },
 };
 </script>
