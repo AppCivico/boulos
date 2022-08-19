@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="site-footer__copyright">
-        <div class="site-footer__copyright">
+        <div class="site-footer__copyright" v-if="!candidate.footer_message">
           <p>
             Plataforma de financiamento coletivo eleitoral de propriedade do
             <em>AppCívico Consultoria LTDA <small>(CNPJ: 08.746.641/0001-00)</small></em>.
@@ -14,6 +14,7 @@
             </strong>
           </p>
         </div>
+        <div class="site-footer__copyright" v-else v-html="parseMD(candidate.footer_message)"/>
       </div>
     </div>
 
@@ -49,6 +50,7 @@
 <script>
 import Notification from '@/components/Notification.vue';
 import { mapState } from 'vuex';
+import { parseMD } from '../../utilities';
 
 export default {
   name: 'Footer',
@@ -83,6 +85,9 @@ export default {
       return firstName;
     },
     ...mapState(['recentDonation']),
+  },
+  methods: {
+    parseMD,
   },
 };
 </script>
