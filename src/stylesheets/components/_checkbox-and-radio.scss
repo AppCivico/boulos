@@ -13,6 +13,7 @@ fieldset ul {
 
 .of-radios-and-checks {
   @include clearfix;
+
   display: flex;
 
   flex-wrap: wrap;
@@ -325,4 +326,82 @@ fieldset ul {
   color: palette('gray', 'light');
 
   background-color: palette('gray', 'dark');
+}
+
+@mixin simple-check-or-radio {
+  $stroke: 2px;
+  $rounded-corner: 2px;
+
+  .simple-check-or-radio__list {
+    margin: 0;
+
+    font-weight: inherit;
+  }
+
+  .simple-check-or-radio__item {
+    display: block;
+
+    width: 100%;
+  }
+
+  .simple-check-or-radio__input {
+    display: inline-block;
+
+    width: $gutter * 0.5;
+    height: $gutter * 0.5; /* 3 */
+
+    line-height: $gutter * 0.5; /* 3 */
+    text-align: center;
+    vertical-align: baseline;
+
+    border-color: currentcolor;
+    border-style: solid;
+    border-width: $stroke;
+    border-radius: $rounded-corner;
+
+    appearance: none;
+
+    &:checked {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        top: $stroke;
+        right: $stroke;
+        bottom: $stroke;
+        left: $stroke;
+
+        width: auto;
+        height: auto;
+
+        content: '';
+
+        background-color: currentcolor;
+      }
+    }
+  }
+
+  .simple-check-or-radio__label {
+    position: static;
+
+    display: inline;
+
+    max-width: none;
+
+    font-weight: inherit;
+    color: inherit;
+
+    background-color: transparent !important;
+
+    @include on-event {
+      color: inherit;
+
+      background-color: transparent !important;
+    }
+  }
+}
+
+
+#user-data-payment {
+  @include simple-check-or-radio;
 }
