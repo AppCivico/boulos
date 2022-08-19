@@ -25,80 +25,95 @@
           Selecione uma forma de pagamento
         </div>
       </div>
-      <fieldset v-if="payment_method || formAction !== 'donate'">
-        <div class="instructions-donation">
-          <p class="instructions">Por favor, informe os seguintes dados:</p>
-        </div>
-        <div :class="`input-wrapper
-        ${validation.errors.name ? 'has-error' : ''}`">
-          <label for="name">Nome</label>
-          <input ref="nameField" type="text" id="name" name="name" autocomplete="given-name"
-            v-focus="formAction !== 'donate' || payment_method" v-model="name" required />
-          <div class="error" v-if="validation.errors.name">
-            {{ validation.errors.name }}
-          </div>
-        </div>
-
-        <div :class="`input-wrapper
-        ${validation.errors.surname ? 'has-error' : ''}`">
-          <label for="surname">Sobrenome</label>
-          <input type="text" id="surname" name="surname" autocomplete="family-name" v-model="surname" required />
-          <div class="error" v-if="validation.errors.surname">
-            {{ validation.errors.surname }}
-          </div>
-        </div>
-
-        <div v-if="formAction === 'donate'" :class="`input-wrapper
-        ${validation.errors.cpf ? 'has-error' : ''}`">
-          <label for="cpf">CPF</label>
-          <input type="tel" name="cpf" v-model="cpf" v-mask="'###.###.###-##'" required>
-          <div class="error" v-if="validation.errors.cpf">
-            {{ validation.errors.cpf }}
-          </div>
-        </div>
-
-        <div :class="`input-wrapper
-        ${validation.errors.email ? 'has-error' : ''}`">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" autocomplete="email" v-model="email" required />
-          <div class="error" v-if="validation.errors.email">
-            {{ validation.errors.email }}
-          </div>
-        </div>
+      <fieldset v-if="payment_method === 'pix' && formAction === 'donate'">
+        <ul class="simple-check-or-radio__list">
+          <li class="simple-check-or-radio__item">
+            <input type="checkbox" id="pix-agreement" v-model="pixAgreement" class="simple-check-or-radio__input" />
+            <label for="pix-agreement" class="simple-check-or-radio__label">
+              Estou ciente de que o pagamento desta doação deve ser realizado
+              por conta corrente do <strong>mesmo CPF</strong> informado
+              a seguir e caso ocorram divergências a doação poderá ser estornada e a transação cancelada.
+            </label>
+          </li>
+        </ul>
       </fieldset>
-      <template v-if="formAction === 'donate' && candidateAmount">
-        <p class="subtitle warning-text">
-          Declaro que minhas doações não ultrapassam 10% dos meus rendimentos
-          brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou
-          concessionário ou permissionário de serviço público.
-        </p>
-        <p class="subtitle warning-text">
-          Declaro estar ciente de que, ao realizar uma doação, por conta da
-          legislação eleitoral, os seus dados (nome completo, CPF, valor
-          individual de cada doação, forma de pagamento, data das doações) serão
-          disponibilizados de forma pública no site do candidato, e concordo com os <a
-            href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf"
-            target="_blank">seus termos</a>.
-        </p>
-        <div v-if="formAction === 'donate' && candidateAmount" class="candidate-amount">
-          <p>
-            Valor doado
-            <output>
-              R${{ candidateAmount | formatBRLDec }}
-            </output>
-          </p>
-          <p class="helper-text form__disclaimer" v-if="payment_method">
-            Taxa de {{ taxes[payment_method].text }}.
-            Esse valor é destinado a taxas de operação financeira, sistemas de
-            controle anti-fraude, impostos e infraestrutura.
-          </p>
-        </div>
-      </template>
 
-      <p class="error" v-if="errorMessage != ''">
-        {{ errorMessage }}
-      </p>
-      <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward">Continuar</button>
+      <template v-if="payment_method !== 'pix' || pixAgreement">
+        <fieldset v-if="payment_method || formAction !== 'donate'">
+          <div class="instructions-donation">
+            <p class="instructions">Por favor, informe os seguintes dados:</p>
+          </div>
+          <div :class="`input-wrapper
+          ${validation.errors.name ? 'has-error' : ''}`">
+            <label for="name">Nome</label>
+            <input ref="nameField" type="text" id="name" name="name" autocomplete="given-name"
+              v-focus="formAction !== 'donate' || payment_method" v-model="name" required />
+            <div class="error" v-if="validation.errors.name">
+              {{ validation.errors.name }}
+            </div>
+          </div>
+
+          <div :class="`input-wrapper
+          ${validation.errors.surname ? 'has-error' : ''}`">
+            <label for="surname">Sobrenome</label>
+            <input type="text" id="surname" name="surname" autocomplete="family-name" v-model="surname" required />
+            <div class="error" v-if="validation.errors.surname">
+              {{ validation.errors.surname }}
+            </div>
+          </div>
+
+          <div v-if="formAction === 'donate'" :class="`input-wrapper
+          ${validation.errors.cpf ? 'has-error' : ''}`">
+            <label for="cpf">CPF</label>
+            <input type="tel" name="cpf" v-model="cpf" v-mask="'###.###.###-##'" required>
+            <div class="error" v-if="validation.errors.cpf">
+              {{ validation.errors.cpf }}
+            </div>
+          </div>
+
+          <div :class="`input-wrapper
+          ${validation.errors.email ? 'has-error' : ''}`">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" v-model="email" required />
+            <div class="error" v-if="validation.errors.email">
+              {{ validation.errors.email }}
+            </div>
+          </div>
+        </fieldset>
+        <template v-if="formAction === 'donate' && candidateAmount">
+          <p class="subtitle warning-text">
+            Declaro que minhas doações não ultrapassam 10% dos meus rendimentos
+            brutos do ano anterior, a origem do dinheiro não é estrangeira, não sou
+            concessionário ou permissionário de serviço público.
+          </p>
+          <p class="subtitle warning-text">
+            Declaro estar ciente de que, ao realizar uma doação, por conta da
+            legislação eleitoral, os seus dados (nome completo, CPF, valor
+            individual de cada doação, forma de pagamento, data das doações) serão
+            disponibilizados de forma pública no site do candidato, e concordo com os <a
+              href="https://participe.votolegal.com.br/files/Termo%20de%20uso%20e%20Politica%20de%20privacidade%20(unificado)%20-%20Voto%20Legal%20-%202020%402020-09-23.pdf"
+              target="_blank">seus termos</a>.
+          </p>
+          <div v-if="formAction === 'donate' && candidateAmount" class="candidate-amount">
+            <p>
+              Valor doado
+              <output>
+                R${{ candidateAmount | formatBRLDec }}
+              </output>
+            </p>
+            <p class="helper-text form__disclaimer" v-if="payment_method">
+              Taxa de {{ taxes[payment_method].text }}.
+              Esse valor é destinado a taxas de operação financeira, sistemas de
+              controle anti-fraude, impostos e infraestrutura.
+            </p>
+          </div>
+        </template>
+
+        <p class="error" v-if="errorMessage != ''">
+          {{ errorMessage }}
+        </p>
+        <button type="submit" :disabled="loading" class="donation-nav donation-nav--forward">Continuar</button>
+      </template>
     </form>
   </section>
 </template>
@@ -125,6 +140,7 @@ export default {
   data() {
     return {
       taxes: CONFIG.taxes,
+      pixAgreement: false,
       dataBusyMessage: '',
       loading: false,
       errorMessage: '',
