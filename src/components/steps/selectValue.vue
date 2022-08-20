@@ -157,7 +157,7 @@ export default {
     },
     validateForm() {
       const {
-        amount, focusedFieldSet, other, pledgesAsFieldSets, referral,
+        amount, focusedFieldSet, other, pledgesAsFieldSets,
       } = this;
       const values = amount === 'other' ? { amount, other: other * 100 } : { amount };
       const maxValue = this.candidate?.max_donation_value || 106409;
