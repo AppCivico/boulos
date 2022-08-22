@@ -124,13 +124,19 @@ export default {
   methods: {
     cleanUpPledges(pledges, minValue = 0) {
       const { disable_custom_donation_value: disableCustomDonationValue, pledges_order: pledgesOrder = 'desc' } = this.candidate;
-      return pledges.map((x) => (typeof x === 'number' || x === 'other' ? { value: x } : x))
+      return pledges
+        // map every value to an object
+        .map((x) => (typeof x === 'number' || x === 'other' ? { value: x } : x))
+        // remove invalid values
         .filter((x) => !!x.value || (x.value !== 'other' && typeof x.value !== 'number'))
+        // filter invalid values
         // using a ternary just because it looks easier to read
         .filter((x) => (disableCustomDonationValue
           ? x.value >= (minValue || 0)
           : x.value === 'other' || x.value >= (minValue || 0)))
+        // remove duplicated values
         .filter((obj, index, arr) => arr.map((mapObj) => mapObj.value).indexOf(obj.value) === index)
+        // sort values
         .sort((a, b) => {
           if (typeof a.value === 'number' && typeof b.value === 'number') {
             return pledgesOrder === 'asc'
