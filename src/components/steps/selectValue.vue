@@ -101,7 +101,7 @@ export default {
           fields: x.minValue ? cleanUpPledges(x.fields, x.minValue) : cleanUpPledges(x.fields),
         }))
         || {
-          fields: pledges,
+          fields: cleanUpPledges([...pledges, 'other']),
         };
     },
 
@@ -123,13 +123,19 @@ export default {
   },
   methods: {
     cleanUpPledges(pledges, minValue = 0) {
+      const { disable_custom_donation_value: disableCustomDonationValue, pledges_order: pledgesOrder = 'desc' } = this.candidate;
       return pledges.map((x) => (typeof x === 'number' || x === 'other' ? { value: x } : x))
         .filter((x) => !!x.value || (x.value !== 'other' && typeof x.value !== 'number'))
-        .filter((x) => x.value === 'other' || x.value >= (minValue || 0))
+        // using a ternary just because it looks easier to read
+        .filter((x) => (disableCustomDonationValue
+          ? x.value >= (minValue || 0)
+          : x.value === 'other' || x.value >= (minValue || 0)))
         .filter((obj, index, arr) => arr.map((mapObj) => mapObj.value).indexOf(obj.value) === index)
         .sort((a, b) => {
           if (typeof a.value === 'number' && typeof b.value === 'number') {
-            return b.value - a.value;
+            return pledgesOrder === 'asc'
+              ? a.value - b.value
+              : b.value - a.value;
           }
           // check for num vs string
           if (typeof a.value === 'number' && typeof b.value === 'string') {
