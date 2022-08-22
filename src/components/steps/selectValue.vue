@@ -49,6 +49,9 @@
             </transition>
           </template>
         </div>
+
+        <p class="warning-text" v-if="fieldSet.warning">{{ fieldSet.warning }}</p>
+
         <p class="error" v-if="errorMessage != '' && focusedFieldSet === i">
           {{ errorMessage }}
         </p>

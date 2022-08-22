@@ -200,21 +200,22 @@
         "pledgesAsFieldSets": [
           {
             "legend": "Presencial",
-            "intro": "Ingresso unitário - **R$ 250,00** - Assista ao vivo no Circo Voador\n\nIngresso casal - **R$ 400,00** - Adquira para você e mais um acompanhante\n\nIngresso galera - **R$ 600,00** - Adquira para você e mais três acompanhantes",
+            "intro": "Assista ao vivo no Circo Voador",
+            "warning": "Um dos ingressos precisa estar vinculado ao CPF titular da doação.",
             "minValue": 25000,
             "fields": [
               {
-                "label": "Unitário",
+                "label": "Unitário (1 ingresso)",
                 "value": 25000,
                 "referral": "presencial"
               },
               {
-                "label": "Casal",
+                "label": "Casal (2 ingressos)",
                 "value": 40000,
                 "referral": "presencial:2x"
               },
               {
-                "label": "Galera",
+                "label": "Galera (4 ingressos)",
                 "value": 60000,
                 "referral": "presencial:4x"
               }
