@@ -182,7 +182,7 @@ textarea {
   $bg-color: #2dc9be;
 
   &[class] {
-    color: text-contrast($bg-color, $fg-color, $level: 'AA');
+    // color: text-contrast($bg-color, $fg-color, $level: 'AA');
   }
 
   &::before {
@@ -190,6 +190,7 @@ textarea {
 
     width: 1.5em;
     height: 1.5em;
+    margin-right: 0.25em;
 
     font-family: $alt-font-stack;
     font-style: italic;
