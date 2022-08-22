@@ -148,42 +148,9 @@
       </div>
     </article>
 
-    <article id="home__donors" class="home__donors">
-      <div class="container" id="donation-wrap">
-        <h2>
-          Doadores
-        </h2>
+    <donorsVue />
 
-        <div v-if="candidate && candidate.donors_message" class="content" v-html="parseMD(candidate.donors_message)" />
-
-        <p>
-          <span v-for="(person, i) in donors" :key="i">
-            {{ person | titleCase }}{{ i !== donors.length - 1 ? ',' : '' }}
-          </span>
-        </p>
-
-        <div class="nav-link-donations-wrap">
-          <router-link class="nav-link-donations" :to="{ name: 'donors' }" target="_blank">
-            ver dados completos
-          </router-link>
-        </div>
-      </div>
-    </article>
-
-    <article id="home__faq" class="home__faq" v-if="faq && faq.length">
-      <div class="container" id="donation-wrap">
-        <h2>
-          Perguntas Frequentes
-        </h2>
-        <details v-for="item, idx in faq" :key="idx">
-          <summary>
-            <span class="caret"></span>
-            {{ item.question }}
-          </summary>
-          <div v-html="parseMD(item.answer)"></div>
-        </details>
-      </div>
-    </article>
+    <faqVue />
 
     <div class="candidate-footer" v-if="candidate.footer_logo">
       <img :src="candidate.footer_logo" alt="Logotipo campanha" class="candidate-footer__logo" />
@@ -204,12 +171,15 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 // @ is an alias to /src
 import Payment from '@/components/Payment.vue';
 import Picture from '@/components/Picture.vue';
 import AnimatedNumber from 'animated-number-vue';
 import { FormatFixedBRL, parseMD } from '../utilities';
+
+import donorsVue from '../sections/donors.vue';
+import faqVue from '../sections/faq.vue';
 
 export default {
   data() {
@@ -219,12 +189,13 @@ export default {
   },
   name: 'home',
   components: {
+    faqVue,
+    donorsVue,
     Payment,
     Picture,
     AnimatedNumber,
   },
   mounted({ candidate } = this) {
-    this.GetDonorsNames(candidate.id);
     this.UPDATE_DONATIONS_SUMMARY(candidate.id);
   },
   computed: {
@@ -255,8 +226,7 @@ export default {
         || '';
     },
 
-    ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'faq', 'goals', 'totalAmount']),
-    ...mapState(['donors']),
+    ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'goals', 'totalAmount']),
   },
   methods: {
     percentage(amount = this.totalAmount, expected = this.expected) {
@@ -285,7 +255,7 @@ export default {
     FormatFixedBRL,
     parseMD,
 
-    ...mapActions(['GetDonorsNames', 'UPDATE_DONATIONS_SUMMARY']),
+    ...mapActions(['UPDATE_DONATIONS_SUMMARY']),
   },
   directives: {
     inView: {
