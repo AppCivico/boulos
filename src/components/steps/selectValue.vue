@@ -92,17 +92,20 @@ export default {
     },
     pledgesAsFieldSets({ candidate, cleanUpPledges } = this) {
       const {
-        pledges = [2000, 5000, 11000, 20000, 25000, 32000, 50000, 75000, 106400, 'other'],
+        pledges = [2000, 5000, 11000, 20000, 25000, 32000, 50000, 75000, 106400],
+        pledgesAsFieldSets = null,
       } = candidate;
 
-      return candidate.pledgesAsFieldSets
-        .map((x) => ({
+      return Array.isArray(pledgesAsFieldSets)
+        ? pledgesAsFieldSets.map((x) => ({
           ...x,
           fields: x.minValue ? cleanUpPledges(x.fields, x.minValue) : cleanUpPledges(x.fields),
         }))
-        || {
-          fields: cleanUpPledges([...pledges, 'other']),
-        };
+        : [
+          {
+            fields: cleanUpPledges([...pledges, 'other']),
+          },
+        ];
     },
 
     pledges({ pledgesAsFieldSets } = this) {
