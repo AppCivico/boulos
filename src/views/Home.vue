@@ -148,9 +148,9 @@
       </div>
     </article>
 
-    <donorsVue />
-
     <faqVue />
+
+    <donorsVue />
 
     <div class="candidate-footer" v-if="candidate.footer_logo">
       <img :src="candidate.footer_logo" alt="Logotipo campanha" class="candidate-footer__logo" />
