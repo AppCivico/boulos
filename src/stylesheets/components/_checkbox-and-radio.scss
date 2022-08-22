@@ -147,6 +147,8 @@ fieldset ul {
 
   width: 100%;
   overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 
   font-size: ms(0);
   line-height: 0.9;
