@@ -167,9 +167,17 @@ $max-section-width: 50rem;
 }
 
 .home__donate .donation-form .donation-intro {
-  max-width: #{$max-width - $max-width--short};
+  flex-basis: 0;
+  flex-grow: 1;
+
+  min-width: map-get($line-lengths, 'min');
   margin-right: auto;
   margin-left: 0;
+
+  @media screen and (min-width: breakpoint('tablet')) {
+    max-width: #{$max-width - $max-width--short};
+    margin-right: $gutter;
+  }
 }
 
 .home__donate .donation-form .donation-intro + form {
