@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="site-footer__copyright">
-        <div class="site-footer__copyright" v-if="!candidate.footer_message">
+        <div class="site-footer__copyright" v-if="!candidate || !candidate.footer_message">
           <p>
             Plataforma de financiamento coletivo eleitoral de propriedade do
             <em>AppCívico Consultoria LTDA <small>(CNPJ: 08.746.641/0001-00)</small></em>.
