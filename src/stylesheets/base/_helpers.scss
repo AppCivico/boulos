@@ -178,12 +178,7 @@ textarea {
 }
 
 .warning-text {
-  $fg-color: palette('label', 'warning');
-  $bg-color: #2dc9be;
-
-  &[class] {
-    // color: text-contrast($bg-color, $fg-color, $level: 'AA');
-  }
+  $color: palette('label', 'warning');
 
   &::before {
     display: inline-block;
@@ -196,12 +191,12 @@ textarea {
     font-style: italic;
     font-weight: font-weight('bold');
     line-height: 1.5;
-    color: $bg-color;
+    color: text-contrast($color, $level: 'AA');
     text-align: center;
 
     content: 'i';
 
-    background-color: $fg-color;
+    background-color: $color;
     border-radius: 100%;
   }
 }
