@@ -37,7 +37,7 @@
               Saiba mais
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item" v-if="donors.length">
             <a href="#home__donors" v-scroll-to="'#home__donors'">
               Doadores
             </a>
@@ -138,7 +138,7 @@ export default {
           .join('')).map((y) => `<span>#</span>${y}`)
         : [];
     },
-    ...mapState(['candidate']),
+    ...mapState(['candidate','donors']),
     ...mapGetters(['candidateWithProjectAndDonations', 'candidateVideoId', 'faq']),
   },
 

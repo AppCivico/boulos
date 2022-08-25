@@ -1,5 +1,5 @@
 <template>
-  <article id="home__donors" class="home__donors">
+  <article id="home__donors" class="home__donors" v-if="donors.length">
     <div class="container" id="donation-wrap">
       <h2>
         Doadores
