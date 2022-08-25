@@ -614,12 +614,19 @@ export default new Vuex.Store({
             minValue: 25000,
             fields: [
               {
-                value: 'other',
+                label: 'Unitário (1 ingresso)',
+                value: 25000,
                 referral: 'presencial_especial',
               },
               {
-                value: 'filisteu',
-                referral: 'presencial_especial',
+                label: 'Casal (2 ingressos)',
+                value: 40000,
+                referral: 'presencial_especial:2x',
+              },
+              {
+                label: 'Galera (4 ingressos)',
+                value: 60000,
+                referral: 'presencial_especial:4x',
               },
             ],
           },
