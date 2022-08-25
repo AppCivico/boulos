@@ -25,6 +25,12 @@ switch (window.location.hostname) {
     api = 'https://api2022vl.appcivico.com';
     break;
 
+  case 'doar.marinasilva.org.br':
+  case 'marinasilva.votolegal.com.br':
+    candidateId = 10459;
+    api = 'https://api2022vl.appcivico.com';
+    break;
+
   default:
     break;
 }
