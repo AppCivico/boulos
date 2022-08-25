@@ -704,6 +704,8 @@ export default new Vuex.Store({
     candidateVideoId: ((_, { candidateWithProjectAndDonations }) => {
       const { video_url: videoUrl = '' } = candidateWithProjectAndDonations?.candidate;
 
+      if (!videoUrl) return '';
+
       const youtubeMatch = videoUrl.match(
         /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/|shorts\/)|(?:(?:watch)?\?v(?:i)?=|&v(?:i)?=))([^#&?]*).*/,
       );
