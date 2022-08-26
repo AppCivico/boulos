@@ -114,7 +114,7 @@
     <article id="home__knowMore" class="home__knowMore" v-if="candidate.biography">
       <div class="container" id="donation-wrap">
         <h2>
-          Conheça o candidato
+          Conheça {{ candidateArticle }} {{ campaignStateWithGender.toLowerCase() }}
         </h2>
 
         <Picture class="knowMore__image" :images="candidate.know_more_images" />
@@ -226,7 +226,7 @@ export default {
         || '';
     },
 
-    ...mapGetters(['currentAndPastGoals', 'donationSources', 'expected', 'goals', 'totalAmount']),
+    ...mapGetters(['campaignStateWithGender', 'candidateArticle', 'currentAndPastGoals', 'donationSources', 'expected', 'goals', 'totalAmount']),
   },
   methods: {
     percentage(amount = this.totalAmount, expected = this.expected) {

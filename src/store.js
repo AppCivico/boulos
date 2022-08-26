@@ -673,6 +673,19 @@ export default new Vuex.Store({
 
     campaign: ({ candidate }) => (candidate.campaign_donation_type === 'campaign' ? 'Candidatura' : 'Pré-candidatura'),
 
+    candidateArticle: ({ candidate }) => {
+      switch (candidate.gender) {
+        case 'female':
+          return 'a';
+
+        case 'male':
+          return 'o';
+
+        default:
+          return '';
+      }
+    },
+
     candidatePreposition: ({ candidate }) => {
       switch (candidate.gender) {
         case 'female':
