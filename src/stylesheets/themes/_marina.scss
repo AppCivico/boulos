@@ -24,6 +24,18 @@
     }
   }
 
+  tbody tr:nth-child(2n) {
+    color: palette('white');
+
+    background-color: palette('marina', 'green');
+  }
+
+  .like-a__button--submit {
+    color: palette('black');
+
+    background-color: palette('marina', 'yellow');
+  }
+
   /* stylelint-disable-next-line order/order */
   @include headings ('odd') {
   }
