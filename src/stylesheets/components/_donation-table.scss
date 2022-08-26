@@ -81,7 +81,7 @@
   }
 
   &:nth-child(6) {
-    width: 6em;
+    width: 7em;
 
     @media screen and (max-width: #{map-get($breakpoints, 'toggle-table-layout') - 0.01}) {
       flex-grow: 0;
@@ -104,5 +104,5 @@
 }
 
 .unmasked-row {
-  color: palette('black');
+  color: inherit;
 }
