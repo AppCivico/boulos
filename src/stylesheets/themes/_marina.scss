@@ -1,0 +1,493 @@
+[data-candidate='marinasilva'] {
+  @include headings ('odd') {
+    color: palette('marina', 'brown');
+  }
+
+  thead th,
+  thead td,
+  tfoot th,
+  tfoot td {
+    background-color: palette('marina', 'brown');
+  }
+
+  a {
+    color: palette('marina', 'green');
+
+    &:link,
+    &:visited {
+      color: palette('marina', 'green');
+    }
+
+    &:hover,
+    &:focus {
+      color: palette('marina', 'green-dark');
+    }
+  }
+
+  /* stylelint-disable-next-line order/order */
+  @include headings ('odd') {
+  }
+
+  @include headings ('even') {
+  }
+
+  menu a,
+  nav a {
+    @include link-undercover;
+
+    display: block;
+
+    overflow: hidden;
+
+    &:link {
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+
+  #user-data-payment .payment-choices label,
+  .of-radios-and-checks label {
+    color: palette('white');
+
+    background-color: palette('marina', 'green-dark');
+
+    &:hover {
+      color: inherit;
+
+      background-color: palette('marina', 'green');
+    }
+  }
+
+  #user-data-payment ul :checked + label {
+    background-color: palette('marina', 'green');
+  }
+
+  label[for='other'] {
+    color: palette('black');
+  }
+
+  .site-header {
+    padding-top: 60px;
+
+    color: palette('white');
+
+    background-color: palette('marina', 'green-darkest');
+
+    @include headings {
+      color: inherit;
+    }
+
+    @media screen and (min-width: breakpoint('phone')) {
+    }
+
+    @media screen and (min-width: breakpoint('phablet')) {
+      min-height: 410px;
+      // min-height: 560px;
+    }
+
+    @media screen and (min-width: breakpoint('tablet')) {
+      flex-direction: row;
+    }
+
+    @media screen and (min-width: breakpoint('desktop')) {
+      min-height: 600px;
+    }
+
+    @media screen and (min-width: breakpoint('wide')) {
+    }
+  }
+
+  .site-header__image {
+    // @include aspect-ratio(800 x 600);
+
+    padding: 0;
+    margin: auto 0 0 auto;
+
+    @media screen and (min-width: breakpoint('phablet')) {
+    }
+
+    @media screen and (min-width: breakpoint('tablet')) {
+      // padding: 0;
+    }
+
+    @media screen and (min-width: breakpoint('wide')) {
+      margin-right: $gutter;
+      margin-left: auto;
+    }
+  }
+
+  .site-header__image img {
+    position: static;
+
+    display: block;
+
+    width: auto;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    object-fit: contain;
+    object-position: center bottom;
+
+    @media screen and (min-width: breakpoint('phablet')) {
+      position: absolute;
+      // top: auto;
+      right: 0;
+      bottom: 0;
+      // left: auto;
+    }
+
+    @media screen and (min-width: breakpoint('tablet')) {
+    }
+
+    @media screen and (min-width: breakpoint('desktop')) {
+      object-position: none;
+    }
+  }
+
+  button.mobile-button span {}
+
+  .logo-campaign > img {
+    min-width: 77px;
+    min-height: 39px;
+    object-fit: contain;
+  }
+
+  .animate .logo-campaign > img {
+    min-height: 44px;
+  }
+
+  .main-menu {
+    color: palette('white');
+
+    background-color: palette('marina', 'green-darkest');
+
+    @media (min-width: breakpoint('tablet')) {
+      background-color: transparent;
+    }
+
+    &.animate {
+      color: palette('white');
+
+      background-color: palette('marina', 'green-darkest');
+    }
+  }
+
+  .menu-wrap.show {
+    background-color: transparent;
+  }
+
+  .donate-nav a {
+    background-color: transparent;
+
+    @include on-event {
+      color: palette('marina', 'green-dark');
+      text-decoration: none;
+
+      background-color: palette('white');
+    }
+  }
+
+  .site-label {
+    position: relative;
+    z-index: layer('default');
+
+    max-width: 65%;
+
+    @media (min-width: breakpoint('phablet')) {
+      margin-right: auto;
+      margin-left: 0;
+    }
+  }
+
+  .site-label h1 {
+    padding-right: $gutter;
+    padding-left: $gutter;
+
+    text-align: left;
+  }
+
+  .site-label .call-to-action {
+    // overflow: hidden;
+
+    // font-weight: 900;
+    // color: palette('white');
+    // text-transform: uppercase;
+    text-align: center;
+
+    @media (min-width: breakpoint('phablet')) {
+      text-align: left;
+    }
+
+    @include on-event {
+      color: inherit;
+    }
+
+    span {
+      color: palette('marina', 'yellow');
+    }
+  }
+
+  .home__intro {
+    color: palette('text', 'dark');
+
+    background-color: palette('white');
+
+    @include headings {
+      color: palette('marina', 'green-dark');
+    }
+
+    @include headings ('odd') {
+      color: palette('marina', 'brown');
+    }
+
+    a {
+      // @include link-undercover {
+      //   text-decoration: underline;
+      // }
+    }
+  }
+
+  .campaign-progress {
+    color: palette('marina', 'red');
+  }
+
+  .home__donate {
+    color: palette('black');
+
+    background-color: palette('marina', 'red');
+    background-repeat: repeat;
+    background-size: auto;
+
+    &::before {
+      color: palette('marina', 'red');
+
+      opacity: 0.35;
+
+      @supports (mix-blend-mode: color) {
+        mix-blend-mode: color;
+        opacity: 0.85;
+      }
+    }
+
+    @include headings {
+      color: inherit;
+    }
+  }
+
+  .home__donate a {
+    @include link-undercover {
+      text-decoration: underline;
+    }
+
+    @include on-event {
+      color: inherit;
+    }
+  }
+
+  #home__greetings {
+    max-width: $max-width;
+    padding-right: $gutter;
+    padding-left: $gutter;
+    // margin-top: auto;
+    // margin-bottom: $gutter;
+
+    margin-right: auto;
+    margin-left: auto;
+
+    @media (min-width: breakpoint('phablet')) {
+      margin-top: auto;
+      margin-bottom: auto;
+      // margin-bottom: $gutter;
+    }
+
+    // @media (min-width: breakpoint('tablet')) {
+    //   margin-bottom: auto;
+    // }
+
+    @media (min-width: breakpoint('desktop')) {
+      // margin-bottom: auto;
+    }
+
+    @media (min-width: breakpoint('wide')) {
+      // margin-right: auto;
+      // margin-left: $gutter;
+    }
+
+    @media (min-width: breakpoint('x-wide')) {
+      // margin-top: $gutter * 2;
+      // margin-bottom: $gutter * 2;
+    }
+  }
+
+  .donation-nav[class],
+  .donation-nav--forward[class] {
+    color: inherit;
+
+    &:link,
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: inherit;
+    }
+  }
+
+  .donation-form-title h2:last-child,
+  #user-data-payment ul :checked + label {
+    background-color: palette('marina', 'yellow');
+  }
+
+  #user-data-payment .payment-type label {
+    &:hover,
+    &:focus {
+      background-color: palette('marina', 'yellow');
+    }
+  }
+
+  .home__knowMore[class] {
+    z-index: layer('default');
+
+    padding-bottom: 280px;
+
+    background-color: palette('marina', 'yellow');
+
+    @media screen and (min-width: breakpoint('phablet')) {
+      padding-bottom: 420px;
+    }
+
+    @media screen and (min-width: 640px) {
+      padding-bottom: 360px;
+    }
+
+    @media screen and (min-width: breakpoint('wide')) {
+      // padding-bottom: 240px;
+    }
+
+    @media screen and (min-width: breakpoint('x-wide')) {
+      padding-bottom: 6rem;
+    }
+  }
+
+  .knowMore__image[class] img {
+    object-fit: none;
+    object-position: center bottom;
+
+    background-color: palette('marina', 'yellow');
+
+    @media screen and (min-width: breakpoint('wide')) {
+      object-position: 15% bottom;
+    }
+  }
+
+  .home__faq {
+    background-color: palette('marina', 'yellow');
+  }
+
+  #home__donors {
+    color: palette('white');
+
+    background-color: palette('marina', 'green-dark');
+
+    @include headings {
+      color: inherit;
+    }
+  }
+
+  .play-button {
+    background-color: palette('marina', 'red');
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: palette('marina', 'green-dark');
+    }
+  }
+
+  progress,
+  [role='progressbar'] {
+    @mixin progress-bar-bg {
+      &::-webkit-progress-bar {
+        @content;
+      }
+
+      @content;
+    }
+
+    @mixin progress-bar-fg {
+      &[value]::-moz-progress-bar {
+        @content;
+      }
+
+      &[value]::-webkit-progress-value {
+        @content;
+      }
+
+      > div {
+        @include hide-text;
+
+        display: inline-block;
+
+        max-width: 100%;
+        height: 100%;
+
+        @content;
+      }
+    }
+
+    max-width: 100%;
+
+    /* stylelint-disable-next-line at-rule-empty-line-before */
+    @include progress-bar-fg {
+      background-color: palette('marina', 'green');
+    }
+
+    @include progress-bar-bg {
+      /* stylelint-disable-next-line at-rule-empty-line-before */
+      background-color: palette('gray');
+    }
+
+    /* stylelint-disable-next-line order/order */
+    color: palette('marina', 'green');
+
+    background-color: palette('gray');
+  }
+
+  #campaign-progress .campaign-progress__link {
+  }
+
+  .nav-link-donations-wrap a {
+    background-color: palette('white');
+  }
+
+  .candidate-footer {
+    color: palette('marina', 'green-dark');
+  }
+
+  .site-footer {
+    color: palette('black');
+
+    background-color: palette('marina', 'yellow');
+
+    a {
+      @include link-undercover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .site-footer__copyright {
+    color: inherit;
+  }
+
+  .notification {
+    background-color: palette('marina', 'green-dark');
+  }
+}

@@ -135,74 +135,73 @@
       "notification_footer": "#doeBoulos"
     },
     "marinasilva": {
-      "windowTitle": "",
-      "siteTitle": "",
+      "windowTitle": "Marina Silva",
+      "siteTitle": "Reconstruir o Brasil",
       "siteTagline": "",
       "donors_message": "",
       "footer_logo": "./assets/marinasilva/icons/logo-marina.svg",
       "disable_custom_donation_value": false,
-      "hashtags": [],
-      "header_logo": "./assets/marinasilva/icons/logo-versao3.svg",
+      "hashtags": [
+        "doe Marina Silva"
+      ],
+      "header_logo": "./assets/marinasilva/icons/logo-marina-versao2.svg",
       "header_images": [
         {
           "srcset": "./assets/marinasilva/images/320.webp",
-          "type": "image/webp",
-          "media": 480
+          "type": "image/webp"
         },
         {
           "srcset": "./assets/marinasilva/images/320.jxl",
-          "type": "image/jxl",
-          "media": 480
+          "type": "image/jxl"
         },
         {
           "srcset": "./assets/marinasilva/images/320.png",
-          "type": "image/png",
-          "media": 480
+          "type": "image/png"
         },
         {
           "srcset": "./assets/marinasilva/images/480.webp",
           "type": "image/webp",
-          "media": 600
+          "media": 480
         },
         {
           "srcset": "./assets/marinasilva/images/480.jxl",
           "type": "image/jxl",
-          "media": 600
+          "media": 480
         },
         {
           "srcset": "./assets/marinasilva/images/480.png",
           "type": "image/png",
-          "media": 600
+          "media": 480
         },
         {
           "srcset": "./assets/marinasilva/images/640.webp",
           "type": "image/webp",
-          "media": 1024
+          "media": 640
         },
         {
           "srcset": "./assets/marinasilva/images/640.jxl",
           "type": "image/jxl",
-          "media": 1024
+          "media": 640
         },
         {
           "srcset": "./assets/marinasilva/images/640.png",
           "type": "image/png",
-          "media": 1024
+          "media": 640
         },
         {
           "srcset": "./assets/marinasilva/images/1024.webp",
           "type": "image/webp",
-          "media": 1280
+          "media": 1024
         },
         {
           "srcset": "./assets/marinasilva/images/1024.jxl",
           "type": "image/jxl",
-          "media": 1280
+          "media": 1024
         },
         {
           "srcset": "./assets/marinasilva/images/1024.png",
           "type": "image/png",
-          "media": 1280
+          "media": 1024
         },
         {
           "srcset": "./assets/marinasilva/images/1280.webp",
@@ -222,45 +221,45 @@
       ],
       "know_more_images": [
         {
-          "srcset": "./assets/marinasilva/images/foto-para-biografia--320x320.jpg",
+          "srcset": "./assets/marinasilva/images/foto-para-biografia--320x240.jpg",
           "type": "image/jpg"
         },
         {
           "media": 480,
-          "srcset": "./assets/marinasilva/images/foto-para-biografia--480x480.jpg",
+          "srcset": "./assets/marinasilva/images/foto-para-biografia--480x360.jpg",
           "type": "image/jpg"
         },
         {
           "media": 640,
-          "srcset": "./assets/marinasilva/images/foto-para-biografia--600x600.jpg",
+          "srcset": "./assets/marinasilva/images/foto-para-biografia--600x450.jpg",
           "type": "image/jpg"
         },
         {
-          "srcset": "./assets/marinasilva/images/foto-para-biografia--320x320.jxl",
+          "srcset": "./assets/marinasilva/images/foto-para-biografia--320x240.jxl",
           "type": "image/jxl"
         },
         {
           "media": 480,
-          "srcset": "./assets/marinasilva/images/foto-para-biografia--480x480.jxl",
+          "srcset": "./assets/marinasilva/images/foto-para-biografia--480x360.jxl",
           "type": "image/jxl"
         },
         {
           "media": 640,
-          "srcset": "./assets/marinasilva/images/foto-para-biografia--600x600.jxl",
+          "srcset": "./assets/marinasilva/images/foto-para-biografia--600x450.jxl",
           "type": "image/jxl"
         },
         {
-          "srcset": "./assets/marinasilva/images/foto-para-biografia--320x320.webp",
+          "srcset": "./assets/marinasilva/images/foto-para-biografia--320x240.webp",
           "type": "image/webp"
         },
         {
           "media": 480,
-          "srcset": "./assets/marinasilva/images/foto-para-biografia--480x480.webp",
+          "srcset": "./assets/marinasilva/images/foto-para-biografia--480x360.webp",
           "type": "image/webp"
         },
         {
           "media": 640,
-          "srcset": "./assets/marinasilva/images/foto-para-biografia--600x600.webp",
+          "srcset": "./assets/marinasilva/images/foto-para-biografia--600x450.webp",
           "type": "image/webp"
         }
       ],
