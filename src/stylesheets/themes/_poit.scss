@@ -147,6 +147,12 @@
     @include headings {
       color: inherit;
     }
+
+    a {
+      @include link-undercover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .home__donate {
