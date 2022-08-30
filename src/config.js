@@ -2,6 +2,10 @@ let candidateId;
 let api = process.env.VUE_APP_API_ORIGIN;
 
 switch (window.location.hostname) {
+  case 'doeboulos.com':
+  case 'doeboulos.com.br':
+  case 'www.doeboulos.com':
+  case 'www.doeboulos.com.br':
   case 'boulos.com':
   case 'boulos.com.br':
   case 'www.boulos.com':
