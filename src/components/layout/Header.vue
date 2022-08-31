@@ -74,7 +74,7 @@
         <button class="close-button" id="close-button" @click="toggleModal()">&times;</button>
         <div class="embed-container">
           <iframe width="560" height="315"
-            :src="`https://www.youtube-nocookie.com/embed/${candidateVideoId}?rel=0&amp;showinfo=0&enablejsapi=1`"
+            :src="videoUrl"
             frameborder="0" allow="autoplay; encrypted-media" allowfullscreen id="iframeYoutube" />
         </div>
       </div>
@@ -138,7 +138,13 @@ export default {
           .join('')).map((y) => `<span>#</span>${y}`)
         : [];
     },
-    ...mapState(['candidate','donors']),
+
+    videoUrl({ candidateVideoId = '' } = this) {
+      return candidateVideoId
+        ? `https://www.youtube-nocookie.com/embed/${candidateVideoId}?rel=0&showinfo=0&origin=${window.location.origin}&enablejsapi=1`
+        : '';
+    },
+    ...mapState(['candidate', 'donors']),
     ...mapGetters(['candidateWithProjectAndDonations', 'candidateVideoId', 'faq']),
   },
 
