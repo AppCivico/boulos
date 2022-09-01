@@ -20,6 +20,9 @@ http://omelhorprorio.com.br/* https://omelhorprorio.com.br/:splat 301!
 http://www.omelhorprorio.com.br/* https://omelhorprorio.com.br/:splat 301!
 https://www.omelhorprorio.com.br/* https://omelhorprorio.com.br/:splat 301!
 
+https://omelhorprorio.com.br?ref=2exclusivo https://omelhorprorio.com.br/ 302
+https://omelhorprorio.com.br/?ref=2exclusivo https://omelhorprorio.com.br/ 302
+
 http://doe.marinasilva.org.br/* https://doe.marinasilva.org.br/:splat 301!
 http://doar.marinasilva.org.br/* https://doar.marinasilva.org.br/:splat 301!
 
