@@ -70,6 +70,9 @@ export default {
   methods: {
     getReferral({ candidate } = this) {
       const referral = this.$route.query?.ref || candidate?.ref;
+
+      if (referral === '2exclusivo') return;
+
       if (referral) {
         this.$store.commit('storeToState', { name: 'referral', data: referral });
       }
