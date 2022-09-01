@@ -59,6 +59,14 @@ export default {
   mounted({ candidateId } = this) {
     this.handleSession();
 
+    if (this.$route.query?.ref === '2exclusivo') {
+      const cleanQuery = { ...this.$route.query };
+
+      delete cleanQuery.ref;
+
+      this.$router.replace({ query: cleanQuery });
+    }
+
     this.GET_CANDIDATE_INFO(candidateId).finally(() => {
       this.$nextTick(() => {
         this.getReferral();
