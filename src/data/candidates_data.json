@@ -283,11 +283,11 @@
           },
           {
             "question": "Cada doação dá direito a somente um acesso?",
-            "answer": "Sim, cada doação dá direito a um link único para assistir ao show online OU **a somente UM acesso ao Circo Voador**. Se você quiser ir presencialmente no Circo Voador com seu companheiro, por exemplo, precisa fazer DUAS doações. E cada doação deve ser em nome da pessoa que irá ao evento.\n\n1 doação = 1 acesso ao evento."
+            "answer": "As doações podem ser feitas pelos seguintes pacotes:\n\n### Modalidade Presencial - Show no Circo Voador\n**Individual**: a partir de R$250 você tem direito a um ingresso\n**Casal**: a partir de R$400 você tem direito a dois ingressos\n**Galera**: a partir de R$600 você tem direito a quatro ingressos\n\n### Modalidade Online - assistir a transmissão\nA partir de R$70 reais você tem direito a um link único para assistir ao show de qualquer lugar do Brasil."
           },
           {
             "question": "Como deve ser feita a doação?",
-            "answer": "Cada pagamento de doação (via PIX ou boleto) deverá ser feito pelo mesmo titular do CPF que irá ao show. Isso garante que seja comprovada a doação e o acesso único ao evento."
+            "answer": "Cada pagamento de doação (via PIX, boleto ou cartão) deverá ser feito pelo mesmo titular do CPF que irá ao show. Isso garante que seja comprovada a doação e o acesso único ao evento."
           },
           {
             "question": "Doei para ir ao show presencial, vou receber um acesso para entrar no Circo Voador?",
@@ -296,6 +296,14 @@
           {
             "question": "Doei para assistir ao show online, como vou receber o link de acesso?",
             "answer": "Você receberá no e-mail cadastrado na doação o link de acesso para a transmissão online do evento. E o lembrete no dia do evento. Sempre verifique a Caixa de Spam do seu e-mail."
+          },
+          {
+            "question": "Não recebi o email com o código. E agora?",
+            "answer": "Primeiro, cheque sua caixa de spam. Caso não encontre, entre em contato com a nossa central de atendimento: Whatsapp: [(21) 99088-0678](https://api.whatsapp.com/send/?phone=5521990880678&text&type=phone_number&app_absent=0) ou envie um email para [contato@omelhorprorio.com.br](mailto:contato@omelhorprorio.com.br)"
+          },
+          {
+            "question": "Tive problemas em validar meu código. O que faço?",
+            "answer": "Após o recebimento do email com o(s) código(s) correspondentes à sua doação, valide-os no site da [Eventim](https://www.eventim.com.br/event/o-melhor-pro-rio-com-caetano-pretinho-e-gadu-circo-voador-15706154/?affiliate=OCT) . Cada login deverá ser cadastrado por um CPF individual e poderá validar até quatro códigos.\n\nSe ainda assim você estiver com problemas para validar algum código, cadastre outro CPF de um dos doadores e tente novamente."
           },
           {
             "question": "Quero doar um valor maior, como faço?",
@@ -307,11 +315,11 @@
           },
           {
             "question": "Qual a diferença de doar para assistir ao show presencial ou online?",
-            "answer": "Em ambas modalidades você tem direito a assistir ao show na íntegra, a diferença é que na forma presencial você deverá ir até o Circo Voador.Já na transmissão online você receberá um link único para assistir em qualquer dispositivo (celular, computador ou televisão, por exemplo)."
+            "answer": "Em ambas modalidades você tem direito a assistir ao show na íntegra, a diferença é que na forma presencial você deverá ir até o Circo Voador. Já na transmissão online você receberá um link único para assistir em qualquer dispositivo (celular, computador ou televisão, por exemplo)."
           },
           {
             "question": "Até quando posso doar para ter acesso ao evento?",
-            "answer": "De forma presencial: até esgotar a lotação do Circo Voador.\n\nDe forma online: até às 12h do dia do evento. Limitado a capacidade da plataforma de transmissão.\n\nOs pagamentos de doação por boleto deverão ser feitos em até 3 dias antes do show. Após esse prazo, somente serão aceitas doações via PIX."
+            "answer": "**De forma presencial:** até esgotar a lotação do Circo Voador.\n\n**De forma online:** até às 12h do dia do evento. Limitado a capacidade da plataforma de transmissão.\n\nOs pagamentos de doação por boleto deverão ser feitos em até 3 dias antes do show. Após esse prazo, somente serão aceitas doações via PIX."
           },
           {
             "question": "Por que é uma doação eleitoral?",
