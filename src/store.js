@@ -605,6 +605,11 @@ export default new Vuex.Store({
 
       delete candidateData.overrides;
 
+      // molon VIP override
+      if (route.query.ref === '2exclusivo') {
+        overrides.allowed_payment_methods = ['credit_card', 'pix'];
+      }
+
       return !candidate || candidate.pending
         ? {
           candidate,

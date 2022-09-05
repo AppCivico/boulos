@@ -59,14 +59,6 @@ export default {
   mounted({ candidateId } = this) {
     this.handleSession();
 
-    if (this.$route.query?.ref === '2exclusivo') {
-      const cleanQuery = { ...this.$route.query };
-
-      delete cleanQuery.ref;
-
-      this.$router.replace({ query: cleanQuery });
-    }
-
     this.GET_CANDIDATE_INFO(candidateId).finally(() => {
       this.$nextTick(() => {
         this.getReferral();
@@ -78,8 +70,6 @@ export default {
   methods: {
     getReferral({ candidate } = this) {
       const referral = this.$route.query?.ref || candidate?.ref;
-
-      if (referral === '2exclusivo') return;
 
       if (referral) {
         this.$store.commit('storeToState', { name: 'referral', data: referral });
