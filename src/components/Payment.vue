@@ -4,15 +4,19 @@
       Doações desabilitadas
     </h2>
 
-    <div v-if="!allowedPaymentMethods.length">
-      <p>
-        Os serviços de meios de pagamento passam por
-        uma instabilidade. Estamos trabalhando
-        para reestabelecer as doações.
-      </p>
-      <p>Tente novamente mais tarde.</p>
-      <p>Nos desculpamos pelo transtorno.</p>
-    </div>
+    <template v-if="!allowedPaymentMethods.length">
+      <div class="warning-panel" v-html="parseMD(candidate.disable_donations_message)"
+      v-if="candidate && candidate.disable_donations_message" />
+      <div v-else class="warning-panel">
+        <p>
+          Os serviços de meios de pagamento passam por
+          uma instabilidade. Estamos trabalhando
+          para reestabelecer as doações.
+        </p>
+        <p>Tente novamente mais tarde.</p>
+        <p>Nos desculpamos pelo transtorno.</p>
+      </div>
+    </template>
 
     <template v-else-if="paymentStep === 'selectValue'">
       <selectValue />
@@ -46,6 +50,7 @@ import headSteps from '@/components/steps/headSteps.vue';
 import printBoleto from '@/components/steps/printBoleto.vue';
 import selectValue from '@/components/steps/selectValue.vue';
 import userData from '@/components/steps/userData.vue';
+import { parseMD } from '../utilities';
 
 export default {
   name: 'Payment',
@@ -110,6 +115,7 @@ export default {
       const step = this.paymentStep === 'userData' ? 'selectValue' : 'userData';
       this.$store.dispatch('CHANGE_PAYMENT_STEP', { step });
     },
+    parseMD,
   },
 };
 </script>

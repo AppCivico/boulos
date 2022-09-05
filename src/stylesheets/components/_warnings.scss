@@ -1,0 +1,53 @@
+$color: palette('label', 'warning');
+
+.warning-text {
+  &::before {
+    display: inline-block;
+
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.25em;
+
+    font-family: $alt-font-stack;
+    font-style: italic;
+    font-weight: font-weight('bold');
+    line-height: 1.5;
+    color: text-contrast($color, $level: 'AA');
+    text-align: center;
+
+    content: 'i';
+
+    background-color: $color;
+    border-radius: 100%;
+  }
+}
+
+.warning-panel {
+  padding: $gutter;
+
+  border: 1px solid $color;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    display: block;
+
+    float: left;
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.25em;
+
+    font-family: $alt-font-stack;
+    font-weight: font-weight('bold');
+    line-height: 1.5;
+    color: text-contrast($color, $level: 'AA');
+    text-align: center;
+
+    content: '!';
+
+    background-color: $color;
+    border-radius: 100%;
+  }
+}
