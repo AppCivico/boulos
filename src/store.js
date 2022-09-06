@@ -598,17 +598,12 @@ export default new Vuex.Store({
   },
   getters: {
     candidateWithProjectAndDonations: ({
-      candidate, donations, projects, route,
+      candidate, donations, projects,
     }) => {
       const candidateData = { ...candidatesData[candidate?.username] };
       const { overrides = {} } = candidateData;
 
       delete candidateData.overrides;
-
-      // molon VIP override
-      if (route.query.ref === '2exclusivo') {
-        overrides.allowed_payment_methods = ['credit_card', 'pix'];
-      }
 
       return !candidate || candidate.pending
         ? {
