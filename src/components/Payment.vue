@@ -9,12 +9,11 @@
       v-if="candidate && candidate.disable_donations_message" />
       <div v-else class="warning-panel">
         <p>
-          Os serviços de meios de pagamento passam por
-          uma instabilidade. Estamos trabalhando
-          para reestabelecer as doações.
+          Não é possível apoiar financeiramente essa campanha.
         </p>
-        <p>Tente novamente mais tarde.</p>
-        <p>Nos desculpamos pelo transtorno.</p>
+        <p>
+          Nossa democracia agradece o seu interesse.
+        </p>
       </div>
     </template>
 
